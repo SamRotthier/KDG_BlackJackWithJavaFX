@@ -1,6 +1,6 @@
 package MVPGlobal.View.StartScreen;
 
-import javafx.animation.Interpolato;
+import javafx.animation.Interpolator;
 import javafx.animation.Transition;
 import javafx.util.Duration;
 
