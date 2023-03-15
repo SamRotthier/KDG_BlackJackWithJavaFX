@@ -9,28 +9,30 @@ public class Player extends CardHandler {
     private static boolean win = false;
     private static boolean lose = false;
 
+    private static int playerBet;
 
 
-    public  int Bet(int bank){
-        Scanner bettingAmount = new Scanner(System.in);
-        int amountBet = 0;
 
-        System.out.println("Please enter the amount you want to bet");
-        amountBet = bettingAmount.nextInt();
+    //public  int Bet(int bank){
+        //Scanner bettingAmount = new Scanner(System.in);
+       // int amountBet = 0;
 
-        while (amountBet>bank){
-            System.out.println("You want to bet more then is in your bank, please enter a lower amount");
-            amountBet = bettingAmount.nextInt();
-        }
+        //System.out.println("Please enter the amount you want to bet");
+       // amountBet = bettingAmount.nextInt();
 
-        return amountBet;
-    }
-    public int PlayerBank(int amountBet){
+      //  while (amountBet>bank){
+       //     System.out.println("You want to bet more then is in your bank, please enter a lower amount");
+       //     amountBet = bettingAmount.nextInt();
+      //  }
+
+     //   return amountBet;
+  //  }
+    public int PlayerBank(int BettingAmount){
 
         if (win){
-          bank += amountBet;
+          bank += BettingAmount;
         } else if (lose) {
-            bank -= amountBet;
+            bank -= BettingAmount;
         }
         return bank;
     }
@@ -61,6 +63,10 @@ public class Player extends CardHandler {
         return lose;
     }
 
+    public static int getPlayerBet() {
+        return playerBet;
+    }
+
     //setter
     public void setBank(int bank) {
         Player.bank = bank;
@@ -74,7 +80,13 @@ public class Player extends CardHandler {
         Player.lose = lose;
     }
 
+    public  void setPlayerBet(int playerBet) {
+        Player.playerBet = playerBet;
+    }
+
     //Constructor
     public Player() {
+      playerBet = 0;
+      bank = 500;
     }
 }
