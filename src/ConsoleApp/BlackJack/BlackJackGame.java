@@ -5,12 +5,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class BlackJackGame {
-    static Player Player1 = new Player();
+     Player Player1 = new Player();
 
     public void gameHandler() throws InterruptedException {
         Scanner input = new Scanner(System.in);
         Random randomGenerator = new Random();
         boolean keepPlaying = true;
+        DeckBuilder.AssemblingDeck();
 
         while(keepPlaying) {
             boolean bettingAmountOk = true;
@@ -78,7 +79,7 @@ public class BlackJackGame {
         }
     }
 
-    public static void dealTwoCards(){
+    public void dealTwoCards(){
         Random randomGenerator = new Random();
         try {
             if (Player1.getHand().size() == 0) {
