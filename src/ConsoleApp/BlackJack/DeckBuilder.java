@@ -37,11 +37,11 @@ public class DeckBuilder {
     }
     public static ArrayList<Card> ShuffleDeck(ArrayList<Card> StartDeck){
         for(int i = StartDeck.size()-1; i>0;i--){
-            int j = (int) Math.floor(Math.random() * (i+1));
+            int j2= (int) Math.floor(Math.random() * (i+1));
+            Card j = StartDeck.get(j2);
             Card temp = StartDeck.get(i);
-            //StartDeck.set(i) = StartDeck.get(j);
-
-
+            StartDeck.set(i,j);
+            StartDeck.set(j2,temp);
         }
         return ShuffledDeck;
     }
