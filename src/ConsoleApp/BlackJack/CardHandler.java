@@ -17,6 +17,12 @@ import java.util.ArrayList;
             return score;
         }
 
+
+
+
+
+
+
         //Getter
         public ArrayList<Integer> getHand() {
             return Hand;
@@ -25,6 +31,13 @@ import java.util.ArrayList;
         public void setHand(ArrayList<Integer> hand) {
             Hand = hand;
         }
+
+
+
+
+
+
     }
+
 
 
