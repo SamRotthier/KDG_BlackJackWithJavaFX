@@ -5,7 +5,7 @@ import java.util.Random;
 
 public abstract class CardHandler {
 
-        private ArrayList<Integer> Hand = new ArrayList<Integer>();
+    private ArrayList<Integer> Hand = new ArrayList<Integer>();
 
     public void dealCard(){
         Random randomGenerator = new Random();
@@ -23,44 +23,48 @@ public abstract class CardHandler {
             System.out.println("Something went wrong while dealing a card");
         }
     }
-
-        public void showHand(){
-            System.out.println("You have these cards in your hand");
-            int score = 0;
-            for (int value: Hand) {
-                score +=value;
-                System.out.println(value);
-            }
-            System.out.println("For a total score of " + score);
+    public void showHand(){
+        System.out.println("You have these cards in your hand");
+        int score = 0;
+        for (int value: Hand) {
+            score +=value;
+            System.out.println(value);
         }
+        System.out.println("For a total score of " + score);
+    }
 
-
-        public  int Hit(int score){
-
-
-            return score;
+    public int scoreCounter(){
+        int score = 0;
+        for (int value: Hand) {
+            score +=value;
         }
+        return score;
+    }
 
-        public  int Stand(int score){
-
-            return score;
-        }
-
-        //Getter
-        public ArrayList<Integer> getHand() {
-            return Hand;
-        }
-        //Setter
-        public void setHand(ArrayList<Integer> hand) {
-            Hand = hand;
-        }
-
-
-
-
-
+    public void hit(){
+        dealCard();
+    }
+    public void stand(){
 
     }
+
+
+
+    //Getter
+    public ArrayList<Integer> getHand() {
+        return Hand;
+    }
+    //Setter
+    public void setHand(ArrayList<Integer> hand) {
+        Hand = hand;
+    }
+
+
+
+
+
+
+}
 
 
 
