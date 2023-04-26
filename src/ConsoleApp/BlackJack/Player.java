@@ -12,6 +12,22 @@ public class Player extends CardHandler {
     private static int playerBet;
 
 
+    public void placeBet(){
+        Scanner input = new Scanner(System.in);
+        boolean bettingAmountOk= true;
+        System.out.println("What is the amount you want to bed this round?");
+        int bettingAmount = input.nextInt();
+        while (bettingAmountOk) {
+            if (bettingAmount <= 0) {
+                System.out.println("The house doesn't play for free");
+            } else if (bettingAmount > Player.bank) {
+                System.out.println("Looks like you're too broke, you are trying to bet more then what you have");
+            } else {
+                bettingAmountOk = false;
+                Player.playerBet = bettingAmount;
+            }
+        }
+    }
 
     //public  int Bet(int bank){
         //Scanner bettingAmount = new Scanner(System.in);
