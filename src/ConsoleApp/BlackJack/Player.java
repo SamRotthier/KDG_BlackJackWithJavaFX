@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class Player extends CardHandler {
 
-    private static int bank = 0;
+
     private static boolean win = false;
     private static boolean lose = false;
-
     private static int playerBet;
+    private static int bank = 0;
 
 
     public void placeBet(){
@@ -29,20 +29,6 @@ public class Player extends CardHandler {
         }
     }
 
-    //public  int Bet(int bank){
-        //Scanner bettingAmount = new Scanner(System.in);
-       // int amountBet = 0;
-
-        //System.out.println("Please enter the amount you want to bet");
-       // amountBet = bettingAmount.nextInt();
-
-      //  while (amountBet>bank){
-       //     System.out.println("You want to bet more then is in your bank, please enter a lower amount");
-       //     amountBet = bettingAmount.nextInt();
-      //  }
-
-     //   return amountBet;
-  //  }
     public int PlayerBank(int BettingAmount){
 
         if (win){

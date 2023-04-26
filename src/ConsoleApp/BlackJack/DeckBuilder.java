@@ -11,7 +11,7 @@ public class DeckBuilder {
         ArrayList<Card> StartDeck = new ArrayList<Card>();
         for (String s : suits) {
             char suit = s.toUpperCase().charAt(0);
-            for (int n = 0; n < 12; n++) {
+            for (int n = 1; n < 13; n++) { //13 na te kijken of het geen 12 moet zijn
                 Card card = new Card();
                 card.setIcon(suit);
 
@@ -19,8 +19,13 @@ public class DeckBuilder {
                 card.setCardValue(cardValue);
 
                 String cardNumb = "";
-                if (n > 9) {
+                if (n < 9) {
+                    if(n == 1){
+                        cardNumb = "A";
+                    }
+                    else {
                     cardNumb = Integer.toString(cardValue);
+                    }
                 } else if (n == 10) {
                     cardNumb = "J";
                 } else if (n == 11) {

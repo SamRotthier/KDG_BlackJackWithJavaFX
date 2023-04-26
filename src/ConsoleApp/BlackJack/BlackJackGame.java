@@ -17,9 +17,9 @@ public class BlackJackGame {
 
             Player1.placeBet();
 
-            dealCard();
+            Player1.dealCard();
 
-            showHand();
+            Player1.showHand();
 
             hitOrStand();
 
@@ -28,47 +28,6 @@ public class BlackJackGame {
         }
     }
 
-    public void dealTwoCards(){
-        Random randomGenerator = new Random();
-        try {
-            if (Player1.getHand().size() == 0) {
-                for (int i = 1; i <= 2; i++) {
-                    Player1.getHand().add(randomGenerator.nextInt(9) + 1);
-                }
-
-            }
-        }
-        catch (Exception e){
-            System.out.println("Player already has cards in his hand.");
-        }
-    }
-
-    public void dealCard(){
-        Random randomGenerator = new Random();
-        try {
-            if (Player1.getHand().size() == 0) {
-                for (int i = 1; i <= 2; i++) {
-                    Player1.getHand().add(randomGenerator.nextInt(9) + 1);
-                }
-            } else{
-                Player1.getHand().add(randomGenerator.nextInt(9) + 1);
-            }
-
-        }
-        catch (Exception e){
-            System.out.println("Something went wrong while dealing a card");
-        }
-    }
-
-    public void showHand(){
-            System.out.println("You have these cards in your hand");
-    int score = 0;
-            for (int value: Player1.getHand()) {
-        score +=value;
-        System.out.println(value);
-    }
-            System.out.println("For a total score of " + score);
-    }
     public void hitOrStand(){
     boolean drawMoreCards = true;
     Scanner input = new Scanner(System.in);
@@ -76,7 +35,7 @@ public class BlackJackGame {
         System.out.println("What would you like to do? Hit or Stand");
         String playerChoice = input.nextLine();
         if (playerChoice.equals("Hit")) {
-            dealCard();
+            Player1.dealCard();
             int newScore = 0;
             for (int value: Player1.getHand()) {
                 newScore +=value;
