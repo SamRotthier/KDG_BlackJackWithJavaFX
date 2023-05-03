@@ -19,7 +19,7 @@ public class StartScreenTransition extends Transition {
 
     @Override
     protected void interpolate(double frac) {
-        this.view.getTimeDisplay().setText(String.format("Loading: %.1f", frac * 100));
+        this.view.getTimeDisplay().setText(String.format("Loading: %.0f%%", frac * 100));
         this.view.getTimeProgress().setProgress(frac);
     }
 }

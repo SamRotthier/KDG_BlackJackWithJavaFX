@@ -2,6 +2,9 @@ package MVPGlobal.View.StartScreen;
 
 import MVPGlobal.View.UISettings;
 import javafx.geometry.Insets;
+import javafx.geometry.*;
+import javafx.scene.canvas.*;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -30,11 +33,19 @@ public class StartScreenView extends BorderPane  {
     }
 
     private void layoutNodes() {
+        //background
+        try{
+            this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getStartScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT)));
+            this.setCenter(new Canvas(480, 360));
+        }
+        catch (MalformedURLException ex){
+        }
         int ImageSize = uiSettings.getLowestRes()/5;
         BorderPane progressPane = new BorderPane();
-        progressPane.setRight(this.timeProgress);
-        progressPane.setLeft(this.timeDisplay);
-        BorderPane.setMargin(this.timeDisplay, new Insets(uiSettings.getInsetsMargin()));
+        progressPane.setCenter(this.timeProgress);
+        progressPane.setBottom(this.timeDisplay);
+        progressPane.setAlignment(this.timeDisplay, Pos.CENTER);
+        BorderPane.setMargin(this.timeDisplay, new Insets(0,10, 50, 10));
         BorderPane.setMargin(this.timeProgress, new Insets(uiSettings.getInsetsMargin()));
         ImageView centralImage;
         if (Files.exists(uiSettings.getStartScreenImagePath())) {
@@ -43,15 +54,17 @@ public class StartScreenView extends BorderPane  {
                 centralImage.setPreserveRatio(true);
                 centralImage.setFitHeight(ImageSize);
                 centralImage.setFitWidth(ImageSize);
-                centralImage.setSmooth(true);
+                //centralImage.setSmooth(true);
                 this.setCenter(centralImage);
             }
             catch (MalformedURLException ex) {
                 // do nothing, if toURL-conversion fails, program can continue
             }
         } else { // do nothing, if StartScreenImage is not available, program can continue
-        }
+            }
         this.setBottom(progressPane);
+
+
     }
 
     Label getTimeDisplay () {return (timeDisplay);}

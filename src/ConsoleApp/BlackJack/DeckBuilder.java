@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 public class DeckBuilder {
-     static String[] suits = {"spades", "hearts", "clubs", "diams"};
+     static String[] suits = {"spades", "hearts", "clubs", "diamonds"};
     //String[] numb = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"};
 
     public static ArrayList<Card> AssemblingDeck() {
