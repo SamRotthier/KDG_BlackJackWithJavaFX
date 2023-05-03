@@ -20,10 +20,15 @@ public class MainScreenView extends BorderPane  {
     private MenuItem infoMI;
     private UISettings uiSettings;
 
-    private Label player1;
+    private Label saldoLabel;
+    private Label betAmountLabel;
 
-    //ButtonHit Test
+
     private Button buttonHit;
+    private Button buttonDouble;
+    private Button buttonStand;
+    private Button buttonDeal;
+
 
     public MainScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -38,10 +43,14 @@ public class MainScreenView extends BorderPane  {
         this.settingsMI = new MenuItem("Settings");
         this.aboutMI = new MenuItem("About");
         this.infoMI = new MenuItem("Info");
-        //buttonHit test
+
         this.buttonHit = new Button("HIT");
-        // player 1 label
-        this.player1 = new Label("Player 1");
+        this.buttonDouble = new Button("DOUBLE");
+        this.buttonStand = new Button("STAND");
+        this.buttonDeal = new Button("DEAL");
+
+        this.saldoLabel = new Label("Saldo: ");
+        this.betAmountLabel = new Label("Bet amount: ");
     }
 
     private void layoutNodes() {
@@ -58,18 +67,21 @@ public class MainScreenView extends BorderPane  {
         MenuBar menuBar = new MenuBar(menuFile,menuHelp);
         setTop(menuBar);
 
-        //ButtonHitTest
-        this.setCenter(this.buttonHit);
-        BorderPane.setMargin(this.buttonHit, new Insets(10));
-        BorderPane.setAlignment(this.buttonHit, Pos.CENTER);
+        //ButtonsRight
+        VBox buttonsRightBox = new VBox();
+        buttonsRightBox.setAlignment(Pos.CENTER);
+        buttonsRightBox.setSpacing(100);
+        buttonsRightBox.setPadding(new Insets(50));
+
+        buttonsRightBox.getChildren().addAll(buttonDeal,buttonHit, buttonStand, buttonDouble);
+        this.setRight(buttonsRightBox);
+
 
         //Bottom
         HBox saldoBetBox = new HBox();
         saldoBetBox.setSpacing(100);
         saldoBetBox.setPadding(new Insets(20));
 
-        Label saldoLabel = new Label("Saldo: ");
-        Label betAmountLabel = new Label("Bet amount:");
         saldoBetBox.getChildren().addAll(saldoLabel, betAmountLabel);
         this.setBottom(saldoBetBox);
 
