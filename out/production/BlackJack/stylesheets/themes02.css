@@ -52,3 +52,8 @@
 .button:hover{
     -fx-background-color: lightyellow;
 }
+
+#info-text.content{
+    -fx-background-color: blue;
+    -fx-text-fill: white;
+}

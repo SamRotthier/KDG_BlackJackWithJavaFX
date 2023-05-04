@@ -1,5 +1,6 @@
 package MVPGlobal;
 
+import MVPGlobal.View.AboutScreen.AboutScreenView;
 import MVPGlobal.View.StartScreen.*;
 import MVPGlobal.Model.*;
 import MVPGlobal.View.*;
@@ -17,7 +18,8 @@ public class MVPMain extends Application {
         UISettings uiSettings = new UISettings();
         MVPModel model = new MVPModel();
         StartScreenView view = new StartScreenView(uiSettings);
-        StartScreenPresenter presenter = new StartScreenPresenter(model, view, uiSettings);
+        AboutScreenView aboutView = new AboutScreenView(uiSettings);
+        StartScreenPresenter presenter = new StartScreenPresenter(model, view, uiSettings, aboutView);
         Scene scene = new Scene(view);
         if (uiSettings.styleSheetAvailable()){
             try {

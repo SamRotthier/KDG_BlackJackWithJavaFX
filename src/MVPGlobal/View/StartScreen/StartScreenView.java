@@ -1,6 +1,7 @@
 package MVPGlobal.View.StartScreen;
 
 import MVPGlobal.View.UISettings;
+import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.*;
 import javafx.scene.canvas.*;
@@ -9,6 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -20,6 +22,9 @@ public class StartScreenView extends BorderPane  {
     private ProgressBar timeProgress;
     private StartScreenTransition trans;
 
+    private ImageView centralImage;
+
+
     public StartScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
@@ -30,16 +35,18 @@ public class StartScreenView extends BorderPane  {
     private void initialiseNodes() {
         this.timeDisplay = new Label("Loading: 0.0");
         this.timeProgress = new ProgressBar();
+        this.centralImage = new ImageView();
     }
 
     private void layoutNodes() {
         //background
         try{
-            this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getStartScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT)));
-            this.setCenter(new Canvas(480, 360));
+            this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getStartScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,new BackgroundSize(100, 100, true, true, false, true))));
         }
         catch (MalformedURLException ex){
         }
+
+
         int ImageSize = uiSettings.getLowestRes()/5;
         BorderPane progressPane = new BorderPane();
         progressPane.setCenter(this.timeProgress);
@@ -47,21 +54,38 @@ public class StartScreenView extends BorderPane  {
         progressPane.setAlignment(this.timeDisplay, Pos.CENTER);
         BorderPane.setMargin(this.timeDisplay, new Insets(0,10, 50, 10));
         BorderPane.setMargin(this.timeProgress, new Insets(uiSettings.getInsetsMargin()));
-        ImageView centralImage;
+
+
+        //ImageView centralImage;
+        //StackPane logoPane = new StackPane();
+        //logoPane.setPadding(new Insets(20));
         if (Files.exists(uiSettings.getStartScreenImagePath())) {
            try {
                 centralImage = new ImageView(new Image(uiSettings.getStartScreenImagePath().toUri().toURL().toString()));
                 centralImage.setPreserveRatio(true);
-                centralImage.setFitHeight(ImageSize);
-                centralImage.setFitWidth(ImageSize);
-                //centralImage.setSmooth(true);
-                this.setCenter(centralImage);
+                centralImage.setFitHeight(ImageSize*2.5);
+                centralImage.setFitWidth(ImageSize*2.5);
+                centralImage.setSmooth(true);
+
+
+                //logoPane.getChildren().add(centralImage);
             }
             catch (MalformedURLException ex) {
                 // do nothing, if toURL-conversion fails, program can continue
             }
         } else { // do nothing, if StartScreenImage is not available, program can continue
             }
+        //
+
+        //VBox
+        VBox splash = new VBox();
+        splash.setAlignment(Pos.CENTER);
+        splash.setSpacing(30);
+        splash.setPadding(new Insets(50));
+
+        splash.getChildren().addAll(centralImage, new Label("This game was developed by Sam Rotthier and Matthias Vermeiren"), new Label("Version 1.1"));
+        this.setCenter(splash);
+
         this.setBottom(progressPane);
 
 
@@ -76,6 +100,13 @@ public class StartScreenView extends BorderPane  {
     private void animate() {
         trans = new StartScreenTransition(this,3);
         trans.play();
+
+        // logo image animation
+
+        ScaleTransition logoTransition = new ScaleTransition(Duration.seconds(2), centralImage);
+        logoTransition.setToX(1.15);
+        logoTransition.setToY(1.15);
+        logoTransition.play();
     }
 
 }

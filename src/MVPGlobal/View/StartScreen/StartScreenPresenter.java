@@ -2,6 +2,7 @@ package MVPGlobal.View.StartScreen;
 
 import MVPGlobal.Model.*;
 import MVPGlobal.View.*;
+import MVPGlobal.View.AboutScreen.AboutScreenView;
 import MVPGlobal.View.MainScreen.MainScreenPresenter;
 import MVPGlobal.View.MainScreen.MainScreenView;
 import javafx.event.*;
@@ -14,11 +15,13 @@ public class StartScreenPresenter {
     private MVPModel model;
     private StartScreenView view;
     private UISettings uiSettings;
+    private AboutScreenView aboutView;
 
-    public StartScreenPresenter(MVPModel model, StartScreenView view, UISettings uiSettings) {
+    public StartScreenPresenter(MVPModel model, StartScreenView view, UISettings uiSettings, AboutScreenView aboutView) {
         this.model = model;
         this.view = view;
         this.uiSettings = uiSettings;
+        this.aboutView = aboutView;
         updateView();
         EventHandlers();
     }

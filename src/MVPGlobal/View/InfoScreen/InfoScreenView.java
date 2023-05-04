@@ -5,8 +5,11 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+
+import java.net.MalformedURLException;
 
 public class InfoScreenView extends BorderPane{
 
@@ -28,17 +31,27 @@ public class InfoScreenView extends BorderPane{
 
     private void layoutNodes() {
         setCenter(InfoText);
-        InfoText.setPrefWidth(Double.MAX_VALUE);
-        InfoText.setPrefHeight(Double.MAX_VALUE);
+        InfoText.setPrefWidth(1000);
+        InfoText.setPrefHeight(1000);
         InfoText.setWrapText(true);
-        InfoText.setFont(Font.font("Arial", 12));
+        InfoText.setFont(Font.font("Poppins", 12));
         InfoText.setEditable(false);
+        InfoText.setStyle("-fx-background-color: #364969");
+
+        try{
+            Background infoBackground = (new Background(new BackgroundImage(new Image(uiSettings.getStartScreenBackground().toUri().toURL().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,new BackgroundSize(100, 100, true, true, false, true))));
+            setBackground(infoBackground);
+        }
+        catch (MalformedURLException ex){
+        }
+        //InfoText.setPrefWidth(uiSettings.getLowestRes() / 2);
+        //InfoText.setPrefHeight(uiSettings.getLowestRes() / 2);
         setPadding(new Insets(uiSettings.getInsetsMargin()));
         BorderPane.setAlignment(okButton, Pos.CENTER_RIGHT);
         BorderPane.setMargin(okButton, new Insets(uiSettings.getInsetsMargin(), 0, 0, 0));
         setBottom(okButton);
-        setPrefWidth(uiSettings.getLowestRes() / 4);
-        setPrefHeight(uiSettings.getLowestRes() / 4);
+        setPrefWidth(uiSettings.getLowestRes());
+        setPrefHeight(uiSettings.getLowestRes());
     }
 
     TextArea getInfoText () {return InfoText;}

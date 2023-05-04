@@ -1,0 +1,16 @@
+Welcome to Blackjack! This classic card game is all about beating the dealer.
+The goals is to have a hand value of 21 or as close as possible, without going over. If you go over 21, you lose!
+
+Here is how you play Blackjack:
+
+The game uses one or more decks of cards. Each card has a value. Aces have a value of 11, unless it would give a player a score in excess of 21. In which case, it has a value of 1. The Kings, Queens and Jacks count as 10. All other cards are worth their numerical value.
+
+The dealer deals two cards to each player and two cards to himself. One of the dealer's cards is face down.
+
+As a player, you decide to "Hit" (take another card) or "Stand" (keep your current hand). You can decide to "Hit" as long as you are below 21. You could also "Double", which will double your initial bet and you will take another card.Furthermore, you could choose to "Split", which will separate two cards of the same rank into two separate hands.
+
+After all players have completed their turns, the dealer reveals his face-down card and will hit until their hand is worth at least 17 points.
+
+If the dealer busts, all remaining players win. Otherwise, the players with a higher hand than the dealer wins. The players with a lower hand value lose.
+
+Good luck, and have fun playing Blackjack!

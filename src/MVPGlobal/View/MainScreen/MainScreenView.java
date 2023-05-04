@@ -3,12 +3,17 @@ package MVPGlobal.View.MainScreen;
 import MVPGlobal.View.UISettings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 
 import java.net.MalformedURLException;
+
+import static javafx.scene.paint.Color.*;
 
 public class MainScreenView extends BorderPane  {
 
@@ -28,6 +33,12 @@ public class MainScreenView extends BorderPane  {
     private Button buttonDouble;
     private Button buttonStand;
     private Button buttonDeal;
+
+    private Label setBetAmount;
+    private TextField betAmount;
+
+    private Button arrowUp;
+    private Button arrowDown;
 
 
     public MainScreenView(UISettings uiSettings) {
@@ -51,21 +62,41 @@ public class MainScreenView extends BorderPane  {
 
         this.saldoLabel = new Label("Saldo: ");
         this.betAmountLabel = new Label("Bet amount: ");
+        this.setBetAmount = new Label("Your bet: ");
+        this.betAmount = new TextField("");
+        Image arrowUpIcon = new Image("/images/arrowup.png", 18, 18, false, false);
+        this.arrowUp = new Button("", new ImageView(arrowUpIcon));
+        Image arrowDownIcon = new Image("/images/arrowdown.png", 18, 18, false, false);
+        this.arrowDown = new Button("", new ImageView(arrowDownIcon));
     }
 
     private void layoutNodes() {
         //background
         try{
-            this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getStartScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT)));
-            this.setCenter(new Canvas(480, 360));
+            this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getGameScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,new BackgroundSize(100, 100, true, true, false, true))));
         }
-        catch (MalformedURLException ex){
-        }
+        catch (MalformedURLException ex){}
+
         
         Menu menuFile = new Menu("File",null,loadMI, saveMI, new SeparatorMenuItem(), settingsMI, new SeparatorMenuItem(),exitMI);
         Menu menuHelp = new Menu("Help",null, aboutMI, infoMI);
         MenuBar menuBar = new MenuBar(menuFile,menuHelp);
         setTop(menuBar);
+
+        //ButtonsLeft
+        HBox arrowButtonsBox = new HBox(arrowUp, arrowDown);
+        arrowButtonsBox.setSpacing(20);
+        arrowButtonsBox.setPadding(new Insets(10));
+
+        VBox inputLeftBox = new VBox();
+        inputLeftBox.setAlignment(Pos.CENTER);
+        inputLeftBox.setSpacing(10);
+        inputLeftBox.setPadding(new Insets(20));
+        inputLeftBox.setPrefWidth(20);
+
+        inputLeftBox.getChildren().addAll(setBetAmount, betAmount, arrowButtonsBox);
+        this.setLeft(inputLeftBox);
+
 
         //ButtonsRight
         VBox buttonsRightBox = new VBox();
@@ -81,9 +112,14 @@ public class MainScreenView extends BorderPane  {
         HBox saldoBetBox = new HBox();
         saldoBetBox.setSpacing(100);
         saldoBetBox.setPadding(new Insets(20));
+        BackgroundFill bottomFill = new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY);
+        Background bottomBackground = new Background(bottomFill);
+        saldoBetBox.setBackground(bottomBackground);
+
 
         saldoBetBox.getChildren().addAll(saldoLabel, betAmountLabel);
         this.setBottom(saldoBetBox);
+
 
     }
 
@@ -98,6 +134,5 @@ public class MainScreenView extends BorderPane  {
     MenuItem getAboutItem() {return aboutMI;}
 
     MenuItem getInfoItem() {return infoMI;}
-
 
 }

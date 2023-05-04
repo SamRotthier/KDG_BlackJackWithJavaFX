@@ -35,7 +35,7 @@ public class InfoScreenPresenter {
                 infoTextInFile += line + "\n";
             }
         } catch (Exception ex) {
-            // do nothing, if info.txt file can not be read or is incomplete, or ... a standard text will be return
+            // do nothing, if BlackjackInfo.txt file can not be read or is incomplete, or ... a standard text will be return
         }
         return (infoTextInFile.compareTo("")==0)?"No info available":infoTextInFile;
     }
