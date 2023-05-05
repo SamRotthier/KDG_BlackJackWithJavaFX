@@ -14,8 +14,8 @@ public class UISettings {
     public static final char FILE_SEPARATOR = System.getProperties().getProperty("file.separator").charAt(0);
     private String ApplicationName;
     private String homeDir;
-    //private String defaultCss = "themes02.css";
-    private Path styleSheetPath = Paths.get("resources"+FILE_SEPARATOR+"stylesheets"+FILE_SEPARATOR+"themes02.css");
+    //private String defaultCss = "blackjackknightsofthefuture.css";
+    private Path styleSheetPath = Paths.get("resources"+FILE_SEPARATOR+"stylesheets"+FILE_SEPARATOR+"blackjackknightsofthefuture.css");
     private Path AboutImagePath = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"logoblackjackmedievaloption3.png");
     private Path applicationIconPath = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"knightsofthefutureLogo.png");
     private Path startScreenImagePath = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"logoblackjackmedievaloption3.png");

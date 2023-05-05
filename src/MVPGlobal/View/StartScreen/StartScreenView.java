@@ -83,7 +83,7 @@ public class StartScreenView extends BorderPane  {
         splash.setSpacing(30);
         splash.setPadding(new Insets(50));
 
-        splash.getChildren().addAll(centralImage, new Label("This game was developed by Sam Rotthier and Matthias Vermeiren"), new Label("Version 1.1"));
+        splash.getChildren().addAll(centralImage, new Label("This game was developed by Sam Rotthier and Matthias Vermeiren"), new Label("Version 1.5"));
         this.setCenter(splash);
 
         this.setBottom(progressPane);
