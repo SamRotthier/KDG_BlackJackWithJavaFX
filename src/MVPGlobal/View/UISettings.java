@@ -16,12 +16,13 @@ public class UISettings {
     private String homeDir;
     //private String defaultCss = "themes02.css";
     private Path styleSheetPath = Paths.get("resources"+FILE_SEPARATOR+"stylesheets"+FILE_SEPARATOR+"themes02.css");
-    private Path AboutImagePath = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"logoblackjack1.png");
-    private Path applicationIconPath = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"logoicon1.png");
-    private Path startScreenImagePath = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"logoblackjack1.png");
+    private Path AboutImagePath = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"logoblackjackmedievaloption3.png");
+    private Path applicationIconPath = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"knightsofthefutureLogo.png");
+    private Path startScreenImagePath = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"logoblackjackmedievaloption3.png");
     private Path infoTextPath = Paths.get("resources"+FILE_SEPARATOR+"other"+FILE_SEPARATOR+"blackjackinfo.txt");
-    private Path startScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"navyfeltbackground.jpeg");
-    private Path gameScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"testbackgroundtable.jpeg");
+    private Path startScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"medievalBackground.jpeg");
+    private Path gameScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"BackgroundTableLogo.png");
+    private Path backgroundMusicGame = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"blackjackgameaudio.mp3");
 
     public UISettings() {
         this.resX= (int) Screen.getPrimary().getVisualBounds().getWidth();
@@ -59,5 +60,6 @@ public class UISettings {
 
     public Path getStartScreenBackground() {return this.startScreenBackground;};
     public Path getGameScreenBackground() {return this.gameScreenBackground;};
+    public Path getBackgroundMusicGame() {return this.backgroundMusicGame;};
 
 }

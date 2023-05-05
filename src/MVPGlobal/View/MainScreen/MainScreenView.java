@@ -1,14 +1,15 @@
 package MVPGlobal.View.MainScreen;
 
 import MVPGlobal.View.UISettings;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.geometry.*;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 
 import java.net.MalformedURLException;
@@ -39,6 +40,8 @@ public class MainScreenView extends BorderPane  {
 
     private Button arrowUp;
     private Button arrowDown;
+
+    private MediaPlayer backgroundMusic;
 
 
     public MainScreenView(UISettings uiSettings) {
@@ -73,7 +76,7 @@ public class MainScreenView extends BorderPane  {
     private void layoutNodes() {
         //background
         try{
-            this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getGameScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,new BackgroundSize(100, 100, true, true, false, true))));
+            this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getGameScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,new BackgroundSize(100, 100, true, true, false, true))));
         }
         catch (MalformedURLException ex){}
 
@@ -82,6 +85,13 @@ public class MainScreenView extends BorderPane  {
         Menu menuHelp = new Menu("Help",null, aboutMI, infoMI);
         MenuBar menuBar = new MenuBar(menuFile,menuHelp);
         setTop(menuBar);
+
+        //music
+        try{
+            backgroundMusic = new MediaPlayer(new Media(uiSettings.getBackgroundMusicGame().toUri().toURL().toString()));
+            backgroundMusic.play();
+            backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);}
+        catch(MalformedURLException ex){}
 
         //ButtonsLeft
         HBox arrowButtonsBox = new HBox(arrowUp, arrowDown);
@@ -102,7 +112,7 @@ public class MainScreenView extends BorderPane  {
         VBox buttonsRightBox = new VBox();
         buttonsRightBox.setAlignment(Pos.CENTER);
         buttonsRightBox.setSpacing(100);
-        buttonsRightBox.setPadding(new Insets(50));
+        buttonsRightBox.setPadding(new Insets(20));
 
         buttonsRightBox.getChildren().addAll(buttonDeal,buttonHit, buttonStand, buttonDouble);
         this.setRight(buttonsRightBox);

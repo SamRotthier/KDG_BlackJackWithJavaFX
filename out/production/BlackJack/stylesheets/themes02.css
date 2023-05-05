@@ -1,5 +1,6 @@
 * {
     -fx-font-family: "Poppins";
+    -fx-font-size: 16;
 }
 
 .light {
@@ -38,19 +39,23 @@
 
 .menu-bar{
     -fx-text-fill: black;
-    -fx-background-color: lightgreen;
+    -fx-background-color: black;
 
 }
 
+.menu-item{
+    -fx-background-color: black;
+}
+
 .button{
-    -fx-pref-width: 80px;
+    -fx-pref-width: 90px;
     -fx-pref-height: 30px;
     /*-fx-background-color: "#221B11";*/
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0, 5, 5);
 }
 
 .button:hover{
-    -fx-background-color: lightyellow;
+    -fx-background-color: #acfbfc;
 }
 
 #info-text.content{
