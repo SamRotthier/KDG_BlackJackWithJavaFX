@@ -5,17 +5,21 @@ import java.util.Random;
 
 public abstract class CardHandler {
 
-    private ArrayList<Integer> Hand = new ArrayList<Integer>();
+    private ArrayList<Card> Hand = new ArrayList<Card>();
 
-    public void dealCard(){
+    public void dealCard(ArrayList<Card> Deck){
         Random randomGenerator = new Random();
         try {
             if (Hand.size() == 0) {
                 for (int i = 1; i <= 2; i++) {
-                    Hand.add(randomGenerator.nextInt(9) + 1);
+                    int cardToDraw = randomGenerator.nextInt(Deck.size());
+                    Hand.add(Deck.get(cardToDraw));
+                    Deck.remove(cardToDraw);
                 }
             } else{
-                Hand.add(randomGenerator.nextInt(9) + 1);
+                int cardToDraw = randomGenerator.nextInt(Deck.size());
+                Hand.add(Deck.get(cardToDraw));
+                Deck.remove(cardToDraw);
             }
 
         }
@@ -26,36 +30,34 @@ public abstract class CardHandler {
     public void showHand(){
         System.out.println("You have these cards in your hand");
         int score = 0;
-        for (int value: Hand) {
-            score +=value;
-            System.out.println(value);
+        for (Card c: Hand) {
+            System.out.println(c.getSuit() + c.getCardNumb());
         }
         System.out.println("For a total score of " + score);
     }
 
     public int scoreCounter(){
         int score = 0;
-        for (int value: Hand) {
-            score +=value;
+        for (Card c: Hand) {
+            score +=c.getCardValue();
+            System.out.println(score);
         }
         return score;
     }
 
-    public void hit(){
-        dealCard();
+    public void hit(ArrayList<Card> Deck){
+        dealCard(Deck);
     }
     public void stand(){
 
     }
 
-
-
     //Getter
-    public ArrayList<Integer> getHand() {
+    public ArrayList<Card> getHand() {
         return Hand;
     }
     //Setter
-    public void setHand(ArrayList<Integer> hand) {
+    public void setHand(ArrayList<Card> hand) {
         Hand = hand;
     }
 

@@ -6,44 +6,50 @@ import java.util.Scanner;
 public class Player extends CardHandler {
 
 
-    private static boolean win = false;
-    private static boolean lose = false;
-    private static int playerBet;
-    private static int bank = 0;
+    private boolean win = false;
+    private boolean lose = false;
+    private int playerBet;
+    private int bank = 0;
 
 
     public void placeBet(){
         Scanner input = new Scanner(System.in);
         boolean bettingAmountOk= true;
-        System.out.println("What is the amount you want to bed this round?");
+        System.out.println("What is the amount you want to bet this round?");
         int bettingAmount = input.nextInt();
         while (bettingAmountOk) {
             if (bettingAmount <= 0) {
                 System.out.println("The house doesn't play for free");
-            } else if (bettingAmount > Player.bank) {
+            } else if (bettingAmount > bank) {
                 System.out.println("Looks like you're too broke, you are trying to bet more then what you have");
             } else {
                 bettingAmountOk = false;
-                Player.playerBet = bettingAmount;
+                playerBet = bettingAmount;
+                bank -= bettingAmount;
             }
         }
     }
 
-    public int PlayerBank(int BettingAmount){
+    public void PlayerBank(){
 
         if (win){
-          bank += BettingAmount;
+          bank += playerBet;
         } else if (lose) {
-            bank -= BettingAmount;
+
         }
-        return bank;
     }
 
 
 
-    public  int playerDouble(int score){
+    public  void playerDouble(ArrayList<Card> Deck){
+        if(bank >= (playerBet*2)) {
+            playerBet *= 2;
+            hit(Deck);
+        }
+        else {
+            System.out.println("Looks like you're too broke, you are trying to bet more then what you have");
 
-        return score;
+        }
     }
 
     public  int playerSplit(int score){
@@ -64,25 +70,25 @@ public class Player extends CardHandler {
         return lose;
     }
 
-    public static int getPlayerBet() {
+    public  int getPlayerBet() {
         return playerBet;
     }
 
     //setter
     public void setBank(int bank) {
-        Player.bank = bank;
+        bank = bank;
     }
 
     public void setWin(boolean win) {
-        Player.win = win;
+        win = win;
     }
 
     public void setLose(boolean lose) {
-        Player.lose = lose;
+        lose = lose;
     }
 
-    public  void setPlayerBet(int playerBet) {
-        Player.playerBet = playerBet;
+    public void setPlayerBet(int playerBet) {
+        playerBet = playerBet;
     }
 
     //Constructor

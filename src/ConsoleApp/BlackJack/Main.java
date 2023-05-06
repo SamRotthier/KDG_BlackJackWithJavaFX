@@ -32,11 +32,6 @@ public class Main {
             } else if (startInput.equals("No")) {
                 System.out.println("We hope to see you another time!");
             }
-        } else if (startInput.equals("DevOptions")) {
-            Player Player1 = new Player();
-            System.out.println("Set Player Bank");
-            Player1.setBank(input.nextInt());
-            game.gameHandler();
         }
     }
 }

@@ -1,66 +1,67 @@
 package ConsoleApp.BlackJack;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class BlackJackGame {
-     Player Player1 = new Player();
+     Player player1 = new Player();
+     Dealer dealer1 = new Dealer();
+    boolean keepPlaying = true;
+    ArrayList<Card> Deck = DeckBuilder.PlayDeck(1);
 
     public void gameHandler() throws InterruptedException {
-        Scanner input = new Scanner(System.in);
-        Random randomGenerator = new Random();
-        boolean keepPlaying = true;
-        ArrayList<Card> Deck = DeckBuilder.PlayDeck(1);
 
+
+        keepPlaying = true;
         while(keepPlaying) {
 
-            Player1.placeBet();
+            player1.placeBet();
 
-            Player1.dealCard();
+            player1.dealCard(Deck);
+            player1.showHand();
+            dealer1.dealCard(Deck);
 
-            Player1.showHand();
+            nextMove();
 
-            hitOrStand();
 
-            gameEnding (keepPlaying);
+            dealer1.showHand();
+            gameEnding ();
 
         }
     }
 
-    public void hitOrStand(){
+    public void nextMove(){
     boolean drawMoreCards = true;
     Scanner input = new Scanner(System.in);
                 while (drawMoreCards) {
         System.out.println("What would you like to do? Hit or Stand");
         String playerChoice = input.nextLine();
         if (playerChoice.equals("Hit")) {
-            Player1.dealCard();
+            player1.hit(Deck);
             int newScore = 0;
-            for (int value: Player1.getHand()) {
-                newScore +=value;
-                System.out.println(value);
+            for (Card c: player1.getHand()) {
+                newScore +=c.getCardValue();
+                System.out.println(c.getCardValue());
             }
             System.out.println("For a total score of " + newScore);
         } else if (playerChoice.equals("Stand")) {
             drawMoreCards = false;
-
         }
     }
     }
 
-    public boolean gameEnding(boolean keepPlaying) throws InterruptedException {
+    public void gameEnding() throws InterruptedException {
         Scanner input = new Scanner(System.in);
         System.out.println("Do you wish to play another round? Yes or No");
         String keepPlayingInput = input.nextLine();
         if (keepPlayingInput.equals("Yes")) {
             System.out.println("Let's start that next round");
-            Player1.getHand().clear();
+            player1.getHand().clear();
             Thread.sleep(2000);
         } else if (keepPlayingInput.equals("No")) {
             keepPlaying = false;
         }
-        return keepPlaying;
+
     }
 }
 
