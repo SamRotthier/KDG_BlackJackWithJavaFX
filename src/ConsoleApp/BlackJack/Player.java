@@ -30,13 +30,8 @@ public class Player extends CardHandler {
         }
     }
 
-    public void PlayerBank(){
-
-        if (win){
+    public void winRound(){
           bank += playerBet;
-        } else if (lose) {
-
-        }
     }
 
 

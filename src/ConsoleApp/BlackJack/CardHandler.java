@@ -8,41 +8,59 @@ public abstract class CardHandler {
     private ArrayList<Card> Hand = new ArrayList<Card>();
 
     public void dealCard(ArrayList<Card> Deck){
-        Random randomGenerator = new Random();
+        //Random randomGenerator = new Random();
+
+
         try {
             if (Hand.size() == 0) {
                 for (int i = 1; i <= 2; i++) {
-                    int cardToDraw = randomGenerator.nextInt(Deck.size());
-                    Hand.add(Deck.get(cardToDraw));
-                    Deck.remove(cardToDraw);
+                    if(Deck.size() <1) {
+                        //int cardToDraw = randomGenerator.nextInt(Deck.size());
+                        Hand.add(Deck.get(Deck.size() - 1));
+                        Deck.remove(Deck.size() - 1);
+                    }
+                    else {
+                        DeckBuilder.PlayDeck(1);
+                        Hand.add(Deck.get(Deck.size() - 1));
+
+                        Deck.remove(Deck.size() - 1);
+                    }
                 }
             } else{
-                int cardToDraw = randomGenerator.nextInt(Deck.size());
-                Hand.add(Deck.get(cardToDraw));
-                Deck.remove(cardToDraw);
-            }
+                if(Deck.size() <1) {
+                    //int cardToDraw = randomGenerator.nextInt(Deck.size());
+                    Hand.add(Deck.get(Deck.size() - 1)); // Deck.size() - 1) gets last card in the list (top of deck)
+                    Deck.remove(Deck.size() - 1);
+                }
+                else {
+                    DeckBuilder.PlayDeck(1);
+                    Hand.add(Deck.get(Deck.size() - 1)); // Deck.size() - 1) gets last card in the list (top of deck)
 
+                    Deck.remove(Deck.size() - 1);
+                }
+            }
         }
         catch (Exception e){
             System.out.println("Something went wrong while dealing a card");
         }
     }
     public void showHand(){
-        System.out.println("You have these cards in your hand");
+        System.out.println("cards in hand");
         int score = 0;
         for (Card c: Hand) {
-            System.out.println(c.getSuit() + c.getCardNumb());
+            System.out.println(c.getSuit() + " "+ c.getCardNumb());
         }
-        System.out.println("For a total score of " + score);
+        System.out.println("For a total score of " + getTotalCardValue());
     }
 
-    public int scoreCounter(){
-        int score = 0;
+
+    public int getTotalCardValue(){
+        int totalCardValue = 0;
         for (Card c: Hand) {
-            score +=c.getCardValue();
-            System.out.println(score);
+            totalCardValue +=c.getCardValue();
+            //System.out.println(c.getCardValue());
         }
-        return score;
+        return totalCardValue;
     }
 
     public void hit(ArrayList<Card> Deck){
@@ -51,6 +69,8 @@ public abstract class CardHandler {
     public void stand(){
 
     }
+
+
 
     //Getter
     public ArrayList<Card> getHand() {
