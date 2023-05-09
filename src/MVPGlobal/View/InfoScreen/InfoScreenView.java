@@ -36,7 +36,6 @@ public class InfoScreenView extends BorderPane{
         InfoText.setWrapText(true);
         InfoText.setFont(Font.font("Poppins", 12));
         InfoText.setEditable(false);
-        InfoText.setStyle("-fx-background-color: #364969");
 
         try{
             Background infoBackground = (new Background(new BackgroundImage(new Image(uiSettings.getStartScreenBackground().toUri().toURL().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,new BackgroundSize(100, 100, true, true, false, true))));
