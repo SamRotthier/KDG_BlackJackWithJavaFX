@@ -1,0 +1,44 @@
+* {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 16;
+}
+
+.root {
+    -fx-padding: 15px;
+    -fx-border-width: 2px;
+    -fx-border-insets: 5px;
+    -fx-border-radius: 5px;
+/* -fx-background-color: lightgrey;*/
+
+}
+.label{
+    -fx-text-fill: white;
+}
+
+.menu-bar{
+    -fx-text-fill: black;
+    -fx-background-color: black;
+
+}
+
+.context-menu{
+    -fx-background-color: black;
+}
+
+.menu-item:hover{
+    -fx-background-color: #acfbfc;
+    -fx-text-fill: black !important;
+}
+
+
+.button{
+    -fx-pref-width: 90px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #221B11;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0, 5, 5);
+}
+
+.button:hover{
+    -fx-background-color: #acfbfc;
+}
