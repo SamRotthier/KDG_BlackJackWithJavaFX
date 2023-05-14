@@ -46,7 +46,7 @@ public abstract class CardHandler {
     }
     public void showHand(){
         System.out.println("cards in hand");
-        int score = 0;
+        //int score = 0;
         for (Card c: Hand) {
             System.out.println(c.getSuit() + " "+ c.getCardNumb());
         }
