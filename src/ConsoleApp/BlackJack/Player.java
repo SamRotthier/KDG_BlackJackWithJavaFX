@@ -7,7 +7,6 @@ public class Player extends CardHandler {
 
 
     private boolean win = false;
-    private boolean lose = false;
     private int playerBet;
     private int bank = 0;
 
@@ -61,9 +60,6 @@ public class Player extends CardHandler {
         return win;
     }
 
-    public boolean isLose() {
-        return lose;
-    }
 
     public  int getPlayerBet() {
         return playerBet;
@@ -78,9 +74,6 @@ public class Player extends CardHandler {
         win = win;
     }
 
-    public void setLose(boolean lose) {
-        lose = lose;
-    }
 
     public void setPlayerBet(int playerBet) {
         playerBet = playerBet;
