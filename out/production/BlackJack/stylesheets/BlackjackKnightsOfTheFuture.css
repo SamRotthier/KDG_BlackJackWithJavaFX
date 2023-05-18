@@ -1,15 +1,11 @@
 @font-face {
-    font-family: 'Poppins';
-    src: url("other/Poppins_Bold.ttf");
-}
-
-* {
-    -fx-font-family: 'Poppins';
-    /* -fx-font-weight: bold;*/
-    -fx-font-size: 16px;
+    src: url("../other/Poppins_Bold.ttf");
 }
 
 .root {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 16px;
+
     -fx-padding: 15px;
     -fx-border-width: 2px;
     -fx-border-insets: 5px;
@@ -56,3 +52,5 @@
     -fx-accent: #acfbfc;
     -fx-control-inner-background: #22222c;
 }
+
+

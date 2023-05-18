@@ -221,6 +221,38 @@ public class MainScreenPresenter {
             }});
     }
 
+    private void addEventHandlerDeal(){
+        view.getActionButtons().getButtonDeal().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+    }
+
+    private void addEventHandlerPlayerActions(){
+        view.getActionButtons().getButtonHit().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+
+        view.getActionButtons().getButtonStand().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+
+        view.getActionButtons().getButtonDouble().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+    }
+
     public void windowsHandler() {
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

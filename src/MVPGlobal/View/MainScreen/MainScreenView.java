@@ -30,19 +30,14 @@ public class MainScreenView extends BorderPane  {
     private Label betAmountLabel;
 
 
-    private Button buttonHit;
-    private Button buttonDouble;
-    private Button buttonStand;
-    private Button buttonDeal;
+    private PlayerActionsView actionButtons;
 
-    private Label setBetAmount;
-    private TextField betAmount;
+    private BetView betButtons;
 
-    private Button arrowUp;
-    private Button arrowDown;
+    // private MediaPlayer backgroundMusic;
 
-    private MediaPlayer backgroundMusic;
-
+    private PlayerCardsView playerCards;
+    private DealerCardsView dealerCards;
 
     public MainScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -58,19 +53,14 @@ public class MainScreenView extends BorderPane  {
         this.aboutMI = new MenuItem("About");
         this.infoMI = new MenuItem("Info");
 
-        this.buttonHit = new Button("HIT");
-        this.buttonDouble = new Button("DOUBLE");
-        this.buttonStand = new Button("STAND");
-        this.buttonDeal = new Button("DEAL");
+        actionButtons = new PlayerActionsView();
+        betButtons = new BetView(uiSettings);
 
         this.saldoLabel = new Label("Saldo: ");
         this.betAmountLabel = new Label("Bet amount: ");
-        this.setBetAmount = new Label("Your bet: ");
-        this.betAmount = new TextField("");
-        Image arrowUpIcon = new Image("/images/arrowup.png", 18, 18, false, false);
-        this.arrowUp = new Button("", new ImageView(arrowUpIcon));
-        Image arrowDownIcon = new Image("/images/arrowdown.png", 18, 18, false, false);
-        this.arrowDown = new Button("", new ImageView(arrowDownIcon));
+
+        playerCards = new PlayerCardsView(uiSettings);
+        dealerCards = new DealerCardsView(uiSettings);
     }
 
     private void layoutNodes() {
@@ -94,28 +84,11 @@ public class MainScreenView extends BorderPane  {
         catch(MalformedURLException ex){} */
 
         //ButtonsLeft
-        HBox arrowButtonsBox = new HBox(arrowUp, arrowDown);
-        arrowButtonsBox.setSpacing(20);
-        arrowButtonsBox.setPadding(new Insets(10));
-
-        VBox inputLeftBox = new VBox();
-        inputLeftBox.setAlignment(Pos.CENTER);
-        inputLeftBox.setSpacing(10);
-        inputLeftBox.setPadding(new Insets(20));
-        inputLeftBox.setPrefWidth(20);
-
-        inputLeftBox.getChildren().addAll(setBetAmount, betAmount, arrowButtonsBox);
-        this.setLeft(inputLeftBox);
+        this.setLeft(betButtons);
 
 
         //ButtonsRight
-        VBox buttonsRightBox = new VBox();
-        buttonsRightBox.setAlignment(Pos.CENTER);
-        buttonsRightBox.setSpacing(100);
-        buttonsRightBox.setPadding(new Insets(20));
-
-        buttonsRightBox.getChildren().addAll(buttonDeal,buttonHit, buttonStand, buttonDouble);
-        this.setRight(buttonsRightBox);
+        this.setRight(actionButtons);
 
 
         //Bottom
@@ -131,20 +104,14 @@ public class MainScreenView extends BorderPane  {
         this.setBottom(saldoBetBox);
 
         // Center Cards
-        VBox allCardsBox = new VBox();
-            // Hbox Dealer
-            HBox dealerCardsBox = new HBox();
-            //Image dealerCard = new Image("");
-            //ImageView dealerViewCard = new ImageView(dealerCard);
-            dealerCardsBox.getChildren().addAll();
+        VBox cardsPlayerDealerBox = new VBox();
+        cardsPlayerDealerBox.setSpacing(200);
+        cardsPlayerDealerBox.setTranslateX(-30);
+        cardsPlayerDealerBox.setPadding(new Insets(20));
+        cardsPlayerDealerBox.setAlignment(Pos.CENTER);
+        cardsPlayerDealerBox.getChildren().addAll(dealerCards, playerCards);
 
-            // Hbox Player
-            HBox playerCardsBox = new HBox();
-
-            playerCardsBox.getChildren().addAll();
-
-        allCardsBox.getChildren().addAll(dealerCardsBox,playerCardsBox);
-        this.setCenter(allCardsBox);
+        this.setCenter(cardsPlayerDealerBox);
 
 
     }
@@ -161,4 +128,5 @@ public class MainScreenView extends BorderPane  {
 
     MenuItem getInfoItem() {return infoMI;}
 
+    PlayerActionsView getActionButtons() {return actionButtons;};
 }
