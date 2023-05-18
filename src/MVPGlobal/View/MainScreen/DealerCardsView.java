@@ -3,7 +3,6 @@ package MVPGlobal.View.MainScreen;
 import MVPGlobal.View.UISettings;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
 public class DealerCardsView extends StackPane {
@@ -26,7 +25,7 @@ public class DealerCardsView extends StackPane {
     }
 
     private void initialiseNodes() {
-        this.card = new Image("images/cards/clubs/clubs2.png");
+        this.card = new Image("images/cards/clubs2.png");
         cardView = new ImageView(card);
 
         this.backCard = new Image("images/cards/backCards.png");

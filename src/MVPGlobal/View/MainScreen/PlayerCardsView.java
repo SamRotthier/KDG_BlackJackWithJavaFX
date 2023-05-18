@@ -18,10 +18,6 @@ public class PlayerCardsView extends StackPane  {
     private Image cardThree;
     private ImageView cardViewThree;
 
-    private int offsetX;
-    private int offsetY;
-    private int rotate;
-
 
 
     public PlayerCardsView(UISettings uiSettings) {
@@ -31,15 +27,12 @@ public class PlayerCardsView extends StackPane  {
     }
 
     private void initialiseNodes() {
-        this.card = new Image("images/cards/clubs/clubs2.png");
+        this.card = new Image("images/cards/clubs2.png");
         cardView = new ImageView(card);
-        this.cardTwo = new Image("images/cards/clubs/clubs7.png");
+        this.cardTwo = new Image("images/cards/clubs7.png");
         cardViewTwo = new ImageView(cardTwo);
-        this.cardThree = new Image("images/cards/hearts/heartsKing.png");
+        this.cardThree = new Image("images/cards/heartsKing.png");
         cardViewThree = new ImageView(cardThree);
-        offsetX = 70;
-        offsetY = 5;
-        rotate = 5;
 
     }
 
