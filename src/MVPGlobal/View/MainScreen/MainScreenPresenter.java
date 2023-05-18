@@ -242,7 +242,8 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonHit().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                blackJackGame.btnHit();
+                view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
             }
         });
 

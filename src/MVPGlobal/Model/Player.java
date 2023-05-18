@@ -34,7 +34,7 @@ public class Player extends CardHandler {
       void playerDouble(ArrayList<Card> Deck){
         if(bank >= (playerBet*2)) {
             playerBet *= 2;
-            dealCard(Deck);
+            hitCard(Deck);
         }
         else {
             System.out.println("Looks like you're too broke, you are trying to bet more then what you have");

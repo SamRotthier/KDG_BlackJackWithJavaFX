@@ -19,7 +19,7 @@ import java.util.ArrayList;
                 card.setCardValue(cardValue);
 
                 String cardNumb = "";
-                if (n < 9) {
+                if (n < 11) {
                     if(n == 1){
                         cardNumb = "A";
                     }

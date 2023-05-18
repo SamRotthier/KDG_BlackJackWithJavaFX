@@ -37,6 +37,9 @@ import java.util.Scanner;
         dealer1.dealCard(Deck);
     }
 
+    public void btnHit (){
+        player1.hitCard(Deck);
+    }
 
 
 }

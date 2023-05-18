@@ -7,7 +7,7 @@ import java.util.ArrayList;
      void toHitOrNotToHit(ArrayList<Card> Deck){
         int cardValue= getTotalCardValue();
         while(cardValue <= 18){
-            dealCard(Deck);
+            hitCard(Deck);
             cardValue = getTotalCardValue();
         }
     }
