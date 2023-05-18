@@ -30,7 +30,7 @@ public class UISettings {
     private Path gameScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"BackgroundTableLogo.png");
     private Path backgroundMusicGame = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"blackjackgameaudio.mp3");
 
-    private Path cardsDealerTest = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"clubs2.png");
+    private Path cardImage = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"cards"+FILE_SEPARATOR);
 
     private Path arrowUp = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"arrowup.png");
     private Path arrowDown = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"arrowdown.png");
@@ -87,5 +87,7 @@ public class UISettings {
 
     public Path getArrowUp() {return this.arrowUp;};
     public Path getArrowDown() {return this.arrowDown;};
+
+    public Path getCardImage(){return this.cardImage;};
 
 }

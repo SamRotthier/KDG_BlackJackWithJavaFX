@@ -234,6 +234,7 @@ public class MainScreenPresenter {
                 view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
+                view.getPlayerCardsView().addCard();
             }
         });
     }

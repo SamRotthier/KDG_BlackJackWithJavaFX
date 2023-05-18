@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class PlayerCardsView extends StackPane  {
@@ -28,19 +29,22 @@ public class PlayerCardsView extends StackPane  {
         this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
+        addCard();
     }
 
     private void initialiseNodes() {
-        this.card = new Image("images/cards/clubs2.png");
+      /*  this.card = new Image("images/cards/clubs2.png");
         cardView = new ImageView(card);
         this.cardTwo = new Image("images/cards/clubs7.png");
         cardViewTwo = new ImageView(cardTwo);
-        this.cardThree = new Image("images/cards/heartsKing.png");
-        cardViewThree = new ImageView(cardThree);
+        this.cardThree = new Image("images/cards/heartsK.png");
+        cardViewThree = new ImageView(cardThree); */
 
     }
 
     private void layoutNodes() {
+
+/*
         cardView.setPreserveRatio(true);
         cardView.setFitWidth(uiSettings.getCardWidth());
         cardView.setFitHeight(uiSettings.getCardHeight());
@@ -64,9 +68,39 @@ public class PlayerCardsView extends StackPane  {
         //cardViewTwo.setTranslateX(-offset + (offset* getChildren().size()));
         //cardViewTwo.setRotate(-rotate + (rotate * getChildren().size()));
 
-        getChildren().addAll(cardView, cardViewTwo, cardViewThree);
+        getChildren().addAll(cardView, cardViewTwo, cardViewThree); */
 
     }
+
+    //Methods
+
+    public void addCard(){
+        int i = 0;
+        int r = -2;
+        for (Card c : playerCards) {
+            String cardNamePath = c.getSuit() + c.getCardNumb();
+            try{
+                card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");}
+            catch(MalformedURLException ex){}
+
+            ImageView cardView = new ImageView(card);
+            cardView.setPreserveRatio(true);
+            cardView.setFitWidth(uiSettings.getCardWidth());
+            cardView.setFitHeight(uiSettings.getCardHeight());
+            cardView.setTranslateX(uiSettings.getCardOffsetX() * i);
+
+            if(playerCards.size() <= 2 && r == -2) {
+                r = -1;
+            }
+            cardView.setRotate(uiSettings.getCardRotate() * r);
+            getChildren().add(cardView);
+            i++;
+            r++;
+        }
+    }
+
+
+    // Getters
     ArrayList<Card> getPlayerCards() {
         return playerCards;
     }

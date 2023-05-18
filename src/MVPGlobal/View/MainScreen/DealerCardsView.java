@@ -30,18 +30,18 @@ public class DealerCardsView extends StackPane {
     }
 
     private void initialiseNodes() {
-        this.card = new Image("images/cards/clubs2.png");
+/*        this.card = new Image("images/cards/clubs2.png");
         cardView = new ImageView(card);
 
         this.backCard = new Image("images/cards/backCards.png");
         backCardView = new ImageView(backCard);
 
         offsetX = 70;
-        rotate = 5;
+        rotate = 5; */
     }
 
     private void layoutNodes() {
-        cardView.setPreserveRatio(true);
+       /* cardView.setPreserveRatio(true);
         cardView.setFitWidth(uiSettings.getCardWidth());
         cardView.setFitHeight(uiSettings.getCardHeight());
         cardView.setRotate(-uiSettings.getCardRotate());
@@ -53,7 +53,7 @@ public class DealerCardsView extends StackPane {
         backCardView.setRotate(uiSettings.getCardRotate());
 
         getChildren().addAll(cardView, backCardView);
-
+*/
     }
     ArrayList<Card> getDealerCards() {
         return dealerCards;

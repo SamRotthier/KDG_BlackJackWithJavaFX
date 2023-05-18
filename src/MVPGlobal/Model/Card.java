@@ -22,7 +22,7 @@ package MVPGlobal.Model;
         this.cardValue = cardValue;
     }
 
-     String getSuit() {
+     public String getSuit() {
         return Suit;
     }
 
@@ -30,7 +30,7 @@ package MVPGlobal.Model;
         return icon;
     }
 
-     String getCardNumb() {
+     public String getCardNumb() {
         return cardNumb;
     }
 
