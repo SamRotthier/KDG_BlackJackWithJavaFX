@@ -1,14 +1,14 @@
 package MVPGlobal.View.MainScreen;
 
 import MVPGlobal.View.UISettings;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
 
-public class ButtonsView extends BorderPane  {
+public class PlayerCardsView extends BorderPane  {
 
     private UISettings uiSettings;
 
 
-    public ButtonsView(UISettings uiSettings) {
+    public PlayerCardsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();

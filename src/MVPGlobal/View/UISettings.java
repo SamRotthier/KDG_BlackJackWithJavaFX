@@ -26,6 +26,9 @@ public class UISettings {
 
     private Path cardsDealerTest = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"clubs2.png");
 
+    private Path arrowUp = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"arrowup.png");
+    private Path arrowDown = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"arrowdown.png");
+
     public UISettings() {
         this.resX= (int) Screen.getPrimary().getVisualBounds().getWidth();
         this.resY = (int) Screen.getPrimary().getVisualBounds().getHeight();
@@ -63,5 +66,8 @@ public class UISettings {
     public Path getStartScreenBackground() {return this.startScreenBackground;};
     public Path getGameScreenBackground() {return this.gameScreenBackground;};
     public Path getBackgroundMusicGame() {return this.backgroundMusicGame;};
+
+    public Path getArrowUp() {return this.arrowUp;};
+    public Path getArrowDown() {return this.arrowDown;};
 
 }

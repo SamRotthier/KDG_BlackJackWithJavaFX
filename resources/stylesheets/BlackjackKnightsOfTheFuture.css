@@ -1,11 +1,9 @@
 @font-face {
-    font-family: 'Poppins';
-    src: url("other/Poppins_Bold.ttf");
+    src: url("../other/Poppins_Bold.ttf");
 }
 
 * {
     -fx-font-family: 'Poppins';
-    /* -fx-font-weight: bold;*/
     -fx-font-size: 16px;
 }
 
