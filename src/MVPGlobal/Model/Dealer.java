@@ -1,0 +1,17 @@
+package MVPGlobal.Model;
+
+import java.util.ArrayList;
+
+ class Dealer extends CardHandler {
+
+     void toHitOrNotToHit(ArrayList<Card> Deck){
+        int cardValue= getTotalCardValue();
+        while(cardValue <= 18){
+            dealCard(Deck);
+            cardValue = getTotalCardValue();
+        }
+    }
+
+
+
+}
