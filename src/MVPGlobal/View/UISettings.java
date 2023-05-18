@@ -11,6 +11,12 @@ public class UISettings {
     private int resX;
     private int resY;
     private int insetsMargin;
+
+    private int cardWidth;
+    private int cardHeight;
+    private int cardOffsetX;
+    private int cardOffsetY;
+    private int cardRotate;
     public static final char FILE_SEPARATOR = System.getProperties().getProperty("file.separator").charAt(0);
     private String ApplicationName;
     private String homeDir;
@@ -35,6 +41,11 @@ public class UISettings {
         this.insetsMargin = this.getLowestRes()/100;
         this.homeDir = System.getProperties().getProperty("user.dir");
         this.ApplicationName = "Blackjack";
+        this.cardWidth = 150;
+        this.cardHeight = 180;
+        this.cardOffsetX = 70;
+        this.cardOffsetY = 5;
+        this.cardRotate = 5;
     };
 
     public int getResX () {return this.resX;}
@@ -44,6 +55,13 @@ public class UISettings {
     public int getInsetsMargin () {return this.insetsMargin;}
 
     public int getLowestRes () {return (resX>resY?resX:resY);}
+
+    public int getCardWidth() {return this.cardWidth;};
+    public int getCardHeight() {return this.cardHeight;};
+
+    public int getCardOffsetX() {return this.cardOffsetX;};
+    public int getCardOffsetY() {return this.cardOffsetY;};
+    public int getCardRotate() {return this.cardRotate;};
 
     public boolean styleSheetAvailable (){return Files.exists(styleSheetPath);}
 

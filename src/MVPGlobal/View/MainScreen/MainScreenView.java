@@ -34,13 +34,10 @@ public class MainScreenView extends BorderPane  {
 
     private BetView betButtons;
 
-    private Label setBetAmount;
-    private TextField betAmount;
-
-    private Button arrowUp;
-    private Button arrowDown;
-
     // private MediaPlayer backgroundMusic;
+
+    private PlayerCardsView playerCards;
+    private DealerCardsView dealerCards;
 
     public MainScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -61,6 +58,9 @@ public class MainScreenView extends BorderPane  {
 
         this.saldoLabel = new Label("Saldo: ");
         this.betAmountLabel = new Label("Bet amount: ");
+
+        playerCards = new PlayerCardsView(uiSettings);
+        dealerCards = new DealerCardsView(uiSettings);
     }
 
     private void layoutNodes() {
@@ -104,20 +104,14 @@ public class MainScreenView extends BorderPane  {
         this.setBottom(saldoBetBox);
 
         // Center Cards
-        VBox allCardsBox = new VBox();
-            // Hbox Dealer
-            HBox dealerCardsBox = new HBox();
-            //Image dealerCard = new Image("");
-            //ImageView dealerViewCard = new ImageView(dealerCard);
-            dealerCardsBox.getChildren().addAll();
+        VBox cardsPlayerDealerBox = new VBox();
+        cardsPlayerDealerBox.setSpacing(200);
+        cardsPlayerDealerBox.setTranslateX(-30);
+        cardsPlayerDealerBox.setPadding(new Insets(20));
+        cardsPlayerDealerBox.setAlignment(Pos.CENTER);
+        cardsPlayerDealerBox.getChildren().addAll(dealerCards, playerCards);
 
-            // Hbox Player
-            HBox playerCardsBox = new HBox();
-
-            playerCardsBox.getChildren().addAll();
-
-        allCardsBox.getChildren().addAll(dealerCardsBox,playerCardsBox);
-        this.setCenter(allCardsBox);
+        this.setCenter(cardsPlayerDealerBox);
 
 
     }

@@ -1,11 +1,27 @@
 package MVPGlobal.View.MainScreen;
 
 import MVPGlobal.View.UISettings;
+import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
-public class PlayerCardsView extends BorderPane  {
+public class PlayerCardsView extends StackPane  {
 
     private UISettings uiSettings;
+
+    private Image card;
+    private ImageView cardView;
+    private Image cardTwo;
+    private ImageView cardViewTwo;
+
+    private Image cardThree;
+    private ImageView cardViewThree;
+
+    private int offsetX;
+    private int offsetY;
+    private int rotate;
+
 
 
     public PlayerCardsView(UISettings uiSettings) {
@@ -15,11 +31,43 @@ public class PlayerCardsView extends BorderPane  {
     }
 
     private void initialiseNodes() {
+        this.card = new Image("images/cards/clubs/clubs2.png");
+        cardView = new ImageView(card);
+        this.cardTwo = new Image("images/cards/clubs/clubs7.png");
+        cardViewTwo = new ImageView(cardTwo);
+        this.cardThree = new Image("images/cards/hearts/heartsKing.png");
+        cardViewThree = new ImageView(cardThree);
+        offsetX = 70;
+        offsetY = 5;
+        rotate = 5;
 
     }
 
     private void layoutNodes() {
+        cardView.setPreserveRatio(true);
+        cardView.setFitWidth(uiSettings.getCardWidth());
+        cardView.setFitHeight(uiSettings.getCardHeight());
+        cardView.setRotate(-uiSettings.getCardRotate());
 
+        cardViewTwo.setPreserveRatio(true);
+        cardViewTwo.setFitWidth(uiSettings.getCardWidth());
+        cardViewTwo.setFitHeight(uiSettings.getCardHeight());
+        cardViewTwo.setTranslateX(uiSettings.getCardOffsetX());
+        cardViewTwo.setTranslateY(-uiSettings.getCardOffsetY());
+
+        cardViewThree.setPreserveRatio(true);
+        cardViewThree.setFitWidth(uiSettings.getCardWidth());
+        cardViewThree.setFitHeight(uiSettings.getCardHeight());
+        cardViewThree.setTranslateX(uiSettings.getCardOffsetX()*2);
+        cardViewThree.setRotate(uiSettings.getCardRotate());
+
+        this.setAlignment(Pos.CENTER);
+
+        //dynamic rotate
+        //cardViewTwo.setTranslateX(-offset + (offset* getChildren().size()));
+        //cardViewTwo.setRotate(-rotate + (rotate * getChildren().size()));
+
+        getChildren().addAll(cardView, cardViewTwo, cardViewThree);
 
     }
 
