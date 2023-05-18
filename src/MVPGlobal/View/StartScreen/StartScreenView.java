@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.net.MalformedURLException;
@@ -52,6 +53,7 @@ public class StartScreenView extends BorderPane  {
         progressPane.setCenter(this.timeProgress);
         progressPane.setBottom(this.timeDisplay);
         progressPane.setAlignment(this.timeDisplay, Pos.CENTER);
+        timeProgress.setPrefSize(250,25);
         BorderPane.setMargin(this.timeDisplay, new Insets(0,10, 50, 10));
         BorderPane.setMargin(this.timeProgress, new Insets(uiSettings.getInsetsMargin()));
 

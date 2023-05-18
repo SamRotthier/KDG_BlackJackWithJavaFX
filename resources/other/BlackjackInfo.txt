@@ -11,6 +11,6 @@ As a player, you decide to "Hit" (take another card) or "Stand" (keep your curre
 
 After all players have completed their turns, the dealer reveals his face-down card and will hit until their hand is worth at least 17 points.
 
-If the dealer busts, all remaining players win. Otherwise, the players with a higher hand than the dealer wins. The players with a lower hand value lose.
+If the dealer busts, all remaining players win. Otherwise, the players with a higher hand than the dealer wins. The players with a lower hand value lose. hen both the player and the dealer have a hand with a value of 21, it is considered a tie. The original bet is returned to the player.
 
 Good luck, and have fun playing Blackjack!

@@ -87,11 +87,11 @@ public class MainScreenView extends BorderPane  {
         setTop(menuBar);
 
         //music
-        try{
+       /* try{
             backgroundMusic = new MediaPlayer(new Media(uiSettings.getBackgroundMusicGame().toUri().toURL().toString()));
             backgroundMusic.play();
             backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);}
-        catch(MalformedURLException ex){}
+        catch(MalformedURLException ex){} */
 
         //ButtonsLeft
         HBox arrowButtonsBox = new HBox(arrowUp, arrowDown);
@@ -121,14 +121,30 @@ public class MainScreenView extends BorderPane  {
         //Bottom
         HBox saldoBetBox = new HBox();
         saldoBetBox.setSpacing(100);
-        saldoBetBox.setPadding(new Insets(20));
-        BackgroundFill bottomFill = new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY);
+        saldoBetBox.setPadding(new Insets(7, 20, 7, 20));
+        BackgroundFill bottomFill = new BackgroundFill(Color.web("#22222c"), CornerRadii.EMPTY, Insets.EMPTY);
         Background bottomBackground = new Background(bottomFill);
         saldoBetBox.setBackground(bottomBackground);
 
 
         saldoBetBox.getChildren().addAll(saldoLabel, betAmountLabel);
         this.setBottom(saldoBetBox);
+
+        // Center Cards
+        VBox allCardsBox = new VBox();
+            // Hbox Dealer
+            HBox dealerCardsBox = new HBox();
+            //Image dealerCard = new Image("");
+            //ImageView dealerViewCard = new ImageView(dealerCard);
+            dealerCardsBox.getChildren().addAll();
+
+            // Hbox Player
+            HBox playerCardsBox = new HBox();
+
+            playerCardsBox.getChildren().addAll();
+
+        allCardsBox.getChildren().addAll(dealerCardsBox,playerCardsBox);
+        this.setCenter(allCardsBox);
 
 
     }

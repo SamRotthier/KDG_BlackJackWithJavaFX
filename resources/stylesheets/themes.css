@@ -25,6 +25,16 @@
     -fx-border-insets: 5px;
     -fx-border-radius: 5px;
     -fx-border-color: navy;
+    --penn-red: #961914;
+    --umber: #5c4d47;
+    --ecru: #dec390;
+    --platinum: #d3dbe0;
+    --celeste: #acfbfc;
+    --sapphire: #114dbb;
+    --yinmn-blue: #3a5071;
+    --raisin-black: #22222c;
+    --black: #000000;
+    --white: #ffffff;
 }
 
 .radio-button {
@@ -34,4 +44,5 @@
 .button-clicked {
     -fx-text-fill: red;
 }
+
 

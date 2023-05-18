@@ -1,6 +1,12 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url("other/Poppins_Bold.ttf");
+}
+
 * {
-    -fx-font-family: "Poppins";
-    -fx-font-size: 16;
+    -fx-font-family: 'Poppins';
+    /* -fx-font-weight: bold;*/
+    -fx-font-size: 16px;
 }
 
 .root {
@@ -8,37 +14,45 @@
     -fx-border-width: 2px;
     -fx-border-insets: 5px;
     -fx-border-radius: 5px;
-/* -fx-background-color: lightgrey;*/
-
 }
+
 .label{
     -fx-text-fill: white;
 }
 
 .menu-bar{
-    -fx-text-fill: black;
-    -fx-background-color: black;
-
+    -fx-background-color: #22222c;
 }
 
 .context-menu{
-    -fx-background-color: black;
+    -fx-background-color: #22222c;
 }
 
-.menu-item:hover{
-    -fx-background-color: #acfbfc;
-    -fx-text-fill: black !important;
-}
 
 
 .button{
     -fx-pref-width: 90px;
     -fx-pref-height: 30px;
-    -fx-background-color: #221B11;
-    -fx-text-fill: white;
+    -fx-background-color: #5c4d47;
+    -fx-text-fill: #dec390;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0, 5, 5);
 }
 
 .button:hover{
     -fx-background-color: #acfbfc;
+    -fx-text-fill: #961914;
+}
+
+.text-field{
+    -fx-background-color: #22222c;
+    -fx-text-fill: white;
+}
+
+.progressPane{
+    -fx-background-color: #acfbfc;
+}
+
+.progress-bar{
+    -fx-accent: #acfbfc;
+    -fx-control-inner-background: #22222c;
 }

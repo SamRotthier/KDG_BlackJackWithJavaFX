@@ -24,6 +24,8 @@ public class UISettings {
     private Path gameScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"BackgroundTableLogo.png");
     private Path backgroundMusicGame = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"blackjackgameaudio.mp3");
 
+    private Path cardsDealerTest = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"clubs2.png");
+
     public UISettings() {
         this.resX= (int) Screen.getPrimary().getVisualBounds().getWidth();
         this.resY = (int) Screen.getPrimary().getVisualBounds().getHeight();
