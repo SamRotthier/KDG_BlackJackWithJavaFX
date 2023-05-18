@@ -12,13 +12,13 @@ import java.net.MalformedURLException;
 
 public class StartScreenPresenter {
 
-    private MVPModel model;
+    private BlackJackGame blackJackGame;
     private StartScreenView view;
     private UISettings uiSettings;
     private AboutScreenView aboutView;
 
-    public StartScreenPresenter(MVPModel model, StartScreenView view, UISettings uiSettings, AboutScreenView aboutView) {
-        this.model = model;
+    public StartScreenPresenter(BlackJackGame blackJackGame, StartScreenView view, UISettings uiSettings, AboutScreenView aboutView) {
+        this.blackJackGame = blackJackGame;
         this.view = view;
         this.uiSettings = uiSettings;
         this.aboutView = aboutView;
@@ -34,7 +34,7 @@ public class StartScreenPresenter {
             @Override
             public void handle(ActionEvent event) {
                 MainScreenView msView = new MainScreenView(uiSettings);
-                MainScreenPresenter msPresenter = new MainScreenPresenter(model, msView, uiSettings);
+                MainScreenPresenter msPresenter = new MainScreenPresenter(blackJackGame, msView, uiSettings);
                 view.getScene().setRoot(msView);
                 try {
                     msView.getScene().getStylesheets().add(uiSettings.getStyleSheetPath().toUri().toURL().toString());

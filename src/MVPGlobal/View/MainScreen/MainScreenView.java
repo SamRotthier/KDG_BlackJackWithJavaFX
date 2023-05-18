@@ -36,8 +36,10 @@ public class MainScreenView extends BorderPane  {
 
     // private MediaPlayer backgroundMusic;
 
-    private PlayerCardsView playerCards;
-    private DealerCardsView dealerCards;
+    private PlayerCardsView playerCardsView;
+
+
+    private DealerCardsView dealerCardsView;
 
     public MainScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -59,8 +61,8 @@ public class MainScreenView extends BorderPane  {
         this.saldoLabel = new Label("Saldo: ");
         this.betAmountLabel = new Label("Bet amount: ");
 
-        playerCards = new PlayerCardsView(uiSettings);
-        dealerCards = new DealerCardsView(uiSettings);
+        playerCardsView = new PlayerCardsView(uiSettings);
+        dealerCardsView = new DealerCardsView(uiSettings);
     }
 
     private void layoutNodes() {
@@ -109,7 +111,7 @@ public class MainScreenView extends BorderPane  {
         cardsPlayerDealerBox.setTranslateX(-30);
         cardsPlayerDealerBox.setPadding(new Insets(20));
         cardsPlayerDealerBox.setAlignment(Pos.CENTER);
-        cardsPlayerDealerBox.getChildren().addAll(dealerCards, playerCards);
+        cardsPlayerDealerBox.getChildren().addAll(dealerCardsView, playerCardsView);
 
         this.setCenter(cardsPlayerDealerBox);
 
@@ -129,4 +131,11 @@ public class MainScreenView extends BorderPane  {
     MenuItem getInfoItem() {return infoMI;}
 
     PlayerActionsView getActionButtons() {return actionButtons;};
+
+    PlayerCardsView getPlayerCardsView() {
+        return playerCardsView;
+    }
+    public DealerCardsView getDealerCardsView() {
+        return dealerCardsView;
+    }
 }

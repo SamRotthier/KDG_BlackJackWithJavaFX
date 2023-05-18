@@ -1,5 +1,6 @@
 package MVPGlobal.View.MainScreen;
 
+
 import MVPGlobal.Model.*;
 import MVPGlobal.View.AboutScreen.*;
 import MVPGlobal.View.InfoScreen.*;
@@ -22,18 +23,21 @@ import java.nio.file.Paths;
 import java.util.Formatter;
 import java.util.List;
 
+
 public class MainScreenPresenter {
 
-    private MVPModel model;
+    private BlackJackGame blackJackGame;
     private MainScreenView view;
     private UISettings uiSettings;
 
-    public MainScreenPresenter(MVPModel model, MainScreenView view, UISettings uiSettings) {
-        this.model = model;
+    public MainScreenPresenter(BlackJackGame blackJackGame, MainScreenView view, UISettings uiSettings) {
+        this.blackJackGame = blackJackGame;
         this.view = view;
         this.uiSettings = uiSettings;
         updateView();
         EventHandlers();
+        addEventHandlerDeal();
+        addEventHandlerPlayerActions();
     }
 
     private void updateView() {
@@ -44,7 +48,7 @@ public class MainScreenPresenter {
             @Override
             public void handle(ActionEvent event) {
                 SettingsView settingsView = new SettingsView(uiSettings);
-                SettingsPresenter presenter = new SettingsPresenter(model, settingsView, uiSettings);
+                SettingsPresenter presenter = new SettingsPresenter(blackJackGame, settingsView, uiSettings);
                 Stage settingsStage = new Stage();
                 settingsStage.setTitle("Settings");
                 settingsStage.initOwner(view.getScene().getWindow());
@@ -155,7 +159,7 @@ public class MainScreenPresenter {
             @Override
             public void handle(ActionEvent event) {
                 AboutScreenView aboutScreenView = new AboutScreenView(uiSettings);
-                AboutScreenPresenter aboutScreenPresenter = new AboutScreenPresenter(model, aboutScreenView, uiSettings);
+                AboutScreenPresenter aboutScreenPresenter = new AboutScreenPresenter(blackJackGame, aboutScreenView, uiSettings);
                 Stage aboutScreenStage = new Stage();
                 aboutScreenStage.initOwner(view.getScene().getWindow());
                 aboutScreenStage.initModality(Modality.APPLICATION_MODAL);
@@ -188,7 +192,7 @@ public class MainScreenPresenter {
             @Override
             public void handle(ActionEvent event) {
                 InfoScreenView infoScreenView = new InfoScreenView(uiSettings);
-                InfoScreenPresenter infoScreenPresenter = new InfoScreenPresenter(model, infoScreenView, uiSettings);
+                InfoScreenPresenter infoScreenPresenter = new InfoScreenPresenter(blackJackGame, infoScreenView, uiSettings);
                 Stage infoScreenStage = new Stage();
                 infoScreenStage.initOwner(view.getScene().getWindow());
                 infoScreenStage.initModality(Modality.APPLICATION_MODAL);
@@ -225,7 +229,11 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonDeal().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                blackJackGame.dealingCards();
+                view.getPlayerCardsView().getPlayerCards().clear();
+                view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
+                view.getDealerCardsView().getDealerCards().clear();
+                view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
             }
         });
     }

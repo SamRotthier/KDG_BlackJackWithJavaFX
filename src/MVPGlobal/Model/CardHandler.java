@@ -48,18 +48,9 @@ import java.util.ArrayList;
     }
 
     //Getter
-     ArrayList<Card> getHand() {
+    public ArrayList<Card> getHand() {
         return Hand;
     }
-    //Setter
-     void setHand(ArrayList<Card> hand) {
-        Hand = hand;
-    }
-
-
-
-
-
 
 }
 

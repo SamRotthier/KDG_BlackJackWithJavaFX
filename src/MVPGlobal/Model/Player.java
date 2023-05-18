@@ -3,7 +3,7 @@ package MVPGlobal.Model;
 import java.util.ArrayList;
 import java.util.Scanner;
 
- class Player extends CardHandler {
+public class Player extends CardHandler {
     private int playerBet;
     private int bank = 0;
 

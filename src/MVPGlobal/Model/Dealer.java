@@ -2,7 +2,7 @@ package MVPGlobal.Model;
 
 import java.util.ArrayList;
 
- class Dealer extends CardHandler {
+ public class Dealer extends CardHandler {
 
      void toHitOrNotToHit(ArrayList<Card> Deck){
         int cardValue= getTotalCardValue();

@@ -1,5 +1,6 @@
 package MVPGlobal.View.InfoScreen;
 
+import MVPGlobal.Model.BlackJackGame;
 import MVPGlobal.Model.MVPModel;
 import MVPGlobal.View.UISettings;
 import javafx.event.ActionEvent;
@@ -9,11 +10,11 @@ import java.io.*;
 
 public class InfoScreenPresenter {
 
-    private MVPModel model;
+    private BlackJackGame model;
     private InfoScreenView view;
     private UISettings uiSettings;
 
-    public InfoScreenPresenter(MVPModel model, InfoScreenView view, UISettings uiSettings) {
+    public InfoScreenPresenter(BlackJackGame model, InfoScreenView view, UISettings uiSettings) {
         this.model = model;
         this.view = view;
         this.uiSettings = uiSettings;

@@ -1,6 +1,6 @@
 package MVPGlobal.Model;
 
- class Card {
+ public class Card {
     private String Suit;
     private char icon;
     private String cardNumb;

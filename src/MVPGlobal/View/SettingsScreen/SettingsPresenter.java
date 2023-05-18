@@ -13,11 +13,11 @@ import java.nio.file.Paths;
 
 public class SettingsPresenter {
 
-    private MVPModel model;
+    private BlackJackGame model;
     private SettingsView view;
     private UISettings uiSettings;
 
-    public SettingsPresenter(MVPModel model, SettingsView view, UISettings uiSettings) {
+    public SettingsPresenter(BlackJackGame model, SettingsView view, UISettings uiSettings) {
         this.model = model;
         this.view = view;
         this.uiSettings = uiSettings;

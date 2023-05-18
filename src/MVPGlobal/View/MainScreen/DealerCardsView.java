@@ -1,16 +1,21 @@
 package MVPGlobal.View.MainScreen;
 
+import MVPGlobal.Model.Card;
 import MVPGlobal.View.UISettings;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
+import java.util.ArrayList;
+
 public class DealerCardsView extends StackPane {
 
     private UISettings uiSettings;
     private Image backCard;
     private ImageView backCardView;
+
+    public static ArrayList<Card> dealerCards = new ArrayList<Card>();
     private Image card;
     private ImageView cardView;
 
@@ -51,5 +56,7 @@ public class DealerCardsView extends StackPane {
         getChildren().addAll(cardView, backCardView);
 
     }
-
+    ArrayList<Card> getDealerCards() {
+        return dealerCards;
+    }
 }

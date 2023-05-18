@@ -16,10 +16,10 @@ public class MVPMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         UISettings uiSettings = new UISettings();
-        MVPModel model = new MVPModel();
+        BlackJackGame blackJackGame = new BlackJackGame();
         StartScreenView view = new StartScreenView(uiSettings);
         AboutScreenView aboutView = new AboutScreenView(uiSettings);
-        StartScreenPresenter presenter = new StartScreenPresenter(model, view, uiSettings, aboutView);
+        StartScreenPresenter presenter = new StartScreenPresenter(blackJackGame, view, uiSettings, aboutView);
         Scene scene = new Scene(view);
         if (uiSettings.styleSheetAvailable()){
             try {

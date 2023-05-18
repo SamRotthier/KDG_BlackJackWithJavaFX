@@ -7,11 +7,11 @@ import javafx.event.EventHandler;
 
 public class AboutScreenPresenter {
 
-    private MVPModel model;
+    private BlackJackGame model;
     private AboutScreenView view;
     private UISettings uiSettings;
 
-    public AboutScreenPresenter(MVPModel model, AboutScreenView view, UISettings uiSettings) {
+    public AboutScreenPresenter(BlackJackGame model, AboutScreenView view, UISettings uiSettings) {
         this.model = model;
         this.view = view;
         this.uiSettings = uiSettings;
