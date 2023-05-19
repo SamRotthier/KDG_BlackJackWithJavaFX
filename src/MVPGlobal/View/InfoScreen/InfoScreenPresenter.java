@@ -31,7 +31,7 @@ public class InfoScreenPresenter {
         String infoTextInFile ="";
         try (BufferedReader reader = new BufferedReader(new FileReader(uiSettings.getInfoTextPath().toString()));){
             String line = "";
-            String testString;
+            //String testString;
             while ((line = reader.readLine())!= null){
                 infoTextInFile += line + "\n";
             }

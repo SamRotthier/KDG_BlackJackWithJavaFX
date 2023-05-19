@@ -24,7 +24,7 @@ public class InfoScreenView extends BorderPane{
     }
 
     private void initialiseNodes() {
-        InfoText = new TextArea("test");
+        InfoText = new TextArea();
         okButton = new Button("OK");
         okButton.setPrefWidth(60);
     }
@@ -34,7 +34,6 @@ public class InfoScreenView extends BorderPane{
         InfoText.setPrefWidth(1000);
         InfoText.setPrefHeight(1000);
         InfoText.setWrapText(true);
-        InfoText.setFont(Font.font("Poppins", 12));
         InfoText.setEditable(false);
 
         try{

@@ -43,40 +43,17 @@ public class PlayerCardsView extends StackPane  {
     }
 
     private void layoutNodes() {
-
-/*
-        cardView.setPreserveRatio(true);
-        cardView.setFitWidth(uiSettings.getCardWidth());
-        cardView.setFitHeight(uiSettings.getCardHeight());
-        cardView.setRotate(-uiSettings.getCardRotate());
-
-        cardViewTwo.setPreserveRatio(true);
-        cardViewTwo.setFitWidth(uiSettings.getCardWidth());
-        cardViewTwo.setFitHeight(uiSettings.getCardHeight());
-        cardViewTwo.setTranslateX(uiSettings.getCardOffsetX());
-        cardViewTwo.setTranslateY(-uiSettings.getCardOffsetY());
-
-        cardViewThree.setPreserveRatio(true);
-        cardViewThree.setFitWidth(uiSettings.getCardWidth());
-        cardViewThree.setFitHeight(uiSettings.getCardHeight());
-        cardViewThree.setTranslateX(uiSettings.getCardOffsetX()*2);
-        cardViewThree.setRotate(uiSettings.getCardRotate());
-
         this.setAlignment(Pos.CENTER);
-
-        //dynamic rotate
-        //cardViewTwo.setTranslateX(-offset + (offset* getChildren().size()));
-        //cardViewTwo.setRotate(-rotate + (rotate * getChildren().size()));
-
-        getChildren().addAll(cardView, cardViewTwo, cardViewThree); */
 
     }
 
     //Methods
 
     public void addCard(){
-        int i = 0;
+        getChildren().clear();
+        int x = 0;
         int r = -2;
+        int y = 0;
         for (Card c : playerCards) {
             String cardNamePath = c.getSuit() + c.getCardNumb();
             try{
@@ -87,15 +64,21 @@ public class PlayerCardsView extends StackPane  {
             cardView.setPreserveRatio(true);
             cardView.setFitWidth(uiSettings.getCardWidth());
             cardView.setFitHeight(uiSettings.getCardHeight());
-            cardView.setTranslateX(uiSettings.getCardOffsetX() * i);
+            cardView.setTranslateX(uiSettings.getCardOffsetX() * x);
 
             if(playerCards.size() <= 2 && r == -2) {
                 r = -1;
             }
             cardView.setRotate(uiSettings.getCardRotate() * r);
+            cardView.setTranslateY(-(uiSettings.getCardOffsetY() + (y*4)));
             getChildren().add(cardView);
-            i++;
+            x++;
             r++;
+
+            if(y < ((playerCards.size()/2)-1)){
+                y++;
+            }else{y--;};
+
         }
     }
 

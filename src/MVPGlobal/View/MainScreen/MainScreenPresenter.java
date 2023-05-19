@@ -245,6 +245,7 @@ public class MainScreenPresenter {
             public void handle(ActionEvent actionEvent) {
                 blackJackGame.btnHit();
                 view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
+                view.getPlayerCardsView().addCard();
             }
         });
 
@@ -278,6 +279,7 @@ public class MainScreenPresenter {
         ButtonType noButton = new ButtonType("No");
         ButtonType yesButton = new ButtonType("Yes");
         stopWindow.getButtonTypes().addAll(yesButton, noButton);
+        //stopWindow.getDialogPane().getStyleClass().add("alert");
         stopWindow.showAndWait();
         if (stopWindow.getResult() == null || stopWindow.getResult().equals(noButton)) {
             event.consume();

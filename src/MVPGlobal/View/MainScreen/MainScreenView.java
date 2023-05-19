@@ -110,7 +110,7 @@ public class MainScreenView extends BorderPane  {
         cardsPlayerDealerBox.setSpacing(200);
         cardsPlayerDealerBox.setTranslateX(-30);
         cardsPlayerDealerBox.setPadding(new Insets(20));
-        cardsPlayerDealerBox.setAlignment(Pos.CENTER);
+        cardsPlayerDealerBox.setAlignment(Pos.CENTER_LEFT);
         cardsPlayerDealerBox.getChildren().addAll(dealerCardsView, playerCardsView);
 
         this.setCenter(cardsPlayerDealerBox);
