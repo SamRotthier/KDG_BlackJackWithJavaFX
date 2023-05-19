@@ -26,14 +26,14 @@ public class Player extends CardHandler {
     }
 
      void winRound(){
-          bank += playerBet;
+          bank += playerBet*2;
     }
 
 
-
       void playerDouble(ArrayList<Card> Deck){
-        if(bank >= (playerBet*2)) {
-            playerBet *= 2;
+        if(bank >= (playerBet*3)) {
+            bank -= playerBet;
+            playerBet *= 3;
             hitCard(Deck);
         }
         else {
@@ -42,10 +42,6 @@ public class Player extends CardHandler {
         }
     }
 
-      int playerSplit(int score){
-
-        return score;
-    }
 
     //Getter
      int getBank() {

@@ -13,21 +13,10 @@ import java.util.Scanner;
 
         keepPlaying = true;
         while(keepPlaying) {
-
             player1.placeBet();
-
             player1.dealCard(Deck);
-            System.out.println("Player");
-            //player1.showHand();
             dealer1.dealCard(Deck);
-
-            //nextMove();
-
             dealer1.toHitOrNotToHit(Deck);
-            System.out.println("Dealer");
-            //dealer1.showHand();
-
-            //gameEnding ();
 
         }
     }
@@ -40,6 +29,37 @@ import java.util.Scanner;
     public void btnHit (){
         player1.hitCard(Deck);
     }
+     public void btnDouble(){
+
+         player1.playerDouble(Deck);
+
+     }
+    public void btnStand(){
+
+         dealer1.toHitOrNotToHit(Deck);
+         checkingScore();
+
+         //message who won and how much
+    }
+
+     public void checkingScore(){
+         if(dealer1.getTotalCardValue() == 21 && player1.getTotalCardValue() != 21 ||(dealer1.getTotalCardValue() > player1.getTotalCardValue()) && (dealer1.getTotalCardValue() <22) ){
+             //System.out.println("Dealer wins");
+         }
+         else if(player1.getTotalCardValue() == 21 && dealer1.getTotalCardValue() != 21 || ((player1.getTotalCardValue() > dealer1.getTotalCardValue()) && (player1.getTotalCardValue() <22) )){
+             //System.out.println("Player wins");
+             player1.winRound();
+         }
+         else {
+             //System.out.println("No Winners");
+         }
+         //System.out.println("Do you wish to play another round? Yes or No");
+
+         }
+
+        public void savingStats(){
+
+        }
 
 
 }

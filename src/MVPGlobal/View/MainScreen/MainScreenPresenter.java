@@ -243,11 +243,12 @@ public class MainScreenPresenter {
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
                 view.getPlayerCardsView().addCard();
-               // view.getDealerCardsView().addCard();
+                view.getDealerCardsView().addCard();
 
             }
         });
     }
+
 
     private void addEventHandlerPlayerActions(){
         view.getActionButtons().getButtonHit().setOnAction(new EventHandler<ActionEvent>() {
@@ -263,14 +264,19 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonStand().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                blackJackGame.btnStand();
+                view.getDealerCardsView().getDealerCards().add(blackJackGame.dealer1.getHand().get(blackJackGame.dealer1.getHand().size()-1));
+                view.getDealerCardsView().addCard();
             }
         });
 
         view.getActionButtons().getButtonDouble().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                blackJackGame.btnDouble();
+                view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
+                view.getPlayerCardsView().addCard();
+                view.getSounds().playDealCard();
             }
         });
     }
