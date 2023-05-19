@@ -37,7 +37,6 @@ public class MainScreenPresenter {
         this.uiSettings = uiSettings;
         updateView();
         EventHandlers();
-        addEventHandlerDeal();
         addEventHandlerPlayerActions();
     }
 
@@ -231,24 +230,23 @@ public class MainScreenPresenter {
             }});
     }
 
-    private void addEventHandlerDeal(){
-        view.getActionButtons().getButtonDeal().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                blackJackGame.dealingCards();
-                view.getPlayerCardsView().getPlayerCards().clear();
-                view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
-                view.getSounds().playDealCard();
-                view.getSounds().playDealCard();
-                view.getDealerCardsView().getDealerCards().clear();
-                view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
-                view.getPlayerCardsView().addCard();
-                view.getDealerCardsView().addCard();
-                view.getActionButtons().getButtonDeal().setVisible(false);
-            }
-        });
-    }
     private void addEventHandlerPlayerActions(){
+            view.getActionButtons().getButtonDeal().setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    blackJackGame.dealingCards();
+                    view.getPlayerCardsView().getPlayerCards().clear();
+                    view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
+                    view.getSounds().playDealCard();
+                    view.getSounds().playDealCard();
+                    view.getDealerCardsView().getDealerCards().clear();
+                    view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
+                    view.getPlayerCardsView().addCard();
+                    view.getDealerCardsView().addCard();
+                    view.getActionButtons().getButtonDeal().setVisible(false);
+                }
+            });
+
         view.getActionButtons().getButtonHit().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

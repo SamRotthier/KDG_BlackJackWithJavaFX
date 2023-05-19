@@ -28,14 +28,14 @@ import java.util.Scanner;
     }
 
     public void btnHit (){
-         if (player1.getTotalCardValue() <21) {
+         if (player1.getTotalCardValue() < 21) {
              player1.hitCard(Deck);
+         }else{
+             checkingScore();
          }
     }
      public void btnDouble(){
-
          player1.playerDouble(Deck);
-
      }
     public void btnStand(){
          dealer1.toHitOrNotToHit(Deck);
