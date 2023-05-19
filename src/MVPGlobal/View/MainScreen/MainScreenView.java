@@ -142,11 +142,11 @@ public class MainScreenView extends BorderPane  {
     BetView getBetButtons(){return betButtons;}
     SoundsView getSounds() {return sounds;}
 
-    public void setSaldoLabelPlayer(Label saldoLabelPlayer) {
-        this.saldoLabelPlayer(int test) = saldoLabelPlayer;
+    public Label getSaldoLabelPlayer() {
+        return saldoLabelPlayer;
     }
 
-    public void setBetAmountLabelPlayer(Label betAmountLabelPlayer) {
-        this.betAmountLabelPlayer = betAmountLabelPlayer;
+    public Label getBetAmountLabelPlayer() {
+        return betAmountLabelPlayer;
     }
 }

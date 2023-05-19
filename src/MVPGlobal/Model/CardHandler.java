@@ -43,7 +43,7 @@ import java.util.ArrayList;
          }
      }
 
-     int getTotalCardValue(){
+     public int getTotalCardValue(){
         int totalCardValue = 0;
         for (Card c: Hand) {
             totalCardValue +=c.getCardValue();

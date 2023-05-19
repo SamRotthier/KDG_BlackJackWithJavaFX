@@ -69,8 +69,8 @@ public class PlayerCardsView extends StackPane  {
             cardView.setFitHeight(uiSettings.getCardHeight());
 
 
-            sequentialTransition.getChildren().add(cardAnimation(cardView));
-            sequentialTransition.getChildren().add(new PauseTransition(Duration.seconds(5)));
+            //sequentialTransition.getChildren().add(cardAnimation(cardView));
+            //sequentialTransition.getChildren().add(new PauseTransition(Duration.seconds(5)));
 
 
             cardView.setTranslateX(uiSettings.getCardOffsetX() * x);

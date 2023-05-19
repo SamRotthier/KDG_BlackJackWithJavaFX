@@ -8,10 +8,8 @@ public class Player extends CardHandler {
     private int bank = 0;
 
 
-     void placeBet(){
-        Scanner input = new Scanner(System.in);
+     void placeBet(int bettingAmount){
         boolean bettingAmountOk= true;
-        int bettingAmount = input.nextInt();
         while (bettingAmountOk) {
             if (bettingAmount <= 0) {
                 //System.out.println("The house doesn't play for free");
@@ -19,7 +17,6 @@ public class Player extends CardHandler {
                 //System.out.println("Looks like you're too broke, you are trying to bet more then what you have");
             } else {
                 bettingAmountOk = false;
-                playerBet = bettingAmount;
                 bank -= bettingAmount;
             }
         }
@@ -28,7 +25,9 @@ public class Player extends CardHandler {
      void winRound(){
           bank += playerBet*2;
     }
-
+    void pushRound(){
+        bank += playerBet;
+    }
 
       void playerDouble(ArrayList<Card> Deck){
         if(bank >= (playerBet*3)) {
@@ -48,7 +47,6 @@ public class Player extends CardHandler {
         return bank;
     }
 
-
       public int getPlayerBet() {
         return playerBet;
     }
@@ -59,7 +57,7 @@ public class Player extends CardHandler {
     }
 
      void setPlayerBet(int playerBet) {
-        playerBet = playerBet;
+        this.playerBet = playerBet;
     }
 
     //Constructor

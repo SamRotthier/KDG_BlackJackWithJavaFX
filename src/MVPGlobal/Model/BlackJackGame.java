@@ -14,7 +14,6 @@ import java.util.Scanner;
 
         keepPlaying = true;
         while(keepPlaying) {
-            player1.placeBet();
             player1.dealCard(Deck);
             dealer1.dealCard(Deck);
             dealer1.toHitOrNotToHit(Deck);
@@ -24,6 +23,7 @@ import java.util.Scanner;
 
      public void dealingCards (){
         player1.dealCard(Deck);
+        player1.placeBet(player1.getPlayerBet());
         dealer1.dealCard(Deck);
     }
 
@@ -51,8 +51,10 @@ import java.util.Scanner;
          else if(player1.getTotalCardValue() == 21 && dealer1.getTotalCardValue() != 21 || ((player1.getTotalCardValue() > dealer1.getTotalCardValue()) && (player1.getTotalCardValue() <22) )){
              //System.out.println("Player wins");
              player1.winRound();
-         }
-         else {
+         } else if (dealer1.getTotalCardValue() == 21 && player1.getTotalCardValue() == 21) {
+             player1.pushRound();
+         } else
+         {
              //System.out.println("No Winners");
          }
          //System.out.println("Do you wish to play another round? Yes or No");
@@ -74,5 +76,7 @@ import java.util.Scanner;
         public void txtSetBet(int betAmount){
          player1.setPlayerBet(betAmount);
         }
+
+
  }
 

@@ -256,22 +256,24 @@ public class MainScreenPresenter {
         view.getBetButtons().getArrowUp().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                blackJackGame.btnAddBet();
+                view.getBetButtons().getBetAmount().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
             }
         });
         view.getBetButtons().getArrowDown().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                blackJackGame.btnSubBet();
+                view.getBetButtons().getBetAmount().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
             }
         });
         view.getActionButtons().getButtonDeal().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                view.setSaldoLabelPlayer(blackJackGame.player1.getBank());
-                view.setBetAmountLabelPlayer(blackJackGame.player1.getPlayerBet());
-
+                if (!view.getBetButtons().getBetAmount().getText().isEmpty() && blackJackGame.player1.getPlayerBet() > 0 ) {
                 blackJackGame.dealingCards();
+                view.getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+                view.getBetAmountLabelPlayer().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
                 view.getSounds().playDealCard();
@@ -281,16 +283,31 @@ public class MainScreenPresenter {
                 view.getPlayerCardsView().addCard();
                 view.getDealerCardsView().addCard();
                 view.getActionButtons().getButtonDeal().setVisible(false);
+                }else{
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Issues while dealing");
+                    alert.setContentText("Please give betting amount");
+                    alert.showAndWait();
+                }
             }
         });
 
         view.getActionButtons().getButtonHit().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                blackJackGame.btnHit();
-                view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
-                view.getPlayerCardsView().addCard();
-                view.getSounds().playDealCard();
+                if (blackJackGame.player1.getTotalCardValue() < 22) {
+                    blackJackGame.btnHit();
+                    view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size() - 1));
+                    view.getPlayerCardsView().addCard();
+                    view.getSounds().playDealCard();
+               }else{
+                   Alert alert = new Alert(AlertType.INFORMATION);
+                   alert.setTitle("Lost");
+                   alert.setHeaderText("Card value over 21");
+                   alert.setContentText("Your card value is over 21. You Lost!");
+                   alert.showAndWait();
+               }
             }
         });
 
@@ -310,6 +327,7 @@ public class MainScreenPresenter {
                 blackJackGame.btnStand();
                 view.getDealerCardsView().getDealerCards().add(blackJackGame.dealer1.getHand().get(blackJackGame.dealer1.getHand().size()-1));
                 view.getDealerCardsView().addCard();
+                view.getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
             }
         });
     }
