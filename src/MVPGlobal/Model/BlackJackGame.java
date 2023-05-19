@@ -1,5 +1,6 @@
 package MVPGlobal.Model;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,7 +28,9 @@ import java.util.Scanner;
     }
 
     public void btnHit (){
-        player1.hitCard(Deck);
+         if (player1.getTotalCardValue() <21) {
+             player1.hitCard(Deck);
+         }
     }
      public void btnDouble(){
 
@@ -35,7 +38,6 @@ import java.util.Scanner;
 
      }
     public void btnStand(){
-
          dealer1.toHitOrNotToHit(Deck);
          checkingScore();
 
@@ -61,6 +63,16 @@ import java.util.Scanner;
 
         }
 
+        public void btnAddBet(){
+         player1.setPlayerBet(player1.getPlayerBet()+5);
+        }
 
-}
+        public void btnSubBet(){
+         player1.setPlayerBet(player1.getPlayerBet()-5);
+        }
+
+        public void txtSetBet(int betAmount){
+         player1.setPlayerBet(betAmount);
+        }
+ }
 
