@@ -244,17 +244,25 @@ public class MainScreenPresenter {
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
                 view.getPlayerCardsView().addCard();
                 view.getDealerCardsView().addCard();
-
+                view.getActionButtons().getButtonDeal().setVisible(false);
             }
         });
     }
-
-
     private void addEventHandlerPlayerActions(){
         view.getActionButtons().getButtonHit().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 blackJackGame.btnHit();
+                view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
+                view.getPlayerCardsView().addCard();
+                view.getSounds().playDealCard();
+            }
+        });
+
+        view.getActionButtons().getButtonDouble().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                blackJackGame.btnDouble();
                 view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
                 view.getPlayerCardsView().addCard();
                 view.getSounds().playDealCard();
@@ -270,13 +278,16 @@ public class MainScreenPresenter {
             }
         });
 
-        view.getActionButtons().getButtonDouble().setOnAction(new EventHandler<ActionEvent>() {
+        view.getBetButtons().getArrowUp().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                blackJackGame.btnDouble();
-                view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
-                view.getPlayerCardsView().addCard();
-                view.getSounds().playDealCard();
+
+            }
+        });
+        view.getBetButtons().getArrowDown().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
             }
         });
     }

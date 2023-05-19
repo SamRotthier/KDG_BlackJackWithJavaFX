@@ -68,4 +68,5 @@ public class BetView extends VBox  {
 
     Button getArrowDown() {return arrowDown;}
 
+
 }

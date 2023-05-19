@@ -110,7 +110,6 @@ public class MainScreenView extends BorderPane  {
 
         this.setCenter(cardsPlayerDealerBox);
 
-
     }
 
     MenuItem getExitItem() {return exitMI;}
@@ -134,5 +133,6 @@ public class MainScreenView extends BorderPane  {
         return dealerCardsView;
     }
 
+    BetView getBetButtons(){return betButtons;}
     SoundsView getSounds() {return sounds;}
 }
