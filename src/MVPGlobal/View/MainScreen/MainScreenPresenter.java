@@ -11,6 +11,7 @@ import javafx.scene.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -22,6 +23,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Formatter;
 import java.util.List;
+
+import static javafx.scene.control.Alert.*;
 
 
 public class MainScreenPresenter {
@@ -113,7 +116,7 @@ public class MainScreenPresenter {
                         //
                     }
                 } else {
-                    Alert errorWindow = new Alert(Alert.AlertType.ERROR);
+                    Alert errorWindow = new Alert(AlertType.ERROR);
                     errorWindow.setHeaderText("Problem with the selected input file:");
                     errorWindow.setContentText("File is not readable");
                     errorWindow.showAndWait();
@@ -146,7 +149,7 @@ public class MainScreenPresenter {
                         //
                     }
                 } else {
-                    Alert errorWindow = new Alert(Alert.AlertType.ERROR);
+                    Alert errorWindow = new Alert(AlertType.ERROR);
                     errorWindow.setHeaderText("Problem with the selected output file:");
                     errorWindow.setContentText("File is not writable");
                     errorWindow.showAndWait();
@@ -231,21 +234,55 @@ public class MainScreenPresenter {
     }
 
     private void addEventHandlerPlayerActions(){
-            view.getActionButtons().getButtonDeal().setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    blackJackGame.dealingCards();
-                    view.getPlayerCardsView().getPlayerCards().clear();
-                    view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
-                    view.getSounds().playDealCard();
-                    view.getSounds().playDealCard();
-                    view.getDealerCardsView().getDealerCards().clear();
-                    view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
-                    view.getPlayerCardsView().addCard();
-                    view.getDealerCardsView().addCard();
-                    view.getActionButtons().getButtonDeal().setVisible(false);
+        view.getBetButtons().getBetAmount().setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                String valueString = view.getBetButtons().getBetAmount().getText();
+                try{
+                    if (!valueString.isEmpty()) {
+                        blackJackGame.txtSetBet(Integer.parseInt(valueString));
+                    }
                 }
-            });
+                catch(NumberFormatException e){
+                    Alert alertError = new Alert(AlertType.ERROR);
+                    alertError.setTitle("ERROR");
+                    alertError.setHeaderText("Invalid bet!");
+                    alertError.setContentText("Please enter a number. No letters or symbols are allowed.");
+                    alertError.showAndWait();
+                }
+            }
+        });
+
+        view.getBetButtons().getArrowUp().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+        view.getBetButtons().getArrowDown().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+        view.getActionButtons().getButtonDeal().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                view.setSaldoLabelPlayer(blackJackGame.player1.getBank());
+                view.setBetAmountLabelPlayer(blackJackGame.player1.getPlayerBet());
+
+                blackJackGame.dealingCards();
+                view.getPlayerCardsView().getPlayerCards().clear();
+                view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
+                view.getSounds().playDealCard();
+                view.getSounds().playDealCard();
+                view.getDealerCardsView().getDealerCards().clear();
+                view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
+                view.getPlayerCardsView().addCard();
+                view.getDealerCardsView().addCard();
+                view.getActionButtons().getButtonDeal().setVisible(false);
+            }
+        });
 
         view.getActionButtons().getButtonHit().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -275,19 +312,6 @@ public class MainScreenPresenter {
                 view.getDealerCardsView().addCard();
             }
         });
-
-        view.getBetButtons().getArrowUp().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-
-            }
-        });
-        view.getBetButtons().getArrowDown().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-
-            }
-        });
     }
 
     public void windowsHandler() {
@@ -297,7 +321,7 @@ public class MainScreenPresenter {
     }
 
     private void handleCloseEvent(Event event){
-        final Alert stopWindow = new Alert(Alert.AlertType.CONFIRMATION);
+        final Alert stopWindow = new Alert(AlertType.CONFIRMATION);
         stopWindow.setHeaderText("You're closing the application.");
         stopWindow.setContentText("Are you sure? Unsaved data may be lost.");
         stopWindow.setTitle("WARNING!");

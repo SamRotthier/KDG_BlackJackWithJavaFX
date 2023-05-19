@@ -69,4 +69,6 @@ public class BetView extends VBox  {
     Button getArrowDown() {return arrowDown;}
 
 
+    TextField getBetAmount() {return betAmount;}
+
 }

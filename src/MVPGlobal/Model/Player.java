@@ -44,12 +44,12 @@ public class Player extends CardHandler {
 
 
     //Getter
-     int getBank() {
+     public int getBank() {
         return bank;
     }
 
 
-      int getPlayerBet() {
+      public int getPlayerBet() {
         return playerBet;
     }
 

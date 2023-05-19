@@ -29,6 +29,9 @@ public class MainScreenView extends BorderPane  {
     private Label saldoLabel;
     private Label betAmountLabel;
 
+    private Label saldoLabelPlayer;
+    private Label betAmountLabelPlayer;
+
 
     private PlayerActionsView actionButtons;
 
@@ -60,6 +63,9 @@ public class MainScreenView extends BorderPane  {
 
         this.saldoLabel = new Label("Saldo: ");
         this.betAmountLabel = new Label("Bet amount: ");
+        this.saldoLabelPlayer = new Label("");
+        this.betAmountLabelPlayer = new Label("");
+
 
         playerCardsView = new PlayerCardsView(uiSettings);
         dealerCardsView = new DealerCardsView(uiSettings);
@@ -97,7 +103,7 @@ public class MainScreenView extends BorderPane  {
         saldoBetBox.setBackground(bottomBackground);
 
 
-        saldoBetBox.getChildren().addAll(saldoLabel, betAmountLabel);
+        saldoBetBox.getChildren().addAll(saldoLabel, saldoLabelPlayer, betAmountLabel, betAmountLabelPlayer);
         this.setBottom(saldoBetBox);
 
         // Center Cards
@@ -135,4 +141,12 @@ public class MainScreenView extends BorderPane  {
 
     BetView getBetButtons(){return betButtons;}
     SoundsView getSounds() {return sounds;}
+
+    public void setSaldoLabelPlayer(Label saldoLabelPlayer) {
+        this.saldoLabelPlayer(int test) = saldoLabelPlayer;
+    }
+
+    public void setBetAmountLabelPlayer(Label betAmountLabelPlayer) {
+        this.betAmountLabelPlayer = betAmountLabelPlayer;
+    }
 }

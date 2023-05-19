@@ -42,7 +42,7 @@ public class PlayerActionsView extends VBox  {
         this.setSpacing(100);
         this.setPadding(new Insets(20));
 
-        this.getChildren().addAll(buttonDeal,buttonHit, buttonStand, buttonDouble);
+        this.getChildren().addAll(buttonDeal,buttonHit, buttonDouble, buttonStand);
 
     }
 
