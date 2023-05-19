@@ -47,11 +47,11 @@ public class SoundsView{
         stringBuilder.append(uiSettings.getCardDealSound()).append(dealSoundNumber).append(".mp3");
         String dealSoundFile = stringBuilder.toString();
 
-        try{
-        AudioClip dealSound = new AudioClip(new File(dealSoundFile).toURI().toURL().toString());
-        dealSound.play();
-        }
-        catch(MalformedURLException ex){};
+        //try{
+        //AudioClip dealSound = new AudioClip(new File(dealSoundFile).toURI().toURL().toString());
+        //dealSound.play();
+        //}
+        //catch(MalformedURLException ex){};
     }
 
 }

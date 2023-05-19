@@ -45,13 +45,15 @@ import java.util.Scanner;
     }
 
      public void checkingScore(){
-         if(dealer1.getTotalCardValue() == 21 && player1.getTotalCardValue() != 21 ||(dealer1.getTotalCardValue() > player1.getTotalCardValue()) && (dealer1.getTotalCardValue() <22) ){
+         int dealerScore = dealer1.getTotalCardValue();
+         int playerScore = player1.getTotalCardValue();
+         if((dealerScore == 21 && playerScore != 21) ||(dealerScore > playerScore && dealerScore <22)|| (playerScore>21 && dealerScore <22)){
              //System.out.println("Dealer wins");
          }
-         else if(player1.getTotalCardValue() == 21 && dealer1.getTotalCardValue() != 21 || ((player1.getTotalCardValue() > dealer1.getTotalCardValue()) && (player1.getTotalCardValue() <22) )){
+         else if((playerScore == 21 && dealerScore != 21 )||(playerScore > dealerScore && playerScore <22) || (dealerScore>21 && playerScore <22)){
              //System.out.println("Player wins");
              player1.winRound();
-         } else if (dealer1.getTotalCardValue() == 21 && player1.getTotalCardValue() == 21) {
+         } else if (dealerScore == 21 && playerScore == 21) {
              player1.pushRound();
          } else
          {

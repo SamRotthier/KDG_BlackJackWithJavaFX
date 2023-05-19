@@ -20,6 +20,7 @@ public class PlayerActionsView extends VBox  {
     private Button buttonDouble;
     private Button buttonStand;
     private Button buttonDeal;
+    private Button buttonNextRound;
 
 
 
@@ -34,6 +35,9 @@ public class PlayerActionsView extends VBox  {
         this.buttonDouble = new Button("DOUBLE");
         this.buttonStand = new Button("STAND");
         this.buttonDeal = new Button("DEAL");
+        this.buttonNextRound = new Button("NEXT");
+
+        buttonNextRound.setVisible(false);
     }
 
     private void layoutNodes() {
@@ -42,7 +46,7 @@ public class PlayerActionsView extends VBox  {
         this.setSpacing(100);
         this.setPadding(new Insets(20));
 
-        this.getChildren().addAll(buttonDeal,buttonHit, buttonDouble, buttonStand);
+        this.getChildren().addAll(buttonDeal,buttonHit, buttonDouble, buttonStand,buttonNextRound);
 
     }
 
@@ -55,5 +59,7 @@ public class PlayerActionsView extends VBox  {
     Button getButtonStand() {return buttonStand;}
 
     Button getButtonDouble() {return buttonDouble;}
+
+    Button getbuttonNextRound() {return buttonNextRound;}
 
 }

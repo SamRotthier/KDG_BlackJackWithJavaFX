@@ -274,6 +274,7 @@ public class MainScreenPresenter {
                 blackJackGame.dealingCards();
                 view.getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
                 view.getBetAmountLabelPlayer().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
+                view.getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
                 view.getSounds().playDealCard();
@@ -282,6 +283,9 @@ public class MainScreenPresenter {
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
                 view.getPlayerCardsView().addCard();
                 view.getDealerCardsView().addCard();
+                view.getActionButtons().getButtonHit().setVisible(true);
+                view.getActionButtons().getButtonDouble().setVisible(true);
+                view.getActionButtons().getButtonStand().setVisible(true);
                 view.getActionButtons().getButtonDeal().setVisible(false);
                 }else{
                     Alert alert = new Alert(AlertType.ERROR);
@@ -298,6 +302,7 @@ public class MainScreenPresenter {
             public void handle(ActionEvent actionEvent) {
                 if (blackJackGame.player1.getTotalCardValue() < 22) {
                     blackJackGame.btnHit();
+                    view.getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                     view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size() - 1));
                     view.getPlayerCardsView().addCard();
                     view.getSounds().playDealCard();
@@ -327,7 +332,24 @@ public class MainScreenPresenter {
                 blackJackGame.btnStand();
                 view.getDealerCardsView().getDealerCards().add(blackJackGame.dealer1.getHand().get(blackJackGame.dealer1.getHand().size()-1));
                 view.getDealerCardsView().addCard();
+                view.getActionButtons().getButtonHit().setVisible(false);
+                view.getActionButtons().getButtonDouble().setVisible(false);
+                view.getActionButtons().getButtonStand().setVisible(false);
+                view.getActionButtons().getbuttonNextRound().setVisible(true);
                 view.getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+            }
+        });
+
+        view.getActionButtons().getbuttonNextRound().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                blackJackGame.dealer1.getHand().clear();
+                blackJackGame.player1.getHand().clear();
+
+                view.getPlayerCardsView().getPlayerCards().clear();
+                view.getDealerCardsView().getDealerCards().clear();
+                view.getActionButtons().getButtonDeal().setVisible(true);
+                view.getActionButtons().getbuttonNextRound().setVisible(false);
             }
         });
     }
@@ -360,4 +382,5 @@ public class MainScreenPresenter {
     public ActionEvent getInfoActionEvent(){
         return infoActionEvent;
     }
+
 }

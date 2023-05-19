@@ -56,7 +56,7 @@ public class PlayerCardsView extends StackPane  {
         int r = -2;
         int y = 0;
 
-        SequentialTransition sequentialTransition = new SequentialTransition();
+       // SequentialTransition sequentialTransition = new SequentialTransition();
         for (Card c : playerCards) {
             String cardNamePath = c.getSuit() + c.getCardNumb();
             try{
@@ -109,6 +109,7 @@ public class PlayerCardsView extends StackPane  {
     }
 
 
+
     private void cardAnimationTimeline(ImageView cardImageView){
         //Timeline used with Keyframes to animate each card
         Timeline timeline = new Timeline();
@@ -127,4 +128,9 @@ public class PlayerCardsView extends StackPane  {
     ArrayList<Card> getPlayerCards() {
         return playerCards;
     }
+
+    public ImageView getCardView() {
+        return cardView;
+    }
+
 }

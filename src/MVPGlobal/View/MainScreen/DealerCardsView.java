@@ -109,4 +109,7 @@ public class DealerCardsView extends StackPane {
     ArrayList<Card> getDealerCards() {
         return dealerCards;
     }
+    public ImageView getCardView() {
+        return cardView;
+    }
 }
