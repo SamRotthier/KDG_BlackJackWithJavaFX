@@ -29,7 +29,6 @@ public class PlayerCardsView extends StackPane  {
         this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
-        addCard();
     }
 
     private void initialiseNodes() {
@@ -60,7 +59,7 @@ public class PlayerCardsView extends StackPane  {
                 card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");}
             catch(MalformedURLException ex){}
 
-            ImageView cardView = new ImageView(card);
+            cardView = new ImageView(card);
             cardView.setPreserveRatio(true);
             cardView.setFitWidth(uiSettings.getCardWidth());
             cardView.setFitHeight(uiSettings.getCardHeight());

@@ -232,9 +232,13 @@ public class MainScreenPresenter {
                 blackJackGame.dealingCards();
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
+                view.getSounds().playDealCard();
+                view.getSounds().playDealCard();
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
                 view.getPlayerCardsView().addCard();
+                view.getDealerCardsView().addCard();
+
             }
         });
     }
@@ -246,6 +250,7 @@ public class MainScreenPresenter {
                 blackJackGame.btnHit();
                 view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
                 view.getPlayerCardsView().addCard();
+                view.getSounds().playDealCard();
             }
         });
 

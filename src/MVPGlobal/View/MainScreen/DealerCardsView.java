@@ -6,11 +6,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class DealerCardsView extends StackPane {
 
     private UISettings uiSettings;
+    private SoundsView sounds;
     private Image backCard;
     private ImageView backCardView;
 
@@ -30,6 +32,7 @@ public class DealerCardsView extends StackPane {
     }
 
     private void initialiseNodes() {
+         sounds = new SoundsView(uiSettings);
 /*        this.card = new Image("images/cards/clubs2.png");
         cardView = new ImageView(card);
 
@@ -38,6 +41,7 @@ public class DealerCardsView extends StackPane {
 
         offsetX = 70;
         rotate = 5; */
+
     }
 
     private void layoutNodes() {
@@ -55,6 +59,53 @@ public class DealerCardsView extends StackPane {
         getChildren().addAll(cardView, backCardView);
 */
     }
+
+    public void addCard() {
+        getChildren().clear();
+        int x = 0;
+        int r = -2;
+        int y = 0;
+        int i = 1;
+
+        for (Card c : dealerCards) {
+            if (dealerCards.size() <= 2 && i == 2) {
+                try {
+                    card = new Image(uiSettings.getCardImage().toUri().toURL() + "backCards.png");
+                } catch (MalformedURLException ex) {
+                }
+            } else {
+                String cardNamePath = c.getSuit() + c.getCardNumb();
+                try {
+                    card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");
+                } catch (MalformedURLException ex) {
+                }
+            }
+
+            cardView = new ImageView(card);
+            cardView.setPreserveRatio(true);
+            cardView.setFitWidth(uiSettings.getCardWidth());
+            cardView.setFitHeight(uiSettings.getCardHeight());
+            cardView.setTranslateX(uiSettings.getCardOffsetX() * x);
+
+            if (dealerCards.size() <= 2 && r == -2) {
+                r = -1;
+            }
+            cardView.setRotate(uiSettings.getCardRotate() * r);
+            cardView.setTranslateY(-(uiSettings.getCardOffsetY() + (y * 4)));
+            getChildren().add(cardView);
+            sounds.playDealCard();
+            i++;
+            x++;
+            r++;
+
+            if (y < ((dealerCards.size() / 2) - 1)) {
+                y++;
+            } else {
+                y--;
+            };
+        }
+    }
+
     ArrayList<Card> getDealerCards() {
         return dealerCards;
     }

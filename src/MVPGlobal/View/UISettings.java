@@ -29,6 +29,7 @@ public class UISettings {
     private Path startScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"medievalBackground.jpeg");
     private Path gameScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"BackgroundTableLogo.png");
     private Path backgroundMusicGame = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"blackjackgameaudio.mp3");
+    private Path cardDealSound = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"CardDeal");
 
     private Path cardImage = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"cards"+FILE_SEPARATOR);
 
@@ -81,10 +82,16 @@ public class UISettings {
 
     public String getApplicationName () {return this.ApplicationName;}
 
+    //Backgrounds
+
     public Path getStartScreenBackground() {return this.startScreenBackground;};
     public Path getGameScreenBackground() {return this.gameScreenBackground;};
-    public Path getBackgroundMusicGame() {return this.backgroundMusicGame;};
 
+    // Music & Sounds
+    public Path getBackgroundMusicGame() {return this.backgroundMusicGame;};
+    public Path getCardDealSound(){return this.cardDealSound;};
+
+    // Images
     public Path getArrowUp() {return this.arrowUp;};
     public Path getArrowDown() {return this.arrowDown;};
 

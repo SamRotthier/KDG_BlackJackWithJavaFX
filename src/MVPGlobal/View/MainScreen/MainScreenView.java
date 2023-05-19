@@ -34,7 +34,7 @@ public class MainScreenView extends BorderPane  {
 
     private BetView betButtons;
 
-    // private MediaPlayer backgroundMusic;
+    private SoundsView sounds;
 
     private PlayerCardsView playerCardsView;
 
@@ -63,6 +63,7 @@ public class MainScreenView extends BorderPane  {
 
         playerCardsView = new PlayerCardsView(uiSettings);
         dealerCardsView = new DealerCardsView(uiSettings);
+        sounds = new SoundsView(uiSettings);
     }
 
     private void layoutNodes() {
@@ -78,12 +79,6 @@ public class MainScreenView extends BorderPane  {
         MenuBar menuBar = new MenuBar(menuFile,menuHelp);
         setTop(menuBar);
 
-        //music
-       /* try{
-            backgroundMusic = new MediaPlayer(new Media(uiSettings.getBackgroundMusicGame().toUri().toURL().toString()));
-            backgroundMusic.play();
-            backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);}
-        catch(MalformedURLException ex){} */
 
         //ButtonsLeft
         this.setLeft(betButtons);
@@ -130,12 +125,14 @@ public class MainScreenView extends BorderPane  {
 
     MenuItem getInfoItem() {return infoMI;}
 
-    PlayerActionsView getActionButtons() {return actionButtons;};
+    PlayerActionsView getActionButtons() {return actionButtons;}
 
     PlayerCardsView getPlayerCardsView() {
         return playerCardsView;
     }
-    public DealerCardsView getDealerCardsView() {
+    DealerCardsView getDealerCardsView() {
         return dealerCardsView;
     }
+
+    SoundsView getSounds() {return sounds;}
 }
