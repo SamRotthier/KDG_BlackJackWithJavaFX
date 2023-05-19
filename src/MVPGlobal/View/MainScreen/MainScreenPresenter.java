@@ -29,6 +29,7 @@ public class MainScreenPresenter {
     private BlackJackGame blackJackGame;
     private MainScreenView view;
     private UISettings uiSettings;
+    private ActionEvent infoActionEvent;
 
     public MainScreenPresenter(BlackJackGame blackJackGame, MainScreenView view, UISettings uiSettings) {
         this.blackJackGame = blackJackGame;
@@ -42,6 +43,10 @@ public class MainScreenPresenter {
 
     private void updateView() {
      }
+
+    private void startEventHandler(){
+
+    }
 
     private void EventHandlers() {
         view.getSettingsItem().setOnAction(new EventHandler<ActionEvent>() {
@@ -222,6 +227,7 @@ public class MainScreenPresenter {
                     }
                 }
                 infoScreenStage.showAndWait();
+                infoActionEvent = event;
             }});
     }
 
@@ -237,7 +243,7 @@ public class MainScreenPresenter {
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
                 view.getPlayerCardsView().addCard();
-                view.getDealerCardsView().addCard();
+               // view.getDealerCardsView().addCard();
 
             }
         });
@@ -291,5 +297,10 @@ public class MainScreenPresenter {
         } else {
             view.getScene().getWindow().hide();
         }
+    }
+
+    //Getter
+    public ActionEvent getInfoActionEvent(){
+        return infoActionEvent;
     }
 }

@@ -19,7 +19,7 @@ public class MVPMain extends Application {
         BlackJackGame blackJackGame = new BlackJackGame();
         StartScreenView view = new StartScreenView(uiSettings);
         AboutScreenView aboutView = new AboutScreenView(uiSettings);
-        StartScreenPresenter presenter = new StartScreenPresenter(blackJackGame, view, uiSettings, aboutView);
+        StartScreenPresenter presenter = new StartScreenPresenter(blackJackGame, view, uiSettings /*aboutView*/);
         Scene scene = new Scene(view);
         if (uiSettings.styleSheetAvailable()){
             try {

@@ -3,25 +3,32 @@ package MVPGlobal.View.StartScreen;
 import MVPGlobal.Model.*;
 import MVPGlobal.View.*;
 import MVPGlobal.View.AboutScreen.AboutScreenView;
+import MVPGlobal.View.InfoScreen.InfoScreenView;
 import MVPGlobal.View.MainScreen.MainScreenPresenter;
 import MVPGlobal.View.MainScreen.MainScreenView;
 import javafx.event.*;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.stage.WindowEvent;
+
+import javax.swing.*;
 import java.net.MalformedURLException;
 
 public class StartScreenPresenter {
 
     private BlackJackGame blackJackGame;
     private StartScreenView view;
+    private MainScreenPresenter mainScreenPresenter;
     private UISettings uiSettings;
-    private AboutScreenView aboutView;
+    //private AboutScreenView aboutView;
 
-    public StartScreenPresenter(BlackJackGame blackJackGame, StartScreenView view, UISettings uiSettings, AboutScreenView aboutView) {
+    private InfoScreenView infoScreenView;
+
+    public StartScreenPresenter(BlackJackGame blackJackGame, StartScreenView view, UISettings uiSettings /*AboutScreenView aboutView*/) {
         this.blackJackGame = blackJackGame;
         this.view = view;
         this.uiSettings = uiSettings;
-        this.aboutView = aboutView;
         updateView();
         EventHandlers();
     }
@@ -42,11 +49,13 @@ public class StartScreenPresenter {
                     // // do nothing, if toURL-conversion fails, program can continue
                 }
                 msView.getScene().getWindow().sizeToScene();
-                msView.getScene().getWindow().setX(uiSettings.getResX()/20);
-                msView.getScene().getWindow().setY(uiSettings.getResY()/20);
-                msView.getScene().getWindow().setHeight(9 * uiSettings.getResY()/10);
-                msView.getScene().getWindow().setWidth(9 * uiSettings.getResX()/10);
+                msView.getScene().getWindow().setX(uiSettings.getResX() / 20);
+                msView.getScene().getWindow().setY(uiSettings.getResY() / 20);
+                msView.getScene().getWindow().setHeight(9 * uiSettings.getResY() / 10);
+                msView.getScene().getWindow().setWidth(9 * uiSettings.getResX() / 10);
                 msPresenter.windowsHandler();
+
+                startAlert();
             }
         });
     }
@@ -60,5 +69,23 @@ public class StartScreenPresenter {
                  stopWindow.setContentText("Try again after the program has started");
                  stopWindow.showAndWait();
                  event.consume(); } });
+    }
+
+    private void startAlert(){
+
+        // Alert to start the game
+        Alert startAlert = new Alert(Alert.AlertType.INFORMATION);
+        startAlert.setTitle("Ready?");
+        startAlert.setHeaderText("Welcome to BlackJack - Knights Of The Future!");
+        startAlert.setContentText("This is the information you need to start.");
+        ButtonType moreInfoBtn = new ButtonType("More Info", ButtonBar.ButtonData.HELP);
+        ButtonType startBtn = new ButtonType("Start", ButtonBar.ButtonData.OK_DONE);
+        startAlert.show();
+        if (startAlert.getResult() == moreInfoBtn) {
+            mainScreenPresenter.getInfoActionEvent();
+        } else if(startAlert.getResult() == startBtn) {
+            startAlert.close();
+            //showDealButton();
+        }
     }
 }
