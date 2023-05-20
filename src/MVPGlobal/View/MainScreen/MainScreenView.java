@@ -26,14 +26,6 @@ public class MainScreenView extends BorderPane  {
     private MenuItem infoMI;
     private UISettings uiSettings;
 
-    private Label saldoLabel;
-    private Label betAmountLabel;
-    private Label cardScoreLabel;
-    private Label saldoLabelPlayer;
-    private Label betAmountLabelPlayer;
-    private Label cardScorePlayer;
-
-
     private PlayerActionsView actionButtons;
 
     private BetView betButtons;
@@ -62,13 +54,6 @@ public class MainScreenView extends BorderPane  {
 
         actionButtons = new PlayerActionsView();
         betButtons = new BetView(uiSettings);
-
-        this.saldoLabel = new Label("Saldo: ");
-        this.betAmountLabel = new Label("Bet amount: ");
-        this.cardScoreLabel = new Label("Card Score: ");
-        this.saldoLabelPlayer = new Label("");
-        this.betAmountLabelPlayer = new Label("");
-        this.cardScorePlayer = new Label("");
 
         playerCardsView = new PlayerCardsView(uiSettings);
         dealerCardsView = new DealerCardsView(uiSettings);
