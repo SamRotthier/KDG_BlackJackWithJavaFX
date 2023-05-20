@@ -129,6 +129,12 @@ public class MainScreenView extends BorderPane  {
         return dealerCardsView;
     }
 
+    public WinLoseView getWinLoseView() {
+        return winLoseView;
+    }
+
+
+
     BetView getBetButtons(){return betButtons;}
     public SoundsView getSounds() {return sounds;}
 

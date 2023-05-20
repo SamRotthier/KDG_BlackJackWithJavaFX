@@ -41,6 +41,8 @@ public class MainScreenPresenter {
         updateView();
         EventHandlers();
         addEventHandlerPlayerActions();
+        view.getWinLoseView().setVisible(false);
+        view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
     }
 
     private void updateView() {
@@ -241,6 +243,11 @@ public class MainScreenPresenter {
                 try{
                     if (!valueString.isEmpty()) {
                         blackJackGame.txtSetBet(Integer.parseInt(valueString));
+                        if (blackJackGame.player1.getPlayerBet() < 0){
+                            view.getBetButtons().getArrowDown().setVisible(false);
+                        }else{
+                            view.getBetButtons().getArrowDown().setVisible(true);
+                        }
                     }
                 }
                 catch(NumberFormatException e){
@@ -258,6 +265,9 @@ public class MainScreenPresenter {
             public void handle(ActionEvent actionEvent) {
                 blackJackGame.btnAddBet();
                 view.getBetButtons().getBetAmount().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
+                if (blackJackGame.player1.getPlayerBet() > 0){
+                    view.getBetButtons().getArrowDown().setVisible(true);
+                }
             }
         });
         view.getBetButtons().getArrowDown().setOnAction(new EventHandler<ActionEvent>() {
@@ -265,6 +275,9 @@ public class MainScreenPresenter {
             public void handle(ActionEvent actionEvent) {
                 blackJackGame.btnSubBet();
                 view.getBetButtons().getBetAmount().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
+                if (blackJackGame.player1.getPlayerBet() == 0){
+                    view.getBetButtons().getArrowDown().setVisible(false);
+                }
             }
         });
         view.getActionButtons().getButtonDeal().setOnAction(new EventHandler<ActionEvent>() {

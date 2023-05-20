@@ -45,6 +45,7 @@ public class BetView extends VBox  {
         }
         catch(MalformedURLException ex){};
         this.arrowDown = new Button("", new ImageView(arrowDownIcon));
+        this.arrowDown.setVisible(false);
     }
 
     private void layoutNodes() {

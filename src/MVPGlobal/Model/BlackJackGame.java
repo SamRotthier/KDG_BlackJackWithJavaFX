@@ -76,8 +76,12 @@ import java.util.Scanner;
         }
 
         public void btnSubBet(){
+         if((player1.getPlayerBet()-5) >= 0){
          player1.setPlayerBet(player1.getPlayerBet()-5);
-        }
+        }else if((player1.getPlayerBet()-5) < 0){
+            player1.setPlayerBet(0);
+         }
+     }
 
         public void txtSetBet(int betAmount){
          player1.setPlayerBet(betAmount);
