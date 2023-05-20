@@ -13,10 +13,13 @@ import java.util.ArrayList;
                         //int cardToDraw = randomGenerator.nextInt(Deck.size());
                         Hand.add(Deck.get(Deck.size() - 1));
                         Deck.remove(Deck.size() - 1);
+                        checkAce();
+
                     } else {
                         DeckBuilder.PlayDeck(1);
                         Hand.add(Deck.get(Deck.size() - 1));
                         Deck.remove(Deck.size() - 1);
+                        checkAce();
                     }
                 }
             }
@@ -31,11 +34,13 @@ import java.util.ArrayList;
                      //int cardToDraw = randomGenerator.nextInt(Deck.size());
                      Hand.add(Deck.get(Deck.size() - 1)); // Deck.size() - 1) gets last card in the list (top of deck)
                      Deck.remove(Deck.size() - 1);
+                     checkAce();
                  }
                  else {
                      DeckBuilder.PlayDeck(1);
                      Hand.add(Deck.get(Deck.size() - 1)); // Deck.size() - 1) gets last card in the list (top of deck)
                      Deck.remove(Deck.size() - 1);
+                     checkAce();
                  }
          }
          catch (Exception e){
@@ -43,6 +48,17 @@ import java.util.ArrayList;
          }
      }
 
+     void checkAce(){
+         for(Card c: Hand) {
+             if (c.getCardNumb().equals("A")) { // if we don't want the ace to be reversable  && c.getCardValue() !=11
+                 if ((getTotalCardValue() + 11) > 21){
+                     c.setCardValue(1);
+                 }else {
+                     c.setCardValue(11);
+                 }
+             }
+         }
+     }
      public int getTotalCardValue(){
         int totalCardValue = 0;
         for (Card c: Hand) {

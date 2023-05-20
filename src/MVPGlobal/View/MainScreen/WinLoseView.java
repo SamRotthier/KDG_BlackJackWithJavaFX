@@ -23,6 +23,8 @@ public class WinLoseView extends VBox {
 
     private HBox buttonsGame;
 
+    private int i;
+
     public WinLoseView(/*UISettings uiSettings*/) {
         //this.uiSettings = uiSettings;
         initialiseNodes();
@@ -46,11 +48,14 @@ public class WinLoseView extends VBox {
         buttonsGame.setPadding(new Insets(40));
         buttonsGame.setAlignment(Pos.CENTER);
 
+        this.setAlignment(Pos.CENTER);
+        this.setSpacing(200);
+        this.getChildren().addAll(gameRound(i), buttonsGame);
     }
 
     //method
 
-    public Label gameRound(int i){
+   private Label gameRound(int i){
         if(i == 1){
             winGame.getStyleClass().add("win");
             winGame.setPadding(new Insets(70));
@@ -61,23 +66,22 @@ public class WinLoseView extends VBox {
             loseGame.setPadding(new Insets(70));
             return loseGame;
         }
-        else{
+        else if(i == 3){
             pushGame.getStyleClass().add("push");
             pushGame.setPadding(new Insets(70));
             return pushGame;
+        }else {
+           return null;
         }
     };
-
-    public void test(int i){
-        this.setAlignment(Pos.CENTER);
-        this.setSpacing(200);
-        this.getChildren().addAll(gameRound(i), buttonsGame);
-    }
-
 
 
     // Animation maken
 
     //Getters
 
+    //setter
+    public void setI(int i) {
+        this.i = i;
+    }
 }
