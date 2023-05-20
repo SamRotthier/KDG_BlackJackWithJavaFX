@@ -55,7 +55,7 @@ public class WinLoseView extends VBox {
 
     //method
 
-   private Label gameRound(int i){
+   public Label gameRound(int i){
         if(i == 1){
             winGame.getStyleClass().add("win");
             winGame.setPadding(new Insets(70));
@@ -77,7 +77,17 @@ public class WinLoseView extends VBox {
     // Animation maken
 
     //Getters
+    public Button getNextRound() {
+        return nextRound;
+    }
 
+    public Button getSaveGame() {
+        return saveGame;
+    }
+
+    public Button getQuitGame() {
+        return quitGame;
+    }
     //setter
     public void setI(int i) {
         this.i = i;

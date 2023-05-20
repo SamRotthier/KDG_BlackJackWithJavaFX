@@ -8,22 +8,11 @@ import java.util.Scanner;
      public Player player1 = new Player();
      public Dealer dealer1 = new Dealer();
     boolean keepPlaying = true;
-    ArrayList<Card> Deck = DeckBuilder.PlayDeck(1);
-
-     void gameHandler() throws InterruptedException {
-
-        keepPlaying = true;
-        while(keepPlaying) {
-            player1.dealCard(Deck);
-            dealer1.dealCard(Deck);
-            dealer1.toHitOrNotToHit(Deck);
-
-        }
-    }
+    ArrayList<Card> Deck = DeckBuilder.PlayDeck(2);
 
      public void dealingCards (){
          if (Deck.size() < 20){
-             Deck = DeckBuilder.PlayDeck(1);
+             Deck = DeckBuilder.PlayDeck(2);
          }
         player1.dealCard(Deck);
         player1.placeBet(player1.getPlayerBet());
@@ -32,7 +21,7 @@ import java.util.Scanner;
 
     public void btnHit (){
         if (Deck.size() < 10){
-            Deck = DeckBuilder.PlayDeck(1);
+            Deck = DeckBuilder.PlayDeck(2);
         }
          if (player1.getTotalCardValue() < 21) {
              player1.hitCard(Deck);
@@ -42,7 +31,7 @@ import java.util.Scanner;
     }
      public void btnDouble(){
          if (Deck.size() < 10){
-             Deck = DeckBuilder.PlayDeck(1);
+             Deck = DeckBuilder.PlayDeck(2);
          }
          if (player1.getTotalCardValue() < 21) {
          player1.playerDouble(Deck);
@@ -73,12 +62,20 @@ import java.util.Scanner;
              //System.out.println("No Winners");
          }
          //System.out.println("Do you wish to play another round? Yes or No");
-
          }
+     public String whoWon(){
+         int dealerScore = dealer1.getTotalCardValue();
+         int playerScore = player1.getTotalCardValue();
+         if((dealerScore == 21 && playerScore != 21) ||(dealerScore > playerScore && dealerScore <22)|| (playerScore>21 && dealerScore <22)){
+             return "Dealer";
+         }
+         else if((playerScore == 21 && dealerScore != 21 )||(playerScore > dealerScore && playerScore <22) || (dealerScore>21 && playerScore <22)){
+             return "Player";
+         } else {
+             return "Push";
+         }
+     }
 
-        public void savingStats(){
-
-        }
 
         public void btnAddBet(){
          player1.setPlayerBet(player1.getPlayerBet()+5);

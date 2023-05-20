@@ -40,7 +40,6 @@ import java.util.ArrayList;
         return StartDeck;
     }
      static ArrayList<Card> ShuffleDeck(ArrayList<Card> StartDeck){
-        //ArrayList<Card> ShuffledDeck = new ArrayList<>();
         for(int i = StartDeck.size()-1; i>0;i--){
             int j2= (int) Math.floor(Math.random() * (i+1));
             Card j = StartDeck.get(j2);
@@ -52,12 +51,16 @@ import java.util.ArrayList;
     }
 
      static ArrayList<Card> PlayDeck(int amountDeck){
-        //ArrayList<Card> startDeck = DeckBuilder.AssemblingDeck();
-        //ArrayList<Card> playDeck = DeckBuilder.ShuffleDeck(startDeck);
-        //return playDeck;
+         ArrayList<Card> startDeck = AssemblingDeck();
+         ArrayList<Card> playDeck = new ArrayList<>();
+         for(int i = 1; i<=amountDeck;i++) {
+             playDeck.addAll(ShuffleDeck(startDeck));
+         }
+        return playDeck;
         //Commented code is for easily making bigger decks with the amount deck int
         //ArrayList<Card> StartDeck = AssemblingDeck();
-        return ShuffleDeck(AssemblingDeck());
+         ////ArrayList<Card> playDeck = ShuffleDeck(startDeck);
+        //return ShuffleDeck(AssemblingDeck());
     }
 
 
