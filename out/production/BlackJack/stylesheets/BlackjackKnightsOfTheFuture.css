@@ -5,17 +5,23 @@
 .root {
     -fx-font-family: 'Poppins';
     -fx-font-size: 16px;
-
     -fx-padding: 15px;
     -fx-border-width: 2px;
     -fx-border-insets: 5px;
     -fx-border-radius: 5px;
 }
 
+/* TEXT */
 .label {
     -fx-text-fill: white;
 }
 
+.text-field{
+    -fx-background-color: #22222c;
+    -fx-text-fill: white;
+}
+
+/* BACKGROUND COLOR */
 .menu-bar{
     -fx-background-color: #22222c;
 }
@@ -24,7 +30,7 @@
     -fx-background-color: #22222c;
 }
 
-
+/* BUTTONS */
 
 .button{
     -fx-pref-width: 90px;
@@ -39,11 +45,7 @@
     -fx-text-fill: #22222c;
 }
 
-.text-field{
-    -fx-background-color: #22222c;
-    -fx-text-fill: white;
-}
-
+/* PROGRESS BAR */
 .progressPane{
     -fx-background-color: #acfbfc;
 }
@@ -96,9 +98,47 @@
 }
 
 .lose{
-    -fx-text-fill: #961914;
+    -fx-text-fill: #e43f3a;
     -fx-font-size: 40px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0, 5, 5);
 }
 
+/* SETTINGS */
+.settings{
+    /*-fx-background-color: #dec390; */
+    -fx-background-color: #22222c;
+    -fx-padding: 30px;
+}
 
+.settingsLbl{
+    /*-fx-text-fill: #22222c; */
+    -fx-padding: 5px, 0, 0, 0;
+}
+
+.settingsBtn{
+    -fx-pref-width: 150px;
+}
+
+.settingsTitle{
+    -fx-text-fill: #e43f3a;
+    -fx-font-size: 25px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 20, 0, 5, 5);
+    -fx-padding: 50px 10px 10px 10px ;
+}
+
+.slider .axis{
+    -fx-tick-label-fill: white;
+}
+
+.slider .track{
+    -fx-background-color: #22222c;
+    -fx-effect: dropshadow(gaussian, rgba(172, 251, 252, 1), 25, 0, 0, 0);
+}
+.slider .thumb{
+    -fx-background-color: #acfbfc;
+    -fx-effect: dropshadow(gaussian, rgba(172, 251, 252, 0.5), 25, 0, 0, 0);
+}
+
+.backgroundField{
+    -fx-background-color: #5c4d47 !important;
+}

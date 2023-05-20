@@ -61,6 +61,8 @@ public class SettingsPresenter {
             public void handle(MouseEvent event) { handleCloseEvent(event);
             }
         });
+
+        view.getSoundsView().
     }
 
     public void windowsHandler() {
