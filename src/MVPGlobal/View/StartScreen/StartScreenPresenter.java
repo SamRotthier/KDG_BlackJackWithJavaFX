@@ -2,21 +2,14 @@ package MVPGlobal.View.StartScreen;
 
 import MVPGlobal.Model.*;
 import MVPGlobal.View.*;
-import MVPGlobal.View.AboutScreen.AboutScreenView;
 import MVPGlobal.View.AlertScreen.AlertBlackjack;
 import MVPGlobal.View.InfoScreen.InfoScreenView;
 import MVPGlobal.View.MainScreen.MainScreenPresenter;
-import MVPGlobal.View.MainScreen.MainScreenView;
+import MVPGlobal.View.beginScreen.BeginScreenPresenter;
+import MVPGlobal.View.beginScreen.BeginScreenView;
 import javafx.event.*;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DialogPane;
-import javafx.scene.layout.Region;
 import javafx.stage.WindowEvent;
-
-import javax.swing.*;
-import java.net.MalformedURLException;
 
 public class StartScreenPresenter {
 
@@ -24,11 +17,9 @@ public class StartScreenPresenter {
     private StartScreenView view;
     private MainScreenPresenter mainScreenPresenter;
     private UISettings uiSettings;
-    //private AboutScreenView aboutView;
 
-    private InfoScreenView infoScreenView;
 
-    public StartScreenPresenter(BlackJackGame blackJackGame, StartScreenView view, UISettings uiSettings /*AboutScreenView aboutView*/) {
+    public StartScreenPresenter(BlackJackGame blackJackGame, StartScreenView view, UISettings uiSettings) {
         this.blackJackGame = blackJackGame;
         this.view = view;
         this.uiSettings = uiSettings;
@@ -43,22 +34,14 @@ public class StartScreenPresenter {
         view.getTransition().setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MainScreenView msView = new MainScreenView(uiSettings);
-                MainScreenPresenter msPresenter = new MainScreenPresenter(blackJackGame, msView, uiSettings);
-                view.getScene().setRoot(msView);
-                try {
-                    msView.getScene().getStylesheets().add(uiSettings.getStyleSheetPath().toUri().toURL().toString());
-                } catch (MalformedURLException ex) {
-                    // // do nothing, if toURL-conversion fails, program can continue
-                }
-                msView.getScene().getWindow().sizeToScene();
-                msView.getScene().getWindow().setX(uiSettings.getResX() / 20);
-                msView.getScene().getWindow().setY(uiSettings.getResY() / 20);
-                msView.getScene().getWindow().setHeight(9 * uiSettings.getResY() / 10);
-                msView.getScene().getWindow().setWidth(9 * uiSettings.getResX() / 10);
-                msPresenter.windowsHandler();
+                BeginScreenView beginView = new BeginScreenView(uiSettings);
+                BeginScreenPresenter bsPresenter = new BeginScreenPresenter(blackJackGame, beginView, uiSettings);
+                view.getScene().setRoot(beginView);
+                beginView.getScene().getWindow().sizeToScene();
+                beginView.getScene().getWindow().setHeight(uiSettings.getResY());
+                beginView.getScene().getWindow().setWidth(uiSettings.getResX());
 
-                startAlert();
+                bsPresenter.windowsHandler();
             }
         });
     }
@@ -70,13 +53,5 @@ public class StartScreenPresenter {
                  AlertBlackjack stopWindow = new AlertBlackjack(Alert.AlertType.ERROR,"Error" ,"You can not yet close the application.", "Try again after the program has started","OK");
                  stopWindow.showAndWait();
                  event.consume(); } });
-    }
-
-    private void startAlert(){
-
-        // Alert to start the game
-        AlertBlackjack startAlert = new AlertBlackjack(Alert.AlertType.INFORMATION, "Ready?","Welcome to BlackJack - Knights Of The Future!", "This is the information you need to start.", "START");
-        startAlert.show();
-
     }
 }

@@ -18,8 +18,7 @@ public class MVPMain extends Application {
         UISettings uiSettings = new UISettings();
         BlackJackGame blackJackGame = new BlackJackGame();
         StartScreenView view = new StartScreenView(uiSettings);
-        AboutScreenView aboutView = new AboutScreenView(uiSettings);
-        StartScreenPresenter presenter = new StartScreenPresenter(blackJackGame, view, uiSettings /*aboutView*/);
+        StartScreenPresenter presenter = new StartScreenPresenter(blackJackGame, view, uiSettings);
         Scene scene = new Scene(view);
         if (uiSettings.styleSheetAvailable()){
             try {
@@ -29,8 +28,9 @@ public class MVPMain extends Application {
             }
         }
         primaryStage.setScene(scene);
-        primaryStage.setHeight(uiSettings.getLowestRes()/2);
-        primaryStage.setWidth(3*uiSettings.getLowestRes()/4);
+        primaryStage.setHeight(uiSettings.getLowestRes());
+        primaryStage.setWidth(uiSettings.getLowestRes());
+        //primaryStage.setFullScreen(true);
         primaryStage.setTitle(uiSettings.getApplicationName());
         if (Files.exists(uiSettings.getApplicationIconPath())) {
              try {

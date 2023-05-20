@@ -31,8 +31,6 @@ public class InfoScreenView extends BorderPane{
 
     private void layoutNodes() {
         setCenter(InfoText);
-        InfoText.setPrefWidth(1000);
-        InfoText.setPrefHeight(1000);
         InfoText.setWrapText(true);
         InfoText.setEditable(false);
 
@@ -42,14 +40,10 @@ public class InfoScreenView extends BorderPane{
         }
         catch (MalformedURLException ex){
         }
-        //InfoText.setPrefWidth(uiSettings.getLowestRes() / 2);
-        //InfoText.setPrefHeight(uiSettings.getLowestRes() / 2);
         setPadding(new Insets(uiSettings.getInsetsMargin()));
         BorderPane.setAlignment(okButton, Pos.CENTER_RIGHT);
         BorderPane.setMargin(okButton, new Insets(uiSettings.getInsetsMargin(), 0, 0, 0));
         setBottom(okButton);
-        setPrefWidth(uiSettings.getLowestRes());
-        setPrefHeight(uiSettings.getLowestRes());
     }
 
     TextArea getInfoText () {return InfoText;}

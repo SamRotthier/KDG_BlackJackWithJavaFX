@@ -95,9 +95,9 @@ public class MainScreenView extends BorderPane  {
 
         // Center
         VBox cardsPlayerDealerBox = new VBox();
-        cardsPlayerDealerBox.setSpacing(200);
+        cardsPlayerDealerBox.setSpacing(250);
         cardsPlayerDealerBox.setTranslateX(-30);
-        cardsPlayerDealerBox.setPadding(new Insets(20));
+        cardsPlayerDealerBox.setPadding(new Insets(100, 20, 20, 20));
         cardsPlayerDealerBox.setAlignment(Pos.CENTER_LEFT);
         cardsPlayerDealerBox.getChildren().addAll(dealerCardsView, playerCardsView);
 

@@ -31,6 +31,9 @@ public class StartScreenView extends BorderPane  {
 
     private AudioClip blackjackStartSound;
 
+    private Label devs;
+    private Label version;
+
 
     public StartScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -46,6 +49,8 @@ public class StartScreenView extends BorderPane  {
         this.mainScreenView = new MainScreenView(uiSettings);
         String soundFile = "resources/music/BlackjackStartTest.mp3";
         this.blackjackStartSound = new AudioClip(new File(soundFile).toURI().toString());
+        devs = new Label("This game was developed by Sam Rotthier and Matthias Vermeiren");
+        version = new Label("Version 3");
     }
 
     private void layoutNodes() {
@@ -58,6 +63,11 @@ public class StartScreenView extends BorderPane  {
 
         //music
         //blackjackStartSound.play();
+
+        //Css
+        devs.getStyleClass().add("heading2");
+        version.getStyleClass().add("heading2");
+
 
 
         int ImageSize = uiSettings.getLowestRes()/5;
@@ -97,7 +107,7 @@ public class StartScreenView extends BorderPane  {
         splash.setSpacing(30);
         splash.setPadding(new Insets(50));
 
-        splash.getChildren().addAll(centralImage, new Label("This game was developed by Sam Rotthier and Matthias Vermeiren"), new Label("Version 1.5"));
+        splash.getChildren().addAll(centralImage,devs, version);
         this.setCenter(splash);
 
         this.setBottom(progressPane);
