@@ -272,9 +272,9 @@ public class MainScreenPresenter {
             public void handle(ActionEvent actionEvent) {
                 if (!view.getBetButtons().getBetAmount().getText().isEmpty() && blackJackGame.player1.getPlayerBet() > 0 ) {
                 blackJackGame.dealingCards();
-                view.getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
-                view.getBetAmountLabelPlayer().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
-                view.getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
+                view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+                view.getBottomLabels().getBetAmountLabelPlayer().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
+                view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
                 view.getSounds().playDealCard();
@@ -302,7 +302,7 @@ public class MainScreenPresenter {
             public void handle(ActionEvent actionEvent) {
                 if (blackJackGame.player1.getTotalCardValue() < 22) {
                     blackJackGame.btnHit();
-                    view.getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
+                    view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                     view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size() - 1));
                     view.getPlayerCardsView().addCard();
                     view.getSounds().playDealCard();
@@ -336,7 +336,7 @@ public class MainScreenPresenter {
                 view.getActionButtons().getButtonDouble().setVisible(false);
                 view.getActionButtons().getButtonStand().setVisible(false);
                 view.getActionButtons().getbuttonNextRound().setVisible(true);
-                view.getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+                view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
             }
         });
 

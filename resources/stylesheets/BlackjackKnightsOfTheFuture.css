@@ -66,4 +66,15 @@
     -fx-text-fill: #22222c;
 }
 
+/* WIN OR LOSE */
+.win{
+    -fx-text-fill:  #dec390;
+    -fx-font-size: 30px;
+}
+
+.lose{
+    -fx-text-fill: #961914;
+    -fx-font-size: 30px;
+}
+
 

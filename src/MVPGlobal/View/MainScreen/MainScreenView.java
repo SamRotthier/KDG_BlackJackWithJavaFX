@@ -42,8 +42,9 @@ public class MainScreenView extends BorderPane  {
 
     private PlayerCardsView playerCardsView;
 
-
     private DealerCardsView dealerCardsView;
+
+    private BottomLabelsView bottomLabels;
 
     public MainScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -72,6 +73,7 @@ public class MainScreenView extends BorderPane  {
         playerCardsView = new PlayerCardsView(uiSettings);
         dealerCardsView = new DealerCardsView(uiSettings);
         sounds = new SoundsView(uiSettings);
+        bottomLabels = new BottomLabelsView();
     }
 
     private void layoutNodes() {
@@ -100,16 +102,8 @@ public class MainScreenView extends BorderPane  {
 
 
         //Bottom
-        HBox saldoBetBox = new HBox();
-        saldoBetBox.setSpacing(100);
-        saldoBetBox.setPadding(new Insets(7, 20, 7, 20));
-        BackgroundFill bottomFill = new BackgroundFill(Color.web("#22222c"), CornerRadii.EMPTY, Insets.EMPTY);
-        Background bottomBackground = new Background(bottomFill);
-        saldoBetBox.setBackground(bottomBackground);
 
-
-        saldoBetBox.getChildren().addAll(saldoLabel, saldoLabelPlayer, betAmountLabel, betAmountLabelPlayer,cardScoreLabel,cardScorePlayer);
-        this.setBottom(saldoBetBox);
+        this.setBottom(bottomLabels);
 
         // Center Cards
         VBox cardsPlayerDealerBox = new VBox();
@@ -147,15 +141,7 @@ public class MainScreenView extends BorderPane  {
     BetView getBetButtons(){return betButtons;}
     public SoundsView getSounds() {return sounds;}
 
-    public Label getSaldoLabelPlayer() {
-        return saldoLabelPlayer;
-    }
-
-    public Label getBetAmountLabelPlayer() {
-        return betAmountLabelPlayer;
-    }
-
-    public Label getCardScorePlayer() {
-        return cardScorePlayer;
+    public BottomLabelsView getBottomLabels() {
+        return bottomLabels;
     }
 }
