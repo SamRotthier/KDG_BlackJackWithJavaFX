@@ -35,7 +35,11 @@ import java.util.Scanner;
          }
     }
      public void btnDouble(){
+         if (player1.getTotalCardValue() < 21) {
          player1.playerDouble(Deck);
+         }else{
+             checkingScore();
+         }
      }
     public void btnStand(){
          dealer1.toHitOrNotToHit(Deck);
