@@ -66,12 +66,10 @@ public class WinLoseView extends VBox {
             loseGame.setPadding(new Insets(70));
             return loseGame;
         }
-        else if(i == 3){
+        else{
             pushGame.getStyleClass().add("push");
             pushGame.setPadding(new Insets(70));
             return pushGame;
-        }else {
-           return null;
         }
     };
 
