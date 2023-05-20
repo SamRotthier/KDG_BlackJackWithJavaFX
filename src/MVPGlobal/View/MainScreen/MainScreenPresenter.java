@@ -3,6 +3,7 @@ package MVPGlobal.View.MainScreen;
 
 import MVPGlobal.Model.*;
 import MVPGlobal.View.AboutScreen.*;
+import MVPGlobal.View.AlertScreen.AlertBlackjack;
 import MVPGlobal.View.InfoScreen.*;
 import MVPGlobal.View.SettingsScreen.*;
 import MVPGlobal.View.UISettings;
@@ -118,9 +119,7 @@ public class MainScreenPresenter {
                         //
                     }
                 } else {
-                    Alert errorWindow = new Alert(AlertType.ERROR);
-                    errorWindow.setHeaderText("Problem with the selected input file:");
-                    errorWindow.setContentText("File is not readable");
+                    AlertBlackjack errorWindow = new AlertBlackjack(AlertType.ERROR, "ERROR", "Problem with the selected input file:", "File is not readable", "OK");
                     errorWindow.showAndWait();
                 }
             }
@@ -151,9 +150,7 @@ public class MainScreenPresenter {
                         //
                     }
                 } else {
-                    Alert errorWindow = new Alert(AlertType.ERROR);
-                    errorWindow.setHeaderText("Problem with the selected output file:");
-                    errorWindow.setContentText("File is not writable");
+                    AlertBlackjack errorWindow = new AlertBlackjack(AlertType.ERROR, "ERROR", "Problem with the selected output file: ", "File is not writable", "OK");
                     errorWindow.showAndWait();
                 }
             }
@@ -251,10 +248,7 @@ public class MainScreenPresenter {
                     }
                 }
                 catch(NumberFormatException e){
-                    Alert alertError = new Alert(AlertType.ERROR);
-                    alertError.setTitle("ERROR");
-                    alertError.setHeaderText("Invalid bet!");
-                    alertError.setContentText("Please enter a number. No letters or symbols are allowed.");
+                    AlertBlackjack alertError = new AlertBlackjack(AlertType.ERROR, "ERROR", "Invalid bet!","Please enter a number. No letters or symbols are allowed.", "SORRY");
                     alertError.showAndWait();
                 }
             }
@@ -301,11 +295,8 @@ public class MainScreenPresenter {
                 view.getActionButtons().getButtonStand().setVisible(true);
                 view.getActionButtons().getButtonDeal().setVisible(false);
                 }else{
-                    Alert alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Issues while dealing");
-                    alert.setContentText("Please give betting amount");
-                    alert.showAndWait();
+                    AlertBlackjack alertDeal = new AlertBlackjack(AlertType.ERROR, "ERROR", "Issues while dealing","Please give betting amount", "OK");
+                    alertDeal.showAndWait();
                 }
             }
         });
@@ -320,11 +311,8 @@ public class MainScreenPresenter {
                     view.getPlayerCardsView().addCard();
                     view.getSounds().playDealCard();
                }else{
-                   Alert alert = new Alert(AlertType.INFORMATION);
-                   alert.setTitle("Lost");
-                   alert.setHeaderText("Card value over 21");
-                   alert.setContentText("Your card value is over 21. You Lost!");
-                   alert.showAndWait();
+                    AlertBlackjack alertLost = new AlertBlackjack(AlertType.INFORMATION, "LOST", "Card value over 21","Your card value is over 21. You Lost!", "OK");
+                    alertLost.showAndWait();
                }
             }
         });
@@ -339,11 +327,8 @@ public class MainScreenPresenter {
                 view.getPlayerCardsView().addCard();
                 view.getSounds().playDealCard();
                 }else{
-                    Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Lost");
-                    alert.setHeaderText("Card value over 21");
-                    alert.setContentText("Your card value is over 21. You Lost!");
-                    alert.showAndWait();
+                    AlertBlackjack alertLost = new AlertBlackjack(AlertType.INFORMATION, "LOST", "Card value over 21", "Your card value is over 21. You Lost!", "OK");
+                    alertLost.showAndWait();
                 }
             }
         });
@@ -383,10 +368,7 @@ public class MainScreenPresenter {
     }
 
     private void handleCloseEvent(Event event){
-        final Alert stopWindow = new Alert(AlertType.CONFIRMATION);
-        stopWindow.setHeaderText("You're closing the application.");
-        stopWindow.setContentText("Are you sure? Unsaved data may be lost.");
-        stopWindow.setTitle("WARNING!");
+        AlertBlackjack stopWindow = new AlertBlackjack(AlertType.CONFIRMATION, "TIRED OF LOSING?", "You're closing the application.", "Are you sure? Unsaved data may be lost.", "");
         stopWindow.getButtonTypes().clear();
         ButtonType noButton = new ButtonType("No");
         ButtonType yesButton = new ButtonType("Yes");

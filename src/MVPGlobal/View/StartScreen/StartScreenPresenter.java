@@ -67,11 +67,7 @@ public class StartScreenPresenter {
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
              @Override
              public void handle(WindowEvent event) {
-                 AlertBlackjack stopWindow = new AlertBlackjack(Alert.AlertType.ERROR, "Try again after the program has started","You can not yet close the application.", "OK");
-
-                 /*final Alert stopWindow = new Alert(Alert.AlertType.ERROR);
-                 stopWindow.setHeaderText("You can not yet close the application.");
-                 stopWindow.setContentText("Try again after the program has started");*/
+                 AlertBlackjack stopWindow = new AlertBlackjack(Alert.AlertType.ERROR,"Error" ,"You can not yet close the application.", "Try again after the program has started","OK");
                  stopWindow.showAndWait();
                  event.consume(); } });
     }
@@ -79,25 +75,8 @@ public class StartScreenPresenter {
     private void startAlert(){
 
         // Alert to start the game
-        Alert startAlert = new Alert(Alert.AlertType.INFORMATION);
-        startAlert.setTitle("Ready?");
-        startAlert.setHeaderText("Welcome to BlackJack - Knights Of The Future!");
-        startAlert.setContentText("This is the information you need to start.");
-        ButtonType moreInfoBtn = new ButtonType("More Info", ButtonBar.ButtonData.HELP);
-        ButtonType startBtn = new ButtonType("Start", ButtonBar.ButtonData.OK_DONE);
-        startAlert.setResizable(true);
-        startAlert.getDialogPane().setPrefSize(500,400);
+        AlertBlackjack startAlert = new AlertBlackjack(Alert.AlertType.INFORMATION, "Ready?","Welcome to BlackJack - Knights Of The Future!", "This is the information you need to start.", "START");
         startAlert.show();
 
-        DialogPane dialogPane = startAlert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/stylesheets/BlackjackKnightsOfTheFuture.css").toExternalForm());
-        dialogPane.getStyleClass().add("dialog");
-
-        if (startAlert.getResult() == moreInfoBtn) {
-            mainScreenPresenter.getInfoActionEvent();
-        } else if(startAlert.getResult() == startBtn) {
-            startAlert.close();
-            //showDealButton();
-        }
     }
 }

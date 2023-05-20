@@ -66,6 +66,10 @@
     -fx-text-fill: #22222c;
 }
 
+.dialog > *.content{
+    -fx-padding: 100, 0, 100, 0;
+}
+
 /* WIN OR LOSE */
 .win{
     -fx-text-fill:  #dec390;
