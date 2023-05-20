@@ -36,7 +36,7 @@
 
 .button:hover{
     -fx-background-color: #acfbfc;
-    -fx-text-fill: #961914;
+    -fx-text-fill: #22222c;
 }
 
 .text-field{
@@ -55,8 +55,15 @@
 
 
 /* ALERTS */
-.alert{
+.dialog{
     -fx-background-color:#22222c;
+}
+.dialog > *.header-panel{
+    -fx-background-color: #dec390;
+}
+.dialog > *.header-panel *.label{
+    -fx-background-color: #dec390;
+    -fx-text-fill: #22222c;
 }
 
 

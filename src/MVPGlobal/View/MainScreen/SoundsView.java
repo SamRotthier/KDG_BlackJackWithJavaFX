@@ -39,6 +39,13 @@ public class SoundsView{
         }
     }
 
+/*    public void playBlackjackStart(){
+        //try{
+
+        //}
+        //catch(MalformedURLException ex){}
+    } */
+
     public void playDealCard(){
         Random random = new Random();
         int dealSoundNumber = random.nextInt(NUM_DEAL) + 1;

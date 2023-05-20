@@ -81,6 +81,9 @@ public class MainScreenView extends BorderPane  {
         }
         catch (MalformedURLException ex){}
 
+        // music
+        //getSounds().playBackgroundMusic();
+
         
         Menu menuFile = new Menu("File",null,loadMI, saveMI, new SeparatorMenuItem(), settingsMI, new SeparatorMenuItem(),exitMI);
         Menu menuHelp = new Menu("Help",null, aboutMI, infoMI);
@@ -142,7 +145,7 @@ public class MainScreenView extends BorderPane  {
     }
 
     BetView getBetButtons(){return betButtons;}
-    SoundsView getSounds() {return sounds;}
+    public SoundsView getSounds() {return sounds;}
 
     public Label getSaldoLabelPlayer() {
         return saldoLabelPlayer;

@@ -10,6 +10,8 @@ import javafx.event.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
+import javafx.scene.layout.Region;
 import javafx.stage.WindowEvent;
 
 import javax.swing.*;
@@ -80,7 +82,14 @@ public class StartScreenPresenter {
         startAlert.setContentText("This is the information you need to start.");
         ButtonType moreInfoBtn = new ButtonType("More Info", ButtonBar.ButtonData.HELP);
         ButtonType startBtn = new ButtonType("Start", ButtonBar.ButtonData.OK_DONE);
+        startAlert.setResizable(true);
+        startAlert.getDialogPane().setPrefSize(500,400);
         startAlert.show();
+
+        DialogPane dialogPane = startAlert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("/stylesheets/BlackjackKnightsOfTheFuture.css").toExternalForm());
+        dialogPane.getStyleClass().add("dialog");
+
         if (startAlert.getResult() == moreInfoBtn) {
             mainScreenPresenter.getInfoActionEvent();
         } else if(startAlert.getResult() == startBtn) {

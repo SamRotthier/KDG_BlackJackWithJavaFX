@@ -1,5 +1,6 @@
 package MVPGlobal.View.StartScreen;
 
+import MVPGlobal.View.MainScreen.MainScreenView;
 import MVPGlobal.View.UISettings;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
@@ -10,9 +11,11 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 
@@ -22,8 +25,11 @@ public class StartScreenView extends BorderPane  {
     private Label timeDisplay;
     private ProgressBar timeProgress;
     private StartScreenTransition trans;
+    private MainScreenView mainScreenView;
 
     private ImageView centralImage;
+
+    private AudioClip blackjackStartSound;
 
 
     public StartScreenView(UISettings uiSettings) {
@@ -37,6 +43,9 @@ public class StartScreenView extends BorderPane  {
         this.timeDisplay = new Label("Loading: 0.0");
         this.timeProgress = new ProgressBar();
         this.centralImage = new ImageView();
+        this.mainScreenView = new MainScreenView(uiSettings);
+        String soundFile = "resources/music/BlackjackStartTest.mp3";
+        this.blackjackStartSound = new AudioClip(new File(soundFile).toURI().toString());
     }
 
     private void layoutNodes() {
@@ -46,6 +55,9 @@ public class StartScreenView extends BorderPane  {
         }
         catch (MalformedURLException ex){
         }
+
+        //music
+        //blackjackStartSound.play();
 
 
         int ImageSize = uiSettings.getLowestRes()/5;
@@ -100,7 +112,7 @@ public class StartScreenView extends BorderPane  {
     StartScreenTransition getTransition() {return trans;}
 
     private void animate() {
-        trans = new StartScreenTransition(this,4);
+        trans = new StartScreenTransition(this,5);
         trans.play();
 
         // logo image animation
