@@ -319,10 +319,18 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonDouble().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                if (blackJackGame.player1.getTotalCardValue() < 22) {
                 blackJackGame.btnDouble();
                 view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
                 view.getPlayerCardsView().addCard();
                 view.getSounds().playDealCard();
+                }else{
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Lost");
+                    alert.setHeaderText("Card value over 21");
+                    alert.setContentText("Your card value is over 21. You Lost!");
+                    alert.showAndWait();
+                }
             }
         });
 
