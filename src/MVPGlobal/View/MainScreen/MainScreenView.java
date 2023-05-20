@@ -102,7 +102,7 @@ public class MainScreenView extends BorderPane  {
         cardsPlayerDealerBox.getChildren().addAll(dealerCardsView, playerCardsView);
 
         StackPane testPane = new StackPane();
-        testPane.getChildren().addAll(cardsPlayerDealerBox,winLoseView.test(1));
+        testPane.getChildren().addAll(cardsPlayerDealerBox,winLoseView);
 
         this.setCenter(testPane);
 

@@ -3,6 +3,7 @@ package MVPGlobal.View.StartScreen;
 import MVPGlobal.Model.*;
 import MVPGlobal.View.*;
 import MVPGlobal.View.AboutScreen.AboutScreenView;
+import MVPGlobal.View.AlertScreen.AlertBlackjack;
 import MVPGlobal.View.InfoScreen.InfoScreenView;
 import MVPGlobal.View.MainScreen.MainScreenPresenter;
 import MVPGlobal.View.MainScreen.MainScreenView;
@@ -66,9 +67,11 @@ public class StartScreenPresenter {
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
              @Override
              public void handle(WindowEvent event) {
-                 final Alert stopWindow = new Alert(Alert.AlertType.ERROR);
+                 AlertBlackjack stopWindow = new AlertBlackjack(Alert.AlertType.ERROR, "Try again after the program has started","You can not yet close the application.", "OK");
+
+                 /*final Alert stopWindow = new Alert(Alert.AlertType.ERROR);
                  stopWindow.setHeaderText("You can not yet close the application.");
-                 stopWindow.setContentText("Try again after the program has started");
+                 stopWindow.setContentText("Try again after the program has started");*/
                  stopWindow.showAndWait();
                  event.consume(); } });
     }
