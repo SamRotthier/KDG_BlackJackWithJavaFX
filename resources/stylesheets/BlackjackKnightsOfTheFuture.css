@@ -12,7 +12,7 @@
     -fx-border-radius: 5px;
 }
 
-.label{
+.label {
     -fx-text-fill: white;
 }
 
@@ -69,12 +69,15 @@
 /* WIN OR LOSE */
 .win{
     -fx-text-fill:  #dec390;
-    -fx-font-size: 30px;
+    -fx-font-size: 40px;
+    /*-fx-effect: dropshadow(gaussian, rgba(172, 251, 252, 1), 100, 0, 15, 15);*/
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 20, 0, 5, 5);
 }
 
 .lose{
     -fx-text-fill: #961914;
     -fx-font-size: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0, 5, 5);
 }
 
 

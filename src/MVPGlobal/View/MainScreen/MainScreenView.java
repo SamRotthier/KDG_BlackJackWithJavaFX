@@ -38,6 +38,8 @@ public class MainScreenView extends BorderPane  {
 
     private BottomLabelsView bottomLabels;
 
+    private WinLoseView winLoseView;
+
     public MainScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
@@ -59,6 +61,7 @@ public class MainScreenView extends BorderPane  {
         dealerCardsView = new DealerCardsView(uiSettings);
         sounds = new SoundsView(uiSettings);
         bottomLabels = new BottomLabelsView();
+        winLoseView = new WinLoseView();
     }
 
     private void layoutNodes() {
@@ -90,7 +93,7 @@ public class MainScreenView extends BorderPane  {
 
         this.setBottom(bottomLabels);
 
-        // Center Cards
+        // Center
         VBox cardsPlayerDealerBox = new VBox();
         cardsPlayerDealerBox.setSpacing(200);
         cardsPlayerDealerBox.setTranslateX(-30);
@@ -98,7 +101,10 @@ public class MainScreenView extends BorderPane  {
         cardsPlayerDealerBox.setAlignment(Pos.CENTER_LEFT);
         cardsPlayerDealerBox.getChildren().addAll(dealerCardsView, playerCardsView);
 
-        this.setCenter(cardsPlayerDealerBox);
+        StackPane testPane = new StackPane();
+        testPane.getChildren().addAll(cardsPlayerDealerBox,winLoseView);
+
+        this.setCenter(testPane);
 
     }
 
