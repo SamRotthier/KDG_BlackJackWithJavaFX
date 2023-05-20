@@ -12,6 +12,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 
+import javax.management.loading.PrivateClassLoader;
 import java.net.MalformedURLException;
 
 import static javafx.scene.paint.Color.*;
@@ -38,6 +39,8 @@ public class MainScreenView extends BorderPane  {
 
     private BottomLabelsView bottomLabels;
 
+    private VBox cardsPlayerDealerBox;
+
     private WinLoseView winLoseView;
 
     public MainScreenView(UISettings uiSettings) {
@@ -61,6 +64,7 @@ public class MainScreenView extends BorderPane  {
         dealerCardsView = new DealerCardsView(uiSettings);
         sounds = new SoundsView(uiSettings);
         bottomLabels = new BottomLabelsView();
+        cardsPlayerDealerBox = new VBox();
         winLoseView = new WinLoseView();
     }
 
@@ -94,19 +98,20 @@ public class MainScreenView extends BorderPane  {
         this.setBottom(bottomLabels);
 
         // Center
-        VBox cardsPlayerDealerBox = new VBox();
-        cardsPlayerDealerBox.setSpacing(220);
+        cardsPlayerDealerBox.setSpacing(200);
         cardsPlayerDealerBox.setTranslateX(-30);
-        cardsPlayerDealerBox.setPadding(new Insets(60, 20, 20, 20));
+        cardsPlayerDealerBox.setPadding(new Insets(50, 20, 20, 20));
         cardsPlayerDealerBox.setAlignment(Pos.CENTER_LEFT);
         cardsPlayerDealerBox.getChildren().addAll(dealerCardsView, playerCardsView);
 
-        StackPane testPane = new StackPane();
-        testPane.getChildren().addAll(cardsPlayerDealerBox,winLoseView);
+        StackPane centerPane = new StackPane();
+        centerPane.getChildren().addAll(cardsPlayerDealerBox,winLoseView);
 
-        this.setCenter(testPane);
+        this.setCenter(centerPane);
 
     }
+
+
 
     MenuItem getExitItem() {return exitMI;}
 
@@ -129,6 +134,9 @@ public class MainScreenView extends BorderPane  {
         return dealerCardsView;
     }
 
+    public VBox getCardsPlayerDealerBox() {
+        return cardsPlayerDealerBox;
+    }
     public WinLoseView getWinLoseView() {
         return winLoseView;
     }

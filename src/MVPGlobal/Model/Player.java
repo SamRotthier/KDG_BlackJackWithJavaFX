@@ -51,8 +51,8 @@ public class Player extends CardHandler {
     }
 
     //setter
-     void setBank(int bank) {
-        bank = bank;
+     public void setBank(int bank) {
+        this.bank = bank;
     }
 
      void setPlayerBet(int playerBet) {

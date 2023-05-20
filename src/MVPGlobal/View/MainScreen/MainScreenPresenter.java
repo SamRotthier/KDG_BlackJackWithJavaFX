@@ -113,6 +113,8 @@ public class MainScreenPresenter {
                         for (int i = 0; i < input.size(); i++) {
                             String inputline = input.get(i);
                             String[] elementen = inputline.split(" ");
+                            blackJackGame.player1.setBank(Integer.parseInt(inputline));
+                            view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
                         }
                         // einde implementeren ingelezen gegevens doorgeven aan model
                     } catch (IOException e) {
@@ -129,6 +131,7 @@ public class MainScreenPresenter {
             public void handle(ActionEvent event) {
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Save Data File");
+                //fileChooser.setInitialDirectory("resources/SaveData");
                 fileChooser.getExtensionFilters().addAll(
                         new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
                         new FileChooser.ExtensionFilter("All Files", "*.*"));
@@ -145,8 +148,7 @@ public class MainScreenPresenter {
                        // output.format("%s%n", "First record");
                        // output.format("%s%n", "...");
                        // output.format("%s%n", "Last record");
-
-                        output.format(Integer.toString(blackJackGame.player1.getBank()));
+                        output.format("%s%n",Integer.toString(blackJackGame.player1.getBank()));
                         //output.format(blackJackGame.player1.getBank() + "," + blackJackGame.player1.getHand());
                         // Einde implementeren wegschrijven model-gegevens
                     } catch (IOException e) {
@@ -287,16 +289,18 @@ public class MainScreenPresenter {
                 view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
+                    view.getCardsPlayerDealerBox().setVisible(true);
                 view.getSounds().playDealCard();
                 view.getSounds().playDealCard();
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
                 view.getPlayerCardsView().addCard();
-                view.getDealerCardsView().addCard();
+                view.getDealerCardsView().addCardStart();
                 view.getActionButtons().getButtonHit().setVisible(true);
                 view.getActionButtons().getButtonDouble().setVisible(true);
                 view.getActionButtons().getButtonStand().setVisible(true);
                 view.getActionButtons().getButtonDeal().setVisible(false);
+
                 }else{
                     AlertBlackjack alertDeal = new AlertBlackjack(AlertType.ERROR, "ERROR", "Issues while dealing","Please give betting amount", "OK");
                     alertDeal.showAndWait();
@@ -348,17 +352,32 @@ public class MainScreenPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 blackJackGame.btnStand();
-               // if (blackJackGame.dealer1.getHand().size() >2){
-                //view.getDealerCardsView().getCardView().setImage();
+               if (blackJackGame.dealer1.getHand().size() <=2){
+                   view.getDealerCardsView().getDealerCards().clear();
+                   view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
+                 }else {
                 view.getDealerCardsView().getDealerCards().add(blackJackGame.dealer1.getHand().get(blackJackGame.dealer1.getHand().size()-1));
-               // }
-                view.getDealerCardsView().addCard();
+               }
+
+               if(blackJackGame.whoWon().equals("Dealer")){
+                   view.getWinLoseView().gameRound(2);
+
+               }else if (blackJackGame.whoWon().equals("Player")){
+                   view.getWinLoseView().gameRound(1);
+
+               }else{
+                   view.getWinLoseView().gameRound(3);
+               }
+
+
+                view.getDealerCardsView().addCardEnd();
                 view.getActionButtons().getButtonHit().setVisible(false);
                 view.getActionButtons().getButtonDouble().setVisible(false);
                 view.getActionButtons().getButtonStand().setVisible(false);
-                view.getActionButtons().getbuttonNextRound().setVisible(false);
+                view.getActionButtons().getbuttonNextRound().setVisible(false); // Was for easy debugging
                 view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
-
+                view.getCardsPlayerDealerBox().setVisible(false);
+                view.getWinLoseView().setVisible(true);
             }
         });
 
@@ -372,6 +391,21 @@ public class MainScreenPresenter {
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getActionButtons().getButtonDeal().setVisible(true);
                 view.getActionButtons().getbuttonNextRound().setVisible(false);
+                view.getCardsPlayerDealerBox().setVisible(true);
+                view.getWinLoseView().setVisible(false);
+            }
+        });
+        view.getWinLoseView().getNextRound().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                blackJackGame.dealer1.getHand().clear();
+                blackJackGame.player1.getHand().clear();
+
+                view.getPlayerCardsView().getPlayerCards().clear();
+                view.getDealerCardsView().getDealerCards().clear();
+                view.getActionButtons().getButtonDeal().setVisible(true);
+                view.getActionButtons().getbuttonNextRound().setVisible(false);
+                view.getWinLoseView().setVisible(false);
             }
         });
     }

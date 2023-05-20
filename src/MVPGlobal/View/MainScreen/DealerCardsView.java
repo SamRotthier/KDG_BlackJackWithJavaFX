@@ -60,7 +60,7 @@ public class DealerCardsView extends StackPane {
 */
     }
 
-    public void addCard() {
+    public void addCardStart() {
         getChildren().clear();
         int x = 0;
         int r = -2;
@@ -95,6 +95,43 @@ public class DealerCardsView extends StackPane {
             getChildren().add(cardView);
             sounds.playDealCard();
             i++;
+            x++;
+            r++;
+
+            if (y < ((dealerCards.size() / 2) - 1)) {
+                y++;
+            } else {
+                y--;
+            };
+        }
+    }
+
+    public void addCardEnd() {
+        getChildren().clear();
+        int x = 0;
+        int r = -2;
+        int y = 0;
+
+        for (Card c : dealerCards) {
+                String cardNamePath = c.getSuit() + c.getCardNumb();
+                try {
+                    card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");
+                } catch (MalformedURLException ex) {
+                }
+
+            cardView = new ImageView(card);
+            cardView.setPreserveRatio(true);
+            cardView.setFitWidth(uiSettings.getCardWidth());
+            cardView.setFitHeight(uiSettings.getCardHeight());
+            cardView.setTranslateX(uiSettings.getCardOffsetX() * x);
+
+            if (dealerCards.size() <= 2 && r == -2) {
+                r = -1;
+            }
+            cardView.setRotate(uiSettings.getCardRotate() * r);
+            cardView.setTranslateY(-(uiSettings.getCardOffsetY() + (y * 4)));
+            getChildren().add(cardView);
+            sounds.playDealCard();
             x++;
             r++;
 
