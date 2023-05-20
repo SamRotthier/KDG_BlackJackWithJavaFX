@@ -79,6 +79,9 @@ public class StartScreenPresenter {
     private void startAlert(){
 
         // Alert to start the game
+        /*AlertBlackjack startAlert = new AlertBlackjack(Alert.AlertType.INFORMATION, "Welcome to BlackJack - Knights Of The Future!", "This is the information you need to start.", "START");*/
+
+
         Alert startAlert = new Alert(Alert.AlertType.INFORMATION);
         startAlert.setTitle("Ready?");
         startAlert.setHeaderText("Welcome to BlackJack - Knights Of The Future!");
@@ -89,7 +92,7 @@ public class StartScreenPresenter {
         startAlert.getDialogPane().setPrefSize(500,400);
         startAlert.show();
 
-        DialogPane dialogPane = startAlert.getDialogPane();
+       /* DialogPane dialogPane = startAlert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("/stylesheets/BlackjackKnightsOfTheFuture.css").toExternalForm());
         dialogPane.getStyleClass().add("dialog");
 
@@ -98,6 +101,6 @@ public class StartScreenPresenter {
         } else if(startAlert.getResult() == startBtn) {
             startAlert.close();
             //showDealButton();
-        }
+        }*/
     }
 }
