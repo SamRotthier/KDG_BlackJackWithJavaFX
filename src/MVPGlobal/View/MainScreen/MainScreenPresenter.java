@@ -141,10 +141,13 @@ public class MainScreenPresenter {
                     }
                     try (Formatter output = new Formatter(selectedFile)) {
                         // Begin implementeren wegschrijven model-gegevens
-                        output.format("%s%n", "Here comes the data!");
-                        output.format("%s%n", "First record");
-                        output.format("%s%n", "...");
-                        output.format("%s%n", "Last record");
+                       // output.format("%s%n", "Here comes the data!");
+                       // output.format("%s%n", "First record");
+                       // output.format("%s%n", "...");
+                       // output.format("%s%n", "Last record");
+
+                        output.format(Integer.toString(blackJackGame.player1.getBank()));
+                        //output.format(blackJackGame.player1.getBank() + "," + blackJackGame.player1.getHand());
                         // Einde implementeren wegschrijven model-gegevens
                     } catch (IOException e) {
                         //
@@ -345,15 +348,17 @@ public class MainScreenPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 blackJackGame.btnStand();
-                if (blackJackGame.dealer1.getHand().size() >2){
+               // if (blackJackGame.dealer1.getHand().size() >2){
+                //view.getDealerCardsView().getCardView().setImage();
                 view.getDealerCardsView().getDealerCards().add(blackJackGame.dealer1.getHand().get(blackJackGame.dealer1.getHand().size()-1));
-                }
+               // }
                 view.getDealerCardsView().addCard();
                 view.getActionButtons().getButtonHit().setVisible(false);
                 view.getActionButtons().getButtonDouble().setVisible(false);
                 view.getActionButtons().getButtonStand().setVisible(false);
-                view.getActionButtons().getbuttonNextRound().setVisible(true);
+                view.getActionButtons().getbuttonNextRound().setVisible(false);
                 view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+
             }
         });
 
