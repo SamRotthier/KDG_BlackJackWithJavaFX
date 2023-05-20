@@ -55,8 +55,8 @@ public class BeginScreenPresenter {
                     // // do nothing, if toURL-conversion fails, program can continue
                 }
                 msView.getScene().getWindow().sizeToScene();
-                msView.getScene().getWindow().setHeight(uiSettings.getResY());
-                msView.getScene().getWindow().setWidth(uiSettings.getResX());
+                msView.getScene().getWindow().setHeight(uiSettings.getResY()/1.1);
+                msView.getScene().getWindow().setWidth(uiSettings.getResX()/1.1);
                 msPresenter.windowsHandler();
 
             }
@@ -73,7 +73,7 @@ public class BeginScreenPresenter {
                 Scene scene = new Scene(infoScreenView);
                 infoScreenStage.setScene(scene);
                 infoScreenStage.setTitle(uiSettings.getApplicationName()+ " - Info");
-                infoScreenStage.setX(view.getScene().getWindow().getX() + uiSettings.getResX() / 6);
+                infoScreenStage.setX(view.getScene().getWindow().getX() + uiSettings.getResX() / 8);
                 infoScreenStage.setY(view.getScene().getWindow().getY() + uiSettings.getResY() / 10);
                 if (Files.exists(uiSettings.getApplicationIconPath())) {
                     try {

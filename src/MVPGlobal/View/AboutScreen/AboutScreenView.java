@@ -18,6 +18,9 @@ public class AboutScreenView extends BorderPane {
     private Button okButton;
     private ImageView logo;
 
+    private Label devs;
+    private Label version;
+
     public AboutScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
@@ -27,6 +30,8 @@ public class AboutScreenView extends BorderPane {
     private void initialiseNodes() {
         okButton = new Button("OK");
         okButton.setPrefWidth(60);
+        devs = new Label("This game was developed by Sam Rotthier and Matthias Vermeiren");
+        version = new Label("Version 3");
 
     }
 
@@ -55,7 +60,7 @@ public class AboutScreenView extends BorderPane {
         } else { // do nothing, if AboutImage is not available, program can continue
         }
         VBox labelsPane = new VBox();
-        labelsPane.getChildren().addAll(new Label("This game was developed by Sam Rotthier and Matthias Vermeiren"), new Label("Version 1.1"));
+        labelsPane.getChildren().addAll(devs, version);
         labelsPane.setAlignment(Pos.CENTER);
         labelsPane.setSpacing(30);
         //labelsPane.setPadding(new Insets(50));

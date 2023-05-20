@@ -208,7 +208,7 @@ public class MainScreenPresenter {
                 Scene scene = new Scene(infoScreenView);
                 infoScreenStage.setScene(scene);
                 infoScreenStage.setTitle(uiSettings.getApplicationName()+ " - Info");
-                infoScreenStage.setX(view.getScene().getWindow().getX() + uiSettings.getResX() / 10);
+                infoScreenStage.setX(view.getScene().getWindow().getX() + uiSettings.getResX() / 8);
                 infoScreenStage.setY(view.getScene().getWindow().getY() + uiSettings.getResY() / 10);
                 if (Files.exists(uiSettings.getApplicationIconPath())) {
                     try {
@@ -219,8 +219,8 @@ public class MainScreenPresenter {
                     }
                 } else { // do nothing, if ApplicationIconImage is not available, program can continue
                 }
-                infoScreenView.getScene().getWindow().setHeight(uiSettings.getResY()/2);
-                infoScreenView.getScene().getWindow().setWidth(uiSettings.getResX()/2);
+                infoScreenView.getScene().getWindow().setHeight(uiSettings.getResY()/1.4);
+                infoScreenView.getScene().getWindow().setWidth(uiSettings.getResX()/1.5);
                 if (uiSettings.styleSheetAvailable()){
                     infoScreenView.getScene().getStylesheets().removeAll();
                     try {

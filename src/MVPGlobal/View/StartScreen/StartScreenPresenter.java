@@ -38,8 +38,8 @@ public class StartScreenPresenter {
                 BeginScreenPresenter bsPresenter = new BeginScreenPresenter(blackJackGame, beginView, uiSettings);
                 view.getScene().setRoot(beginView);
                 beginView.getScene().getWindow().sizeToScene();
-                beginView.getScene().getWindow().setHeight(uiSettings.getResY());
-                beginView.getScene().getWindow().setWidth(uiSettings.getResX());
+                beginView.getScene().getWindow().setHeight(uiSettings.getResY()/1.1);
+                beginView.getScene().getWindow().setWidth(uiSettings.getResX()/1.1);
 
                 bsPresenter.windowsHandler();
             }

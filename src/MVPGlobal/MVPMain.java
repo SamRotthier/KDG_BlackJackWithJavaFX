@@ -28,8 +28,8 @@ public class MVPMain extends Application {
             }
         }
         primaryStage.setScene(scene);
-        primaryStage.setHeight(uiSettings.getLowestRes());
-        primaryStage.setWidth(uiSettings.getLowestRes());
+        primaryStage.setHeight(uiSettings.getLowestRes()/2);
+        primaryStage.setWidth(uiSettings.getLowestRes()/1.1);
         //primaryStage.setFullScreen(true);
         primaryStage.setTitle(uiSettings.getApplicationName());
         if (Files.exists(uiSettings.getApplicationIconPath())) {
