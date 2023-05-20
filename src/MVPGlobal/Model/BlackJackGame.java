@@ -22,12 +22,18 @@ import java.util.Scanner;
     }
 
      public void dealingCards (){
+         if (Deck.size() < 20){
+             Deck = DeckBuilder.PlayDeck(1);
+         }
         player1.dealCard(Deck);
         player1.placeBet(player1.getPlayerBet());
         dealer1.dealCard(Deck);
     }
 
     public void btnHit (){
+        if (Deck.size() < 10){
+            Deck = DeckBuilder.PlayDeck(1);
+        }
          if (player1.getTotalCardValue() < 21) {
              player1.hitCard(Deck);
          }else{
@@ -35,6 +41,9 @@ import java.util.Scanner;
          }
     }
      public void btnDouble(){
+         if (Deck.size() < 10){
+             Deck = DeckBuilder.PlayDeck(1);
+         }
          if (player1.getTotalCardValue() < 21) {
          player1.playerDouble(Deck);
          }else{

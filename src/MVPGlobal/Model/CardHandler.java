@@ -9,18 +9,9 @@ import java.util.ArrayList;
         try {
             if (Hand.size() == 0) {
                 for (int i = 1; i <= 2; i++) {
-                    if (Deck.size() < 20) {
-                        //int cardToDraw = randomGenerator.nextInt(Deck.size());
                         Hand.add(Deck.get(Deck.size() - 1));
                         Deck.remove(Deck.size() - 1);
                         checkAce();
-
-                    } else {
-                        DeckBuilder.PlayDeck(1);
-                        Hand.add(Deck.get(Deck.size() - 1));
-                        Deck.remove(Deck.size() - 1);
-                        checkAce();
-                    }
                 }
             }
         }
@@ -30,18 +21,10 @@ import java.util.ArrayList;
     }
      void hitCard(ArrayList<Card> Deck){
          try {
-                 if(Deck.size() <10) {
                      //int cardToDraw = randomGenerator.nextInt(Deck.size());
                      Hand.add(Deck.get(Deck.size() - 1)); // Deck.size() - 1) gets last card in the list (top of deck)
                      Deck.remove(Deck.size() - 1);
                      checkAce();
-                 }
-                 else {
-                     DeckBuilder.PlayDeck(1);
-                     Hand.add(Deck.get(Deck.size() - 1)); // Deck.size() - 1) gets last card in the list (top of deck)
-                     Deck.remove(Deck.size() - 1);
-                     checkAce();
-                 }
          }
          catch (Exception e){
              System.out.println("Something went wrong while dealing a card");

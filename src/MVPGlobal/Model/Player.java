@@ -30,9 +30,8 @@ public class Player extends CardHandler {
     }
 
       void playerDouble(ArrayList<Card> Deck){
-        if(bank >= (playerBet*3)) {
+        if(bank >= (playerBet*2)) {
             bank -= playerBet;
-            playerBet *= 3;
             hitCard(Deck);
         }
         else {

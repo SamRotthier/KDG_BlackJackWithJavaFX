@@ -277,7 +277,7 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonDeal().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (!view.getBetButtons().getBetAmount().getText().isEmpty() && blackJackGame.player1.getPlayerBet() > 0 ) {
+                if (!view.getBetButtons().getBetAmount().getText().isEmpty() && blackJackGame.player1.getPlayerBet() > 0 && blackJackGame.player1.getPlayerBet()<= blackJackGame.player1.getBank()) {
                 blackJackGame.dealingCards();
                 view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
                 view.getBottomLabels().getBetAmountLabelPlayer().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
@@ -320,12 +320,20 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonDouble().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (blackJackGame.player1.getTotalCardValue() < 22) {
-                blackJackGame.btnDouble();
+                if (blackJackGame.player1.getTotalCardValue() < 22 ) {
+                if ((blackJackGame.player1.getPlayerBet() * 2) <= blackJackGame.player1.getBank()){
+                    blackJackGame.btnDouble();
+                    view.getBetButtons().getBetAmount().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
+                    view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+                    view.getBottomLabels().getBetAmountLabelPlayer().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
                 view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                 view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
                 view.getPlayerCardsView().addCard();
                 view.getSounds().playDealCard();
+                }else{
+                    AlertBlackjack alertBroke = new AlertBlackjack(AlertType.INFORMATION, "BROKE", "Not enough points", "You don't have enough points for this", "OK");
+                    alertBroke.showAndWait();
+                }
                 }else{
                     AlertBlackjack alertLost = new AlertBlackjack(AlertType.INFORMATION, "LOST", "Card value over 21", "Your card value is over 21. You Lost!", "OK");
                     alertLost.showAndWait();
@@ -337,7 +345,9 @@ public class MainScreenPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 blackJackGame.btnStand();
+                if (blackJackGame.dealer1.getHand().size() >2){
                 view.getDealerCardsView().getDealerCards().add(blackJackGame.dealer1.getHand().get(blackJackGame.dealer1.getHand().size()-1));
+                }
                 view.getDealerCardsView().addCard();
                 view.getActionButtons().getButtonHit().setVisible(false);
                 view.getActionButtons().getButtonDouble().setVisible(false);
