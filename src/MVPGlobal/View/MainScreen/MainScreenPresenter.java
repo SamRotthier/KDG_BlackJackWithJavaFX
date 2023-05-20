@@ -321,6 +321,7 @@ public class MainScreenPresenter {
             public void handle(ActionEvent actionEvent) {
                 if (blackJackGame.player1.getTotalCardValue() < 22) {
                 blackJackGame.btnDouble();
+                view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                 view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
                 view.getPlayerCardsView().addCard();
                 view.getSounds().playDealCard();
