@@ -19,6 +19,10 @@ public class WinLoseView extends VBox {
     private Label  winGame;
     private Label  loseGame;
 
+    private Label pushGame;
+
+    private HBox buttonsGame;
+
     public WinLoseView(/*UISettings uiSettings*/) {
         //this.uiSettings = uiSettings;
         initialiseNodes();
@@ -31,34 +35,48 @@ public class WinLoseView extends VBox {
         saveGame = new Button("SAVE"); //or Save Game
         quitGame = new Button("QUIT"); //or Quit Game
         winGame = new Label("Congratulations, you've won!");
-        loseGame = new Label("You Lose! Better luck next time");
+        loseGame = new Label("You Lose! Better luck next time...");
+        pushGame = new Label("Push! The game results in a tie");
+
     }
 
     private void layoutNodes() {
-        HBox buttonsGame = new HBox(nextRound, saveGame, quitGame);
+        buttonsGame = new HBox(nextRound, saveGame, quitGame);
         buttonsGame.setSpacing(75);
         buttonsGame.setPadding(new Insets(40));
         buttonsGame.setAlignment(Pos.CENTER);
 
-        winGame.getStyleClass().add("win");
-        winGame.setPadding(new Insets(70));
+    }
 
+    //method
+
+    public Label gameRound(int i){
+        if(i == 1){
+            winGame.getStyleClass().add("win");
+            winGame.setPadding(new Insets(70));
+            return winGame;
+        }
+        else if(i == 2){
+            loseGame.getStyleClass().add("lose");
+            loseGame.setPadding(new Insets(70));
+            return loseGame;
+        }
+        else{
+            pushGame.getStyleClass().add("push");
+            pushGame.setPadding(new Insets(70));
+            return pushGame;
+        }
+    };
+
+    public void test(int i){
         this.setAlignment(Pos.CENTER);
         this.setSpacing(200);
-        this.getChildren().addAll(winGame, buttonsGame);
+        this.getChildren().addAll(gameRound(i), buttonsGame);
     }
 
-    //Win method
 
-    private void winOrLoseRound(){
 
-    }
-
-    //Lose method
-
-    private void loseRound(){
-
-    }
+    // Animation maken
 
     //Getters
 
