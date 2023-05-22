@@ -369,16 +369,10 @@ public class MainScreenPresenter {
                }
 
                if(blackJackGame.whoWon().equals("Dealer")){
-                   if(blackJackGame.player1.getBank() < 1){
-                       view.setCenter(null);
-                       view.getWinLoseView().getChildren().clear();
-                       view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(3), view.getWinLoseView().getQuitGame());
-                       view.setCenter(view.getWinLoseView());
-                   } else{
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(2), view.getWinLoseView().getButtonsGame());
-                   view.setCenter(view.getWinLoseView());}
+                   view.setCenter(view.getWinLoseView());
 
                }else if (blackJackGame.whoWon().equals("Player")){
                    view.setCenter(null);
@@ -389,7 +383,7 @@ public class MainScreenPresenter {
                }else{
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
-                   view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(4), view.getWinLoseView().getButtonsGame());
+                   view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(3), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
                }
 

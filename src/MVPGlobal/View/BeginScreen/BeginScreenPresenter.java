@@ -160,7 +160,8 @@ public class BeginScreenPresenter {
                             msView.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
                         }
                         // start game
-                        blackJackGame = new BlackJackGame();
+                        //blackJackGame = new BlackJackGame(); Dit was fout, dan maakte het een nieuwe instantie van backend en werden de ingeladen waardes
+                        //overschreven => Dit willen we niet!
 
                         MainScreenPresenter msPresenter = new MainScreenPresenter(blackJackGame, msView, uiSettings);
                         view.getScene().setRoot(msView);

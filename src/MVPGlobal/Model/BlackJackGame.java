@@ -1,46 +1,44 @@
 package MVPGlobal.Model;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
-import java.util.Scanner;
 
- public class BlackJackGame {
+public class BlackJackGame {
      public Player player1 = new Player();
      public Dealer dealer1 = new Dealer();
     boolean keepPlaying = true;
-    ArrayList<Card> Deck = DeckBuilder.PlayDeck(2);
+    ArrayList<Card> deck = DeckBuilder.playDeck(2);
 
      public void dealingCards (){
-         if (Deck.size() < 20){
-             Deck = DeckBuilder.PlayDeck(2);
+         if (deck.size() < 20){
+             deck = DeckBuilder.playDeck(2);
          }
-        player1.dealCard(Deck);
+        player1.dealCard(deck);
         player1.placeBet(player1.getPlayerBet());
-        dealer1.dealCard(Deck);
+        dealer1.dealCard(deck);
     }
 
     public void btnHit (){
-        if (Deck.size() < 10){
-            Deck = DeckBuilder.PlayDeck(2);
+        if (deck.size() < 10){
+            deck = DeckBuilder.playDeck(2);
         }
          if (player1.getTotalCardValue() < 21) {
-             player1.hitCard(Deck);
+             player1.hitCard(deck);
          }else{
              checkingScore();
          }
     }
      public void btnDouble(){
-         if (Deck.size() < 10){
-             Deck = DeckBuilder.PlayDeck(2);
+         if (deck.size() < 10){
+             deck = DeckBuilder.playDeck(2);
          }
          if (player1.getTotalCardValue() < 21) {
-         player1.playerDouble(Deck);
+         player1.playerDouble(deck);
          }else{
              checkingScore();
          }
      }
     public void btnStand(){
-         dealer1.toHitOrNotToHit(Deck);
+         dealer1.toHitOrNotToHit(deck);
          checkingScore();
 
          //message who won and how much
