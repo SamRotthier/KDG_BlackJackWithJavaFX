@@ -71,7 +71,7 @@ public class BeginScreenPresenter {
 
                 // Choose nickname
                 NicknameScreenView nicknameScreenView = new NicknameScreenView(uiSettings);
-                NicknameScreenPresenter nicknameScreenPresenter = new NicknameScreenPresenter(blackJackGame, nicknameScreenView, uiSettings);
+                NicknameScreenPresenter nicknameScreenPresenter = new NicknameScreenPresenter(blackJackGame, nicknameScreenView, uiSettings, msView);
                 Stage nicknameScreenStage = new Stage();
                 nicknameScreenStage.initOwner(msView.getScene().getWindow());
                 nicknameScreenStage.initModality(Modality.APPLICATION_MODAL);
