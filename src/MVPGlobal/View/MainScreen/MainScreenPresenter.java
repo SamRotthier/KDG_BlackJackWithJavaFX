@@ -162,6 +162,40 @@ public class MainScreenPresenter {
                 }
             }
         });
+        view.getWinLoseView().getSaveGame().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Save Data File");
+                //fileChooser.setInitialDirectory("resources/SaveData");
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
+                        new FileChooser.ExtensionFilter("All Files", "*.*"));
+                File selectedFile = fileChooser.showSaveDialog(view.getScene().getWindow());
+                if ((selectedFile != null) ^ (Files.isWritable(Paths.get(selectedFile.toURI())))) {
+                    try {
+                        Files.deleteIfExists(Paths.get(selectedFile.toURI()));
+                    } catch (IOException e) {
+                        //
+                    }
+                    try (Formatter output = new Formatter(selectedFile)) {
+                        // Begin implementeren wegschrijven model-gegevens
+                        // output.format("%s%n", "Here comes the data!");
+                        // output.format("%s%n", "First record");
+                        // output.format("%s%n", "...");
+                        // output.format("%s%n", "Last record");
+                        output.format("%s%n",Integer.toString(blackJackGame.player1.getBank()));
+                        //output.format(blackJackGame.player1.getBank() + "," + blackJackGame.player1.getHand());
+                        // Einde implementeren wegschrijven model-gegevens
+                    } catch (IOException e) {
+                        //
+                    }
+                } else {
+                    AlertBlackjack errorWindow = new AlertBlackjack(AlertType.ERROR, "ERROR", "Problem with the selected output file: ", "File is not writable", "OK");
+                    errorWindow.showAndWait();
+                }
+            }
+        });
         view.getExitItem().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -397,26 +431,11 @@ public class MainScreenPresenter {
                 view.getActionButtons().getButtonHit().setVisible(false);
                 view.getActionButtons().getButtonDouble().setVisible(false);
                 view.getActionButtons().getButtonStand().setVisible(false);
-                view.getActionButtons().getbuttonNextRound().setVisible(false); // Was for easy debugging
                 view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
                 view.getWinLoseView().setVisible(true);
             }
         });
 
-        view.getActionButtons().getbuttonNextRound().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                blackJackGame.dealer1.getHand().clear();
-                blackJackGame.player1.getHand().clear();
-
-                view.getPlayerCardsView().getPlayerCards().clear();
-                view.getDealerCardsView().getDealerCards().clear();
-                view.getActionButtons().getButtonDeal().setVisible(true);
-                view.getActionButtons().getbuttonNextRound().setVisible(false);
-                view.getCardsPlayerDealerBox().setVisible(true);
-                view.getWinLoseView().setVisible(false);
-            }
-        });
         view.getWinLoseView().getNextRound().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -426,12 +445,11 @@ public class MainScreenPresenter {
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getActionButtons().getButtonDeal().setVisible(true);
-                view.getActionButtons().getbuttonNextRound().setVisible(false);
                 view.getWinLoseView().setVisible(false);
             }
         });
 
-        view.getWinLoseView().getNextRound().setOnAction(new EventHandler<ActionEvent>() {
+        view.getWinLoseView().getQuitGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 BeginScreenView beginView = new BeginScreenView(uiSettings);
