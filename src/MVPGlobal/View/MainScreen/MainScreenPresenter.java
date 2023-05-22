@@ -434,7 +434,7 @@ public class MainScreenPresenter {
             }
         });
 
-        view.getWinLoseView().getNextRound().setOnAction(new EventHandler<ActionEvent>() {
+        view.getWinLoseView().getQuitGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 BeginScreenView beginView = new BeginScreenView(uiSettings);
