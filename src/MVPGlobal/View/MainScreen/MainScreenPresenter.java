@@ -4,6 +4,8 @@ package MVPGlobal.View.MainScreen;
 import MVPGlobal.Model.*;
 import MVPGlobal.View.AboutScreen.*;
 import MVPGlobal.View.AlertScreen.AlertBlackjack;
+import MVPGlobal.View.BeginScreen.BeginScreenPresenter;
+import MVPGlobal.View.BeginScreen.BeginScreenView;
 import MVPGlobal.View.InfoScreen.*;
 import MVPGlobal.View.SettingsScreen.*;
 import MVPGlobal.View.UISettings;
@@ -429,6 +431,20 @@ public class MainScreenPresenter {
                 view.getActionButtons().getButtonDeal().setVisible(true);
                 view.getActionButtons().getbuttonNextRound().setVisible(false);
                 view.getWinLoseView().setVisible(false);
+            }
+        });
+
+        view.getWinLoseView().getNextRound().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                BeginScreenView beginView = new BeginScreenView(uiSettings);
+                BeginScreenPresenter bsPresenter = new BeginScreenPresenter(blackJackGame, beginView, uiSettings);
+                view.getScene().setRoot(beginView);
+                beginView.getScene().getWindow().sizeToScene();
+                beginView.getScene().getWindow().setHeight(uiSettings.getResY()/1.1);
+                beginView.getScene().getWindow().setWidth(uiSettings.getResX()/1.1);
+
+                bsPresenter.windowsHandler();
             }
         });
     }
