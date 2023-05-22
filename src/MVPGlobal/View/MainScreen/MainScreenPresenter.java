@@ -44,7 +44,6 @@ public class MainScreenPresenter {
         updateView();
         EventHandlers();
         addEventHandlerPlayerActions();
-        //view.getWinLoseView().setVisible(false);
         view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
     }
 
@@ -328,7 +327,6 @@ public class MainScreenPresenter {
                 view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
-                view.getCardsPlayerDealerBox().setVisible(true);
 
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
@@ -341,10 +339,15 @@ public class MainScreenPresenter {
                     }
 
                 view.getDealerCardsView().addCardStart();
-                view.getActionButtons().getButtonHit().setVisible(true);
+                view.setRight(null);
+                view.getActionButtons().getChildren().clear();
+                view.getActionButtons().getChildren().addAll(view.getActionButtons().getButtonHit(), view.getActionButtons().getButtonDouble(), view.getActionButtons().getButtonStand());
+                view.setRight(view.getActionButtons());
+
+                /* view.getActionButtons().getButtonHit().setVisible(true);
                 view.getActionButtons().getButtonDouble().setVisible(true);
                 view.getActionButtons().getButtonStand().setVisible(true);
-                view.getActionButtons().getButtonDeal().setVisible(false);
+                view.getActionButtons().getButtonDeal().setVisible(false);*/
 
                 }else{
                     AlertBlackjack alertDeal = new AlertBlackjack(AlertType.ERROR, "ERROR", "Issues while dealing","Please give betting amount", "OK");
@@ -407,30 +410,31 @@ public class MainScreenPresenter {
                if(blackJackGame.whoWon().equals("Dealer")){
                    if(blackJackGame.player1.getBank() < 1){
                        view.setCenter(null);
+                       view.getWinLoseView().getChildren().clear();
                        view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(3), view.getWinLoseView().getQuitGame());
                        view.setCenter(view.getWinLoseView());
                    }
                    else {
                    view.setCenter(null);
+                   view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(2), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());}
 
                }else if (blackJackGame.whoWon().equals("Player")){
                    view.setCenter(null);
+                   view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(1), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
 
                }else{
                    view.setCenter(null);
+                   view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(4), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
                }
 
 
                 view.getDealerCardsView().addCardEnd();
-                view.getActionButtons().getButtonHit().setVisible(false);
-                view.getActionButtons().getButtonDouble().setVisible(false);
-                view.getActionButtons().getButtonStand().setVisible(false);
                 view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
                 view.getWinLoseView().setVisible(true);
             }
@@ -444,7 +448,11 @@ public class MainScreenPresenter {
 
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getDealerCardsView().getDealerCards().clear();
-                view.getActionButtons().getButtonDeal().setVisible(true);
+
+                view.setRight(null);
+                view.getActionButtons().getChildren().clear();
+                view.getActionButtons().getChildren().add(view.getActionButtons().getButtonDeal());
+                view.setRight(view.getActionButtons());
                 view.getWinLoseView().setVisible(false);
             }
         });

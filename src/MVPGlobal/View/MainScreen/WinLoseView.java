@@ -69,7 +69,7 @@ public class WinLoseView extends VBox {
             return loseGame;
         }
         else if(i == 3){
-            gameOver.getStyleClass().add("lose");
+            gameOver.getStyleClass().add("gameover");
             gameOver.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5));
             return gameOver;
         }

@@ -109,6 +109,12 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0, 5, 5);
 }
 
+.gameover{
+    -fx-text-fill: #e43f3a;
+    -fx-font-size: 60px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0, 5, 5);
+}
+
 /* SETTINGS */
 .settings{
     /*-fx-background-color: #dec390; */
