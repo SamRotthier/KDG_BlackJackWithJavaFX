@@ -303,6 +303,7 @@ public class MainScreenPresenter {
                     for (int i = 0; i < 2; i++) {
                         view.getSounds().playDealCard();
                     }
+
                 view.getDealerCardsView().addCardStart();
                 view.getActionButtons().getButtonHit().setVisible(true);
                 view.getActionButtons().getButtonDouble().setVisible(true);
@@ -340,7 +341,7 @@ public class MainScreenPresenter {
                     blackJackGame.btnDouble();
                     view.getBetButtons().getBetAmount().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
                     view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
-                    view.getBottomLabels().getBetAmountLabelPlayer().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
+                    view.getBottomLabels().getBetAmountLabelPlayer().setText(Integer.toString(blackJackGame.player1.getPlayerBet()*2));
                 view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                 view.getPlayerCardsView().getPlayerCards().add(blackJackGame.player1.getHand().get(blackJackGame.player1.getHand().size()-1));
                 view.getPlayerCardsView().addCard();
