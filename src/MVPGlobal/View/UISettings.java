@@ -50,7 +50,6 @@ public class UISettings {
         this.resY = (int) Screen.getPrimary().getVisualBounds().getHeight();
         this.insetsMargin = this.getLowestRes()/85;
         this.spacing = this.getLowestRes() / 85;
-        System.out.println(getLowestRes());
 
         this.homeDir = System.getProperties().getProperty("user.dir");
         this.ApplicationName = "Knights Of The Future - Blackjack";

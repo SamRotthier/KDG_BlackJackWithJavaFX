@@ -150,8 +150,24 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0, 5, 5);
 }
 
+/* NICKNAME */
+.confirmBtn{
+    -fx-pref-width: 100px;
+}
+
+.nickname{
+    -fx-background-color: #22222c;
+    -fx-padding: 25px;
+}
+
+.nicknameTextfield{
+    -fx-background-color: #acfbfc;
+    -fx-text-fill: #22222c;
+}
+
+
 /* COLOR PALETTE */
-.ignore {
+/*.ignore {
     --penn-red: #961914;
     --rojo: #d7241d;
     --vermilion: #e43f3a;
@@ -164,4 +180,4 @@
     --raisin-black: #22222c;
     --black: #000000;
     --white: #ffffff;
-}
+}*/

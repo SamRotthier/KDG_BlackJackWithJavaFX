@@ -1,4 +1,4 @@
-package MVPGlobal.View.beginScreen;
+package MVPGlobal.View.BeginScreen;
 
 import MVPGlobal.Model.BlackJackGame;
 import MVPGlobal.View.AlertScreen.AlertBlackjack;
@@ -6,7 +6,8 @@ import MVPGlobal.View.InfoScreen.InfoScreenPresenter;
 import MVPGlobal.View.InfoScreen.InfoScreenView;
 import MVPGlobal.View.MainScreen.MainScreenPresenter;
 import MVPGlobal.View.MainScreen.MainScreenView;
-import MVPGlobal.View.StartScreen.StartScreenView;
+import MVPGlobal.View.NicknameScreen.NicknameScreenPresenter;
+import MVPGlobal.View.NicknameScreen.NicknameScreenView;
 import MVPGlobal.View.UISettings;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -68,8 +69,34 @@ public class BeginScreenPresenter {
                 //music
                 msView.getSounds().playBackgroundMusic();
 
+                // Choose nickname
+                NicknameScreenView nicknameScreenView = new NicknameScreenView(uiSettings);
+                NicknameScreenPresenter nicknameScreenPresenter = new NicknameScreenPresenter(blackJackGame, nicknameScreenView, uiSettings);
+                Stage nicknameScreenStage = new Stage();
+                nicknameScreenStage.initOwner(msView.getScene().getWindow());
+                nicknameScreenStage.initModality(Modality.APPLICATION_MODAL);
+                Scene nicknameScene = new Scene(nicknameScreenView);
+                nicknameScreenStage.setScene(nicknameScene);
+                nicknameScreenStage.setTitle("Choose a Nickname");
+                nicknameScreenStage.setX(msView.getScene().getWindow().getX()+ (uiSettings.getResX()/2.7));
+                nicknameScreenStage.setY(msView.getScene().getWindow().getY() + (uiSettings.getResY()/2.7));
+                nicknameScreenView.getScene().getWindow().setHeight((uiSettings.getResY())/4.5);
+                nicknameScreenView.getScene().getWindow().setWidth((uiSettings.getResX())/6);
+                if (uiSettings.styleSheetAvailable()){
+                    nicknameScreenView.getScene().getStylesheets().removeAll();
+                    try {
+                        nicknameScreenView.getScene().getStylesheets().add(uiSettings.getStyleSheetPath().toUri().toURL().toString());
+                    }
+                    catch (MalformedURLException ex) {
+                        // do nothing, if toURL-conversion fails, program can continue
+                    }
+                }
+                nicknameScreenStage.showAndWait();
             }
         });
+
+
+
 
         view.getMoreInfoBtn().setOnAction(new EventHandler<ActionEvent>() {
             @Override
