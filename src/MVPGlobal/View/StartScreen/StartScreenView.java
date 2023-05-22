@@ -75,8 +75,8 @@ public class StartScreenView extends BorderPane  {
         progressPane.setCenter(this.timeProgress);
         progressPane.setBottom(this.timeDisplay);
         progressPane.setAlignment(this.timeDisplay, Pos.CENTER);
-        timeProgress.setPrefSize(250,25);
-        BorderPane.setMargin(this.timeDisplay, new Insets(0,10, 50, 10));
+        timeProgress.setPrefSize(uiSettings.getLowestRes()/7,uiSettings.getLowestRes()/69);
+        BorderPane.setMargin(this.timeDisplay, new Insets(0,uiSettings.getInsetsMargin()/2, uiSettings.getInsetsMargin()*2.5, uiSettings.getInsetsMargin()/2));
         BorderPane.setMargin(this.timeProgress, new Insets(uiSettings.getInsetsMargin()));
 
 
@@ -104,8 +104,8 @@ public class StartScreenView extends BorderPane  {
         //VBox
         VBox splash = new VBox();
         splash.setAlignment(Pos.CENTER);
-        splash.setSpacing(30);
-        splash.setPadding(new Insets(50));
+        splash.setSpacing(uiSettings.getSpacing()*1.5);
+        splash.setPadding(new Insets(uiSettings.getInsetsMargin()*2.5));
 
         splash.getChildren().addAll(centralImage,devs, version);
         this.setCenter(splash);

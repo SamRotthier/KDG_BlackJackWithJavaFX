@@ -57,15 +57,15 @@ public class MainScreenView extends BorderPane  {
         this.aboutMI = new MenuItem("About");
         this.infoMI = new MenuItem("Info");
 
-        actionButtons = new PlayerActionsView();
+        actionButtons = new PlayerActionsView(uiSettings);
         betButtons = new BetView(uiSettings);
 
         playerCardsView = new PlayerCardsView(uiSettings);
         dealerCardsView = new DealerCardsView(uiSettings);
         sounds = new SoundsView(uiSettings);
-        bottomLabels = new BottomLabelsView();
+        bottomLabels = new BottomLabelsView(uiSettings);
         cardsPlayerDealerBox = new VBox();
-        winLoseView = new WinLoseView();
+        winLoseView = new WinLoseView(uiSettings);
     }
 
     private void layoutNodes() {
@@ -98,9 +98,9 @@ public class MainScreenView extends BorderPane  {
         this.setBottom(bottomLabels);
 
         // Center
-        cardsPlayerDealerBox.setSpacing(200);
+        cardsPlayerDealerBox.setSpacing(uiSettings.getSpacing()*10);
         cardsPlayerDealerBox.setTranslateX(-30);
-        cardsPlayerDealerBox.setPadding(new Insets(50, 20, 20, 20));
+        cardsPlayerDealerBox.setPadding(new Insets(uiSettings.getInsetsMargin()*2.5, uiSettings.getInsetsMargin(), uiSettings.getInsetsMargin(), uiSettings.getInsetsMargin()));
         cardsPlayerDealerBox.setAlignment(Pos.CENTER_LEFT);
         cardsPlayerDealerBox.getChildren().addAll(dealerCardsView, playerCardsView);
 

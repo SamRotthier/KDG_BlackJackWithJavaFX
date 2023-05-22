@@ -52,13 +52,13 @@ public class BetView extends VBox  {
 
         //ButtonsLeft
         HBox arrowButtonsBox = new HBox(arrowUp, arrowDown);
-        arrowButtonsBox.setSpacing(20);
-        arrowButtonsBox.setPadding(new Insets(10));
+        arrowButtonsBox.setSpacing(uiSettings.getSpacing());
+        arrowButtonsBox.setPadding(new Insets(uiSettings.getInsetsMargin()/2));
 
         this.setAlignment(Pos.CENTER);
-        this.setSpacing(10);
-        this.setPadding(new Insets(20));
-        this.setPrefWidth(20);
+        this.setSpacing(uiSettings.getSpacing()/2);
+        this.setPadding(new Insets(uiSettings.getInsetsMargin()));
+        this.setPrefWidth(uiSettings.getLowestRes()/85);
 
         this.getChildren().addAll(setBetAmount, betAmount, arrowButtonsBox);
     }

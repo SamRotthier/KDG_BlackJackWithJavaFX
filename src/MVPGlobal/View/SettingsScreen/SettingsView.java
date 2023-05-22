@@ -58,21 +58,21 @@ public class SettingsView extends BorderPane  {
         setTop(menuBar);
 
         HBox cssSettings = new HBox();
-        cssSettings.setSpacing(uiSettings.getLowestRes() / 100);
-        cssSettings.setPadding(new Insets(20));
+        cssSettings.setSpacing(uiSettings.getSpacing());
+        cssSettings.setPadding(new Insets(uiSettings.getInsetsMargin()));
         cssSettings.getChildren().addAll(cssLabel, cssName, cssButton);
 
         HBox backgroundMusic = new HBox();
         volumeSlider(volumeBackgroundMusic);
         backgroundMusic.getChildren().addAll(backgroundMusicLabel, volumeBackgroundMusic);
-        backgroundMusic.setSpacing(uiSettings.getLowestRes() / 80);
-        backgroundMusic.setPadding(new Insets(20));
+        backgroundMusic.setSpacing(uiSettings.getSpacing());
+        backgroundMusic.setPadding(new Insets(uiSettings.getInsetsMargin()));
 
         HBox soundFX = new HBox();
         volumeSlider(volumeSoundFx);
         soundFX.getChildren().addAll(soundFXLabel, volumeSoundFx);
-        soundFX.setSpacing(uiSettings.getLowestRes() / 80);
-        soundFX.setPadding(new Insets(20));
+        soundFX.setSpacing(uiSettings.getSpacing());
+        soundFX.setPadding(new Insets(uiSettings.getInsetsMargin()));
 
         VBox settings = new VBox();
         settings.getChildren().addAll(cssTitel, cssSettings, volumeTitel, backgroundMusic, soundFX);
@@ -92,14 +92,14 @@ public class SettingsView extends BorderPane  {
     }
 
     private void volumeSlider(Slider volumeSlider){
-        volumeSlider.setPrefWidth(300);
+        volumeSlider.setPrefWidth(uiSettings.getLowestRes()/5.75);
         volumeSlider.setShowTickMarks(true);
         volumeSlider.setShowTickLabels(true);
         volumeSlider.setMajorTickUnit(20);
         volumeSlider.setMinorTickCount(5);
         volumeSlider.setBlockIncrement(5);
         volumeSlider.setSnapToTicks(true);
-        volumeSlider.setPadding(new Insets(5, 20, 5, 40));
+        volumeSlider.setPadding(new Insets(uiSettings.getInsetsMargin()/4, uiSettings.getInsetsMargin(), uiSettings.getInsetsMargin()/4, uiSettings.getInsetsMargin()*2));
     }
 
     //Getters & Setters

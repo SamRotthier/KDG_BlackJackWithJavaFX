@@ -1,6 +1,5 @@
 package MVPGlobal;
 
-import MVPGlobal.View.AboutScreen.AboutScreenView;
 import MVPGlobal.View.StartScreen.*;
 import MVPGlobal.Model.*;
 import MVPGlobal.View.*;
@@ -30,8 +29,9 @@ public class MVPMain extends Application {
         primaryStage.setScene(scene);
         primaryStage.setHeight(uiSettings.getLowestRes()/2);
         primaryStage.setWidth(uiSettings.getLowestRes()/1.1);
-        //primaryStage.setFullScreen(true);
         primaryStage.setTitle(uiSettings.getApplicationName());
+
+        // Icon Windows
         if (Files.exists(uiSettings.getApplicationIconPath())) {
              try {
                  primaryStage.getIcons().add(new Image(uiSettings.getApplicationIconPath().toUri().toURL().toString()));
@@ -41,6 +41,7 @@ public class MVPMain extends Application {
              }
         } else { // do nothing, if ApplicationIcon is not available, program can continue
         }
+
         presenter.windowsHandler();
         primaryStage.show();
     }

@@ -369,7 +369,7 @@ public class MainScreenPresenter {
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().gameRound(2);
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(2), view.getWinLoseView().getButtonsGame());
-                   WinLoseView winLoseview = new WinLoseView();
+                   WinLoseView winLoseview = new WinLoseView(uiSettings);
                    view.setCenter(winLoseview);
 
                }else if (blackJackGame.whoWon().equals("Player")){
@@ -377,7 +377,7 @@ public class MainScreenPresenter {
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().gameRound(1);
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(1), view.getWinLoseView().getButtonsGame());
-                   WinLoseView winLoseview = new WinLoseView();
+                   WinLoseView winLoseview = new WinLoseView(uiSettings);
                    view.setCenter(winLoseview);
 
                }else{
@@ -385,7 +385,7 @@ public class MainScreenPresenter {
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().gameRound(3);
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(3), view.getWinLoseView().getButtonsGame());
-                   WinLoseView winLoseview = new WinLoseView();
+                   WinLoseView winLoseview = new WinLoseView(uiSettings);
                    view.setCenter(winLoseview);
                }
 

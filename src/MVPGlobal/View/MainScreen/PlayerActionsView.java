@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 
 public class PlayerActionsView extends VBox  {
 
-    //private UISettings uiSettings;
+    private UISettings uiSettings;
 
     private Button buttonHit;
     private Button buttonDouble;
@@ -25,7 +25,8 @@ public class PlayerActionsView extends VBox  {
 
 
 
-    public PlayerActionsView() {
+    public PlayerActionsView(UISettings uiSettings) {
+        this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
     }
@@ -43,8 +44,8 @@ public class PlayerActionsView extends VBox  {
     private void layoutNodes() {
         //ButtonsRight
         this.setAlignment(Pos.CENTER);
-        this.setSpacing(100);
-        this.setPadding(new Insets(20));
+        this.setSpacing(uiSettings.getSpacing()*5);
+        this.setPadding(new Insets(uiSettings.getInsetsMargin()));
 
         this.getChildren().addAll(buttonDeal,buttonHit, buttonDouble, buttonStand,buttonNextRound);
 

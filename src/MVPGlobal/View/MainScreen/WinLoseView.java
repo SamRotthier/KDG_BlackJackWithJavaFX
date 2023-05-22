@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 
 public class WinLoseView extends VBox {
-
+    private UISettings uiSettings;
     private Button nextRound;
     private Button saveGame;
     private Button quitGame;
@@ -25,8 +25,8 @@ public class WinLoseView extends VBox {
 
     private int i;
 
-    public WinLoseView(/*UISettings uiSettings*/) {
-        //this.uiSettings = uiSettings;
+    public WinLoseView(UISettings uiSettings) {
+        this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
 
@@ -44,12 +44,12 @@ public class WinLoseView extends VBox {
 
     private void layoutNodes() {
         buttonsGame = new HBox(nextRound, saveGame, quitGame);
-        buttonsGame.setSpacing(75);
-        buttonsGame.setPadding(new Insets(40));
+        buttonsGame.setSpacing(uiSettings.getSpacing()*4);
+        buttonsGame.setPadding(new Insets(uiSettings.getInsetsMargin()*2));
         buttonsGame.setAlignment(Pos.CENTER);
 
         this.setAlignment(Pos.CENTER);
-        this.setSpacing(200);
+        this.setSpacing(uiSettings.getSpacing()*10);
         this.getChildren().addAll(gameRound(i), buttonsGame);
     }
 
@@ -58,17 +58,17 @@ public class WinLoseView extends VBox {
    public Label gameRound(int i){
         if(i == 1){
             winGame.getStyleClass().add("win");
-            winGame.setPadding(new Insets(70));
+            winGame.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5));
             return winGame;
         }
         else if(i == 2){
             loseGame.getStyleClass().add("lose");
-            loseGame.setPadding(new Insets(70));
+            loseGame.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5));
             return loseGame;
         }
         else{
             pushGame.getStyleClass().add("push");
-            pushGame.setPadding(new Insets(70));
+            pushGame.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5));
             return pushGame;
         }
     };

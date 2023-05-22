@@ -64,9 +64,6 @@ public class BeginScreenView extends BorderPane  {
         catch (MalformedURLException ex){
         }
 
-        //music
-        //blackjackStartSound.play();
-
         //Css
         moreInfoBtn.getStyleClass().add("beginButtons");
         loadGameBtn.getStyleClass().add("beginButtons");
@@ -94,8 +91,8 @@ public class BeginScreenView extends BorderPane  {
         //VBox
         VBox splash = new VBox();
         splash.setAlignment(Pos.CENTER);
-        splash.setSpacing(30);
-        splash.setPadding(new Insets(50));
+        splash.setSpacing(uiSettings.getSpacing()*1.5);
+        splash.setPadding(new Insets(uiSettings.getInsetsMargin()*2.5));
 
         splash.getChildren().addAll(centralImage,welcomeText, instructions);
         this.setCenter(splash);
@@ -103,8 +100,8 @@ public class BeginScreenView extends BorderPane  {
         //HBox
         HBox btnsBegin = new HBox(moreInfoBtn, loadGameBtn, startGameBtn);
         btnsBegin.setAlignment(Pos.CENTER);
-        btnsBegin.setSpacing(150);
-        btnsBegin.setPadding(new Insets(50, 50,90, 50));
+        btnsBegin.setSpacing(uiSettings.getSpacing()*5);
+        btnsBegin.setPadding(new Insets(uiSettings.getInsetsMargin()*2.5, uiSettings.getInsetsMargin()*2.5,uiSettings.getInsetsMargin()*4.5, uiSettings.getInsetsMargin()*2.5));
 
         this.setBottom(btnsBegin);
     }

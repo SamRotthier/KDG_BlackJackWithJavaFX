@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 
 
 public class BottomLabelsView extends HBox {
+    private UISettings uiSettings;
     private Label saldoLabel;
     private Label betAmountLabel;
     private Label cardScoreLabel;
@@ -18,8 +19,8 @@ public class BottomLabelsView extends HBox {
     private Label betAmountLabelPlayer;
     private Label cardScorePlayer;
 
-    public BottomLabelsView(/*UISettings uiSettings*/) {
-        //this.uiSettings = uiSettings;
+    public BottomLabelsView(UISettings uiSettings) {
+        this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
 
@@ -35,15 +36,15 @@ public class BottomLabelsView extends HBox {
     }
 
     private void layoutNodes() {
-        this.setSpacing(15);
-        this.setPadding(new Insets(7, 20, 7, 20));
+        this.setSpacing(uiSettings.getSpacing()/1.30);
+        this.setPadding(new Insets(uiSettings.getInsetsMargin()/2.5, uiSettings.getInsetsMargin(), uiSettings.getInsetsMargin()/2.5, uiSettings.getInsetsMargin()));
         BackgroundFill bottomFill = new BackgroundFill(Color.web("#22222c"), CornerRadii.EMPTY, Insets.EMPTY);
         Background bottomBackground = new Background(bottomFill);
         this.setBackground(bottomBackground);
         this.getChildren().addAll(saldoLabel, saldoLabelPlayer, betAmountLabel, betAmountLabelPlayer,cardScoreLabel,cardScorePlayer);
 
-        this.setMargin(this.getChildren().get(2), new Insets(0,0,0,75));
-        this.setMargin(this.getChildren().get(4), new Insets(0,0,0,400));
+        this.setMargin(this.getChildren().get(2), new Insets(0,0,0,uiSettings.getInsetsMargin()*4));
+        this.setMargin(this.getChildren().get(4), new Insets(0,0,0,uiSettings.getInsetsMargin()*18));
     }
 
     //Getters
