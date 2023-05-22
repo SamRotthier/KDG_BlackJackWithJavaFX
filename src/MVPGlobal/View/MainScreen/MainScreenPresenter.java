@@ -44,8 +44,8 @@ public class MainScreenPresenter {
         updateView();
         EventHandlers();
         addEventHandlerPlayerActions();
-        //view.getWinLoseView().setVisible(false);
         view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+
     }
 
     private void updateView() {
@@ -115,8 +115,13 @@ public class MainScreenPresenter {
                         for (int i = 0; i < input.size(); i++) {
                             String inputline = input.get(i);
                             String[] elementen = inputline.split(" ");
-                            blackJackGame.player1.setBank(Integer.parseInt(inputline));
-                            view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+                            if (i == 0){
+                                blackJackGame.player1.setPlayerName(inputline);
+                                view.getBottomLabels().getPlayerName().setText(blackJackGame.player1.getPlayerName());
+                            } else if (i ==1) {
+                                blackJackGame.player1.setBank(Integer.parseInt(inputline));
+                                view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+                            }
                         }
                         // einde implementeren ingelezen gegevens doorgeven aan model
                     } catch (IOException e) {
@@ -150,6 +155,7 @@ public class MainScreenPresenter {
                        // output.format("%s%n", "First record");
                        // output.format("%s%n", "...");
                        // output.format("%s%n", "Last record");
+                        output.format("%s%n",blackJackGame.player1.getPlayerName());
                         output.format("%s%n",Integer.toString(blackJackGame.player1.getBank()));
                         //output.format(blackJackGame.player1.getBank() + "," + blackJackGame.player1.getHand());
                         // Einde implementeren wegschrijven model-gegevens

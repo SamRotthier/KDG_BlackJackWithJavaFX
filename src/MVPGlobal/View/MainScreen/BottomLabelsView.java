@@ -19,6 +19,10 @@ public class BottomLabelsView extends HBox {
     private Label betAmountLabelPlayer;
     private Label cardScorePlayer;
 
+    private Label playerNameLabel;
+
+    private Label playerName;
+
     public BottomLabelsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
@@ -30,9 +34,11 @@ public class BottomLabelsView extends HBox {
         this.saldoLabel = new Label("Saldo: ");
         this.betAmountLabel = new Label("Bet amount: ");
         this.cardScoreLabel = new Label("Card Score: ");
+        this.playerNameLabel = new Label("Player Name: ");
         this.saldoLabelPlayer = new Label("");
         this.betAmountLabelPlayer = new Label("");
         this.cardScorePlayer = new Label("");
+        this.playerName = new Label("");
     }
 
     private void layoutNodes() {
@@ -41,7 +47,7 @@ public class BottomLabelsView extends HBox {
         BackgroundFill bottomFill = new BackgroundFill(Color.web("#22222c"), CornerRadii.EMPTY, Insets.EMPTY);
         Background bottomBackground = new Background(bottomFill);
         this.setBackground(bottomBackground);
-        this.getChildren().addAll(saldoLabel, saldoLabelPlayer, betAmountLabel, betAmountLabelPlayer,cardScoreLabel,cardScorePlayer);
+        this.getChildren().addAll(saldoLabel, saldoLabelPlayer, betAmountLabel, betAmountLabelPlayer,cardScoreLabel,cardScorePlayer,playerNameLabel,playerName);
 
         this.setMargin(this.getChildren().get(2), new Insets(0,0,0,uiSettings.getInsetsMargin()*4));
         this.setMargin(this.getChildren().get(4), new Insets(0,0,0,uiSettings.getInsetsMargin()*18));
@@ -59,6 +65,9 @@ public class BottomLabelsView extends HBox {
 
     public Label getCardScorePlayer() {
         return cardScorePlayer;
+    }
+    public Label getPlayerName() {
+        return playerName;
     }
 
 
