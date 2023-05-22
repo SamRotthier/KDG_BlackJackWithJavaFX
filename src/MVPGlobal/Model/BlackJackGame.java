@@ -38,7 +38,9 @@ public class BlackJackGame {
          }
      }
     public void btnStand(){
-         dealer1.toHitOrNotToHit(deck);
+         if (!(player1.getTotalCardValue()>21)) {
+             dealer1.toHitOrNotToHit(deck);
+         }
          checkingScore();
 
          //message who won and how much
@@ -53,7 +55,7 @@ public class BlackJackGame {
          else if((playerScore == 21 && dealerScore != 21 )||(playerScore > dealerScore && playerScore <22) || (dealerScore>21 && playerScore <22)){
              //System.out.println("Player wins");
              player1.winRound();
-         } else if (dealerScore == 21 && playerScore == 21) {
+         } else if ((playerScore <22) && (playerScore == dealerScore)) {
              player1.pushRound();
          } else
          {

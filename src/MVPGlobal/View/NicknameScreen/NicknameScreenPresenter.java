@@ -13,18 +13,20 @@ import java.io.FileReader;
 
 public class NicknameScreenPresenter {
 
-    private BlackJackGame model;
+    private BlackJackGame blackJackGame;
     private NicknameScreenView view;
     private UISettings uiSettings;
 
-    public NicknameScreenPresenter(BlackJackGame model, NicknameScreenView view, UISettings uiSettings) {
-        this.model = model;
+    public NicknameScreenPresenter(BlackJackGame blackJackGame, NicknameScreenView view, UISettings uiSettings) {
+        this.blackJackGame = blackJackGame;
         this.view = view;
         this.uiSettings = uiSettings;
         view.getBtnConfirm().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(view.getNickname().getText() != null && view.getNickname().getText().toString().length() != 0){
+                if(view.getNickname().getText() != null && view.getNickname().getText().length() != 0){
+
+                    blackJackGame.player1.setPlayerName(view.getNickname().getText());
                     // setNickname in Model
                     view.getScene().getWindow().hide();
                 } else{

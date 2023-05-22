@@ -34,6 +34,8 @@ public class PlayerActionsView extends VBox  {
         this.buttonDouble = new Button("DOUBLE");
         this.buttonStand = new Button("STAND");
         this.buttonDeal = new Button("DEAL");
+
+
     }
 
     private void layoutNodes() {
@@ -44,6 +46,9 @@ public class PlayerActionsView extends VBox  {
 
         this.getChildren().addAll(buttonDeal,buttonHit, buttonDouble, buttonStand);
 
+        this.buttonHit.setVisible(false);
+        this.buttonDouble.setVisible(false);
+        this.buttonStand.setVisible(false);
     }
 
     // Getters
