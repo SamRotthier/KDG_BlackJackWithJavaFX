@@ -50,7 +50,6 @@ public class WinLoseView extends VBox {
 
         this.setAlignment(Pos.CENTER);
         this.setSpacing(uiSettings.getSpacing()*10);
-        this.getChildren().addAll(gameRound(i), buttonsGame);
     }
 
     //method

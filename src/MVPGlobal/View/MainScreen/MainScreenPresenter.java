@@ -42,7 +42,7 @@ public class MainScreenPresenter {
         updateView();
         EventHandlers();
         addEventHandlerPlayerActions();
-        view.getWinLoseView().setVisible(false);
+        //view.getWinLoseView().setVisible(false);
         view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
     }
 
@@ -284,6 +284,9 @@ public class MainScreenPresenter {
             public void handle(ActionEvent actionEvent) {
                 if (!view.getBetButtons().getBetAmount().getText().isEmpty() && blackJackGame.player1.getPlayerBet() > 0 && blackJackGame.player1.getPlayerBet()<= blackJackGame.player1.getBank()) {
                 blackJackGame.dealingCards();
+                view.setCenter(null);
+                view.setCenter(view.getCardsPlayerDealerBox());
+                view.getCardsPlayerDealerBox().setVisible(true);
                 view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
                 view.getBottomLabels().getBetAmountLabelPlayer().setText(Integer.toString(blackJackGame.player1.getPlayerBet()));
                 view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
@@ -367,26 +370,20 @@ public class MainScreenPresenter {
                if(blackJackGame.whoWon().equals("Dealer")){
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
-                   view.getWinLoseView().gameRound(2);
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(2), view.getWinLoseView().getButtonsGame());
-                   WinLoseView winLoseview = new WinLoseView(uiSettings);
-                   view.setCenter(winLoseview);
+                   view.setCenter(view.getWinLoseView());
 
                }else if (blackJackGame.whoWon().equals("Player")){
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
-                   view.getWinLoseView().gameRound(1);
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(1), view.getWinLoseView().getButtonsGame());
-                   WinLoseView winLoseview = new WinLoseView(uiSettings);
-                   view.setCenter(winLoseview);
+                   view.setCenter(view.getWinLoseView());
 
                }else{
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
-                   view.getWinLoseView().gameRound(3);
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(3), view.getWinLoseView().getButtonsGame());
-                   WinLoseView winLoseview = new WinLoseView(uiSettings);
-                   view.setCenter(winLoseview);
+                   view.setCenter(view.getWinLoseView());
                }
 
 
@@ -396,7 +393,6 @@ public class MainScreenPresenter {
                 view.getActionButtons().getButtonStand().setVisible(false);
                 view.getActionButtons().getbuttonNextRound().setVisible(false); // Was for easy debugging
                 view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
-                view.getCardsPlayerDealerBox().setVisible(false);
                 view.getWinLoseView().setVisible(true);
             }
         });

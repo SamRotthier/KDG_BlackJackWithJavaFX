@@ -43,11 +43,7 @@ public class BeginScreenView extends BorderPane  {
         loadGameBtn = new Button("LOAD GAME");
         startGameBtn = new Button("START GAME");
         welcomeText = new Label("Welcome to Knights Of The Future - Blackjack!");
-        instructions = new Label("Make your choice below");
-
-        //String soundFile = "resources/music/BlackjackStartTest.mp3";
-        // this.blackjackStartSound = new AudioClip(new File(soundFile).toURI().toString());
-
+        instructions = new Label("Choose an option below");
     }
 
     private void layoutNodes() {
