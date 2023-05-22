@@ -434,26 +434,11 @@ public class MainScreenPresenter {
                 view.getActionButtons().getButtonHit().setVisible(false);
                 view.getActionButtons().getButtonDouble().setVisible(false);
                 view.getActionButtons().getButtonStand().setVisible(false);
-                view.getActionButtons().getbuttonNextRound().setVisible(false); // Was for easy debugging
                 view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
                 view.getWinLoseView().setVisible(true);
             }
         });
 
-        view.getActionButtons().getbuttonNextRound().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                blackJackGame.dealer1.getHand().clear();
-                blackJackGame.player1.getHand().clear();
-
-                view.getPlayerCardsView().getPlayerCards().clear();
-                view.getDealerCardsView().getDealerCards().clear();
-                view.getActionButtons().getButtonDeal().setVisible(true);
-                view.getActionButtons().getbuttonNextRound().setVisible(false);
-                view.getCardsPlayerDealerBox().setVisible(true);
-                view.getWinLoseView().setVisible(false);
-            }
-        });
         view.getWinLoseView().getNextRound().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -463,7 +448,6 @@ public class MainScreenPresenter {
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getActionButtons().getButtonDeal().setVisible(true);
-                view.getActionButtons().getbuttonNextRound().setVisible(false);
                 view.getWinLoseView().setVisible(false);
             }
         });
