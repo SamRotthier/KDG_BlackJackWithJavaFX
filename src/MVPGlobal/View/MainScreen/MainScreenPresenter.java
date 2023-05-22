@@ -289,12 +289,17 @@ public class MainScreenPresenter {
                 view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(blackJackGame.player1.getTotalCardValue()));
                 view.getPlayerCardsView().getPlayerCards().clear();
                 view.getPlayerCardsView().getPlayerCards().addAll(blackJackGame.player1.getHand());
-                    view.getCardsPlayerDealerBox().setVisible(true);
-                view.getSounds().playDealCard();
-                view.getSounds().playDealCard();
+                view.getCardsPlayerDealerBox().setVisible(true);
+
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
+                    for (int i = 0; i < 2; i++) {
+                        view.getSounds().playDealCard();
+                    }
                 view.getPlayerCardsView().addCard();
+                    for (int i = 0; i < 2; i++) {
+                        view.getSounds().playDealCard();
+                    }
                 view.getDealerCardsView().addCardStart();
                 view.getActionButtons().getButtonHit().setVisible(true);
                 view.getActionButtons().getButtonDouble().setVisible(true);
@@ -360,13 +365,28 @@ public class MainScreenPresenter {
                }
 
                if(blackJackGame.whoWon().equals("Dealer")){
+                   view.setCenter(null);
+                   view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().gameRound(2);
+                   view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(2), view.getWinLoseView().getButtonsGame());
+                   WinLoseView winLoseview = new WinLoseView();
+                   view.setCenter(winLoseview);
 
                }else if (blackJackGame.whoWon().equals("Player")){
+                   view.setCenter(null);
+                   view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().gameRound(1);
+                   view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(1), view.getWinLoseView().getButtonsGame());
+                   WinLoseView winLoseview = new WinLoseView();
+                   view.setCenter(winLoseview);
 
                }else{
+                   view.setCenter(null);
+                   view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().gameRound(3);
+                   view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(3), view.getWinLoseView().getButtonsGame());
+                   WinLoseView winLoseview = new WinLoseView();
+                   view.setCenter(winLoseview);
                }
 
 

@@ -2,10 +2,15 @@ package MVPGlobal.View.SettingsScreen;
 
 import MVPGlobal.Model.*;
 import MVPGlobal.View.UISettings;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.WindowEvent;
+import javafx.scene.control.Slider;
+
+import javax.swing.event.ChangeListener;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -62,7 +67,13 @@ public class SettingsPresenter {
             }
         });
 
-        view.getSoundsView().
+        view.getVolumeBackgroundMusic().valueProperty().addListener(new InvalidationListener(){
+            @Override
+            public void invalidated(Observable observable){
+                view.getVolumeBackgroundMusic().setValue(view.getSoundsView().getBackgroundMusic().getVolume());
+                view.getSoundsView().getBackgroundMusic().setVolume(view.getVolumeBackgroundMusic().getValue());
+            }
+        });
     }
 
     public void windowsHandler() {

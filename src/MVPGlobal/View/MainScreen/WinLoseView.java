@@ -74,6 +74,7 @@ public class WinLoseView extends VBox {
     };
 
 
+
     // Animation maken
 
     //Getters
@@ -92,4 +93,6 @@ public class WinLoseView extends VBox {
     public void setI(int i) {
         this.i = i;
     }
+
+    public HBox getButtonsGame() {return buttonsGame;}
 }

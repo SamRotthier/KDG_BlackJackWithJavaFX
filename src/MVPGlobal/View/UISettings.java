@@ -29,6 +29,11 @@ public class UISettings {
     private Path startScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"medievalBackground.jpeg");
     private Path gameScreenBackground = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"BackgroundTableLogo.png");
     private Path backgroundMusicGame = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"blackjackgameaudio.mp3");
+    private Path blackjackStartSound = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"blackjackstart.mp3");
+
+    private Path startBtnSound = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"SwordStartBtn.mp3");
+    private Path loadBtnSound = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"SwordLoadBtn.mp3");
+    private Path infoBtnSound = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"SwordInfoBtn.mp3");
     private Path cardDealSound = Paths.get("resources"+FILE_SEPARATOR+"music"+FILE_SEPARATOR+"CardDeal");
 
     private Path cardImage = Paths.get("resources"+FILE_SEPARATOR+"images"+FILE_SEPARATOR+"cards"+FILE_SEPARATOR);
@@ -89,7 +94,16 @@ public class UISettings {
 
     // Music & Sounds
     public Path getBackgroundMusicGame() {return this.backgroundMusicGame;};
+
+    public Path getBlackjackStartSound() {return blackjackStartSound;}
+
     public Path getCardDealSound(){return this.cardDealSound;};
+
+    public Path getStartBtnSound() {return startBtnSound;}
+
+    public Path getLoadBtnSound() {return loadBtnSound;}
+
+    public Path getInfoBtnSound() {return infoBtnSound;}
 
     // Images
     public Path getArrowUp() {return this.arrowUp;};

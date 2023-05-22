@@ -15,12 +15,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class BeginScreenPresenter {
 
@@ -47,6 +52,7 @@ public class BeginScreenPresenter {
                 blackJackGame = new BlackJackGame();
 
                 MainScreenView msView = new MainScreenView(uiSettings);
+                msView.getSounds().playStartBtn();
                 MainScreenPresenter msPresenter = new MainScreenPresenter(blackJackGame, msView, uiSettings);
                 view.getScene().setRoot(msView);
                 try {
@@ -59,12 +65,18 @@ public class BeginScreenPresenter {
                 msView.getScene().getWindow().setWidth(uiSettings.getResX()/1.1);
                 msPresenter.windowsHandler();
 
+                //music
+                msView.getSounds().playBackgroundMusic();
+
             }
         });
 
         view.getMoreInfoBtn().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                MainScreenView msView = new MainScreenView(uiSettings);
+                msView.getSounds().playInfoBtn();
+
                 InfoScreenView infoScreenView = new InfoScreenView(uiSettings);
                 InfoScreenPresenter infoScreenPresenter = new InfoScreenPresenter(blackJackGame, infoScreenView, uiSettings);
                 Stage infoScreenStage = new Stage();
@@ -97,6 +109,56 @@ public class BeginScreenPresenter {
                 }
                 infoScreenStage.showAndWait();
             }});
+
+        view.getLoadGameBtn().setOnAction((new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                MainScreenView msView = new MainScreenView(uiSettings);
+                msView.getSounds().playLoadBtn();
+
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Load Data File");
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
+                        new FileChooser.ExtensionFilter("All Files", "*.*"));
+                File selectedFile = fileChooser.showOpenDialog(view.getScene().getWindow());
+                if ((selectedFile != null) ){ //^ (Files.isReadable(Paths.get(selectedFile.toURI())))) {
+                    try {
+                        List<String> input = Files.readAllLines(Paths.get(selectedFile.toURI()));
+                        // begin implementeren ingelezen gegevens doorgeven aan model
+                        for (int i = 0; i < input.size(); i++) {
+                            String inputline = input.get(i);
+                            String[] elementen = inputline.split(" ");
+                            blackJackGame.player1.setBank(Integer.parseInt(inputline));
+                            msView.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+                        }
+                        // start game
+                        blackJackGame = new BlackJackGame();
+
+                        MainScreenPresenter msPresenter = new MainScreenPresenter(blackJackGame, msView, uiSettings);
+                        view.getScene().setRoot(msView);
+                        try {
+                            msView.getScene().getStylesheets().add(uiSettings.getStyleSheetPath().toUri().toURL().toString());
+                        } catch (MalformedURLException ex) {
+                            // // do nothing, if toURL-conversion fails, program can continue
+                        }
+                        msView.getScene().getWindow().sizeToScene();
+                        msView.getScene().getWindow().setHeight(uiSettings.getResY()/1.1);
+                        msView.getScene().getWindow().setWidth(uiSettings.getResX()/1.1);
+                        msPresenter.windowsHandler();
+
+                        //music
+                        msView.getSounds().playBackgroundMusic();
+                    } catch (IOException e) {
+                        //
+                    }
+                } else {
+                    AlertBlackjack errorWindow = new AlertBlackjack(Alert.AlertType.ERROR, "ERROR", "Problem with the selected input file:", "File is not readable", "OK");
+                    errorWindow.showAndWait();
+                }
+
+            }
+        }));
 }
 
 

@@ -1,6 +1,7 @@
 package MVPGlobal.View.StartScreen;
 
 import MVPGlobal.View.MainScreen.MainScreenView;
+import MVPGlobal.View.MainScreen.SoundsView;
 import MVPGlobal.View.UISettings;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
@@ -29,7 +30,7 @@ public class StartScreenView extends BorderPane  {
 
     private ImageView centralImage;
 
-    private AudioClip blackjackStartSound;
+    private SoundsView soundsView;
 
     private Label devs;
     private Label version;
@@ -47,8 +48,7 @@ public class StartScreenView extends BorderPane  {
         this.timeProgress = new ProgressBar();
         this.centralImage = new ImageView();
         this.mainScreenView = new MainScreenView(uiSettings);
-        String soundFile = "resources/music/BlackjackStartTest.mp3";
-        this.blackjackStartSound = new AudioClip(new File(soundFile).toURI().toString());
+        this.soundsView = new SoundsView(uiSettings);
         devs = new Label("This game was developed by Sam Rotthier and Matthias Vermeiren");
         version = new Label("Version 3");
     }
@@ -62,7 +62,7 @@ public class StartScreenView extends BorderPane  {
         }
 
         //music
-        //blackjackStartSound.play();
+        soundsView.playBlackjackStart();
 
         //Css
         devs.getStyleClass().add("heading2");

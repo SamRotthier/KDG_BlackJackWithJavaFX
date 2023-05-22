@@ -99,19 +99,21 @@ public class SettingsView extends BorderPane  {
         volumeSlider.setMinorTickCount(5);
         volumeSlider.setBlockIncrement(5);
         volumeSlider.setSnapToTicks(true);
-        volumeSlider.setPadding(new Insets(0, 20, 0, 40));
+        volumeSlider.setPadding(new Insets(5, 20, 5, 40));
     }
+
+    //Getters & Setters
 
     MenuItem getExitItem() {return exitMI;}
     Button getCssButton () {return cssButton;}
     TextField getCssName () {return cssName;}
     Button getOkButton () {return okButton;}
 
-    public SoundsView getSoundsView() {
-        return soundsView;
-    }
+    public SoundsView getSoundsView() {return soundsView;}
 
-    public void setSoundsView(SoundsView soundsView) {
-        this.soundsView = soundsView;
-    }
+    public void setSoundsView(SoundsView soundsView) {this.soundsView = soundsView;}
+
+    public Slider getVolumeBackgroundMusic() {return volumeBackgroundMusic;}
+
+    public Slider getVolumeSoundFx() {return volumeSoundFx;}
 }
