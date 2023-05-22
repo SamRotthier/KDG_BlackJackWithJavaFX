@@ -18,6 +18,7 @@ public class WinLoseView extends VBox {
     private Button quitGame;
     private Label  winGame;
     private Label  loseGame;
+    private Label gameOver;
 
     private Label pushGame;
 
@@ -33,12 +34,14 @@ public class WinLoseView extends VBox {
     }
 
     private void initialiseNodes() {
-        nextRound = new Button("NEXT"); //or Next Round
-        saveGame = new Button("SAVE"); //or Save Game
-        quitGame = new Button("QUIT"); //or Quit Game
+        nextRound = new Button("NEXT");
+        saveGame = new Button("SAVE");
+        quitGame = new Button("QUIT");
+
         winGame = new Label("Congratulations, you've won!");
         loseGame = new Label("You Lose! Better luck next time...");
         pushGame = new Label("Push! The game results in a tie");
+        gameOver = new Label("GAME OVER");
 
     }
 
@@ -65,6 +68,11 @@ public class WinLoseView extends VBox {
             loseGame.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5));
             return loseGame;
         }
+        else if(i == 3){
+            gameOver.getStyleClass().add("lose");
+            gameOver.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5));
+            return gameOver;
+        }
         else{
             pushGame.getStyleClass().add("push");
             pushGame.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5));
@@ -85,8 +93,7 @@ public class WinLoseView extends VBox {
         return saveGame;
     }
 
-    public Button getQuitGame() {
-        return quitGame;
+    public Button getQuitGame() {return quitGame;
     }
     //setter
     public void setI(int i) {
@@ -94,4 +101,6 @@ public class WinLoseView extends VBox {
     }
 
     public HBox getButtonsGame() {return buttonsGame;}
+
+
 }
