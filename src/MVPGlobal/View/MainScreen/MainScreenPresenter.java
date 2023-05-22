@@ -376,19 +376,16 @@ public class MainScreenPresenter {
                    }
                    else {
                    view.setCenter(null);
-                   //view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(2), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());}
 
                }else if (blackJackGame.whoWon().equals("Player")){
                    view.setCenter(null);
-                   //view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(1), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
 
                }else{
                    view.setCenter(null);
-                   //view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(4), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
                }
