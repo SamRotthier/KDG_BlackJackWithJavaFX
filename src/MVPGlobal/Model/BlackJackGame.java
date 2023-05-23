@@ -9,6 +9,7 @@ public class BlackJackGame {
 
     public Player player = new Player();
     public Dealer dealer = new Dealer();
+    public SoundsPlayer sounds = new SoundsPlayer();
     ArrayList<Card> deck = DeckBuilder.playDeck(2);
 
     public void dealingCards() {

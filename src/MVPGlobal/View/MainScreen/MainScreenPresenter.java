@@ -267,7 +267,7 @@ public class MainScreenPresenter {
 
                     view.getDealerCardsView().getDealerCards().clear();
                     view.getDealerCardsView().getDealerCards().addAll(dealer.getHand());
-                    view.getSounds().playDealCard();
+                    blackJackGame.sounds.playDealCard();
                     /*for (int i = 0; i < 2; i++) {
                         view.getSounds().playDealCard();
                     }*/
@@ -309,7 +309,7 @@ public class MainScreenPresenter {
 
                     view.getPlayerCardsView().getPlayerCards().add(player.getHand().get(player.getHand().size() - 1));
                     view.getPlayerCardsView().addCard();
-                    view.getSounds().playDealCard();
+                    blackJackGame.sounds.playDealCard();
                 } else {
                     AlertBlackjack alertLost = new AlertBlackjack(AlertType.INFORMATION, "LOST", "Card value over 21", "Your card value is over 21. You Lost!", "OK");
                     alertLost.showAndWait();
@@ -332,7 +332,7 @@ public class MainScreenPresenter {
 
                         view.getPlayerCardsView().getPlayerCards().add(player.getHand().get(player.getHand().size() - 1));
                         view.getPlayerCardsView().addCard();
-                        view.getSounds().playDealCard();
+                        blackJackGame.sounds.playDealCard();
                     } else {
                         AlertBlackjack alertBroke = new AlertBlackjack(AlertType.INFORMATION, "BROKE", "Not enough points", "You don't have enough points for this", "OK");
                         alertBroke.showAndWait();
@@ -347,7 +347,7 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonStand().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                view.getSounds().playInfoBtn();
+                blackJackGame.sounds.playInfoBtn();
                 view.getActionButtons().setVisible(false);
                 blackJackGame.btnStand();
                 if (dealer.getHand().size() <= 2) {
@@ -401,7 +401,7 @@ public class MainScreenPresenter {
         view.getWinLoseView().getQuitGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                //view.getSounds().stopBackgroundMusic();
+                blackJackGame.sounds.stopBackgroundMusic();
                 nextRoundClearing();
                 //view.getBottomLabels().getSaldoLabelPlayer().setText(Integer)
                 BeginScreenView beginView = new BeginScreenView(uiSettings);

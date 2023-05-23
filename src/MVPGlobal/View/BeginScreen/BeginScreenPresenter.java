@@ -55,7 +55,7 @@ public class BeginScreenPresenter {
                 blackJackGame = new BlackJackGame();
 
                 MainScreenView msView = new MainScreenView(uiSettings);
-                msView.getSounds().playStartBtn();
+                blackJackGame.sounds.playStartBtn();
                 MainScreenPresenter msPresenter = new MainScreenPresenter(blackJackGame, msView, uiSettings);
                 view.getScene().setRoot(msView);
                 try {
@@ -69,7 +69,7 @@ public class BeginScreenPresenter {
                 msPresenter.windowsHandler();
 
                 //music
-                msView.getSounds().playBackgroundMusic();
+                blackJackGame.sounds.playBackgroundMusic();
 
                 // Choose nickname
                 NicknameScreenView nicknameScreenView = new NicknameScreenView(uiSettings);
@@ -101,7 +101,7 @@ public class BeginScreenPresenter {
             @Override
             public void handle(ActionEvent event) {
                 MainScreenView msView = new MainScreenView(uiSettings);
-                msView.getSounds().playInfoBtn();
+                blackJackGame.sounds.playInfoBtn();
 
                 InfoScreenView infoScreenView = new InfoScreenView(uiSettings);
                 InfoScreenPresenter infoScreenPresenter = new InfoScreenPresenter(blackJackGame, infoScreenView, uiSettings);
@@ -140,7 +140,7 @@ public class BeginScreenPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 MainScreenView msView = new MainScreenView(uiSettings);
-                msView.getSounds().playLoadBtn();
+                blackJackGame.sounds.playLoadBtn();
 
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Load Data File");
@@ -178,7 +178,7 @@ public class BeginScreenPresenter {
                         msPresenter.windowsHandler();
 
                         //music
-                        msView.getSounds().playBackgroundMusic();
+                        blackJackGame.sounds.playBackgroundMusic();
                     } catch (IOException e) {
                         //
                     }

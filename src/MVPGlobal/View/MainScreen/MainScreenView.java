@@ -33,7 +33,6 @@ public class MainScreenView extends BorderPane  {
     private UISettings uiSettings;
     private PlayerActionsView actionButtons;
     private BetView betButtons;
-    private SoundsView sounds;
     private PlayerCardsView playerCardsView;
     private DealerCardsView dealerCardsView;
     private BottomLabelsView bottomLabels;
@@ -59,7 +58,6 @@ public class MainScreenView extends BorderPane  {
 
         actionButtons = new PlayerActionsView(uiSettings);
         betButtons = new BetView(uiSettings);
-        sounds = new SoundsView();
         playerCardsView = new PlayerCardsView(uiSettings);
         dealerCardsView = new DealerCardsView(uiSettings);
         bottomLabels = new BottomLabelsView(uiSettings);
@@ -140,7 +138,6 @@ public class MainScreenView extends BorderPane  {
         return winLoseView;
     }
     BetView getBetButtons(){return betButtons;}
-    public SoundsView getSounds() {return sounds;}
     public BottomLabelsView getBottomLabels() {
         return bottomLabels;
     }

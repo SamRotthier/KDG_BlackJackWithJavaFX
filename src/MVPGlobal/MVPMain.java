@@ -1,6 +1,5 @@
 package MVPGlobal;
 
-import MVPGlobal.View.MainScreen.SoundsView;
 import MVPGlobal.View.StartScreen.*;
 import MVPGlobal.Model.*;
 import MVPGlobal.View.*;
@@ -17,8 +16,7 @@ public class MVPMain extends Application {
     public void start(Stage primaryStage) {
         UISettings uiSettings = new UISettings();
         BlackJackGame blackJackGame = new BlackJackGame();
-        StartScreenView view = new StartScreenView(uiSettings);
-        SoundsView soundsView = new SoundsView();
+        StartScreenView view = new StartScreenView(uiSettings, blackJackGame);
         StartScreenPresenter presenter = new StartScreenPresenter(blackJackGame, view, uiSettings);
         Scene scene = new Scene(view);
         if (uiSettings.styleSheetAvailable()){
