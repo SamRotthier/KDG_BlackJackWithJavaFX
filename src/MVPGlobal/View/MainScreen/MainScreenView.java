@@ -117,7 +117,7 @@ public class MainScreenView extends BorderPane  {
 
     // Animation
     public Animation fadeInAnimation(VBox vbox){
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(.7), vbox);
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(.6), vbox);
         //start position
         fadeIn.setFromValue(0.2);
         //end position
