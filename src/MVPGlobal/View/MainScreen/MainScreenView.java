@@ -1,6 +1,9 @@
 package MVPGlobal.View.MainScreen;
 
 import MVPGlobal.View.UISettings;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.geometry.*;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -11,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 import javax.management.loading.PrivateClassLoader;
 import java.net.MalformedURLException;
@@ -111,8 +115,21 @@ public class MainScreenView extends BorderPane  {
 
     }
 
+    // Animation
+    public Animation fadeInAnimation(VBox vbox){
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(.7), vbox);
+        //start position
+        fadeIn.setFromValue(0.2);
+        //end position
+        fadeIn.setToValue(1.0);
+        fadeIn.setInterpolator(Interpolator.EASE_IN);
+
+        fadeIn.play();
+        return fadeIn;
+    }
 
 
+    // Getters
     MenuItem getExitItem() {return exitMI;}
 
     MenuItem getSaveItem() {return saveMI;}

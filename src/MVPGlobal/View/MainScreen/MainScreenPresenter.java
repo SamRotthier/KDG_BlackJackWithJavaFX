@@ -350,6 +350,7 @@ public class MainScreenPresenter {
                 view.getActionButtons().getChildren().clear();
                 view.getActionButtons().getChildren().addAll(view.getActionButtons().getButtonHit(), view.getActionButtons().getButtonDouble(), view.getActionButtons().getButtonStand());
                 view.setRight(view.getActionButtons());
+                view.fadeInAnimation(view.getActionButtons());
 
                 /* view.getActionButtons().getButtonHit().setVisible(true);
                 view.getActionButtons().getButtonDouble().setVisible(true);
@@ -421,28 +422,28 @@ public class MainScreenPresenter {
                        view.getWinLoseView().getChildren().clear();
                        view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(3), view.getWinLoseView().getQuitGame());
                        view.setCenter(view.getWinLoseView());
-                       view.getWinLoseView().winLoseAnimation(view.getWinLoseView());
+                       view.fadeInAnimation(view.getWinLoseView());
                    }
                    else {
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(2), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
-                   view.getWinLoseView().winLoseAnimation(view.getWinLoseView());}
+                   view.fadeInAnimation(view.getWinLoseView());}
 
                }else if (blackJackGame.whoWon().equals("Player")){
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(1), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
-                   view.getWinLoseView().winLoseAnimation(view.getWinLoseView());
+                   view.fadeInAnimation(view.getWinLoseView());
 
                }else{
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(4), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
-                   view.getWinLoseView().winLoseAnimation(view.getWinLoseView());
+                   view.fadeInAnimation(view.getWinLoseView());
                }
 
 
@@ -467,6 +468,7 @@ public class MainScreenPresenter {
                 view.setRight(view.getActionButtons());
                 view.getWinLoseView().setVisible(false);
                 view.getActionButtons().setVisible(true);
+                view.fadeInAnimation(view.getActionButtons());
             }
         });
 

@@ -82,20 +82,6 @@ public class WinLoseView extends VBox {
         }
     };
 
-
-
-    // Animation
-    public Animation winLoseAnimation(VBox vbox){
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), vbox);
-        //start position
-        fadeIn.setFromValue(0.2);
-        //end position
-        fadeIn.setToValue(1.0);
-        fadeIn.setInterpolator(Interpolator.EASE_IN);
-
-        fadeIn.play();
-        return fadeIn;
-    }
     //Getters
     public Button getNextRound() {
         return nextRound;
