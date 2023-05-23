@@ -8,7 +8,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.Random;
 
-public class SoundsView{
+public class SoundsView {
 
     private UISettings uiSettings;
     private MediaPlayer backgroundMusic;
@@ -30,7 +30,7 @@ public class SoundsView{
         //
     }
 
-    public void playBlackjackStart(){
+    public void playBlackjackStart() {
        /* try{
             String blackjackStartSound = uiSettings.getBlackjackStartSound().toString();
             AudioClip blackjackStart = new AudioClip(new File(blackjackStartSound).toURI().toURL().toString());
@@ -39,7 +39,7 @@ public class SoundsView{
         catch(MalformedURLException ex){} */
     }
 
-    public void playBackgroundMusic(){
+    public void playBackgroundMusic() {
        /* try{
             backgroundMusic = new MediaPlayer(new Media(uiSettings.getBackgroundMusicGame().toUri().toURL().toString()));
             backgroundMusic.play();
@@ -48,7 +48,7 @@ public class SoundsView{
         } */
     }
 
-    public void playStartBtn(){
+    public void playStartBtn() {
 
         String startBtnSound = uiSettings.getStartBtnSound().toString();
        /* try{
@@ -56,9 +56,11 @@ public class SoundsView{
             startBtn.play();
         }
         catch(MalformedURLException ex){}; */
-    };
+    }
 
-    public void playLoadBtn(){
+    ;
+
+    public void playLoadBtn() {
         String loadBtnSound = uiSettings.getLoadBtnSound().toString();
        /* try{
             AudioClip startBtn = new AudioClip(new File(loadBtnSound).toURI().toURL().toString());
@@ -66,18 +68,22 @@ public class SoundsView{
         }
         catch(MalformedURLException ex){}; */
 
-    };
+    }
 
-    public void playInfoBtn(){
+    ;
+
+    public void playInfoBtn() {
        /* String infoBtnSound = uiSettings.getInfoBtnSound().toString();
         try{
             AudioClip startBtn = new AudioClip(new File(infoBtnSound).toURI().toURL().toString());
             startBtn.play();
         }
         catch(MalformedURLException ex){}; */
-    };
+    }
 
-    public void playDealCard(){
+    ;
+
+    public void playDealCard() {
 /*
         Random random = new Random();
         int dealSoundNumber = random.nextInt(NUM_DEAL) + 1;

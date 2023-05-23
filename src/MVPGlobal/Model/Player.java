@@ -38,7 +38,6 @@ public class Player extends CardHandler {
             hitCard(Deck);
         } else {
             System.out.println("Looks like you're too broke, you are trying to bet more then what you have");
-
         }
     }
 
@@ -62,7 +61,7 @@ public class Player extends CardHandler {
         this.bank = bank;
     }
 
-    void setPlayerBet(int playerBet) {
+    public void setPlayerBet(int playerBet) {
         this.playerBet = playerBet;
     }
 

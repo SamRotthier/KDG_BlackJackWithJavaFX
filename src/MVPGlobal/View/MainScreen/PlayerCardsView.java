@@ -12,20 +12,12 @@ import javafx.util.Duration;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
-public class PlayerCardsView extends StackPane  {
+public class PlayerCardsView extends StackPane {
 
     private UISettings uiSettings;
-
     public ArrayList<Card> playerCards = new ArrayList<Card>();
     private Image card;
     private ImageView cardView;
-    private Image cardTwo;
-    private ImageView cardViewTwo;
-
-    private Image cardThree;
-    private ImageView cardViewThree;
-
-
 
     public PlayerCardsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -40,28 +32,26 @@ public class PlayerCardsView extends StackPane  {
         cardViewTwo = new ImageView(cardTwo);
         this.cardThree = new Image("images/cards/heartsK.png");
         cardViewThree = new ImageView(cardThree); */
-
     }
 
     private void layoutNodes() {
         this.setAlignment(Pos.CENTER);
-
     }
 
     //Methods
-
-    public void addCard(){
+    public void addCard() {
         this.getChildren().clear();
         int x = 0;
         int r = -2;
         int y = 0;
 
-       //SequentialTransition sequentialTransition = new SequentialTransition();
+        //SequentialTransition sequentialTransition = new SequentialTransition();
         for (Card c : playerCards) {
             String cardNamePath = c.getSuit() + c.getCardNumb();
-            try{
-                card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");}
-            catch(MalformedURLException ex){}
+            try {
+                card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");
+            } catch (MalformedURLException ex) {
+            }
 
             cardView = new ImageView(card);
             cardView.setPreserveRatio(true);
@@ -69,29 +59,25 @@ public class PlayerCardsView extends StackPane  {
             cardView.setFitHeight(uiSettings.getCardHeight());
             this.getChildren().add(cardView);
 
-
             //sequentialTransition.getChildren().add(cardDuration(cardView));
             //sequentialTransition.getChildren().add(new PauseTransition(Duration.seconds(5)));
 
             cardView.setTranslateX(uiSettings.getCardOffsetX() * x);
-            cardView.setTranslateY(-(uiSettings.getCardOffsetY() + (y*5)));
-            if(playerCards.size() <= 3 && r == -2) {
+            cardView.setTranslateY(-(uiSettings.getCardOffsetY() + (y * 5)));
+            if (playerCards.size() <= 3 && r == -2) {
                 r = -1;
             }
             cardView.setRotate(uiSettings.getCardRotate() * r);
 
-
             x++;
             r++;
-            if(y < ((playerCards.size()/2))){
+            if (y < ((playerCards.size() / 2))) {
                 y++;
-            }
-            else {
+            } else {
                 y--;
-            };
-
+            }
         }
-       // sequentialTransition.play();
+        // sequentialTransition.play();
     }
 
     //Animations
@@ -115,8 +101,6 @@ public class PlayerCardsView extends StackPane  {
         duration.play();
         return duration;
     }
-
-
 
     private void cardAnimationTimeline(ImageView cardImageView){
         //Timeline used with Keyframes to animate each card

@@ -7,7 +7,7 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.geometry.Insets;
 
-public class SettingsView extends BorderPane  {
+public class SettingsView extends BorderPane {
 
     private UISettings uiSettings;
     private MenuItem exitMI;
@@ -43,7 +43,7 @@ public class SettingsView extends BorderPane  {
         this.cssName.setPrefWidth(uiSettings.getLowestRes() / 3);
         this.cssName.setText(uiSettings.getStyleSheetPath().toString());
 
-        this.volumeTitel = new Label ("Volume Options");
+        this.volumeTitel = new Label("Volume Options");
         this.backgroundMusicLabel = new Label("Background Music: ");
         this.volumeBackgroundMusic = new Slider(0, 100, 80);
         this.soundFXLabel = new Label("Sound Effects:               ");
@@ -91,29 +91,50 @@ public class SettingsView extends BorderPane  {
         this.setBottom(okButton);
     }
 
-    private void volumeSlider(Slider volumeSlider){
-        volumeSlider.setPrefWidth(uiSettings.getLowestRes()/5.75);
+    private void volumeSlider(Slider volumeSlider) {
+        volumeSlider.setPrefWidth(uiSettings.getLowestRes() / 5.75);
         volumeSlider.setShowTickMarks(true);
         volumeSlider.setShowTickLabels(true);
         volumeSlider.setMajorTickUnit(20);
         volumeSlider.setMinorTickCount(5);
         volumeSlider.setBlockIncrement(5);
         volumeSlider.setSnapToTicks(true);
-        volumeSlider.setPadding(new Insets(uiSettings.getInsetsMargin()/4, uiSettings.getInsetsMargin(), uiSettings.getInsetsMargin()/4, uiSettings.getInsetsMargin()*2));
+        volumeSlider.setPadding(new Insets(uiSettings.getInsetsMargin() / 4, uiSettings.getInsetsMargin(), uiSettings.getInsetsMargin() / 4, uiSettings.getInsetsMargin() * 2));
     }
 
     //Getters & Setters
 
-    MenuItem getExitItem() {return exitMI;}
-    Button getCssButton () {return cssButton;}
-    TextField getCssName () {return cssName;}
-    Button getOkButton () {return okButton;}
+    MenuItem getExitItem() {
+        return exitMI;
+    }
 
-    public SoundsView getSoundsView() {return soundsView;}
+    Button getCssButton() {
+        return cssButton;
+    }
 
-    public void setSoundsView(SoundsView soundsView) {this.soundsView = soundsView;}
+    TextField getCssName() {
+        return cssName;
+    }
 
-    public Slider getVolumeBackgroundMusic() {return volumeBackgroundMusic;}
+    Button getOkButton() {
+        return okButton;
+    }
 
-    public Slider getVolumeSoundFx() {return volumeSoundFx;}
+    public Slider getVolumeBackgroundMusic() {
+        return volumeBackgroundMusic;
+    }
+
+    public Slider getVolumeSoundFx() {
+        return volumeSoundFx;
+    }
+
+    public SoundsView getSoundsView() {
+        return soundsView;
+    }
+
+    public void setSoundsView(SoundsView soundsView) {
+        this.soundsView = soundsView;
+    }
+
+
 }

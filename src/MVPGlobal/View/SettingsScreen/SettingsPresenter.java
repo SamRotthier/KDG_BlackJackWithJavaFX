@@ -18,12 +18,10 @@ import java.nio.file.Paths;
 
 public class SettingsPresenter {
 
-    private BlackJackGame model;
     private SettingsView view;
     private UISettings uiSettings;
 
     public SettingsPresenter(BlackJackGame model, SettingsView view, UISettings uiSettings) {
-        this.model = model;
         this.view = view;
         this.uiSettings = uiSettings;
         updateView();
@@ -36,7 +34,10 @@ public class SettingsPresenter {
     private void EventHandlers() {
         view.getExitItem().setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {handleCloseEvent(event);}});
+            public void handle(ActionEvent event) {
+                handleCloseEvent(event);
+            }
+        });
         view.getCssButton().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -51,9 +52,9 @@ public class SettingsPresenter {
                     URI uri = selectedFile.toURI();
                     uiSettings.setStyleSheetPath(Paths.get(uri));
                 }
-                if (uiSettings.styleSheetAvailable()){
+                if (uiSettings.styleSheetAvailable()) {
                     view.getScene().getStylesheets().removeAll();
-                    try{
+                    try {
                         view.getScene().getStylesheets().add(uiSettings.getStyleSheetPath().toUri().toURL().toString());
                     } catch (MalformedURLException ex) {
                         // do nothing, if toURL-conversion fails, program can continue
@@ -61,15 +62,17 @@ public class SettingsPresenter {
                 }
             }
         });
-        view.getOkButton().setOnMouseClicked(new EventHandler<MouseEvent>()  {
+
+        view.getOkButton().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent event) { handleCloseEvent(event);
+            public void handle(MouseEvent event) {
+                handleCloseEvent(event);
             }
         });
 
-        view.getVolumeBackgroundMusic().valueProperty().addListener(new InvalidationListener(){
+        view.getVolumeBackgroundMusic().valueProperty().addListener(new InvalidationListener() {
             @Override
-            public void invalidated(Observable observable){
+            public void invalidated(Observable observable) {
                 view.getVolumeBackgroundMusic().setValue(view.getSoundsView().getBackgroundMusic().getVolume());
                 view.getSoundsView().getBackgroundMusic().setVolume(view.getVolumeBackgroundMusic().getValue());
             }
@@ -79,10 +82,13 @@ public class SettingsPresenter {
     public void windowsHandler() {
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
-            public void handle(WindowEvent event) {handleCloseEvent(event);}});
+            public void handle(WindowEvent event) {
+                handleCloseEvent(event);
+            }
+        });
     }
 
-    private void handleCloseEvent(Event event){
+    private void handleCloseEvent(Event event) {
         view.getScene().getWindow().hide();
     }
 }

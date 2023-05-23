@@ -17,7 +17,6 @@ public class StartScreenPresenter {
     private MainScreenPresenter mainScreenPresenter;
     private UISettings uiSettings;
 
-
     public StartScreenPresenter(BlackJackGame blackJackGame, StartScreenView view, UISettings uiSettings) {
         this.blackJackGame = blackJackGame;
         this.view = view;
@@ -37,8 +36,8 @@ public class StartScreenPresenter {
                 BeginScreenPresenter bsPresenter = new BeginScreenPresenter(blackJackGame, beginView, uiSettings);
                 view.getScene().setRoot(beginView);
                 beginView.getScene().getWindow().sizeToScene();
-                beginView.getScene().getWindow().setHeight(uiSettings.getResY()/1.1);
-                beginView.getScene().getWindow().setWidth(uiSettings.getResX()/1.1);
+                beginView.getScene().getWindow().setHeight(uiSettings.getResY() / 1.1);
+                beginView.getScene().getWindow().setWidth(uiSettings.getResX() / 1.1);
 
                 bsPresenter.windowsHandler();
             }
@@ -47,10 +46,12 @@ public class StartScreenPresenter {
 
     public void windowsHandler() {
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
-             @Override
-             public void handle(WindowEvent event) {
-                 AlertBlackjack stopWindow = new AlertBlackjack(Alert.AlertType.ERROR,"Error" ,"You can not yet close the application.", "Try again after the program has started","OK");
-                 stopWindow.showAndWait();
-                 event.consume(); } });
+            @Override
+            public void handle(WindowEvent event) {
+                AlertBlackjack stopWindow = new AlertBlackjack(Alert.AlertType.ERROR, "Error", "You can not yet close the application.", "Try again after the program has started", "OK");
+                stopWindow.showAndWait();
+                event.consume();
+            }
+        });
     }
 }

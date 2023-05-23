@@ -57,10 +57,6 @@ import java.util.ArrayList;
              playDeck.addAll(shuffleDeck(startDeck));
          }
         return playDeck;
-        //Commented code is for easily making bigger decks with the amount deck int
-        //ArrayList<Card> StartDeck = AssemblingDeck();
-         ////ArrayList<Card> playDeck = ShuffleDeck(startDeck);
-        //return ShuffleDeck(AssemblingDeck());
     }
 
 
