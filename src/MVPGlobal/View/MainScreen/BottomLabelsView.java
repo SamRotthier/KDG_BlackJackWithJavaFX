@@ -18,16 +18,13 @@ public class BottomLabelsView extends HBox {
     private Label saldoLabelPlayer;
     private Label betAmountLabelPlayer;
     private Label cardScorePlayer;
-
     private Label playerNameLabel;
-
     private Label playerName;
 
     public BottomLabelsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
-
     }
 
     private void initialiseNodes() {
@@ -55,7 +52,6 @@ public class BottomLabelsView extends HBox {
     }
 
     //Getters
-
     public Label getSaldoLabelPlayer() {
         return saldoLabelPlayer;
     }
@@ -67,6 +63,7 @@ public class BottomLabelsView extends HBox {
     public Label getCardScorePlayer() {
         return cardScorePlayer;
     }
+
     public Label getPlayerName() {
         return playerName;
     }

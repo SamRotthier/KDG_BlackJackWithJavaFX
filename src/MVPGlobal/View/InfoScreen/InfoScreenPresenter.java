@@ -19,6 +19,10 @@ public class InfoScreenPresenter {
         this.view = view;
         this.uiSettings = uiSettings;
         view.getInfoText().setText(ReadInfoFromFile());
+        EventHandlers();
+    }
+
+    private void EventHandlers() {
         view.getBtnOk().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

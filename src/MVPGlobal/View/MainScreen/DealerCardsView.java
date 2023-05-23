@@ -14,15 +14,11 @@ public class DealerCardsView extends StackPane {
     private UISettings uiSettings;
     private Image backCard;
     private ImageView backCardView;
-
     public static ArrayList<Card> dealerCards = new ArrayList<Card>();
     private Image card;
     private ImageView cardView;
-
     private double offsetX;
     private double rotate;
-
-
 
     public DealerCardsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
