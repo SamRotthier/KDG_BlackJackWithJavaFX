@@ -22,6 +22,7 @@ import java.util.ArrayList;
                 if (n < 11) {
                     if(n == 1){
                         cardNumb = "A";
+                        card.setCardValue(11);
                     }
                     else {
                     cardNumb = Integer.toString(cardValue);
