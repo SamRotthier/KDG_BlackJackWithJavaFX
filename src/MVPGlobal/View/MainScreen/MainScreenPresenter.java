@@ -9,6 +9,7 @@ import MVPGlobal.View.BeginScreen.BeginScreenView;
 import MVPGlobal.View.InfoScreen.*;
 import MVPGlobal.View.SettingsScreen.*;
 import MVPGlobal.View.UISettings;
+import javafx.animation.PauseTransition;
 import javafx.event.*;
 import javafx.scene.*;
 import javafx.scene.control.ButtonType;
@@ -18,6 +19,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,6 +43,8 @@ public class MainScreenPresenter {
     private Player player;
     private Dealer dealer;
     private PlayerCardsView playerCardsView;
+
+    private PauseTransition pause;
 
 
     public MainScreenPresenter(BlackJackGame blackJackGame, MainScreenView view, UISettings uiSettings) {
@@ -351,7 +355,15 @@ public class MainScreenPresenter {
                 } else {
                     view.getDealerCardsView().getDealerCards().add(dealer.getHand().get(dealer.getHand().size() - 1));
                 }
+                view.getDealerCardsView().addCardEnd();
+                view.getActionButtons().standAnimation();
+            }
+        });
 
+        view.getActionButtons().getDuration().setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                view.setCenter(null);
                 if (blackJackGame.whoWon().equals("Dealer")) {
                     if (player.getBank() < 1) {
                         winLoseTextLoader(3);
@@ -365,13 +377,10 @@ public class MainScreenPresenter {
                     winLoseTextLoader(4);
                 }
 
-                view.getDealerCardsView().addCardEnd();
                 bottomLabelUpdate();
                 view.getWinLoseView().setVisible(true);
             }
         });
-
-
 
         view.getWinLoseView().getNextRound().setOnAction(new EventHandler<ActionEvent>() {
             @Override

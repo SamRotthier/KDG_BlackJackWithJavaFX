@@ -1,6 +1,10 @@
 package MVPGlobal.View.MainScreen;
 
+import MVPGlobal.View.StartScreen.StartScreenTransition;
 import MVPGlobal.View.UISettings;
+import javafx.animation.Animation;
+import javafx.animation.Transition;
+import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -11,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class PlayerActionsView extends VBox {
 
@@ -19,6 +24,7 @@ public class PlayerActionsView extends VBox {
     private Button buttonDouble;
     private Button buttonStand;
     private Button buttonDeal;
+    private DealerTransition duration;
 
     public PlayerActionsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -31,6 +37,7 @@ public class PlayerActionsView extends VBox {
         this.buttonDouble = new Button("DOUBLE");
         this.buttonStand = new Button("STAND");
         this.buttonDeal = new Button("DEAL");
+        //this.duration = new TranslateTransition(Duration.seconds(5));
     }
 
     private void layoutNodes() {
@@ -39,6 +46,12 @@ public class PlayerActionsView extends VBox {
         this.setPadding(new Insets(uiSettings.getInsetsMargin()));
         this.getChildren().addAll(buttonDeal);
     }
+
+    public void standAnimation(){
+        duration = new DealerTransition(this, 5);
+        duration.play();
+    }
+
 
     // Getters
     Button getButtonDeal() {
@@ -55,5 +68,9 @@ public class PlayerActionsView extends VBox {
 
     Button getButtonDouble() {
         return buttonDouble;
+    }
+
+    public DealerTransition getDuration() {
+        return duration;
     }
 }
