@@ -124,6 +124,8 @@ public class SettingsView extends BorderPane {
         return volumeBackgroundMusic;
     }
 
+
+
     public Slider getVolumeSoundFx() {
         return volumeSoundFx;
     }

@@ -25,7 +25,10 @@ public class SoundsView{
     }
 
     private void initialiseNodes() {
-
+        try {
+            backgroundMusic = new MediaPlayer(new Media(uiSettings.getBackgroundMusicGame().toUri().toURL().toString()));
+        } catch (MalformedURLException ex) {
+        }
     }
 
     private void layoutNodes() {
@@ -42,12 +45,8 @@ public class SoundsView{
     }
 
     public void playBackgroundMusic(){
-       /* try{
-            backgroundMusic = new MediaPlayer(new Media(uiSettings.getBackgroundMusicGame().toUri().toURL().toString()));
             backgroundMusic.play();
-            backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);}
-        catch (MalformedURLException ex) {
-        }*/
+            backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
     }
 
    public void stopBackgroundMusic(){
@@ -101,11 +100,13 @@ public class SoundsView{
 
 
 
-    public void setBackgroundMusic(MediaPlayer backgroundMusic) {
-        this.backgroundMusic = backgroundMusic;
+    public void setBackgroundMusic(double volume) {
+        backgroundMusic.setVolume(volume);
     }
 
     public MediaPlayer getBackgroundMusic() {
         return backgroundMusic;
     }
+
+
 }

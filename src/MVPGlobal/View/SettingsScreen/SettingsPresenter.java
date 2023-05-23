@@ -1,6 +1,7 @@
 package MVPGlobal.View.SettingsScreen;
 
 import MVPGlobal.Model.*;
+import MVPGlobal.View.MainScreen.MainScreenView;
 import MVPGlobal.View.MainScreen.SoundsView;
 import MVPGlobal.View.UISettings;
 import javafx.beans.InvalidationListener;
@@ -29,7 +30,8 @@ public class SettingsPresenter {
     public SettingsPresenter(BlackJackGame model, SettingsView view) { //,SoundsView sounds
         this.view = view;
         this.uiSettings = new UISettings();
-        //this.sounds =sounds;
+        MainScreenView mainScreenView = new MainScreenView(uiSettings);
+        this.sounds = new SoundsView();
         updateView();
         EventHandlers();
     }
@@ -76,18 +78,18 @@ public class SettingsPresenter {
             }
         });
 
-        view.getVolumeBackgroundMusic().valueProperty().addListener(new InvalidationListener() {
+        /*view.getVolumeBackgroundMusic().valueProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
                 view.getVolumeBackgroundMusic().setValue(view.getSoundsView().getBackgroundMusic().getVolume());
                 view.getSoundsView().getBackgroundMusic().setVolume(view.getVolumeBackgroundMusic().getValue());
             }
-        });
+        }); */
         //test
-        view.getVolumeSoundFx().valueProperty().addListener(new ChangeListener<Number>() {
+         view.getVolumeBackgroundMusic().valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                //setBackgroundMusic
+                sounds.setBackgroundMusic(t1.doubleValue());
             }
         });
     }
