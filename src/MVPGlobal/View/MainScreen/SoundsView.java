@@ -18,8 +18,8 @@ public class SoundsView{
 
     private static final int NUM_DEAL = 5;
 
-    public SoundsView(UISettings uiSettings) {
-        this.uiSettings = uiSettings;
+    public SoundsView() {
+        this.uiSettings = new UISettings();
         initialiseNodes();
         layoutNodes();
     }

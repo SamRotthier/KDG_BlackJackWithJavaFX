@@ -17,8 +17,7 @@ public class DealerTransition extends Transition {
     }
 
     @Override
-    protected void interpolate(double frac) {
-        //this.view.getTimeDisplay().setText(String.format("Loading:  %.0f%%", frac * 100));
-        //this.view.getTimeProgress().setProgress(frac);
+    protected void interpolate(double v) {
+
     }
 }

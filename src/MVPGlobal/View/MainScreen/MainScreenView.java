@@ -42,6 +42,7 @@ public class MainScreenView extends BorderPane  {
 
     private BlackJackGame blackJackGame;
 
+
     public MainScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
@@ -58,7 +59,7 @@ public class MainScreenView extends BorderPane  {
 
         actionButtons = new PlayerActionsView(uiSettings);
         betButtons = new BetView(uiSettings);
-        sounds = new SoundsView(uiSettings);
+        sounds = new SoundsView();
         playerCardsView = new PlayerCardsView(uiSettings);
         dealerCardsView = new DealerCardsView(uiSettings);
         bottomLabels = new BottomLabelsView(uiSettings);
@@ -143,4 +144,6 @@ public class MainScreenView extends BorderPane  {
     public BottomLabelsView getBottomLabels() {
         return bottomLabels;
     }
+
+
 }

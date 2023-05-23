@@ -1,6 +1,7 @@
 package MVPGlobal.View.MainScreen;
 
 
+import MVPGlobal.MVPMain;
 import MVPGlobal.Model.*;
 import MVPGlobal.View.AboutScreen.*;
 import MVPGlobal.View.AlertScreen.AlertBlackjack;
@@ -73,7 +74,7 @@ public class MainScreenPresenter {
             @Override
             public void handle(ActionEvent event) {
                 SettingsView settingsView = new SettingsView(uiSettings);
-                SettingsPresenter presenter = new SettingsPresenter(blackJackGame, settingsView, uiSettings);
+                SettingsPresenter presenter = new SettingsPresenter(blackJackGame, settingsView);
                 Stage settingsStage = new Stage();
                 settingsStage.setTitle("Settings");
                 settingsStage.initOwner(view.getScene().getWindow());

@@ -1,16 +1,19 @@
 package MVPGlobal.View.SettingsScreen;
 
 import MVPGlobal.Model.*;
+import MVPGlobal.View.MainScreen.SoundsView;
 import MVPGlobal.View.UISettings;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
 import javafx.event.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.WindowEvent;
 import javafx.scene.control.Slider;
-
-import javax.swing.event.ChangeListener;
+import javafx.beans.value.ObservableValue; //moeten toevoegen
+//import javax.swing.event.ChangeEvent;
+//import javax.swing.event.ChangeListener;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -21,9 +24,12 @@ public class SettingsPresenter {
     private SettingsView view;
     private UISettings uiSettings;
 
-    public SettingsPresenter(BlackJackGame model, SettingsView view, UISettings uiSettings) {
+    private SoundsView sounds;
+
+    public SettingsPresenter(BlackJackGame model, SettingsView view) { //,SoundsView sounds
         this.view = view;
-        this.uiSettings = uiSettings;
+        this.uiSettings = new UISettings();
+        //this.sounds =sounds;
         updateView();
         EventHandlers();
     }
@@ -75,6 +81,13 @@ public class SettingsPresenter {
             public void invalidated(Observable observable) {
                 view.getVolumeBackgroundMusic().setValue(view.getSoundsView().getBackgroundMusic().getVolume());
                 view.getSoundsView().getBackgroundMusic().setVolume(view.getVolumeBackgroundMusic().getValue());
+            }
+        });
+        //test
+        view.getVolumeSoundFx().valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                //setBackgroundMusic
             }
         });
     }

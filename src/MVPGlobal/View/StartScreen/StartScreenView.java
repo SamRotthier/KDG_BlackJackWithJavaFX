@@ -49,7 +49,7 @@ public class StartScreenView extends BorderPane {
         this.timeProgress = new ProgressBar();
         this.centralImage = new ImageView();
         this.mainScreenView = new MainScreenView(uiSettings);
-        this.soundsView = new SoundsView(uiSettings);
+        this.soundsView = new SoundsView();
         devs = new Label("This game was developed by Sam Rotthier and Matthias Vermeiren");
         version = new Label("Version 3");
     }

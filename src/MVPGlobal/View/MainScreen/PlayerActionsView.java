@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +27,9 @@ public class PlayerActionsView extends VBox {
     private Button buttonDeal;
     private DealerTransition duration;
 
+    private Label timeDisplay;
+    private ProgressBar timeProgress;
+
     public PlayerActionsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
@@ -37,6 +41,7 @@ public class PlayerActionsView extends VBox {
         this.buttonDouble = new Button("DOUBLE");
         this.buttonStand = new Button("STAND");
         this.buttonDeal = new Button("DEAL");
+        duration = new DealerTransition(this, 3);
         //this.duration = new TranslateTransition(Duration.seconds(5));
     }
 
@@ -48,7 +53,6 @@ public class PlayerActionsView extends VBox {
     }
 
     public void standAnimation(){
-        duration = new DealerTransition(this, 5);
         duration.play();
     }
 
@@ -72,5 +76,12 @@ public class PlayerActionsView extends VBox {
 
     public DealerTransition getDuration() {
         return duration;
+    }
+    public Label getTimeDisplay() {
+        return timeDisplay;
+    }
+
+    public ProgressBar getTimeProgress() {
+        return timeProgress;
     }
 }
