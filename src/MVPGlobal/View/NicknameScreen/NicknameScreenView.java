@@ -12,7 +12,7 @@ import javafx.scene.layout.*;
 
 import java.net.MalformedURLException;
 
-public class NicknameScreenView extends BorderPane{
+public class NicknameScreenView extends BorderPane {
 
     private UISettings uiSettings;
     private Label chooseNickname;
@@ -30,12 +30,12 @@ public class NicknameScreenView extends BorderPane{
         nickname = new TextField();
         chooseNickname = new Label("Enter your nickname: ");
         confirmButton = new Button("CONFIRM");
-        confirmButton.setPrefWidth(uiSettings.getLowestRes()/29);
+        confirmButton.setPrefWidth(uiSettings.getLowestRes() / 29);
     }
 
     private void layoutNodes() {
         nickname.setPromptText("Nickname");
-        nickname.setMaxWidth(uiSettings.getLowestRes()/7);
+        nickname.setMaxWidth(uiSettings.getLowestRes() / 7);
 
         VBox nicknameBox = new VBox();
         nicknameBox.setSpacing(uiSettings.getSpacing());
@@ -53,8 +53,11 @@ public class NicknameScreenView extends BorderPane{
         this.getStyleClass().add("nickname");
     }
 
+    Button getBtnConfirm() {
+        return confirmButton;
+    }
 
-    Button getBtnConfirm() {return confirmButton;}
-
-    public TextField getNickname() {return nickname;}
+    public TextField getNickname() {
+        return nickname;
+    }
 }

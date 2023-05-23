@@ -50,7 +50,7 @@ public class BeginScreenPresenter {
         view.getStartGameBtn().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                blackJackGame = new BlackJackGame();
+                //blackJackGame = new BlackJackGame();
 
                 MainScreenView msView = new MainScreenView(uiSettings);
                 msView.getSounds().playStartBtn();
@@ -71,7 +71,7 @@ public class BeginScreenPresenter {
 
                 // Choose nickname
                 NicknameScreenView nicknameScreenView = new NicknameScreenView(uiSettings);
-                NicknameScreenPresenter nicknameScreenPresenter = new NicknameScreenPresenter(blackJackGame, nicknameScreenView, uiSettings, msView);
+                NicknameScreenPresenter nicknameScreenPresenter = new NicknameScreenPresenter(blackJackGame, nicknameScreenView, msView);
                 Stage nicknameScreenStage = new Stage();
                 nicknameScreenStage.initOwner(msView.getScene().getWindow());
                 nicknameScreenStage.initModality(Modality.APPLICATION_MODAL);
@@ -156,8 +156,8 @@ public class BeginScreenPresenter {
                         for (int i = 0; i < input.size(); i++) {
                             String inputline = input.get(i);
                             String[] elementen = inputline.split(" ");
-                            blackJackGame.player1.setBank(Integer.parseInt(inputline));
-                            msView.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player1.getBank()));
+                            blackJackGame.player.setBank(Integer.parseInt(inputline));
+                            msView.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player.getBank()));
                         }
                         // start game
                         //blackJackGame = new BlackJackGame(); Dit was fout, dan maakte het een nieuwe instantie van backend en werden de ingeladen waardes

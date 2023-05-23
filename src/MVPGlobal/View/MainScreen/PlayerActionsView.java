@@ -12,16 +12,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class PlayerActionsView extends VBox  {
+public class PlayerActionsView extends VBox {
 
     private UISettings uiSettings;
     private Button buttonHit;
     private Button buttonDouble;
     private Button buttonStand;
     private Button buttonDeal;
-
-
-
 
     public PlayerActionsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -34,27 +31,29 @@ public class PlayerActionsView extends VBox  {
         this.buttonDouble = new Button("DOUBLE");
         this.buttonStand = new Button("STAND");
         this.buttonDeal = new Button("DEAL");
-
-
     }
 
     private void layoutNodes() {
-        //ButtonsRight
         this.setAlignment(Pos.CENTER);
-        this.setSpacing(uiSettings.getSpacing()*5);
+        this.setSpacing(uiSettings.getSpacing() * 5);
         this.setPadding(new Insets(uiSettings.getInsetsMargin()));
-
         this.getChildren().addAll(buttonDeal);
     }
 
     // Getters
+    Button getButtonDeal() {
+        return buttonDeal;
+    }
 
-    Button getButtonDeal() {return buttonDeal;}
+    Button getButtonHit() {
+        return buttonHit;
+    }
 
-    Button getButtonHit() {return buttonHit;}
+    Button getButtonStand() {
+        return buttonStand;
+    }
 
-    Button getButtonStand() {return buttonStand;}
-
-    Button getButtonDouble() {return buttonDouble;}
-
+    Button getButtonDouble() {
+        return buttonDouble;
+    }
 }

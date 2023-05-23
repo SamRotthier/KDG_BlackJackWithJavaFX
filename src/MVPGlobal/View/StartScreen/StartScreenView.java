@@ -20,7 +20,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 
-public class StartScreenView extends BorderPane  {
+public class StartScreenView extends BorderPane {
 
     private UISettings uiSettings;
     private Label timeDisplay;
@@ -55,10 +55,9 @@ public class StartScreenView extends BorderPane  {
 
     private void layoutNodes() {
         //background
-        try{
-            this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getStartScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,new BackgroundSize(100, 100, true, true, false, true))));
-        }
-        catch (MalformedURLException ex){
+        try {
+            this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getStartScreenBackground().toUri().toURL().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(100, 100, true, true, false, true))));
+        } catch (MalformedURLException ex) {
         }
 
         //music
@@ -68,61 +67,45 @@ public class StartScreenView extends BorderPane  {
         devs.getStyleClass().add("heading2");
         version.getStyleClass().add("heading2");
 
-
-
-        int ImageSize = uiSettings.getLowestRes()/5;
+        int ImageSize = uiSettings.getLowestRes() / 5;
         BorderPane progressPane = new BorderPane();
         progressPane.setCenter(this.timeProgress);
         progressPane.setBottom(this.timeDisplay);
         progressPane.setAlignment(this.timeDisplay, Pos.CENTER);
-        timeProgress.setPrefSize(uiSettings.getLowestRes()/7,uiSettings.getLowestRes()/69);
-        BorderPane.setMargin(this.timeDisplay, new Insets(0,uiSettings.getInsetsMargin()/2, uiSettings.getInsetsMargin()*2.5, uiSettings.getInsetsMargin()/2));
+        timeProgress.setPrefSize(uiSettings.getLowestRes() / 7, uiSettings.getLowestRes() / 69);
+        BorderPane.setMargin(this.timeDisplay, new Insets(0, uiSettings.getInsetsMargin() / 2, uiSettings.getInsetsMargin() * 2.5, uiSettings.getInsetsMargin() / 2));
         BorderPane.setMargin(this.timeProgress, new Insets(uiSettings.getInsetsMargin()));
 
-
-        //ImageView centralImage;
-        //StackPane logoPane = new StackPane();
-        //logoPane.setPadding(new Insets(20));
         if (Files.exists(uiSettings.getStartScreenImagePath())) {
-           try {
+            try {
                 centralImage = new ImageView(new Image(uiSettings.getStartScreenImagePath().toUri().toURL().toString()));
                 centralImage.setPreserveRatio(true);
-                centralImage.setFitHeight(ImageSize*2.5);
-                centralImage.setFitWidth(ImageSize*2.5);
+                centralImage.setFitHeight(ImageSize * 2.5);
+                centralImage.setFitWidth(ImageSize * 2.5);
                 centralImage.setSmooth(true);
 
-
                 //logoPane.getChildren().add(centralImage);
-            }
-            catch (MalformedURLException ex) {
+            } catch (MalformedURLException ex) {
                 // do nothing, if toURL-conversion fails, program can continue
             }
         } else { // do nothing, if StartScreenImage is not available, program can continue
-            }
+        }
         //
 
         //VBox
         VBox splash = new VBox();
         splash.setAlignment(Pos.CENTER);
-        splash.setSpacing(uiSettings.getSpacing()*1.5);
-        splash.setPadding(new Insets(uiSettings.getInsetsMargin()*2.5));
+        splash.setSpacing(uiSettings.getSpacing() * 1.5);
+        splash.setPadding(new Insets(uiSettings.getInsetsMargin() * 2.5));
 
-        splash.getChildren().addAll(centralImage,devs, version);
+        splash.getChildren().addAll(centralImage, devs, version);
         this.setCenter(splash);
 
         this.setBottom(progressPane);
-
-
     }
 
-    Label getTimeDisplay () {return (timeDisplay);}
-
-    ProgressBar getTimeProgress () {return (timeProgress);}
-
-    StartScreenTransition getTransition() {return trans;}
-
     private void animate() {
-        trans = new StartScreenTransition(this,5);
+        trans = new StartScreenTransition(this, 5);
         trans.play();
 
         // logo image animation
@@ -132,5 +115,18 @@ public class StartScreenView extends BorderPane  {
         logoTransition.setToY(1.15);
         logoTransition.play();
     }
+
+    Label getTimeDisplay() {
+        return (timeDisplay);
+    }
+
+    ProgressBar getTimeProgress() {
+        return (timeProgress);
+    }
+
+    StartScreenTransition getTransition() {
+        return trans;
+    }
+
 
 }
