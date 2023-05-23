@@ -49,7 +49,7 @@ public class BeginScreenPresenter {
         view.getStartGameBtn().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                //blackJackGame = new BlackJackGame();
+                blackJackGame = new BlackJackGame();
 
                 MainScreenView msView = new MainScreenView(uiSettings);
                 msView.getSounds().playStartBtn();

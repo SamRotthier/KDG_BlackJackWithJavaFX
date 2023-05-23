@@ -33,21 +33,21 @@ public class SoundsView{
     }
 
     public void playBlackjackStart(){
-        try{
+       /* try{
             String blackjackStartSound = uiSettings.getBlackjackStartSound().toString();
             AudioClip blackjackStart = new AudioClip(new File(blackjackStartSound).toURI().toURL().toString());
             blackjackStart.play();
         }
-        catch(MalformedURLException ex){}
+        catch(MalformedURLException ex){}*/
     }
 
     public void playBackgroundMusic(){
-        try{
+       /* try{
             backgroundMusic = new MediaPlayer(new Media(uiSettings.getBackgroundMusicGame().toUri().toURL().toString()));
             backgroundMusic.play();
             backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);}
         catch (MalformedURLException ex) {
-        }
+        }*/
     }
 
    public void stopBackgroundMusic(){

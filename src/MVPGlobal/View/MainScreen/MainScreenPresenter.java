@@ -342,6 +342,7 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonStand().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                view.getSounds().playInfoBtn();
                 view.getActionButtons().setVisible(false);
                 blackJackGame.btnStand();
                 if (dealer.getHand().size() <= 2) {
@@ -370,6 +371,8 @@ public class MainScreenPresenter {
             }
         });
 
+
+
         view.getWinLoseView().getNextRound().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -388,7 +391,7 @@ public class MainScreenPresenter {
         view.getWinLoseView().getQuitGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                view.getSounds().stopBackgroundMusic();
+                //view.getSounds().stopBackgroundMusic();
                 nextRoundClearing();
                 //view.getBottomLabels().getSaldoLabelPlayer().setText(Integer)
                 BeginScreenView beginView = new BeginScreenView(uiSettings);
