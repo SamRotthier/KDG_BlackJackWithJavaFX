@@ -19,10 +19,8 @@ public class BetView extends VBox  {
     private UISettings uiSettings;
     private Label setBetAmount;
     private TextField betAmount;
-
     private Button arrowUp;
     private Button arrowDown;
-
     private Image arrowUpIcon;
     private Image arrowDownIcon;
 
@@ -49,7 +47,6 @@ public class BetView extends VBox  {
     }
 
     private void layoutNodes() {
-
         //ButtonsLeft
         HBox arrowButtonsBox = new HBox(arrowUp, arrowDown);
         arrowButtonsBox.setSpacing(uiSettings.getSpacing());
