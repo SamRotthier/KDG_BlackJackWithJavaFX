@@ -48,6 +48,9 @@ public class UISettings {
     private Path cardDealSound4 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal4.mp3");
     private Path cardDealSound5 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal5.mp3");
 
+    //HighScore Path
+    private Path highScoreFile = Paths.get("resources"+ FILE_SEPARATOR + "SaveData" + FILE_SEPARATOR + "HighScores.csv");
+
     public UISettings() {
         this.resX = (int) Screen.getPrimary().getVisualBounds().getWidth();
         this.resY = (int) Screen.getPrimary().getVisualBounds().getHeight();
@@ -205,5 +208,7 @@ public class UISettings {
         return infoBtnSound;
     }
 
-
+    public Path getHighScoreFile() {
+        return highScoreFile;
+    }
 }
