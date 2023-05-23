@@ -41,7 +41,7 @@ public class PlayerActionsView extends VBox {
         this.buttonDouble = new Button("DOUBLE");
         this.buttonStand = new Button("STAND");
         this.buttonDeal = new Button("DEAL");
-        duration = new DealerTransition(this, 3);
+        duration = new DealerTransition(this, 2);
         //this.duration = new TranslateTransition(Duration.seconds(5));
     }
 
