@@ -22,6 +22,7 @@ public class WinLoseView extends VBox {
     private Label loseGame;
     private Label gameOver;
     private Label pushGame;
+    private Label dealerScore;
 
 
     private HBox buttonsGame;
@@ -41,6 +42,7 @@ public class WinLoseView extends VBox {
         loseGame = new Label("You Lose! Better luck next time...");
         pushGame = new Label("Push! The game results in a tie");
         gameOver = new Label("GAME OVER");
+        dealerScore = new Label("");
     }
 
     private void layoutNodes() {
@@ -49,30 +51,32 @@ public class WinLoseView extends VBox {
         buttonsGame.setPadding(new Insets(uiSettings.getInsetsMargin() * 2));
         buttonsGame.setAlignment(Pos.CENTER);
 
+        dealerScore.getStyleClass().add("dealerScore");
+        dealerScore.setPadding(new Insets(0,0,uiSettings.getInsetsMargin()*10,0));
         this.setAlignment(Pos.CENTER);
-        this.setSpacing(uiSettings.getSpacing() * 10);
     }
 
     //method
     public Label gameRound(int i) {
         if (i == 1) {
             winGame.getStyleClass().add("win");
-            winGame.setPadding(new Insets(uiSettings.getInsetsMargin() * 3.5));
+            winGame.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5,uiSettings.getInsetsMargin()*3.5,uiSettings.getInsetsMargin() * 2,uiSettings.getInsetsMargin()*3.5));
             return winGame;
         } else if (i == 2) {
             loseGame.getStyleClass().add("lose");
-            loseGame.setPadding(new Insets(uiSettings.getInsetsMargin() * 3.5));
+            loseGame.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5,uiSettings.getInsetsMargin()*3.5,uiSettings.getInsetsMargin() * 2,uiSettings.getInsetsMargin()*3.5));
             return loseGame;
         } else if (i == 3) {
             gameOver.getStyleClass().add("gameover");
-            gameOver.setPadding(new Insets(uiSettings.getInsetsMargin() * 3.5));
+            gameOver.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5,uiSettings.getInsetsMargin()*3.5,uiSettings.getInsetsMargin() * 2,uiSettings.getInsetsMargin()*3.5));
             return gameOver;
         } else {
             pushGame.getStyleClass().add("push");
-            pushGame.setPadding(new Insets(uiSettings.getInsetsMargin() * 3.5));
+            pushGame.setPadding(new Insets(uiSettings.getInsetsMargin()*3.5,uiSettings.getInsetsMargin()*3.5,uiSettings.getInsetsMargin() * 2,uiSettings.getInsetsMargin()*3.5));
             return pushGame;
         }
     }
+
 
     //Getters
     public Button getNextRound() {
@@ -89,5 +93,9 @@ public class WinLoseView extends VBox {
 
     public HBox getButtonsGame() {
         return buttonsGame;
+    }
+
+    public Label getDealerScore() {
+        return dealerScore;
     }
 }

@@ -115,6 +115,12 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0, 5, 5);
 }
 
+.dealerScore{
+    -fx-text-fill: #d3dbe0;
+    -fx-font-size: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0, 5, 5);
+}
+
 /* SETTINGS */
 .settings{
     /*-fx-background-color: #dec390; */

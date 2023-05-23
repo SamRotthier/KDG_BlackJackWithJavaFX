@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Formatter;
 import java.util.List;
 
@@ -291,7 +293,11 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonHit().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (player.getTotalCardValue() < 22) {
+                if(player.getTotalCardValue() == 21){
+                    AlertBlackjack alertAlready21 = new AlertBlackjack(AlertType.INFORMATION, "21", "Card value of 21", "Your card value is 21. You should stop taking cards", "OK");
+                    alertAlready21.showAndWait();
+                }
+                else if (player.getTotalCardValue() < 22) {
                     blackJackGame.btnHit();
 
                     bottomLabelUpdate();
@@ -309,7 +315,11 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonDouble().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (player.getTotalCardValue() < 22) {
+                if(player.getTotalCardValue() == 21){
+                    AlertBlackjack alertAlready21 = new AlertBlackjack(AlertType.INFORMATION, "21", "Card value of 21", "Your card value is 21. You should stop taking cards", "OK");
+                    alertAlready21.showAndWait();
+                }
+                else if (player.getTotalCardValue() < 22) {
                     if ((player.getPlayerBet() * 2) <= player.getBank()) {
                         blackJackGame.btnDouble();
 
@@ -378,6 +388,9 @@ public class MainScreenPresenter {
         view.getWinLoseView().getQuitGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                view.getSounds().stopBackgroundMusic();
+                nextRoundClearing();
+                //view.getBottomLabels().getSaldoLabelPlayer().setText(Integer)
                 BeginScreenView beginView = new BeginScreenView(uiSettings);
                 BeginScreenPresenter bsPresenter = new BeginScreenPresenter(blackJackGame, beginView, uiSettings);
                 view.getScene().setRoot(beginView);
@@ -435,12 +448,21 @@ public class MainScreenPresenter {
         view.setCenter(null);
         view.getWinLoseView().getChildren().clear();
         if (i == 3){
-            view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(i), view.getWinLoseView().getQuitGame());
+            dealerScore();
+            view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(i), view.getWinLoseView().getDealerScore(), view.getWinLoseView().getQuitGame());
         }else {
-        view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(i), view.getWinLoseView().getButtonsGame());
+            dealerScore();
+            view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(i), view.getWinLoseView().getDealerScore(),view.getWinLoseView().getButtonsGame());
         }
         view.setCenter(view.getWinLoseView());
         view.fadeInAnimation(view.getWinLoseView());
+    }
+
+    private void dealerScore(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("The dealer's card score was ").append(blackJackGame.dealer.getTotalCardValue());
+        String dealerScore = stringBuilder.toString();
+        view.getWinLoseView().getDealerScore().setText(dealerScore);
     }
 
     private void LoadingPlayerNameAndScore() {
@@ -475,6 +497,33 @@ public class MainScreenPresenter {
         }
     }
 
+    private void loadingHighscore() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Load Data File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+        File selectedFile = fileChooser.showOpenDialog(view.getScene().getWindow());
+        if ((selectedFile != null)) { //^ (Files.isReadable(Paths.get(selectedFile.toURI())))) {
+            try {
+                List<String> input = Files.readAllLines(Paths.get(selectedFile.toURI()));
+                ArrayList<String> scores = new ArrayList<String>();
+                // begin implementeren ingelezen gegevens doorgeven aan model
+                for (int i = 0; i < input.size(); i++) {
+                    String inputline = input.get(i);
+                    String[] elementen = inputline.split(" ");
+                    scores.add(inputline);
+                }
+                Collections.sort(scores);
+                // einde implementeren ingelezen gegevens doorgeven aan model
+            } catch (IOException e) {
+                //
+            }
+        } else {
+            AlertBlackjack errorWindow = new AlertBlackjack(AlertType.ERROR, "ERROR", "Problem with the selected input file:", "File is not readable", "OK");
+            errorWindow.showAndWait();
+        }
+    }
     private void savingPlayerNameAndScore() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Data File");

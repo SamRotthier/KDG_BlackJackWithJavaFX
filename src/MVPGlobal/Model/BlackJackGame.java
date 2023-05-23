@@ -2,7 +2,11 @@ package MVPGlobal.Model;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class BlackJackGame {
+
     public Player player = new Player();
     public Dealer dealer = new Dealer();
     ArrayList<Card> deck = DeckBuilder.playDeck(2);
@@ -15,7 +19,9 @@ public class BlackJackGame {
         dealer.dealCard(deck);
     }
 
+
     public void btnHit() {
+
         checkDeckSize(10);
 
         if (player.getTotalCardValue() < 21) {

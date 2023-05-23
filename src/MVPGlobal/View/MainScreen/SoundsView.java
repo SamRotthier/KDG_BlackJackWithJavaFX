@@ -33,50 +33,54 @@ public class SoundsView{
     }
 
     public void playBlackjackStart(){
-       /* try{
+        try{
             String blackjackStartSound = uiSettings.getBlackjackStartSound().toString();
             AudioClip blackjackStart = new AudioClip(new File(blackjackStartSound).toURI().toURL().toString());
             blackjackStart.play();
         }
-        catch(MalformedURLException ex){} */
+        catch(MalformedURLException ex){}
     }
 
     public void playBackgroundMusic(){
-       /* try{
+        try{
             backgroundMusic = new MediaPlayer(new Media(uiSettings.getBackgroundMusicGame().toUri().toURL().toString()));
             backgroundMusic.play();
             backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);}
         catch (MalformedURLException ex) {
-        } */
+        }
     }
+
+   public void stopBackgroundMusic(){
+        backgroundMusic.stop();
+   }
 
     public void playStartBtn(){
 
         String startBtnSound = uiSettings.getStartBtnSound().toString();
-       /* try{
+        try{
             AudioClip startBtn = new AudioClip(new File(startBtnSound).toURI().toURL().toString());
             startBtn.play();
         }
-        catch(MalformedURLException ex){}; */
+        catch(MalformedURLException ex){};
     };
 
     public void playLoadBtn(){
         String loadBtnSound = uiSettings.getLoadBtnSound().toString();
-       /* try{
+        try{
             AudioClip startBtn = new AudioClip(new File(loadBtnSound).toURI().toURL().toString());
             startBtn.play();
         }
-        catch(MalformedURLException ex){}; */
+        catch(MalformedURLException ex){};
 
     };
 
     public void playInfoBtn(){
-       /* String infoBtnSound = uiSettings.getInfoBtnSound().toString();
+        String infoBtnSound = uiSettings.getInfoBtnSound().toString();
         try{
             AudioClip startBtn = new AudioClip(new File(infoBtnSound).toURI().toURL().toString());
             startBtn.play();
         }
-        catch(MalformedURLException ex){}; */
+        catch(MalformedURLException ex){};
     };
 
     public void playDealCard() {
@@ -96,9 +100,6 @@ public class SoundsView{
 }
 
 
-    private void dealSound(StringBuilder stringBuilder){
-
-    }
 
     public void setBackgroundMusic(MediaPlayer backgroundMusic) {
         this.backgroundMusic = backgroundMusic;
