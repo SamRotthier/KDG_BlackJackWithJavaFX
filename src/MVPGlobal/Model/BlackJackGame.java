@@ -73,7 +73,6 @@ public class BlackJackGame {
         }
     }
 
-
     public void btnAddBet() {
         player.setPlayerBet(player.getPlayerBet() + 5);
     }

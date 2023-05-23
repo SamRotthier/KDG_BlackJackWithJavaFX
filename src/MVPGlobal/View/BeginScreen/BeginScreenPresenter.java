@@ -39,14 +39,13 @@ public class BeginScreenPresenter {
         this.view = view;
         this.uiSettings = uiSettings;
         updateView();
-        addEventHandlers();
+        EventHandlers();
     }
 
     private void updateView() {
     }
 
-    private void addEventHandlers() {
-
+    private void EventHandlers() {
         view.getStartGameBtn().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -94,9 +93,6 @@ public class BeginScreenPresenter {
                 nicknameScreenStage.showAndWait();
             }
         });
-
-
-
 
         view.getMoreInfoBtn().setOnAction(new EventHandler<ActionEvent>() {
             @Override

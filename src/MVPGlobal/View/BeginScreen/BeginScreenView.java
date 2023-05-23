@@ -1,6 +1,5 @@
 package MVPGlobal.View.BeginScreen;
 
-import MVPGlobal.Model.BlackJackGame;
 import MVPGlobal.View.MainScreen.MainScreenView;
 import MVPGlobal.View.UISettings;
 import javafx.geometry.Insets;
@@ -18,20 +17,13 @@ public class BeginScreenView extends BorderPane  {
     private UISettings uiSettings;
     private MainScreenView mainScreenView;
     private ImageView centralImage;
-
     private Button moreInfoBtn;
-
     private Button loadGameBtn;
-
     private Button startGameBtn;
-
     private Label welcomeText;
     private Label instructions;
 
-    private BlackJackGame blackJackGame;
-
-    // private AudioClip blackjackStartSound;
-
+    //private AudioClip blackjackStartSound;
 
     public BeginScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -64,11 +56,7 @@ public class BeginScreenView extends BorderPane  {
         welcomeText.getStyleClass().add("heading1");
         instructions.getStyleClass().add("heading2");
 
-
-
         int ImageSize = uiSettings.getLowestRes()/5;
-
-
            try {
                 centralImage = new ImageView(new Image(uiSettings.getStartScreenImagePath().toUri().toURL().toString()));
                 centralImage.setPreserveRatio(true);
@@ -79,7 +67,6 @@ public class BeginScreenView extends BorderPane  {
             catch (MalformedURLException ex) {
                 // do nothing, if toURL-conversion fails, program can continue
             }
-
 
         //VBox
         VBox splash = new VBox();

@@ -15,6 +15,10 @@ public class AboutScreenPresenter {
         this.model = model;
         this.view = view;
         this.uiSettings = uiSettings;
+        EventHandlers();
+    }
+
+    private void EventHandlers() {
         view.getBtnOk().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

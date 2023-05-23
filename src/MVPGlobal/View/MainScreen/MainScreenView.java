@@ -31,21 +31,13 @@ public class MainScreenView extends BorderPane  {
     private MenuItem aboutMI;
     private MenuItem infoMI;
     private UISettings uiSettings;
-
     private PlayerActionsView actionButtons;
-
     private BetView betButtons;
-
     private SoundsView sounds;
-
     private PlayerCardsView playerCardsView;
-
     private DealerCardsView dealerCardsView;
-
     private BottomLabelsView bottomLabels;
-
     private VBox cardsPlayerDealerBox;
-
     private WinLoseView winLoseView;
 
     private BlackJackGame blackJackGame;
@@ -126,41 +118,28 @@ public class MainScreenView extends BorderPane  {
         return fadeIn;
     }
 
-
     // Getters
     MenuItem getExitItem() {return exitMI;}
-
     MenuItem getSaveItem() {return saveMI;}
-
     MenuItem getLoadItem() {return loadMI;}
-
     MenuItem getSettingsItem() {return settingsMI;}
-
     MenuItem getAboutItem() {return aboutMI;}
-
     MenuItem getInfoItem() {return infoMI;}
-
     PlayerActionsView getActionButtons() {return actionButtons;}
-
     PlayerCardsView getPlayerCardsView() {
         return playerCardsView;
     }
     DealerCardsView getDealerCardsView() {
         return dealerCardsView;
     }
-
     public VBox getCardsPlayerDealerBox() {
         return cardsPlayerDealerBox;
     }
     public WinLoseView getWinLoseView() {
         return winLoseView;
     }
-
-
-
     BetView getBetButtons(){return betButtons;}
     public SoundsView getSounds() {return sounds;}
-
     public BottomLabelsView getBottomLabels() {
         return bottomLabels;
     }
