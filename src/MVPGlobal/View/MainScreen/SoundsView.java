@@ -1,5 +1,6 @@
 package MVPGlobal.View.MainScreen;
 
+import MVPGlobal.Model.BlackJackGame;
 import MVPGlobal.View.UISettings;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.*;
@@ -13,6 +14,7 @@ public class SoundsView{
     private UISettings uiSettings;
     private MediaPlayer backgroundMusic;
     private StringBuilder stringBuilder;
+    private BlackJackGame blackJackGame;
 
     private static final int NUM_DEAL = 5;
 
@@ -78,25 +80,36 @@ public class SoundsView{
     };
 
     public void playDealCard(){
-/*
-        Random random = new Random();
-        int dealSoundNumber = random.nextInt(NUM_DEAL) + 1;
+        // playerhand.size
+       if( blackJackGame.player1.getBank() > 2) {
 
-        stringBuilder.append(uiSettings.getCardDealSound()).append(dealSoundNumber).append(".mp3");
-        String dealSoundFile = stringBuilder.toString();
+            Random random = new Random();
+            int dealSoundNumber = random.nextInt(NUM_DEAL) + 1;
 
-        try{
-        AudioClip dealSound = new AudioClip(new File(dealSoundFile).toURI().toURL().toString());
-        dealSound.play();
+            stringBuilder.append(uiSettings.getCardDealSound()).append(dealSoundNumber).append(".mp3");
+            String dealSoundFile = stringBuilder.toString();
+
+            try{
+            AudioClip dealSound = new AudioClip(new File(dealSoundFile).toURI().toURL().toString());
+            dealSound.play();
+            }
+            catch(MalformedURLException ex){};
+        } else{
+            try{
+                stringBuilder.append(uiSettings.getCardDealSound()).append("All4.mp3");
+                String dealSoundFile = stringBuilder.toString();
+                AudioClip dealSound = new AudioClip(new File(dealSoundFile).toURI().toURL().toString());
+                dealSound.play();
+            }
+            catch(MalformedURLException ex){};
         }
-        catch(MalformedURLException ex){};*/
     }
 
-    public void setBackgroundMusic(MediaPlayer backgroundMusic) {
+   /* public void setBackgroundMusic(MediaPlayer backgroundMusic) {
         this.backgroundMusic = backgroundMusic;
     }
 
     public MediaPlayer getBackgroundMusic() {
         return backgroundMusic;
-    }
+    } */
 }

@@ -337,13 +337,14 @@ public class MainScreenPresenter {
 
                 view.getDealerCardsView().getDealerCards().clear();
                 view.getDealerCardsView().getDealerCards().addAll(blackJackGame.dealer1.getHand());
-                    for (int i = 0; i < 2; i++) {
+                view.getSounds().playDealCard();
+                    /*for (int i = 0; i < 2; i++) {
                         view.getSounds().playDealCard();
-                    }
+                    }*/
                 view.getPlayerCardsView().addCard();
-                    for (int i = 0; i < 2; i++) {
+                   /* for (int i = 0; i < 2; i++) {
                         view.getSounds().playDealCard();
-                    }
+                    }*/
 
                 view.getDealerCardsView().addCardStart();
                 view.setRight(null);
@@ -357,7 +358,8 @@ public class MainScreenPresenter {
                 view.getActionButtons().getButtonStand().setVisible(true);
                 view.getActionButtons().getButtonDeal().setVisible(false);*/
 
-                }else{
+                }
+                else{
                     AlertBlackjack alertDeal = new AlertBlackjack(AlertType.ERROR, "ERROR", "Issues while dealing","Please give betting amount", "OK");
                     alertDeal.showAndWait();
                 }
