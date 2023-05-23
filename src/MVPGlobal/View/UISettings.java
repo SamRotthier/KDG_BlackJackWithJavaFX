@@ -50,6 +50,7 @@ public class UISettings {
 
     //HighScore Path
     private Path highScoreFile = Paths.get("resources"+ FILE_SEPARATOR + "SaveData" + FILE_SEPARATOR + "HighScores.csv");
+    private Path saveGame = Paths.get("resources"+ FILE_SEPARATOR + "SaveData" + FILE_SEPARATOR);
 
     public UISettings() {
         this.resX = (int) Screen.getPrimary().getVisualBounds().getWidth();
@@ -210,5 +211,9 @@ public class UISettings {
 
     public Path getHighScoreFile() {
         return highScoreFile;
+    }
+
+    public Path getSaveGame() {
+        return saveGame;
     }
 }

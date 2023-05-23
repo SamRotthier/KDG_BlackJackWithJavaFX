@@ -128,6 +128,7 @@ public class MainScreenPresenter {
         view.getWinLoseView().getSaveGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                blackJackGame.sounds.playLoadBtn();
                 savingPlayerNameAndScore();
             }
         });
@@ -268,9 +269,7 @@ public class MainScreenPresenter {
                     view.getDealerCardsView().getDealerCards().clear();
                     view.getDealerCardsView().getDealerCards().addAll(dealer.getHand());
                     blackJackGame.sounds.playDealCard();
-                    /*for (int i = 0; i < 2; i++) {
-                        view.getSounds().playDealCard();
-                    }*/
+                    view.getPlayerCardsView().cardAnimation();
                     view.getPlayerCardsView().addCard();
                     /*for (int i = 0; i < 2; i++) {
                         view.getSounds().playDealCard();
@@ -387,7 +386,7 @@ public class MainScreenPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 nextRoundClearing();
-
+                blackJackGame.sounds.playStartBtn();
                 view.setRight(null);
                 view.getActionButtons().getChildren().clear();
                 view.getActionButtons().getChildren().add(view.getActionButtons().getButtonDeal());
@@ -401,6 +400,7 @@ public class MainScreenPresenter {
         view.getWinLoseView().getQuitGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                blackJackGame.sounds.playInfoBtn();
                 blackJackGame.sounds.stopBackgroundMusic();
                 nextRoundClearing();
                 //view.getBottomLabels().getSaldoLabelPlayer().setText(Integer)

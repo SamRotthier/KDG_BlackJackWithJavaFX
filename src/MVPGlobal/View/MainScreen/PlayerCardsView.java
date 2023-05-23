@@ -28,7 +28,7 @@ public class PlayerCardsView extends StackPane {
     }
 
     private void initialiseNodes() {
-        cardTransition = new CardTransition(this, 2);
+        cardTransition = new CardTransition(this, 5);
       /*  this.card = new Image("images/cards/clubs2.png");
         cardView = new ImageView(card);
         this.cardTwo = new Image("images/cards/clubs7.png");
@@ -61,7 +61,7 @@ public class PlayerCardsView extends StackPane {
             cardView.setFitWidth(uiSettings.getCardWidth());
             cardView.setFitHeight(uiSettings.getCardHeight());
             this.getChildren().add(cardView);
-            cardTransition.play();
+            //cardAnimation();
             //sequentialTransition.getChildren().add(cardDuration(cardView));
             //sequentialTransition.getChildren().add(new PauseTransition(Duration.seconds(5)));
 
@@ -84,6 +84,9 @@ public class PlayerCardsView extends StackPane {
     }
 
     //Animations
+    public void cardAnimation(){
+        cardTransition.play();
+    }
     /*private Animation cardAnimation(ImageView cardImageView){
         TranslateTransition animation = new TranslateTransition(Duration.seconds(1), cardImageView);
         //start position
@@ -97,12 +100,6 @@ public class PlayerCardsView extends StackPane {
         animation.play();
 
         return animation;
-    }
-
-    private Animation cardDuration(ImageView cardImageview){
-        TranslateTransition duration = new TranslateTransition(Duration.seconds(5), cardImageview);
-        duration.play();
-        return duration;
     }
 
     private void cardAnimationTimeline(ImageView cardImageView){
