@@ -19,6 +19,8 @@ public class PlayerCardsView extends StackPane {
     private Image card;
     private ImageView cardView;
 
+    private CardTransition cardTransition;
+
     public PlayerCardsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
@@ -26,6 +28,7 @@ public class PlayerCardsView extends StackPane {
     }
 
     private void initialiseNodes() {
+        cardTransition = new CardTransition(this, 2);
       /*  this.card = new Image("images/cards/clubs2.png");
         cardView = new ImageView(card);
         this.cardTwo = new Image("images/cards/clubs7.png");
@@ -58,7 +61,7 @@ public class PlayerCardsView extends StackPane {
             cardView.setFitWidth(uiSettings.getCardWidth());
             cardView.setFitHeight(uiSettings.getCardHeight());
             this.getChildren().add(cardView);
-
+            cardTransition.play();
             //sequentialTransition.getChildren().add(cardDuration(cardView));
             //sequentialTransition.getChildren().add(new PauseTransition(Duration.seconds(5)));
 
