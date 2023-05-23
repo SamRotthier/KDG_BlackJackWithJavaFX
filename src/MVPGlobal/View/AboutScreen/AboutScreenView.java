@@ -17,7 +17,6 @@ public class AboutScreenView extends BorderPane {
     private UISettings uiSettings;
     private Button okButton;
     private ImageView logo;
-
     private Label devs;
     private Label version;
 
@@ -32,7 +31,6 @@ public class AboutScreenView extends BorderPane {
         okButton.setPrefWidth(uiSettings.getLowestRes()/29);
         devs = new Label("This game was developed by Sam Rotthier and Matthias Vermeiren");
         version = new Label("Version 3");
-
     }
 
     private void layoutNodes() {
@@ -63,7 +61,6 @@ public class AboutScreenView extends BorderPane {
         labelsPane.getChildren().addAll(devs, version);
         labelsPane.setAlignment(Pos.CENTER);
         labelsPane.setSpacing(uiSettings.getSpacing()*1.5);
-
 
         centralPane.setBottom(labelsPane);
         setCenter(centralPane);

@@ -3,10 +3,10 @@ package MVPGlobal.View.AlertScreen;
 import javafx.scene.control.*;
 
 public class AlertBlackjack extends Alert {
+
     private String title;
     private String buttonOk;
     private String header;
-
 
     public AlertBlackjack(AlertType alertType, String title, String header,String text, String buttonOk) {
         super(alertType, text);
