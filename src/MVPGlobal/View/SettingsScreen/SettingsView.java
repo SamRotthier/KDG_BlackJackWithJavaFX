@@ -1,8 +1,6 @@
 package MVPGlobal.View.SettingsScreen;
 
-import MVPGlobal.View.MainScreen.SoundsView;
 import MVPGlobal.View.UISettings;
-import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.geometry.Insets;
@@ -25,8 +23,6 @@ public class SettingsView extends BorderPane {
 
     private Slider volumeBackgroundMusic;
     private Slider volumeSoundFx;
-
-    private SoundsView soundsView;
 
     public SettingsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -102,6 +98,10 @@ public class SettingsView extends BorderPane {
         volumeSlider.setPadding(new Insets(uiSettings.getInsetsMargin() / 4, uiSettings.getInsetsMargin(), uiSettings.getInsetsMargin() / 4, uiSettings.getInsetsMargin() * 2));
     }
 
+    public void setupSlider(Slider volumeSlider, double volume){
+        volumeSlider.setValue(volume);
+    }
+
     //Getters & Setters
 
     MenuItem getExitItem() {
@@ -120,22 +120,12 @@ public class SettingsView extends BorderPane {
         return okButton;
     }
 
-    public Slider getVolumeBackgroundMusic() {
+    Slider getVolumeBackgroundMusic() {
         return volumeBackgroundMusic;
     }
 
-
-
-    public Slider getVolumeSoundFx() {
+    Slider getVolumeSoundFx() {
         return volumeSoundFx;
-    }
-
-    public SoundsView getSoundsView() {
-        return soundsView;
-    }
-
-    public void setSoundsView(SoundsView soundsView) {
-        this.soundsView = soundsView;
     }
 
 

@@ -42,7 +42,11 @@ public class UISettings {
     private Path startBtnSound = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "SwordStartBtn.mp3");
     private Path loadBtnSound = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "SwordLoadBtn.mp3");
     private Path infoBtnSound = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "SwordInfoBtn.mp3");
-    private Path cardDealSound = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal");
+    private Path cardDealSound1 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal1.mp3");
+    private Path cardDealSound2 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal2.mp3");
+    private Path cardDealSound3 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal3.mp3");
+    private Path cardDealSound4 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal4.mp3");
+    private Path cardDealSound5 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal5.mp3");
 
     public UISettings() {
         this.resX = (int) Screen.getPrimary().getVisualBounds().getWidth();
@@ -170,9 +174,24 @@ public class UISettings {
         return blackjackStartSound;
     }
 
-    public Path getCardDealSound() {
-        return this.cardDealSound;
+    public Path getCardDealSound1() {
+        return this.cardDealSound1;
     }
+    public Path getCardDealSound2() {
+        return this.cardDealSound2;
+    }
+    public Path getCardDealSound3() {
+        return this.cardDealSound3;
+    }
+    public Path getCardDealSound4() {
+        return this.cardDealSound4;
+    }
+    public Path getCardDealSound5() {
+        return this.cardDealSound5;
+    }
+
+
+
 
     public Path getStartBtnSound() {
         return startBtnSound;

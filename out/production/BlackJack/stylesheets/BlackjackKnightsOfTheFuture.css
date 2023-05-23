@@ -1,5 +1,6 @@
 @font-face {
     src: url("../other/Poppins_Bold.ttf");
+    /*Could not load @font-face is a known error for paths with spaces (%20). The font still loads as expected.*/
 }
 
 .root {

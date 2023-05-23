@@ -2,22 +2,16 @@ package MVPGlobal.View.StartScreen;
 
 import MVPGlobal.Model.BlackJackGame;
 import MVPGlobal.View.MainScreen.MainScreenView;
-import MVPGlobal.View.MainScreen.SoundsView;
 import MVPGlobal.View.UISettings;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.*;
-import javafx.scene.canvas.*;
-import javafx.scene.effect.BlendMode;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.media.AudioClip;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 
@@ -31,13 +25,12 @@ public class StartScreenView extends BorderPane {
     private BlackJackGame blackJackGame;
     private ImageView centralImage;
 
-    private SoundsView soundsView;
-
     private Label devs;
     private Label version;
 
 
-    public StartScreenView(UISettings uiSettings) {
+    public StartScreenView(UISettings uiSettings, BlackJackGame blackJackGame) {
+        this.blackJackGame = blackJackGame;
         this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
@@ -49,7 +42,6 @@ public class StartScreenView extends BorderPane {
         this.timeProgress = new ProgressBar();
         this.centralImage = new ImageView();
         this.mainScreenView = new MainScreenView(uiSettings);
-        this.soundsView = new SoundsView();
         devs = new Label("This game was developed by Sam Rotthier and Matthias Vermeiren");
         version = new Label("Version 3");
     }
@@ -62,7 +54,7 @@ public class StartScreenView extends BorderPane {
         }
 
         //music
-        soundsView.playBlackjackStart();
+        blackJackGame.sounds.playBlackjackStart();
 
         //Css
         devs.getStyleClass().add("heading2");

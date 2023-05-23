@@ -2,16 +2,12 @@ package MVPGlobal.View.SettingsScreen;
 
 import MVPGlobal.Model.*;
 import MVPGlobal.View.MainScreen.MainScreenView;
-import MVPGlobal.View.MainScreen.SoundsView;
 import MVPGlobal.View.UISettings;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.event.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.WindowEvent;
-import javafx.scene.control.Slider;
 import javafx.beans.value.ObservableValue; //moeten toevoegen
 //import javax.swing.event.ChangeEvent;
 //import javax.swing.event.ChangeListener;
@@ -25,18 +21,20 @@ public class SettingsPresenter {
     private SettingsView view;
     private UISettings uiSettings;
 
-    private SoundsView sounds;
+    private BlackJackGame blackJackGame;
 
-    public SettingsPresenter(BlackJackGame model, SettingsView view) { //,SoundsView sounds
+    public SettingsPresenter(BlackJackGame model, SettingsView view) {
+        this.blackJackGame = model;
         this.view = view;
         this.uiSettings = new UISettings();
         MainScreenView mainScreenView = new MainScreenView(uiSettings);
-        this.sounds = new SoundsView();
         updateView();
         EventHandlers();
     }
 
     private void updateView() {
+        view.setupSlider(view.getVolumeBackgroundMusic(), blackJackGame.sounds.getBackgroundMusicVolume());
+        view.setupSlider(view.getVolumeSoundFx(), blackJackGame.sounds.getSoundFXVolume());
     }
 
     private void EventHandlers() {
@@ -89,9 +87,16 @@ public class SettingsPresenter {
         view.getVolumeBackgroundMusic().valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                sounds.setBackgroundMusic(t1.doubleValue());
+                blackJackGame.sounds.setBackgroundMusicVolume(t1.doubleValue() / 100);
             }
         });
+
+         view.getVolumeSoundFx().valueProperty().addListener(new ChangeListener<Number>() {
+             @Override
+             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                 blackJackGame.sounds.setSoundFXVolume(t1.doubleValue()/100);
+             }
+         });
     }
 
     public void windowsHandler() {
