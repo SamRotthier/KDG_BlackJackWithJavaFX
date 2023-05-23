@@ -9,7 +9,6 @@ import java.util.ArrayList;
  */
  abstract class CardHandler {
     private ArrayList<Card> Hand = new ArrayList<Card>();
-
      void dealCard(ArrayList<Card> Deck){
         try {
             if (Hand.size() == 0) {
