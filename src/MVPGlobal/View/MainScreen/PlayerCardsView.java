@@ -51,12 +51,12 @@ public class PlayerCardsView extends StackPane  {
     //Methods
 
     public void addCard(){
-        getChildren().clear();
+        this.getChildren().clear();
         int x = 0;
         int r = -2;
         int y = 0;
 
-       // SequentialTransition sequentialTransition = new SequentialTransition();
+       //SequentialTransition sequentialTransition = new SequentialTransition();
         for (Card c : playerCards) {
             String cardNamePath = c.getSuit() + c.getCardNumb();
             try{
@@ -67,33 +67,35 @@ public class PlayerCardsView extends StackPane  {
             cardView.setPreserveRatio(true);
             cardView.setFitWidth(uiSettings.getCardWidth());
             cardView.setFitHeight(uiSettings.getCardHeight());
+            this.getChildren().add(cardView);
 
 
-            //sequentialTransition.getChildren().add(cardAnimation(cardView));
+            //sequentialTransition.getChildren().add(cardDuration(cardView));
             //sequentialTransition.getChildren().add(new PauseTransition(Duration.seconds(5)));
 
-
             cardView.setTranslateX(uiSettings.getCardOffsetX() * x);
-
-            if(playerCards.size() <= 2 && r == -2) {
+            cardView.setTranslateY(-(uiSettings.getCardOffsetY() + (y*5)));
+            if(playerCards.size() <= 3 && r == -2) {
                 r = -1;
             }
             cardView.setRotate(uiSettings.getCardRotate() * r);
-            cardView.setTranslateY(-(uiSettings.getCardOffsetY() + (y*4)));
-            getChildren().add(cardView);
+
 
             x++;
             r++;
-            if(y < ((playerCards.size()/2)-1)){
+            if(y < ((playerCards.size()/2))){
                 y++;
-            }else{y--;};
+            }
+            else {
+                y--;
+            };
 
         }
        // sequentialTransition.play();
     }
 
     //Animations
-    private Animation cardAnimation(ImageView cardImageView){
+    /*private Animation cardAnimation(ImageView cardImageView){
         TranslateTransition animation = new TranslateTransition(Duration.seconds(1), cardImageView);
         //start position
         animation.setFromX(50);
@@ -106,6 +108,12 @@ public class PlayerCardsView extends StackPane  {
         animation.play();
 
         return animation;
+    }
+
+    private Animation cardDuration(ImageView cardImageview){
+        TranslateTransition duration = new TranslateTransition(Duration.seconds(5), cardImageview);
+        duration.play();
+        return duration;
     }
 
 
@@ -122,7 +130,7 @@ public class PlayerCardsView extends StackPane  {
             timeline.getKeyFrames().add(keyFrame);
         }
         timeline.play();
-    }
+    }*/
 
     // Getters
     ArrayList<Card> getPlayerCards() {

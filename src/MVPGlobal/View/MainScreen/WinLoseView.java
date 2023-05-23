@@ -1,6 +1,7 @@
 package MVPGlobal.View.MainScreen;
 
 import MVPGlobal.View.UISettings;
+import javafx.animation.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -9,6 +10,7 @@ import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 
 public class WinLoseView extends VBox {
@@ -82,8 +84,18 @@ public class WinLoseView extends VBox {
 
 
 
-    // Animation maken
+    // Animation
+    public Animation winLoseAnimation(VBox vbox){
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), vbox);
+        //start position
+        fadeIn.setFromValue(0.2);
+        //end position
+        fadeIn.setToValue(1.0);
+        fadeIn.setInterpolator(Interpolator.EASE_IN);
 
+        fadeIn.play();
+        return fadeIn;
+    }
     //Getters
     public Button getNextRound() {
         return nextRound;
@@ -101,6 +113,7 @@ public class WinLoseView extends VBox {
     }
 
     public HBox getButtonsGame() {return buttonsGame;}
+
 
 
 }

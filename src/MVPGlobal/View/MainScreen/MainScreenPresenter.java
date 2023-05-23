@@ -406,6 +406,7 @@ public class MainScreenPresenter {
         view.getActionButtons().getButtonStand().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                view.getActionButtons().setVisible(false);
                 blackJackGame.btnStand();
                if (blackJackGame.dealer1.getHand().size() <=2){
                    view.getDealerCardsView().getDealerCards().clear();
@@ -420,24 +421,28 @@ public class MainScreenPresenter {
                        view.getWinLoseView().getChildren().clear();
                        view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(3), view.getWinLoseView().getQuitGame());
                        view.setCenter(view.getWinLoseView());
+                       view.getWinLoseView().winLoseAnimation(view.getWinLoseView());
                    }
                    else {
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(2), view.getWinLoseView().getButtonsGame());
-                   view.setCenter(view.getWinLoseView());}
+                   view.setCenter(view.getWinLoseView());
+                   view.getWinLoseView().winLoseAnimation(view.getWinLoseView());}
 
                }else if (blackJackGame.whoWon().equals("Player")){
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(1), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
+                   view.getWinLoseView().winLoseAnimation(view.getWinLoseView());
 
                }else{
                    view.setCenter(null);
                    view.getWinLoseView().getChildren().clear();
                    view.getWinLoseView().getChildren().addAll(view.getWinLoseView().gameRound(4), view.getWinLoseView().getButtonsGame());
                    view.setCenter(view.getWinLoseView());
+                   view.getWinLoseView().winLoseAnimation(view.getWinLoseView());
                }
 
 
@@ -461,6 +466,7 @@ public class MainScreenPresenter {
                 view.getActionButtons().getChildren().add(view.getActionButtons().getButtonDeal());
                 view.setRight(view.getActionButtons());
                 view.getWinLoseView().setVisible(false);
+                view.getActionButtons().setVisible(true);
             }
         });
 
