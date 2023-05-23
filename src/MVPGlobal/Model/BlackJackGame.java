@@ -80,7 +80,11 @@ public class BlackJackGame {
     }
 
     public void btnAddBet() {
-        player.setPlayerBet(player.getPlayerBet() + 5);
+        if ((player.getPlayerBet() + 5)  >= player.getBank()){
+            player.setPlayerBet(player.getBank());
+        }else{
+            player.setPlayerBet(player.getPlayerBet() + 5);
+        }
     }
 
     public void btnSubBet() {

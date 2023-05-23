@@ -1,6 +1,7 @@
 package MVPGlobal.View.BeginScreen;
 
 import MVPGlobal.Model.BlackJackGame;
+import MVPGlobal.Model.Player;
 import MVPGlobal.View.AlertScreen.AlertBlackjack;
 import MVPGlobal.View.InfoScreen.InfoScreenPresenter;
 import MVPGlobal.View.InfoScreen.InfoScreenView;
@@ -33,9 +34,11 @@ public class BeginScreenPresenter {
     private BlackJackGame blackJackGame;
     private BeginScreenView view;
     private UISettings uiSettings;
+    private Player player;
 
     public BeginScreenPresenter(BlackJackGame blackJackGame, BeginScreenView view, UISettings uiSettings) {
         this.blackJackGame = blackJackGame;
+        this.player = blackJackGame.player;
         this.view = view;
         this.uiSettings = uiSettings;
         updateView();
@@ -145,19 +148,22 @@ public class BeginScreenPresenter {
                         new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
                         new FileChooser.ExtensionFilter("All Files", "*.*"));
                 File selectedFile = fileChooser.showOpenDialog(view.getScene().getWindow());
-                if ((selectedFile != null) ){ //^ (Files.isReadable(Paths.get(selectedFile.toURI())))) {
+                if ((selectedFile != null)) { //^ (Files.isReadable(Paths.get(selectedFile.toURI())))) {
                     try {
                         List<String> input = Files.readAllLines(Paths.get(selectedFile.toURI()));
                         // begin implementeren ingelezen gegevens doorgeven aan model
                         for (int i = 0; i < input.size(); i++) {
                             String inputline = input.get(i);
                             String[] elementen = inputline.split(" ");
-                            blackJackGame.player.setBank(Integer.parseInt(inputline));
-                            msView.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(blackJackGame.player.getBank()));
+                            if (i == 0) {
+                                player.setPlayerName(inputline);
+                                msView.getBottomLabels().getPlayerName().setText(player.getPlayerName());
+                            } else if (i == 1) {
+                                player.setBank(Integer.parseInt(inputline));
+                                msView.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(player.getBank()));
+                            }
                         }
                         // start game
-                        //blackJackGame = new BlackJackGame(); Dit was fout, dan maakte het een nieuwe instantie van backend en werden de ingeladen waardes
-                        //overschreven => Dit willen we niet!
 
                         MainScreenPresenter msPresenter = new MainScreenPresenter(blackJackGame, msView, uiSettings);
                         view.getScene().setRoot(msView);
