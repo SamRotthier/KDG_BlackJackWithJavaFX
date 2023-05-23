@@ -86,7 +86,7 @@ public class SettingsPresenter {
             }
         }); */
         //test
-         view.getVolumeBackgroundMusic().valueProperty().addListener(new ChangeListener<Number>() {
+        view.getVolumeBackgroundMusic().valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 sounds.setBackgroundMusic(t1.doubleValue());

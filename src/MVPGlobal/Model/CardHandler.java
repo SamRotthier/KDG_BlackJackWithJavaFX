@@ -2,6 +2,11 @@ package MVPGlobal.Model;
 
 import java.util.ArrayList;
 
+/**
+ * This is the Abstract class CardHandler.
+ * A card handler is a person that interacts with the cards. This can either be a player or dealer.
+ * Player and dealer need a lot of the same methods.
+ */
  abstract class CardHandler {
     private ArrayList<Card> Hand = new ArrayList<Card>();
 
