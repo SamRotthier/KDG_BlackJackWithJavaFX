@@ -1,5 +1,6 @@
 package MVPGlobal.View.BeginScreen;
 
+import MVPGlobal.Model.BlackJackGame;
 import MVPGlobal.View.MainScreen.MainScreenView;
 import MVPGlobal.View.UISettings;
 import javafx.geometry.Insets;
@@ -26,6 +27,8 @@ public class BeginScreenView extends BorderPane  {
 
     private Label welcomeText;
     private Label instructions;
+
+    private BlackJackGame blackJackGame;
 
     // private AudioClip blackjackStartSound;
 

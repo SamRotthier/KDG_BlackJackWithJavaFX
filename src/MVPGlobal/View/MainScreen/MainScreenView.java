@@ -1,5 +1,6 @@
 package MVPGlobal.View.MainScreen;
 
+import MVPGlobal.Model.BlackJackGame;
 import MVPGlobal.View.UISettings;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
@@ -47,6 +48,8 @@ public class MainScreenView extends BorderPane  {
 
     private WinLoseView winLoseView;
 
+    private BlackJackGame blackJackGame;
+
     public MainScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
@@ -63,10 +66,9 @@ public class MainScreenView extends BorderPane  {
 
         actionButtons = new PlayerActionsView(uiSettings);
         betButtons = new BetView(uiSettings);
-
+        sounds = new SoundsView(uiSettings);
         playerCardsView = new PlayerCardsView(uiSettings);
         dealerCardsView = new DealerCardsView(uiSettings);
-        sounds = new SoundsView(uiSettings);
         bottomLabels = new BottomLabelsView(uiSettings);
         cardsPlayerDealerBox = new VBox();
         winLoseView = new WinLoseView(uiSettings);
@@ -78,10 +80,6 @@ public class MainScreenView extends BorderPane  {
             this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getGameScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,new BackgroundSize(100, 100, true, true, false, true))));
         }
         catch (MalformedURLException ex){}
-
-        // music
-        //getSounds().playBackgroundMusic();
-
         
         Menu menuFile = new Menu("File",null,loadMI, saveMI, new SeparatorMenuItem(), settingsMI, new SeparatorMenuItem(),exitMI);
         Menu menuHelp = new Menu("Help",null, aboutMI, infoMI);

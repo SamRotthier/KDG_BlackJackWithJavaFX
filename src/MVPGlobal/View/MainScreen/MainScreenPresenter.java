@@ -260,13 +260,14 @@ public class MainScreenPresenter {
 
                     view.getDealerCardsView().getDealerCards().clear();
                     view.getDealerCardsView().getDealerCards().addAll(dealer.getHand());
-                    for (int i = 0; i < 2; i++) {
+                    view.getSounds().playDealCard();
+                    /*for (int i = 0; i < 2; i++) {
                         view.getSounds().playDealCard();
-                    }
+                    }*/
                     view.getPlayerCardsView().addCard();
-                    for (int i = 0; i < 2; i++) {
+                    /*for (int i = 0; i < 2; i++) {
                         view.getSounds().playDealCard();
-                    }
+                    }*/
 
                     view.getDealerCardsView().addCardStart();
                     view.setRight(null);

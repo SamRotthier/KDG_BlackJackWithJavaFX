@@ -1,5 +1,6 @@
 package MVPGlobal.View.StartScreen;
 
+import MVPGlobal.Model.BlackJackGame;
 import MVPGlobal.View.MainScreen.MainScreenView;
 import MVPGlobal.View.MainScreen.SoundsView;
 import MVPGlobal.View.UISettings;
@@ -27,7 +28,7 @@ public class StartScreenView extends BorderPane {
     private ProgressBar timeProgress;
     private StartScreenTransition trans;
     private MainScreenView mainScreenView;
-
+    private BlackJackGame blackJackGame;
     private ImageView centralImage;
 
     private SoundsView soundsView;

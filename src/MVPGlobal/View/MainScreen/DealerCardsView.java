@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class DealerCardsView extends StackPane {
 
     private UISettings uiSettings;
-    private SoundsView sounds;
     private Image backCard;
     private ImageView backCardView;
 
@@ -32,7 +31,6 @@ public class DealerCardsView extends StackPane {
     }
 
     private void initialiseNodes() {
-         sounds = new SoundsView(uiSettings);
 /*        this.card = new Image("images/cards/clubs2.png");
         cardView = new ImageView(card);
 

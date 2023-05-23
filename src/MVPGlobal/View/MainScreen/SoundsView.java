@@ -1,5 +1,6 @@
 package MVPGlobal.View.MainScreen;
 
+import MVPGlobal.Model.BlackJackGame;
 import MVPGlobal.View.UISettings;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.*;
@@ -12,7 +13,6 @@ public class SoundsView{
 
     private UISettings uiSettings;
     private MediaPlayer backgroundMusic;
-    private StringBuilder stringBuilder;
 
     private static final int NUM_DEAL = 5;
 
@@ -23,7 +23,7 @@ public class SoundsView{
     }
 
     private void initialiseNodes() {
-        this.stringBuilder = new StringBuilder();
+
     }
 
     private void layoutNodes() {
@@ -77,19 +77,30 @@ public class SoundsView{
         catch(MalformedURLException ex){}; */
     };
 
-    public void playDealCard(){
-/*
-        Random random = new Random();
-        int dealSoundNumber = random.nextInt(NUM_DEAL) + 1;
+    public void playDealCard() {/*
+        StringBuilder stringBuilder = new StringBuilder();
+        if (blackJackGame.player.getHand().size() > 2) {
 
-        stringBuilder.append(uiSettings.getCardDealSound()).append(dealSoundNumber).append(".mp3");
-        String dealSoundFile = stringBuilder.toString();
+            Random random = new Random();
+            int dealSoundNumber = random.nextInt(NUM_DEAL) + 1;
 
-        try{
-        AudioClip dealSound = new AudioClip(new File(dealSoundFile).toURI().toURL().toString());
-        dealSound.play();
-        }
-        catch(MalformedURLException ex){};*/
+            stringBuilder.append(uiSettings.getCardDealSound()).append(dealSoundNumber).append(".mp3");
+            dealSound(stringBuilder);
+
+        } else {
+            stringBuilder.append(uiSettings.getCardDealSound()).append("All4.mp3");
+            dealSound(stringBuilder);
+        }*/
+    }
+
+    private void dealSound(StringBuilder stringBuilder){
+            String dealSoundFile = stringBuilder.toString();
+
+            try{
+                AudioClip dealSound = new AudioClip(new File(dealSoundFile).toURI().toURL().toString());
+                dealSound.play();
+            }
+            catch(MalformedURLException ex){};
     }
 
     public void setBackgroundMusic(MediaPlayer backgroundMusic) {
