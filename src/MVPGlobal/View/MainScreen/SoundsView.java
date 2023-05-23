@@ -14,6 +14,8 @@ public class SoundsView{
     private UISettings uiSettings;
     private MediaPlayer backgroundMusic;
 
+    private StringBuilder stringBuilder;
+
     private static final int NUM_DEAL = 5;
 
     public SoundsView(UISettings uiSettings) {
@@ -77,30 +79,25 @@ public class SoundsView{
         catch(MalformedURLException ex){}; */
     };
 
-    public void playDealCard() {/*
+    public void playDealCard() {
         StringBuilder stringBuilder = new StringBuilder();
-        if (blackJackGame.player.getHand().size() > 2) {
 
             Random random = new Random();
             int dealSoundNumber = random.nextInt(NUM_DEAL) + 1;
 
             stringBuilder.append(uiSettings.getCardDealSound()).append(dealSoundNumber).append(".mp3");
-            dealSound(stringBuilder);
-
-        } else {
-            stringBuilder.append(uiSettings.getCardDealSound()).append("All4.mp3");
-            dealSound(stringBuilder);
-        }*/
-    }
-
-    private void dealSound(StringBuilder stringBuilder){
             String dealSoundFile = stringBuilder.toString();
 
-            try{
-                AudioClip dealSound = new AudioClip(new File(dealSoundFile).toURI().toURL().toString());
-                dealSound.play();
-            }
-            catch(MalformedURLException ex){};
+        try{
+            AudioClip dealSound = new AudioClip(new File(dealSoundFile).toURI().toURL().toString());
+            dealSound.play();
+        }
+        catch(MalformedURLException ex){};
+}
+
+
+    private void dealSound(StringBuilder stringBuilder){
+
     }
 
     public void setBackgroundMusic(MediaPlayer backgroundMusic) {
