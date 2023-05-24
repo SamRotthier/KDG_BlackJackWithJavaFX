@@ -2,7 +2,10 @@ package MVPGlobal.Model;
 
 import java.util.ArrayList;
 
-
+/**
+ * This is the class the deck builder.
+ * In this class the play deck (shuffeled deck on the table) gets assembled.
+ */
  class DeckBuilder {
      static String[] suits = {"spades", "hearts", "clubs", "diamonds"};
     //String[] numb = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"};

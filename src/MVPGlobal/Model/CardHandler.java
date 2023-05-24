@@ -67,7 +67,7 @@ import java.util.ArrayList;
      */
      void checkAce(){
          for(Card c: Hand) {
-             if (c.getCardNumb().equals("A")) { // if we don't want the ace to be reversable  && c.getCardValue() !=11
+             if (c.getCardNumb().equals("A")  && c.getCardValue() !=1) { // if we don't want the ace to be reversable  && c.getCardValue() !=11
                  if (getTotalCardValue() > 21){
                      c.setCardValue(1);
                  }else {
