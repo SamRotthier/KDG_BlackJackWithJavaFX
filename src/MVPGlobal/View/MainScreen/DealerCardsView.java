@@ -66,12 +66,14 @@ public class DealerCardsView extends StackPane {
                 try {
                     card = new Image(uiSettings.getCardImage().toUri().toURL() + "backCards.png");
                 } catch (MalformedURLException ex) {
+                    //Do nothing if failed
                 }
             } else {
                 String cardNamePath = c.getSuit() + c.getCardNumb();
                 try {
                     card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");
                 } catch (MalformedURLException ex) {
+                    //Do nothing if failed
                 }
             }
 
@@ -111,6 +113,7 @@ public class DealerCardsView extends StackPane {
                 try {
                     card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");
                 } catch (MalformedURLException ex) {
+                    //Do nothing if failed
                 }
 
             cardView = new ImageView(card);

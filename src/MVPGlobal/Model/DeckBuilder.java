@@ -17,12 +17,12 @@ import java.util.ArrayList;
      static ArrayList<Card> assemblingDeck() {
         ArrayList<Card> StartDeck = new ArrayList<>();
         for (String s : suits) {
-            for (int n = 1; n < 13; n++) {
+            for (int n = 1; n < 14; n++) {
                 Card card = new Card();
                 card.setIcon(s.toUpperCase().charAt(0));
                 card.setSuit(s);
 
-                int cardValue = (n > 9) ? 10 : n + 1;
+                int cardValue = (n > 9) ? 10 : n;
                 card.setCardValue(cardValue);
 
                 String cardNumb = "";
@@ -34,11 +34,11 @@ import java.util.ArrayList;
                     else {
                     cardNumb = Integer.toString(cardValue);
                     }
-                } else if (n == 10) {
-                    cardNumb = "J";
                 } else if (n == 11) {
-                    cardNumb = "Q";
+                    cardNumb = "J";
                 } else if (n == 12) {
+                    cardNumb = "Q";
+                } else if (n == 13) {
                     cardNumb = "K";
                 }
                 card.setCardNumb(cardNumb);

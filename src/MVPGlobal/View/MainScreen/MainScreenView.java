@@ -97,9 +97,6 @@ public class MainScreenView extends BorderPane  {
         cardsPlayerDealerBox.setAlignment(Pos.CENTER);
         cardsPlayerDealerBox.getChildren().addAll(dealerCardsView, playerCardsView);
 
-        //StackPane centerPane = new StackPane();
-        //centerPane.getChildren().addAll(cardsPlayerDealerBox,winLoseView);
-
         this.setCenter(cardsPlayerDealerBox);
 
     }

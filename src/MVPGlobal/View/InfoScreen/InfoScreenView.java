@@ -39,6 +39,7 @@ public class InfoScreenView extends BorderPane{
             setBackground(infoBackground);
         }
         catch (MalformedURLException ex){
+            //Do nothing if failed
         }
         setPadding(new Insets(uiSettings.getInsetsMargin()));
         BorderPane.setAlignment(okButton, Pos.CENTER_RIGHT);

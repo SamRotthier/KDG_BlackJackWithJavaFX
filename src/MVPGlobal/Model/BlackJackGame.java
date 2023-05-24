@@ -18,8 +18,6 @@ public class BlackJackGame {
     public Dealer dealer = new Dealer();
     public SoundsPlayer sounds = new SoundsPlayer();
 
-    public HighScoreHandler highScoreHandler = new HighScoreHandler();
-
     //When the deck is initialized it makes a package of cards that's 2 normal decks big.(changeable)
     ArrayList<Card> deck = DeckBuilder.playDeck(2);
 

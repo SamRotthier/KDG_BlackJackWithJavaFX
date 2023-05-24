@@ -46,9 +46,9 @@ public class BottomLabelsView extends HBox {
         this.setBackground(bottomBackground);
         this.getChildren().addAll(saldoLabel, saldoLabelPlayer, betAmountLabel, betAmountLabelPlayer,cardScoreLabel,cardScorePlayer,playerNameLabel,playerName);
 
-        this.setMargin(this.getChildren().get(2), new Insets(0,0,0,uiSettings.getInsetsMargin()*4));
-        this.setMargin(this.getChildren().get(4), new Insets(0,0,0,uiSettings.getInsetsMargin()*16));
-        this.setMargin(this.getChildren().get(6), new Insets(0,0,0,uiSettings.getInsetsMargin()*18));
+        setMargin(this.getChildren().get(2), new Insets(0,0,0,uiSettings.getInsetsMargin()*4));
+        setMargin(this.getChildren().get(4), new Insets(0,0,0,uiSettings.getInsetsMargin()*16));
+        setMargin(this.getChildren().get(6), new Insets(0,0,0,uiSettings.getInsetsMargin()*18));
     }
 
     //Getters
