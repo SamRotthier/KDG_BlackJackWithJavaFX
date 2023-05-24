@@ -48,6 +48,11 @@ import java.util.ArrayList;
              System.out.println("Something went wrong while dealing a card");
          }
      }
+
+    /**
+     * In this method we check if the (start card) aces need to have the card value of 1 or 11.
+     * We do this according to the total card value of the cardhandlers hand.
+     */
      void checkStartAce(Card c) {
          if ((getTotalCardValue() + 11) > 21) {
              c.setCardValue(1);
@@ -55,6 +60,11 @@ import java.util.ArrayList;
              c.setCardValue(11);
          }
      }
+
+    /**
+     * In this method we check if the aces in the card handlers hand have the right value.
+     * We calculate this with the total value of their hand and determine if it has to be 1 or 11.
+     */
      void checkAce(){
          for(Card c: Hand) {
              if (c.getCardNumb().equals("A")) { // if we don't want the ace to be reversable  && c.getCardValue() !=11
@@ -66,6 +76,12 @@ import java.util.ArrayList;
             }
          }
      }
+
+    /**
+     * This method will loop through the hand (all cards) of the card handler, and it adds up the values.
+     * This way you can get a total score of all the cards from a card handler.
+     * @return It returns an integer, this is the total score of all the cards added togheter.
+     */
      public int getTotalCardValue(){
         int totalCardValue = 0;
         for (Card c: Hand) {

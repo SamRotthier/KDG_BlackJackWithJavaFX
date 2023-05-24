@@ -14,7 +14,7 @@ public class HighScoreHandler {
    //     highScoreContestants = highScoreSplit[1];
    // }
 
-    public String[] getHighScores() {
-        return highScores;
-    }
+   // public String[] getHighScores() {
+   //     return highScores;
+   // }
 }
