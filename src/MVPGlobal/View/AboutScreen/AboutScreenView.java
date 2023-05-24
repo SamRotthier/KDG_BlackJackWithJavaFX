@@ -39,6 +39,7 @@ public class AboutScreenView extends BorderPane {
             this.setCenter(new Canvas(480, 360));
         }
         catch (MalformedURLException ex){
+            //Do nothing if exception
         }
 
         BorderPane centralPane = new BorderPane();
@@ -55,7 +56,8 @@ public class AboutScreenView extends BorderPane {
             catch (MalformedURLException ex) {
                 // do nothing, if toURL-conversion fails, program can continue
             }
-        } else { // do nothing, if AboutImage is not available, program can continue
+        } else {
+             // do nothing, if AboutImage is not available, program can continue
         }
         VBox labelsPane = new VBox();
         labelsPane.getChildren().addAll(devs, version);

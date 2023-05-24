@@ -20,8 +20,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javafx.util.Duration;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -63,10 +61,6 @@ public class MainScreenPresenter {
     }
 
     private void updateView() {
-    }
-
-    private void startEventHandler() {
-
     }
 
     private void EventHandlers() {
@@ -260,32 +254,21 @@ public class MainScreenPresenter {
                     view.setCenter(null);
                     view.setCenter(view.getCardsPlayerDealerBox());
                     view.getCardsPlayerDealerBox().setVisible(true);
-
                     bottomLabelUpdate();
 
                     view.getPlayerCardsView().getPlayerCards().clear();
                     view.getPlayerCardsView().getPlayerCards().addAll(player.getHand());
-
                     view.getDealerCardsView().getDealerCards().clear();
                     view.getDealerCardsView().getDealerCards().addAll(dealer.getHand());
                     blackJackGame.sounds.playDealCard();
-                    view.getPlayerCardsView().cardAnimation();
                     view.getPlayerCardsView().addCard();
-                    /*for (int i = 0; i < 2; i++) {
-                        view.getSounds().playDealCard();
-                    }*/
-
                     view.getDealerCardsView().addCardStart();
+
                     view.setRight(null);
                     view.getActionButtons().getChildren().clear();
                     view.getActionButtons().getChildren().addAll(view.getActionButtons().getButtonHit(), view.getActionButtons().getButtonDouble(), view.getActionButtons().getButtonStand());
                     view.setRight(view.getActionButtons());
                     view.fadeInAnimation(view.getActionButtons());
-
-                /* view.getActionButtons().getButtonHit().setVisible(true);
-                view.getActionButtons().getButtonDouble().setVisible(true);
-                view.getActionButtons().getButtonStand().setVisible(true);
-                view.getActionButtons().getButtonDeal().setVisible(false);*/
 
                 } else {
                     AlertBlackjack alertDeal = new AlertBlackjack(AlertType.ERROR, "ERROR", "Issues while dealing", "Please give betting amount", "OK");
@@ -303,9 +286,7 @@ public class MainScreenPresenter {
                 }
                 else if (player.getTotalCardValue() < 22) {
                     blackJackGame.btnHit();
-
                     bottomLabelUpdate();
-
                     view.getPlayerCardsView().getPlayerCards().add(player.getHand().get(player.getHand().size() - 1));
                     view.getPlayerCardsView().addCard();
                     blackJackGame.sounds.playDealCard();
@@ -326,14 +307,12 @@ public class MainScreenPresenter {
                 else if (player.getTotalCardValue() < 22) {
                     if ((player.getPlayerBet() * 2) <= player.getBank()) {
                         blackJackGame.btnDouble();
-
                         bottomLabelUpdate();
-
                         view.getPlayerCardsView().getPlayerCards().add(player.getHand().get(player.getHand().size() - 1));
                         view.getPlayerCardsView().addCard();
                         blackJackGame.sounds.playDealCard();
                     } else {
-                        AlertBlackjack alertBroke = new AlertBlackjack(AlertType.INFORMATION, "BROKE", "Not enough points", "You don't have enough points for this", "OK");
+                        AlertBlackjack alertBroke = new AlertBlackjack(AlertType.INFORMATION, "BROKE", "Not enough saldo", "You don't have enough cash for this", "OK");
                         alertBroke.showAndWait();
                     }
                 } else {
@@ -376,7 +355,6 @@ public class MainScreenPresenter {
                 } else {
                     winLoseTextLoader(4);
                 }
-
                 bottomLabelUpdate();
                 view.getWinLoseView().setVisible(true);
             }
@@ -403,7 +381,6 @@ public class MainScreenPresenter {
                 blackJackGame.sounds.playInfoBtn();
                 blackJackGame.sounds.stopBackgroundMusic();
                 nextRoundClearing();
-                //view.getBottomLabels().getSaldoLabelPlayer().setText(Integer)
                 BeginScreenView beginView = new BeginScreenView(uiSettings);
                 BeginScreenPresenter bsPresenter = new BeginScreenPresenter(blackJackGame, beginView, uiSettings);
                 view.getScene().setRoot(beginView);
@@ -431,7 +408,6 @@ public class MainScreenPresenter {
         ButtonType noButton = new ButtonType("No");
         ButtonType yesButton = new ButtonType("Yes");
         stopWindow.getButtonTypes().addAll(yesButton, noButton);
-        //stopWindow.getDialogPane().getStyleClass().add("alert");
         stopWindow.showAndWait();
         if (stopWindow.getResult() == null || stopWindow.getResult().equals(noButton)) {
             event.consume();
@@ -440,7 +416,7 @@ public class MainScreenPresenter {
         }
     }
 
-    //Methods to cleanup the code
+    //Methods to clean up the code
     private void bottomLabelUpdate() {
         view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(player.getBank()));
         view.getBottomLabels().getBetAmountLabelPlayer().setText(Integer.toString(player.getPlayerBet()));
@@ -510,33 +486,6 @@ public class MainScreenPresenter {
         }
     }
 
-    private void loadingHighscore() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Load Data File");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
-                new FileChooser.ExtensionFilter("All Files", "*.*"));
-        File selectedFile = fileChooser.showOpenDialog(view.getScene().getWindow());
-        if ((selectedFile != null)) { //^ (Files.isReadable(Paths.get(selectedFile.toURI())))) {
-            try {
-                List<String> input = Files.readAllLines(Paths.get(selectedFile.toURI()));
-                ArrayList<String> scores = new ArrayList<String>();
-                // begin implementeren ingelezen gegevens doorgeven aan model
-                for (int i = 0; i < input.size(); i++) {
-                    String inputline = input.get(i);
-                    String[] elementen = inputline.split(" ");
-                    scores.add(inputline);
-                }
-                Collections.sort(scores);
-                // einde implementeren ingelezen gegevens doorgeven aan model
-            } catch (IOException e) {
-                //
-            }
-        } else {
-            AlertBlackjack errorWindow = new AlertBlackjack(AlertType.ERROR, "ERROR", "Problem with the selected input file:", "File is not readable", "OK");
-            errorWindow.showAndWait();
-        }
-    }
     private void savingPlayerNameAndScore() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Data File");
@@ -564,10 +513,4 @@ public class MainScreenPresenter {
             errorWindow.showAndWait();
         }
     }
-
-    //Getter
-    public ActionEvent getInfoActionEvent() {
-        return infoActionEvent;
-    }
-
 }

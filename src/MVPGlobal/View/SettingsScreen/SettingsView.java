@@ -12,15 +12,11 @@ public class SettingsView extends BorderPane {
     private TextField cssName;
     private Button cssButton;
     private Button okButton;
-
     private Label cssLabel;
-
     private Label cssTitel;
     private Label volumeTitel;
-
     private Label backgroundMusicLabel;
     private Label soundFXLabel;
-
     private Slider volumeBackgroundMusic;
     private Slider volumeSoundFx;
 

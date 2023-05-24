@@ -8,9 +8,7 @@ import javafx.event.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.WindowEvent;
-import javafx.beans.value.ObservableValue; //moeten toevoegen
-//import javax.swing.event.ChangeEvent;
-//import javax.swing.event.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -76,14 +74,6 @@ public class SettingsPresenter {
             }
         });
 
-        /*view.getVolumeBackgroundMusic().valueProperty().addListener(new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                view.getVolumeBackgroundMusic().setValue(view.getSoundsView().getBackgroundMusic().getVolume());
-                view.getSoundsView().getBackgroundMusic().setVolume(view.getVolumeBackgroundMusic().getValue());
-            }
-        }); */
-        //test
         view.getVolumeBackgroundMusic().valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {

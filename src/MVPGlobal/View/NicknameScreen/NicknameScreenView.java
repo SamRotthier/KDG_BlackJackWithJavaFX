@@ -16,7 +16,6 @@ public class NicknameScreenView extends BorderPane {
 
     private UISettings uiSettings;
     private Label chooseNickname;
-
     private TextField nickname;
     private Button confirmButton;
 

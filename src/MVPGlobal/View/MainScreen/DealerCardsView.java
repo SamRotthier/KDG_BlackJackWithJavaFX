@@ -12,13 +12,9 @@ import java.util.ArrayList;
 public class DealerCardsView extends StackPane {
 
     private UISettings uiSettings;
-    private Image backCard;
-    private ImageView backCardView;
     public static ArrayList<Card> dealerCards = new ArrayList<Card>();
     private Image card;
     private ImageView cardView;
-    private double offsetX;
-    private double rotate;
 
     public DealerCardsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -27,31 +23,9 @@ public class DealerCardsView extends StackPane {
     }
 
     private void initialiseNodes() {
-/*        this.card = new Image("images/cards/clubs2.png");
-        cardView = new ImageView(card);
-
-        this.backCard = new Image("images/cards/backCards.png");
-        backCardView = new ImageView(backCard);
-
-        offsetX = 70;
-        rotate = 5; */
-
     }
 
     private void layoutNodes() {
-       /* cardView.setPreserveRatio(true);
-        cardView.setFitWidth(uiSettings.getCardWidth());
-        cardView.setFitHeight(uiSettings.getCardHeight());
-        cardView.setRotate(-uiSettings.getCardRotate());
-
-        backCardView.setPreserveRatio(true);
-        backCardView.setFitWidth(uiSettings.getCardWidth());
-        backCardView.setFitHeight(uiSettings.getCardHeight());
-        backCardView.setTranslateX(uiSettings.getCardOffsetX());
-        backCardView.setRotate(uiSettings.getCardRotate());
-
-        getChildren().addAll(cardView, backCardView);
-*/
     }
 
     public void addCardStart() {
@@ -66,12 +40,14 @@ public class DealerCardsView extends StackPane {
                 try {
                     card = new Image(uiSettings.getCardImage().toUri().toURL() + "backCards.png");
                 } catch (MalformedURLException ex) {
+                    //Do nothing if failed
                 }
             } else {
                 String cardNamePath = c.getSuit() + c.getCardNumb();
                 try {
                     card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");
                 } catch (MalformedURLException ex) {
+                    //Do nothing if failed
                 }
             }
 
@@ -111,6 +87,7 @@ public class DealerCardsView extends StackPane {
                 try {
                     card = new Image(uiSettings.getCardImage().toUri().toURL() + cardNamePath + ".png");
                 } catch (MalformedURLException ex) {
+                    //Do nothing if failed
                 }
 
             cardView = new ImageView(card);

@@ -6,6 +6,10 @@ import java.util.ArrayList;
  *
  * This is the model for our Blackjack game.
  * In this class you'll find all the methods that get called from the presenters.
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
  */
 
 public class BlackJackGame {
@@ -13,8 +17,6 @@ public class BlackJackGame {
     public Player player = new Player();
     public Dealer dealer = new Dealer();
     public SoundsPlayer sounds = new SoundsPlayer();
-
-    public HighScoreHandler highScoreHandler = new HighScoreHandler();
 
     //When the deck is initialized it makes a package of cards that's 2 normal decks big.(changeable)
     ArrayList<Card> deck = DeckBuilder.playDeck(2);
@@ -70,7 +72,7 @@ public class BlackJackGame {
      * This is the method for the player to tell the game he is done taking cards (or is not allowed to anymore).
      * When the player stops taking cards, it is the turn of the dealer if the player does not have a card score
      * over 21. Otherwise, the dealer will stand soo with the 2 cards from the dealing cards method.
-     * After this we go to the cheching score method.
+     * After this we go to the checking score method.
      */
     public void btnStand() {
         if (!(player.getTotalCardValue() > 21)) {
@@ -83,6 +85,8 @@ public class BlackJackGame {
      * This is the method for checking if the size of the deck is still large enough.
      * If the stack is not large enough we will assemble a new deck.
      * We do this so the game can be continuously played and to make card counting more difficult.
+     *
+     * @param i ,This is an integer to tell the check how large the size must be.
      */
     private void checkDeckSize(int i){
         if (deck.size() < i) {

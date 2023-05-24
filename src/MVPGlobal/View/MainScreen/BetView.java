@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -36,12 +35,16 @@ public class BetView extends VBox  {
         try{
             this.arrowUpIcon = new Image(uiSettings.getArrowUp().toUri().toURL().toString(), 18, 18, false, false);
         }
-        catch(MalformedURLException ex){};
+        catch(MalformedURLException ex){
+            //do nothing if failed
+        }
         this.arrowUp = new Button("", new ImageView(arrowUpIcon));
         try {
              this.arrowDownIcon = new Image(uiSettings.getArrowDown().toUri().toURL().toString(), 18, 18, false, false);
         }
-        catch(MalformedURLException ex){};
+        catch(MalformedURLException ex){
+            //do nothing if failed
+        }
         this.arrowDown = new Button("", new ImageView(arrowDownIcon));
         this.arrowDown.setVisible(false);
     }

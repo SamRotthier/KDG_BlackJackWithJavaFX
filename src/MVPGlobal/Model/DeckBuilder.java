@@ -2,20 +2,27 @@ package MVPGlobal.Model;
 
 import java.util.ArrayList;
 
-
+/**
+ * This is the class the deck builder.
+ * In this class the play deck (shuffeled deck on the table) gets assembled.
+ */
  class DeckBuilder {
      static String[] suits = {"spades", "hearts", "clubs", "diamonds"};
     //String[] numb = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"};
 
+    /**
+     * This method will assemble a deck in a normal order.
+     * @return It returns an array list of cards.
+     */
      static ArrayList<Card> assemblingDeck() {
         ArrayList<Card> StartDeck = new ArrayList<>();
         for (String s : suits) {
-            for (int n = 1; n < 13; n++) { //13 na te kijken of het geen 12 moet zijn
+            for (int n = 1; n < 14; n++) {
                 Card card = new Card();
                 card.setIcon(s.toUpperCase().charAt(0));
                 card.setSuit(s);
 
-                int cardValue = (n > 9) ? 10 : n + 1;
+                int cardValue = (n > 9) ? 10 : n;
                 card.setCardValue(cardValue);
 
                 String cardNumb = "";
@@ -27,11 +34,11 @@ import java.util.ArrayList;
                     else {
                     cardNumb = Integer.toString(cardValue);
                     }
-                } else if (n == 10) {
-                    cardNumb = "J";
                 } else if (n == 11) {
-                    cardNumb = "Q";
+                    cardNumb = "J";
                 } else if (n == 12) {
+                    cardNumb = "Q";
+                } else if (n == 13) {
                     cardNumb = "K";
                 }
                 card.setCardNumb(cardNumb);
@@ -40,6 +47,12 @@ import java.util.ArrayList;
         }
         return StartDeck;
     }
+
+    /**
+     * This method will shuffle a previously assembled deck randomly.
+     * In java there is also a shuffle function for arraylists but in this case we chose to do it ourselves.
+     * @return It returns an array list of cards.
+     */
      static ArrayList<Card> shuffleDeck(ArrayList<Card> StartDeck){
         for(int i = StartDeck.size()-1; i>0;i--){
             int j2= (int) Math.floor(Math.random() * (i+1));
@@ -51,6 +64,11 @@ import java.util.ArrayList;
         return StartDeck;
     }
 
+    /**
+     * This get multiple shuffeled decks and assemble them into a play deck.
+     * This play deck will be used on the poker table
+     * @return It returns an array list of cards.
+     */
      static ArrayList<Card> playDeck(int amountDeck){
          ArrayList<Card> startDeck = assemblingDeck();
          ArrayList<Card> playDeck = new ArrayList<>();

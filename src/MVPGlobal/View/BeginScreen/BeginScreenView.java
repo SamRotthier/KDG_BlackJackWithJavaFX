@@ -23,8 +23,6 @@ public class BeginScreenView extends BorderPane  {
     private Label welcomeText;
     private Label instructions;
 
-    //private AudioClip blackjackStartSound;
-
     public BeginScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();

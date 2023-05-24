@@ -29,10 +29,8 @@ public class NicknameScreenPresenter {
             @Override
             public void handle(ActionEvent event) {
                 if(view.getNickname().getText() != null && view.getNickname().getText().length() != 0){
-
                     player.setPlayerName(view.getNickname().getText());
                     mainView.getBottomLabels().getPlayerName().setText(player.getPlayerName());
-                    // setNickname in Model
                     view.getScene().getWindow().hide();
                 } else{
                     AlertBlackjack nicknameError = new AlertBlackjack(Alert.AlertType.ERROR, "ERROR", "Please enter a username", "You have not entered a username yet.", "OK");

@@ -70,7 +70,9 @@ public class MainScreenView extends BorderPane  {
         try{
             this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getGameScreenBackground().toUri().toURL().toString()),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,new BackgroundSize(100, 100, true, true, false, true))));
         }
-        catch (MalformedURLException ex){}
+        catch (MalformedURLException ex){
+            //do nothing if exception
+        }
         
         Menu menuFile = new Menu("File",null,loadMI, saveMI, new SeparatorMenuItem(), settingsMI, new SeparatorMenuItem(),exitMI);
         Menu menuHelp = new Menu("Help",null, aboutMI, infoMI);
@@ -97,11 +99,7 @@ public class MainScreenView extends BorderPane  {
         cardsPlayerDealerBox.setAlignment(Pos.CENTER);
         cardsPlayerDealerBox.getChildren().addAll(dealerCardsView, playerCardsView);
 
-        //StackPane centerPane = new StackPane();
-        //centerPane.getChildren().addAll(cardsPlayerDealerBox,winLoseView);
-
         this.setCenter(cardsPlayerDealerBox);
-
     }
 
     // Animation
