@@ -19,7 +19,6 @@ public class PlayerCardsView extends StackPane {
     private Image card;
     private ImageView cardView;
 
-    private CardTransition cardTransition;
 
     public PlayerCardsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
@@ -28,13 +27,6 @@ public class PlayerCardsView extends StackPane {
     }
 
     private void initialiseNodes() {
-        cardTransition = new CardTransition(this, 5);
-      /*  this.card = new Image("images/cards/clubs2.png");
-        cardView = new ImageView(card);
-        this.cardTwo = new Image("images/cards/clubs7.png");
-        cardViewTwo = new ImageView(cardTwo);
-        this.cardThree = new Image("images/cards/heartsK.png");
-        cardViewThree = new ImageView(cardThree); */
     }
 
     private void layoutNodes() {
@@ -48,7 +40,6 @@ public class PlayerCardsView extends StackPane {
         int r = -2;
         int y = 0;
 
-        //SequentialTransition sequentialTransition = new SequentialTransition();
         for (Card c : playerCards) {
             String cardNamePath = c.getSuit() + c.getCardNumb();
             try {
@@ -61,9 +52,6 @@ public class PlayerCardsView extends StackPane {
             cardView.setFitWidth(uiSettings.getCardWidth());
             cardView.setFitHeight(uiSettings.getCardHeight());
             this.getChildren().add(cardView);
-            //cardAnimation();
-            //sequentialTransition.getChildren().add(cardDuration(cardView));
-            //sequentialTransition.getChildren().add(new PauseTransition(Duration.seconds(5)));
 
             cardView.setTranslateX(uiSettings.getCardOffsetX() * x);
             cardView.setTranslateY(-(uiSettings.getCardOffsetY() + (y * 5)));
@@ -80,41 +68,7 @@ public class PlayerCardsView extends StackPane {
                 y--;
             }
         }
-        // sequentialTransition.play();
     }
-
-    //Animations
-    public void cardAnimation(){
-        cardTransition.play();
-    }
-    /*private Animation cardAnimation(ImageView cardImageView){
-        TranslateTransition animation = new TranslateTransition(Duration.seconds(1), cardImageView);
-        //start position
-        animation.setFromX(50);
-        animation.setFromY(-200);
-        //end position
-        animation.setToX(cardImageView.getLayoutX());
-        animation.setToY(cardImageView.getLayoutY());
-
-        animation.setInterpolator(Interpolator.EASE_BOTH);
-        animation.play();
-
-        return animation;
-    }
-
-    private void cardAnimationTimeline(ImageView cardImageView){
-        //Timeline used with Keyframes to animate each card
-        Timeline timeline = new Timeline();
-
-        Duration cardAnimationDuration = Duration.seconds(2);
-
-        //keyframe for each card
-        for (int i = 1; i < playerCards.size(); i++) {
-            KeyFrame keyFrame = new KeyFrame(cardAnimationDuration.multiply(i), event -> cardAnimation(cardImageView));
-            timeline.getKeyFrames().add(keyFrame);
-        }
-        timeline.play();
-    }*/
 
     // Getters
     ArrayList<Card> getPlayerCards() {

@@ -83,7 +83,6 @@ public class StartScreenView extends BorderPane {
             }
         } else { // do nothing, if StartScreenImage is not available, program can continue
         }
-        //
 
         //VBox
         VBox splash = new VBox();
