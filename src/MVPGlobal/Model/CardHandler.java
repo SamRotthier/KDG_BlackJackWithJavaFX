@@ -5,10 +5,17 @@ import java.util.ArrayList;
 /**
  * This is the Abstract class CardHandler.
  * A card handler is a person that interacts with the cards. This can either be a player or dealer.
- * Player and dealer need a lot of the same methods.
+ * Player and dealer need a lot of the same methods, therefor we made this class.
  */
  abstract class CardHandler {
     private ArrayList<Card> Hand = new ArrayList<Card>();
+
+    /**
+     * When a card handler starts a round, the first thing to do is to deal the first 2 cards.
+     * We loop this 2 times and check if the cardhandler gets an ace or not.
+     * The checks start ace method will give the ace the right value.
+     * after this we add the card to the cardhandlers hand and remove the card from the top of the deck
+     */
      void dealCard(ArrayList<Card> Deck){
         try {
             if (Hand.size() == 0) {
@@ -25,6 +32,12 @@ import java.util.ArrayList;
             System.out.println("You already have cards in your hand");
         }
     }
+
+    /**
+     * When a card handler wants a hit, we add the last card of the deck to their hand.
+     * After this we also remove the card from the back of the stack.
+     * Then we check if the hand for aces, we give them value according to their total score.
+     */
      void hitCard(ArrayList<Card> Deck){
          try {
                      Hand.add(Deck.get(Deck.size() - 1)); // Deck.size() - 1) gets last card in the list (top of deck)

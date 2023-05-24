@@ -28,21 +28,20 @@ public class HighScoreScreenPresenter {
 
     public void getPlayerDataFromFile(){
     String scanLine = "";
+        int i=0;
 
-        try {
-            BufferedReader bufferReader = new BufferedReader(new FileReader(uiSettings.getHighScoreFile().toString()));
-            int i=0;
-            while(scanLine != null){
-
-            scanLine = bufferReader.readLine();
-            model.highScoreHandler.highScores[i] = scanLine.split(",");
-            model.highScoreHandler.getHighScores().
-            i++;
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+       // try {
+       //    // BufferedReader bufferReader = new BufferedReader(new FileReader(uiSettings.getHighScoreFile().toString()));
+       //    // scanLine = bufferReader.readLine();
+       //    // while(scanLine != null){
+       //    // model.highScoreHandler.highScores[i] = scanLine.split(",");
+       //    // model.highScoreHandler.getHighScores().
+       //    //         i++;
+       //    // }
+//
+       // } catch (IOException e) {
+       //     throw new RuntimeException(e);
+       // }
 
     }
 }
