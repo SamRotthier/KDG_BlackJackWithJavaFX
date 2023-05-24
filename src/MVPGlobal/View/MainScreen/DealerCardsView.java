@@ -63,7 +63,6 @@ public class DealerCardsView extends StackPane {
             cardView.setRotate(uiSettings.getCardRotate() * r);
             cardView.setTranslateY(-(uiSettings.getCardOffsetY() + (y * 4)));
             getChildren().add(cardView);
-            //sounds.playDealCard();
             i++;
             x++;
             r++;

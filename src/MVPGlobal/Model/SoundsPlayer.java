@@ -67,12 +67,12 @@ public class SoundsPlayer {
     }
 
     public void playBlackjackStart(){
-       /* try{
+       try{
             String blackjackStartSound = uiSettings.getBlackjackStartSound().toString();
             AudioClip blackjackStart = new AudioClip(new File(blackjackStartSound).toURI().toURL().toString());
             blackjackStart.play();
         }
-        catch(MalformedURLException ex){}*/
+        catch(MalformedURLException ex){}
     }
 
     public void playBackgroundMusic(){
