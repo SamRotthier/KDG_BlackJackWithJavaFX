@@ -9,30 +9,40 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.Random;
 
+/**
+ * This is the class for the sound player
+ * sound player handles everything that is involving sounds
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
 public class SoundsPlayer {
 
     private UISettings uiSettings;
     private MediaPlayer backgroundMusic;
-
     private AudioClip startBtn;
     private AudioClip loadBtnSound;
-
     private AudioClip infoBtnSound;
     private AudioClip cardDeal1;
     private AudioClip cardDeal2;
     private AudioClip cardDeal3;
     private AudioClip cardDeal4;
     private AudioClip cardDeal5;
-
-
     private static final int NUM_DEAL = 5;
 
+    /**
+     * This is the constructor for the sound player
+     */
     public SoundsPlayer() {
         this.uiSettings = new UISettings();
         initialiseNodes();
         layoutNodes();
     }
 
+    /**
+     * In this method we initialize all the necessary things.
+     */
     private void initialiseNodes() {
         try {
             backgroundMusic = new MediaPlayer(new Media(uiSettings.getBackgroundMusicGame().toUri().toURL().toString()));
@@ -51,9 +61,11 @@ public class SoundsPlayer {
     }
 
     private void layoutNodes() {
-        //
     }
 
+    /**
+     * Here we set the volume to 80%
+     */
     private void setVolumeTo80(){
         backgroundMusic.setVolume(0.8);
         startBtn.setVolume(0.8);
@@ -66,6 +78,9 @@ public class SoundsPlayer {
         cardDeal5.setVolume(0.8);
     }
 
+    /**
+     * This will start the sounds in the start screen
+     */
     public void playBlackjackStart(){
        try{
             String blackjackStartSound = uiSettings.getBlackjackStartSound().toString();
@@ -75,27 +90,45 @@ public class SoundsPlayer {
         catch(MalformedURLException ex){}
     }
 
+    /**
+     * This will start the background music in the main screen
+     */
     public void playBackgroundMusic(){
         backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
         backgroundMusic.play();
     }
 
+    /**
+     * This will stop the background music
+     */
     public void stopBackgroundMusic(){
         backgroundMusic.stop();
     }
 
+    /**
+     * This will play the sound for the play button
+     */
     public void playStartBtn(){
             startBtn.play();
     }
 
+    /**
+     * This will play the sound for the load button
+     */
     public void playLoadBtn(){
             loadBtnSound.play();
     }
 
+    /**
+     * This will play the sound for the info button
+     */
     public void playInfoBtn(){
             infoBtnSound.play();
     }
 
+    /**
+     * This will play the sound for the deal or hit button
+     */
     public void playDealCard() {
         Random random = new Random();
         int dealSoundNumber = random.nextInt(NUM_DEAL) + 1;

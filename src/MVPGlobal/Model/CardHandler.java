@@ -3,18 +3,24 @@ package MVPGlobal.Model;
 import java.util.ArrayList;
 
 /**
- * This is the Abstract class CardHandler.
- * A card handler is a person that interacts with the cards. This can either be a player or dealer.
- * Player and dealer need a lot of the same methods, therefor we made this class.
+ * This is the Abstract class CardHandler
+ * A card handler is a person that interacts with the cards. This can either be a player or dealer
+ * Player and dealer need a lot of the same methods, therefor we made this class
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
  */
  abstract class CardHandler {
     private ArrayList<Card> Hand = new ArrayList<Card>();
 
     /**
-     * When a card handler starts a round, the first thing to do is to deal the first 2 cards.
-     * We loop this 2 times and check if the cardhandler gets an ace or not.
-     * The checks start ace method will give the ace the right value.
+     * When a card handler starts a round, the first thing to do is to deal the first 2 cards
+     * We loop this 2 times and check if the cardhandler gets an ace or not
+     * The checks start ace method will give the ace the right value
      * after this we add the card to the cardhandlers hand and remove the card from the top of the deck
+     *
+     * @param Deck, this is an ArrayList of Cards
      */
      void dealCard(ArrayList<Card> Deck){
         try {
@@ -34,9 +40,11 @@ import java.util.ArrayList;
     }
 
     /**
-     * When a card handler wants a hit, we add the last card of the deck to their hand.
-     * After this we also remove the card from the back of the stack.
-     * Then we check if the hand for aces, we give them value according to their total score.
+     * When a card handler wants a hit, we add the last card of the deck to their hand
+     * After this we also remove the card from the back of the stack
+     * Then we check if the hand for aces, we give them value according to their total score
+     *
+     * @param Deck, this is an ArrayList of Cards
      */
      void hitCard(ArrayList<Card> Deck){
          try {
@@ -50,8 +58,10 @@ import java.util.ArrayList;
      }
 
     /**
-     * In this method we check if the (start card) aces need to have the card value of 1 or 11.
-     * We do this according to the total card value of the cardhandlers hand.
+     * In this method we check if the (start card) aces need to have the card value of 1 or 11
+     * We do this according to the total card value of the cardhandlers hand
+     *
+     * @param c, this is Card
      */
      void checkStartAce(Card c) {
          if ((getTotalCardValue() + 11) > 21) {
@@ -62,8 +72,8 @@ import java.util.ArrayList;
      }
 
     /**
-     * In this method we check if the aces in the card handlers hand have the right value.
-     * We calculate this with the total value of their hand and determine if it has to be 1 or 11.
+     * In this method we check if the aces in the card handlers hand have the right value
+     * We calculate this with the total value of their hand and determine if it has to be 1 or 11
      */
      void checkAce(){
          for(Card c: Hand) {
@@ -78,9 +88,10 @@ import java.util.ArrayList;
      }
 
     /**
-     * This method will loop through the hand (all cards) of the card handler, and it adds up the values.
-     * This way you can get a total score of all the cards from a card handler.
-     * @return It returns an integer, this is the total score of all the cards added togheter.
+     * This method will loop through the hand (all cards) of the card handler, and it adds up the values
+     * This way you can get a total score of all the cards from a card handler
+     *
+     * @return It returns an integer, this is the total score of all the cards added togheter
      */
      public int getTotalCardValue(){
         int totalCardValue = 0;

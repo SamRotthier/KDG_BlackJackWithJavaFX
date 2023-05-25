@@ -10,8 +10,18 @@ import javafx.stage.*;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 
+/**
+ * This is the main method of the application, everything starts here
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
 public class MVPMain extends Application {
 
+    /**
+     *This initializes everything that is needed for the start
+     */
     @Override
     public void start(Stage primaryStage) {
         UISettings uiSettings = new UISettings();
@@ -46,6 +56,9 @@ public class MVPMain extends Application {
         primaryStage.show();
     }
 
+    /**
+     * This launches the game
+     */
     public static void main(String[] args) {
         launch(args);
     }

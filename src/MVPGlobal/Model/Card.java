@@ -1,11 +1,15 @@
 package MVPGlobal.Model;
 
 /**
- * This is the Card object.
- * It is the heart of our game.
+ * This is the Card object
+ * It is the heart of our game
  * A card has a suit (clubs, clovers, diamonds or hearts), an icon which is the first letter of the suit,
- * a card number (which can be A,2-10,J,Q,K), and the value (which is between 1 and 11).
+ * a card number (which can be A,2-10,J,Q,K), and the value (which is between 1 and 11)
  * It also has getters and setters for each of these values
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
  */
  public class Card {
     private String Suit;

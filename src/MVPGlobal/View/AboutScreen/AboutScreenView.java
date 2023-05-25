@@ -12,6 +12,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
+/**
+ * This is the view of the about screen
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
 public class AboutScreenView extends BorderPane {
 
     private UISettings uiSettings;
@@ -20,12 +27,20 @@ public class AboutScreenView extends BorderPane {
     private Label devs;
     private Label version;
 
+    /**
+     * This is the constructor for this view
+     *
+     * @param uiSettings, this is the UI Settings
+     */
     public AboutScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
     }
 
+    /**
+     * This will initialize the nodes
+     */
     private void initialiseNodes() {
         okButton = new Button("OK");
         okButton.setPrefWidth(uiSettings.getLowestRes()/29);
@@ -33,6 +48,9 @@ public class AboutScreenView extends BorderPane {
         version = new Label("Version 3");
     }
 
+    /**
+     * This method will build up and make the node look the right way
+     */
     private void layoutNodes() {
         try{
             this.setBackground(new Background(new BackgroundImage(new Image(uiSettings.getStartScreenBackground().toUri().toURL().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,new BackgroundSize(100, 100, true, true, false, true))));

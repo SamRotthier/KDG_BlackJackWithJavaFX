@@ -3,16 +3,20 @@ package MVPGlobal.Model;
 import java.util.ArrayList;
 
 /**
- * This is the class the deck builder.
- * In this class the play deck (shuffeled deck on the table) gets assembled.
+ * This is the class the deck builder
+ * In this class the play deck (shuffeled deck on the table) gets assembled
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
  */
  class DeckBuilder {
      static String[] suits = {"spades", "hearts", "clubs", "diamonds"};
     //String[] numb = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"};
 
     /**
-     * This method will assemble a deck in a normal order.
-     * @return It returns an array list of cards.
+     * This method will assemble a deck in a normal order
+     * @return It returns an array list of cards
      */
      static ArrayList<Card> assemblingDeck() {
         ArrayList<Card> StartDeck = new ArrayList<>();
@@ -49,25 +53,29 @@ import java.util.ArrayList;
     }
 
     /**
-     * This method will shuffle a previously assembled deck randomly.
-     * In java there is also a shuffle function for arraylists but in this case we chose to do it ourselves.
-     * @return It returns an array list of cards.
+     * This method will shuffle a previously assembled deck randomly
+     * In java there is also a shuffle function for arraylists but in this case we chose to do it ourselves
+     *
+     * @param startDeck, this is an ArrayList of Cards
+     * @return It returns an array list of cards
      */
-     static ArrayList<Card> shuffleDeck(ArrayList<Card> StartDeck){
-        for(int i = StartDeck.size()-1; i>0;i--){
+     static ArrayList<Card> shuffleDeck(ArrayList<Card> startDeck){
+        for(int i = startDeck.size()-1; i>0;i--){
             int j2= (int) Math.floor(Math.random() * (i+1));
-            Card j = StartDeck.get(j2);
-            Card temp = StartDeck.get(i);
-            StartDeck.set(i,j);
-            StartDeck.set(j2,temp);
+            Card j = startDeck.get(j2);
+            Card temp = startDeck.get(i);
+            startDeck.set(i,j);
+            startDeck.set(j2,temp);
         }
-        return StartDeck;
+        return startDeck;
     }
 
     /**
-     * This get multiple shuffeled decks and assemble them into a play deck.
+     * This get multiple shuffeled decks and assemble them into a play deck
      * This play deck will be used on the poker table
-     * @return It returns an array list of cards.
+     *
+     * @param amountDeck, this is an ArrayList of Cards
+     * @return It returns an array list of cards
      */
      static ArrayList<Card> playDeck(int amountDeck){
          ArrayList<Card> startDeck = assemblingDeck();

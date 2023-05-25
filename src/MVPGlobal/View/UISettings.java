@@ -6,6 +6,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ *
+ *
+ */
 public class UISettings {
     private int resX;
     private int resY;
@@ -19,10 +23,8 @@ public class UISettings {
     public static final char FILE_SEPARATOR = System.getProperties().getProperty("file.separator").charAt(0);
     private String ApplicationName;
     private String homeDir;
-
     // CSS Path
     private Path styleSheetPath = Paths.get("resources" + FILE_SEPARATOR + "stylesheets" + FILE_SEPARATOR + "blackjackknightsofthefuture.css");
-
     //Images Paths
     private Path AboutImagePath = Paths.get("resources" + FILE_SEPARATOR + "images" + FILE_SEPARATOR + "logoblackjackmedievaloption3.png");
     private Path applicationIconPath = Paths.get("resources" + FILE_SEPARATOR + "images" + FILE_SEPARATOR + "knightsofthefutureLogo.png");
@@ -32,10 +34,8 @@ public class UISettings {
     private Path cardImage = Paths.get("resources" + FILE_SEPARATOR + "images" + FILE_SEPARATOR + "cards" + FILE_SEPARATOR);
     private Path arrowUp = Paths.get("resources" + FILE_SEPARATOR + "images" + FILE_SEPARATOR + "arrowup.png");
     private Path arrowDown = Paths.get("resources" + FILE_SEPARATOR + "images" + FILE_SEPARATOR + "arrowdown.png");
-
     // Txt Path
     private Path infoTextPath = Paths.get("resources" + FILE_SEPARATOR + "other" + FILE_SEPARATOR + "blackjackinfo.txt");
-
     // Audio Paths
     private Path backgroundMusicGame = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "blackjackgameaudio.mp3");
     private Path blackjackStartSound = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "blackjackstart.mp3");
@@ -47,7 +47,6 @@ public class UISettings {
     private Path cardDealSound3 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal3.mp3");
     private Path cardDealSound4 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal4.mp3");
     private Path cardDealSound5 = Paths.get("resources" + FILE_SEPARATOR + "music" + FILE_SEPARATOR + "CardDeal5.mp3");
-
     //HighScore Path
     private Path highScoreFile = Paths.get("resources"+ FILE_SEPARATOR + "SaveData" + FILE_SEPARATOR + "HighScores.csv");
     private Path saveGame = Paths.get("resources"+ FILE_SEPARATOR + "SaveData" + FILE_SEPARATOR);
@@ -70,43 +69,33 @@ public class UISettings {
     }
 
     // Getters Setters
-
     public int getResX() {
         return this.resX;
     }
-
     public int getResY() {
         return this.resY;
     }
-
     public int getInsetsMargin() {
         return this.insetsMargin;
     }
-
     public int getSpacing() {
         return spacing;
     }
-
     public int getLowestRes() {
         return (resX > resY ? resX : resY);
     }
-
     public int getCardWidth() {
         return this.cardWidth;
     }
-
     public int getCardHeight() {
         return this.cardHeight;
     }
-
     public int getCardOffsetX() {
         return this.cardOffsetX;
     }
-
     public int getCardOffsetY() {
         return this.cardOffsetY;
     }
-
     public int getCardRotate() {
         return this.cardRotate;
     }
@@ -114,70 +103,54 @@ public class UISettings {
     public String getHomeDir() {
         return this.homeDir;
     }
-
     public Path getInfoTextPath() {
         return this.infoTextPath;
     }
-
     public String getApplicationName() {
         return this.ApplicationName;
     }
-
     //CSS
     public boolean styleSheetAvailable() {
         return Files.exists(styleSheetPath);
     }
-
     public Path getStyleSheetPath() {
         return this.styleSheetPath;
     }
-
     public void setStyleSheetPath(Path styleSheetPath) {
         this.styleSheetPath = styleSheetPath;
     }
-
     //Images
     public Path getApplicationIconPath() {
         return this.applicationIconPath;
     }
-
     public Path getStartScreenImagePath() {
         return this.startScreenImagePath;
     }
-
     public Path getAboutImagePath() {
         return this.AboutImagePath;
     }
-
     public Path getStartScreenBackground() {
         return this.startScreenBackground;
     }
-
     public Path getGameScreenBackground() {
         return this.gameScreenBackground;
     }
-
     public Path getArrowUp() {
         return this.arrowUp;
     }
-
     public Path getArrowDown() {
         return this.arrowDown;
     }
-
     public Path getCardImage() {
         return this.cardImage;
     }
-
     // Audio
     public Path getBackgroundMusicGame() {
         return this.backgroundMusicGame;
     }
-
     public Path getBlackjackStartSound() {
         return blackjackStartSound;
     }
-
     public Path getCardDealSound1() {
         return this.cardDealSound1;
     }
@@ -193,18 +166,12 @@ public class UISettings {
     public Path getCardDealSound5() {
         return this.cardDealSound5;
     }
-
-
-
-
     public Path getStartBtnSound() {
         return startBtnSound;
     }
-
     public Path getLoadBtnSound() {
         return loadBtnSound;
     }
-
     public Path getInfoBtnSound() {
         return infoBtnSound;
     }
