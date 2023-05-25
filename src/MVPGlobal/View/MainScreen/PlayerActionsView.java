@@ -18,6 +18,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+/**
+ * The player actions view shows the action buttons the player uses to play Blackjack.
+ * These buttons are shown on the right-handside of the screen with a VBox.
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
+
 public class PlayerActionsView extends VBox {
 
     private UISettings uiSettings;
@@ -52,6 +61,10 @@ public class PlayerActionsView extends VBox {
         this.getChildren().addAll(buttonDeal);
     }
 
+    /**
+     * Animation that is used to delay the switching between screens.
+     * This way the player is able to see the hand of the dealer, before the win/lose view is shown.
+     */
     public void standAnimation(){
         duration.play();
     }

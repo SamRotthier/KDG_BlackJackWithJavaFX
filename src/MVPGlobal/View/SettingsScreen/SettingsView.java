@@ -5,6 +5,14 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.geometry.Insets;
 
+/**
+ * This is the view for the settings page
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
+
 public class SettingsView extends BorderPane {
 
     private UISettings uiSettings;
@@ -83,6 +91,10 @@ public class SettingsView extends BorderPane {
         this.setBottom(okButton);
     }
 
+    /**
+     * This is a method that creates a volume slider with predefined settings.
+     * @param volumeSlider
+     */
     private void volumeSlider(Slider volumeSlider) {
         volumeSlider.setPrefWidth(uiSettings.getLowestRes() / 5.75);
         volumeSlider.setShowTickMarks(true);
@@ -94,6 +106,11 @@ public class SettingsView extends BorderPane {
         volumeSlider.setPadding(new Insets(uiSettings.getInsetsMargin() / 4, uiSettings.getInsetsMargin(), uiSettings.getInsetsMargin() / 4, uiSettings.getInsetsMargin() * 2));
     }
 
+    /**
+     * This method is used to link the volume of the slider with the volume of the media file.
+     * @param volumeSlider
+     * @param volume
+     */
     public void setupSlider(Slider volumeSlider, double volume){
         volumeSlider.setValue(volume);
     }

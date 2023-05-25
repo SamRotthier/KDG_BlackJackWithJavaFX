@@ -12,6 +12,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+/**
+ * This is the WinLose view that shows the player who won the round of Blackjack.
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
 
 public class WinLoseView extends VBox {
     private UISettings uiSettings;
@@ -57,6 +64,14 @@ public class WinLoseView extends VBox {
     }
 
     //method
+
+    /**
+     * This method is used to determine which text is shown on the screen, based on who won the round of Blackjack.
+     * If the saldo of the player becomes zero, the gameover text will be shown.
+     *
+     * @param i
+     * @return
+     */
     public Label gameRound(int i) {
         if (i == 1) {
             winGame.getStyleClass().add("win");

@@ -32,6 +32,14 @@ import java.util.List;
 
 import static javafx.scene.control.Alert.*;
 
+/**
+ * This is the presenter for the mainscreen view, handling all the actions on the screen.
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
+
 
 public class MainScreenPresenter {
 
@@ -45,6 +53,12 @@ public class MainScreenPresenter {
 
     private PauseTransition pause;
 
+    /**
+     * This is the constructor that creates the view for the mainscreen and initialize the properties.
+     * @param blackJackGame
+     * @param view
+     * @param uiSettings
+     */
 
     public MainScreenPresenter(BlackJackGame blackJackGame, MainScreenView view, UISettings uiSettings) {
         this.blackJackGame = blackJackGame;
@@ -63,6 +77,10 @@ public class MainScreenPresenter {
     private void updateView() {
     }
 
+    /**
+     * This is the eventhandler method that handles the actions in the menu at the top of the screen.
+     * The eventhandler handles loading, saving, exit, the aboutscreen, infoscreen and the settingsscreen.
+     */
     private void EventHandlers() {
         view.getSettingsItem().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -203,6 +221,13 @@ public class MainScreenPresenter {
         });
     }
 
+    /**
+     * This is the eventhandler method that handles all the player actions.
+     * First it handles the bet amount, the arrow up and arrow down buttons.
+     * Next it handles all the action buttons on the right side.
+     * Furthermore, it handles the switch from the stand button, showing the dealer cards to the winLose view.
+     * Lastly it handles the next and quit button actions on the winLose view.
+     */
     private void addEventHandlerPlayerActions() {
         view.getBetButtons().getBetAmount().setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
@@ -402,6 +427,10 @@ public class MainScreenPresenter {
         });
     }
 
+    /**
+     * This method handles the closing of the application.
+     * @param event
+     */
     private void handleCloseEvent(Event event) {
         AlertBlackjack stopWindow = new AlertBlackjack(AlertType.CONFIRMATION, "TIRED OF LOSING?", "You're closing the application.", "Are you sure? Unsaved data may be lost.", "");
         stopWindow.getButtonTypes().clear();
@@ -417,12 +446,19 @@ public class MainScreenPresenter {
     }
 
     //Methods to clean up the code
+
+    /**
+     * This method handles the update of the bottom labels on the screen.
+     */
     private void bottomLabelUpdate() {
         view.getBottomLabels().getSaldoLabelPlayer().setText(Integer.toString(player.getBank()));
         view.getBottomLabels().getBetAmountLabelPlayer().setText(Integer.toString(player.getPlayerBet()));
         view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(player.getTotalCardValue()));
     }
 
+    /**
+     * This method handles the clearing of the cards shown and the update of the bottom labels after a round of Blackjack.
+     */
     private void nextRoundClearing() {
         player.getHand().clear();
         dealer.getHand().clear();
@@ -433,6 +469,11 @@ public class MainScreenPresenter {
         view.getBottomLabels().getCardScorePlayer().setText(Integer.toString(player.getTotalCardValue()));
     }
 
+
+    /**
+     * This method is used to show the correct text on the screen who won a round of Blackjack.
+     * @param i
+     */
     private void winLoseTextLoader(int i) {
         view.setCenter(null);
         view.getWinLoseView().getChildren().clear();
@@ -447,6 +488,9 @@ public class MainScreenPresenter {
         view.fadeInAnimation(view.getWinLoseView());
     }
 
+    /**
+     * This method uses a Stringbuilder to show the dealer's card score at the end of the round.
+     */
     private void dealerScore(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("The dealer's card score was ").append(blackJackGame.dealer.getTotalCardValue());
@@ -454,6 +498,10 @@ public class MainScreenPresenter {
         view.getWinLoseView().getDealerScore().setText(dealerScore);
     }
 
+
+    /**
+     * This method is used to load a file from a saved game.
+     */
     private void LoadingPlayerNameAndScore() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load Data File");
@@ -486,6 +534,9 @@ public class MainScreenPresenter {
         }
     }
 
+    /**
+     * This method is used to save a game.
+     */
     private void savingPlayerNameAndScore() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Data File");

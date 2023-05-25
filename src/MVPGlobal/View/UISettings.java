@@ -7,8 +7,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
+ * This class is used for all the uisettings.
+ * Furthermore, it's used to access all the paths from the resources folder safely.
  *
- *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
  */
 public class UISettings {
     private int resX;
@@ -51,6 +55,9 @@ public class UISettings {
     private Path highScoreFile = Paths.get("resources"+ FILE_SEPARATOR + "SaveData" + FILE_SEPARATOR + "HighScores.csv");
     private Path saveGame = Paths.get("resources"+ FILE_SEPARATOR + "SaveData" + FILE_SEPARATOR);
 
+    /**
+     * This is the constructor of the UISettings to give all the properties a value.
+     */
     public UISettings() {
         this.resX = (int) Screen.getPrimary().getVisualBounds().getWidth();
         this.resY = (int) Screen.getPrimary().getVisualBounds().getHeight();
@@ -69,6 +76,7 @@ public class UISettings {
     }
 
     // Getters Setters
+
     public int getResX() {
         return this.resX;
     }

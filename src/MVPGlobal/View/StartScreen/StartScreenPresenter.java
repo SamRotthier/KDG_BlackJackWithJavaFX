@@ -10,6 +10,15 @@ import javafx.event.*;
 import javafx.scene.control.Alert;
 import javafx.stage.WindowEvent;
 
+/**
+ * The startscreen presenter handles all the actions of the start view and opening the beginscreen view when the transition is finished.
+ *
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
+
 public class StartScreenPresenter {
 
     private BlackJackGame blackJackGame;
@@ -17,6 +26,12 @@ public class StartScreenPresenter {
     private MainScreenPresenter mainScreenPresenter;
     private UISettings uiSettings;
 
+    /**
+     * The constructor for the startscreen preseenter, giving all the properties a value.
+     * @param blackJackGame
+     * @param view
+     * @param uiSettings
+     */
     public StartScreenPresenter(BlackJackGame blackJackGame, StartScreenView view, UISettings uiSettings) {
         this.blackJackGame = blackJackGame;
         this.view = view;
@@ -27,6 +42,7 @@ public class StartScreenPresenter {
 
     private void updateView() {
     }
+
 
     private void EventHandlers() {
         view.getTransition().setOnFinished(new EventHandler<ActionEvent>() {

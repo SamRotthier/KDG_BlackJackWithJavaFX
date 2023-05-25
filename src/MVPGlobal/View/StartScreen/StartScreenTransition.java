@@ -4,6 +4,15 @@ import javafx.animation.Interpolator;
 import javafx.animation.Transition;
 import javafx.util.Duration;
 
+
+/**
+ * The transition class that handles the transition of the loading bar.
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
+
 public class StartScreenTransition extends Transition {
 
     private final StartScreenView view;

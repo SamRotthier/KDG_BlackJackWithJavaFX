@@ -12,6 +12,14 @@ import javafx.util.Duration;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+/**
+ * This is the view class that shows the cards of the player.
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
+
 public class PlayerCardsView extends StackPane {
 
     private UISettings uiSettings;
@@ -34,6 +42,12 @@ public class PlayerCardsView extends StackPane {
     }
 
     //Methods
+
+    /**
+     * This method adds a card to the screen for the player by looping through the arraylist.
+     * Each card in the hand is added to an ImageView.
+     * The x, r and y parameters are used to set the position and rotation of each card, to mimic a person holding cards.
+     */
     public void addCard() {
         this.getChildren().clear();
         int x = 0;

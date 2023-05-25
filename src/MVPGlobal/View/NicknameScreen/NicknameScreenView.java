@@ -12,6 +12,15 @@ import javafx.scene.layout.*;
 
 import java.net.MalformedURLException;
 
+/**
+ * This is the view class for the nickname screen.
+ * The player has to enter a nickname on this screen
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
+
 public class NicknameScreenView extends BorderPane {
 
     private UISettings uiSettings;

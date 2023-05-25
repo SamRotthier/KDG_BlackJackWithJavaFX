@@ -14,6 +14,15 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.nio.file.Paths;
 
+
+/**
+ * This is the presenter for the settings view, handling all the actions on the settings screen.
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
+
 public class SettingsPresenter {
 
     private SettingsView view;
@@ -21,6 +30,11 @@ public class SettingsPresenter {
 
     private BlackJackGame blackJackGame;
 
+    /**
+     * This is the constructor for the settings presenter
+     * @param model
+     * @param view
+     */
     public SettingsPresenter(BlackJackGame model, SettingsView view) {
         this.blackJackGame = model;
         this.view = view;
@@ -34,6 +48,11 @@ public class SettingsPresenter {
         view.setupSlider(view.getVolumeBackgroundMusic(), blackJackGame.sounds.getBackgroundMusicVolume());
         view.setupSlider(view.getVolumeSoundFx(), blackJackGame.sounds.getSoundFXVolume());
     }
+
+    /**
+     * This method handles all the events on the settings screen
+     *
+     */
 
     private void EventHandlers() {
         view.getExitItem().setOnAction(new EventHandler<ActionEvent>() {

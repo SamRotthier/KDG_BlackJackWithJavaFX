@@ -6,21 +6,20 @@ import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.geometry.*;
-import javafx.scene.Node;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
-
-import javax.management.loading.PrivateClassLoader;
 import java.net.MalformedURLException;
 
-import static javafx.scene.paint.Color.*;
+
+/**
+ * The mainscreen view is the main view of the game. This is where the Blackjack Game is played.
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ */
 
 public class MainScreenView extends BorderPane  {
 
@@ -103,6 +102,14 @@ public class MainScreenView extends BorderPane  {
     }
 
     // Animation
+
+    /**
+     * This animation is used to set a fade effect on the buttons on the right side of the screen.
+     * This makes the transition between the buttons that are showed on the screen smoother.
+     *
+     * @param vbox
+     * @return
+     */
     public Animation fadeInAnimation(VBox vbox){
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(.6), vbox);
         //start position

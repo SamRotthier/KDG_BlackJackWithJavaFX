@@ -15,6 +15,15 @@ import javafx.util.Duration;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 
+/**
+ * This is the view for the start screen when the application is launched.
+ *
+ * @author Sam Rotthier
+ * @author Matthias Vermeiren
+ * @version 3.0
+ * */
+
+
 public class StartScreenView extends BorderPane {
 
     private UISettings uiSettings;
@@ -96,6 +105,10 @@ public class StartScreenView extends BorderPane {
         this.setBottom(progressPane);
     }
 
+    /**
+     * This animates the logo and the loading bar.
+     *
+     */
     private void animate() {
         trans = new StartScreenTransition(this, 5);
         trans.play();
