@@ -6,13 +6,22 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import java.io.*;
 
-
+/**
+ * This is the presenter for the info screen
+ */
 public class InfoScreenPresenter {
 
     private BlackJackGame model;
     private InfoScreenView view;
     private UISettings uiSettings;
 
+    /**
+     * This is the constructor for the info screen presenter
+     *
+     * @param model
+     * @param view
+     * @param uiSettings
+     */
     public InfoScreenPresenter(BlackJackGame model, InfoScreenView view, UISettings uiSettings) {
         this.model = model;
         this.view = view;
@@ -21,6 +30,9 @@ public class InfoScreenPresenter {
         EventHandlers();
     }
 
+    /**
+     * This houses the events
+     */
     private void EventHandlers() {
         view.getBtnOk().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -30,6 +42,11 @@ public class InfoScreenPresenter {
         });
     }
 
+    /**
+     * This method will get the info text from a given file
+     *
+     * @return String
+     */
     private String ReadInfoFromFile() {
         String infoTextInFile ="";
         try (BufferedReader reader = new BufferedReader(new FileReader(uiSettings.getInfoTextPath().toString()));){

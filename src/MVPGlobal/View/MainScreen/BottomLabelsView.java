@@ -9,7 +9,11 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
-
+/**
+ * This is the bottom label view
+ * This is the part that gets displayed at the bottom of the game
+ * It contains the player saldo, bet, cardvalue, name
+ */
 public class BottomLabelsView extends HBox {
     private UISettings uiSettings;
     private Label saldoLabel;
@@ -21,12 +25,20 @@ public class BottomLabelsView extends HBox {
     private Label playerNameLabel;
     private Label playerName;
 
+    /**
+     * This is the constructor
+     *
+     * @param uiSettings
+     */
     public BottomLabelsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
     }
 
+    /**
+     * All the right elements get initialized here
+     */
     private void initialiseNodes() {
         this.saldoLabel = new Label("Saldo: ");
         this.betAmountLabel = new Label("Bet amount: ");
@@ -38,6 +50,9 @@ public class BottomLabelsView extends HBox {
         this.playerName = new Label("");
     }
 
+    /**
+     * The nodes get the right layout in this method
+     */
     private void layoutNodes() {
         this.setSpacing(uiSettings.getSpacing()/1.30);
         this.setPadding(new Insets(uiSettings.getInsetsMargin()/2.5, uiSettings.getInsetsMargin(), uiSettings.getInsetsMargin()/2.5, uiSettings.getInsetsMargin()));

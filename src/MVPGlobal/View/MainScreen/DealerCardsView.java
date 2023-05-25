@@ -5,10 +5,13 @@ import MVPGlobal.View.UISettings;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+/**
+ * This is the dealer cards view
+ * It handles the logic that goes into displaying the dealer's cards
+ */
 public class DealerCardsView extends StackPane {
 
     private UISettings uiSettings;
@@ -16,6 +19,11 @@ public class DealerCardsView extends StackPane {
     private Image card;
     private ImageView cardView;
 
+    /**
+     * This is the constructor
+     *
+     * @param uiSettings
+     */
     public DealerCardsView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
@@ -28,6 +36,9 @@ public class DealerCardsView extends StackPane {
     private void layoutNodes() {
     }
 
+    /**
+     * This method will add the cards to the dealers part of the node for the start cards
+     */
     public void addCardStart() {
         getChildren().clear();
         int x = 0;
@@ -75,6 +86,9 @@ public class DealerCardsView extends StackPane {
         }
     }
 
+    /**
+     * This method will add the cards to the dealers part of the node
+     */
     public void addCardEnd() {
         getChildren().clear();
         int x = 0;
