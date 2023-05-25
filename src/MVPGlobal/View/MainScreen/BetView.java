@@ -10,9 +10,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
 import java.net.MalformedURLException;
 
+/**
+ * This is the bet view
+ * It will be used on the left side of the screen so the player can chose a bet
+ */
 public class BetView extends VBox  {
 
     private UISettings uiSettings;
@@ -23,12 +26,20 @@ public class BetView extends VBox  {
     private Image arrowUpIcon;
     private Image arrowDownIcon;
 
+    /**
+     * This is the constructor
+     *
+     * @param uiSettings
+     */
     public BetView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
     }
 
+    /**
+     * The right elements get initialized here
+     */
     private void initialiseNodes() {
         this.setBetAmount = new Label("Your bet: ");
         this.betAmount = new TextField("");
@@ -49,6 +60,9 @@ public class BetView extends VBox  {
         this.arrowDown.setVisible(false);
     }
 
+    /**
+     * The nodes get the right layout here
+     */
     private void layoutNodes() {
         //ButtonsLeft
         HBox arrowButtonsBox = new HBox(arrowUp, arrowDown);
