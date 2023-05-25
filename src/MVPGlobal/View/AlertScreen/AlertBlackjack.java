@@ -3,7 +3,7 @@ package MVPGlobal.View.AlertScreen;
 import javafx.scene.control.*;
 
 /**
- * This class is the Blackjack alert class
+ * This class is the Blackjack alert class.
  *
  * @author Sam Rotthier
  * @author Matthias Vermeiren
@@ -17,7 +17,7 @@ public class AlertBlackjack extends Alert {
 
 
     /**
-     * This is the constructor for the alert
+     * This is the constructor for the alert.
      *
      * @param alertType
      * @param title
@@ -34,7 +34,7 @@ public class AlertBlackjack extends Alert {
     }
 
     /**
-     * This will make the node have the right layout
+     * This will make the node have the right layout.
      */
     private void layoutNodes(){
         this.setTitle(title);

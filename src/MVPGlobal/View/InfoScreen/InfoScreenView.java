@@ -12,7 +12,7 @@ import javafx.scene.text.Font;
 import java.net.MalformedURLException;
 
 /**
- * This is the info screen view class
+ * This is the info screen view class.
  */
 public class InfoScreenView extends BorderPane{
 
@@ -21,7 +21,7 @@ public class InfoScreenView extends BorderPane{
     private Button okButton;
 
     /**
-     * This the constructor
+     * This the constructor.
      *
      * @param uiSettings
      */
@@ -32,7 +32,7 @@ public class InfoScreenView extends BorderPane{
     }
 
     /**
-     * This initializes the right attributes
+     * This initializes the right attributes.
      */
     private void initialiseNodes() {
         InfoText = new TextArea();
@@ -41,7 +41,7 @@ public class InfoScreenView extends BorderPane{
     }
 
     /**
-     * This gives the nodes the right layout
+     * This gives the nodes the right layout.
      */
     private void layoutNodes() {
         setCenter(InfoText);

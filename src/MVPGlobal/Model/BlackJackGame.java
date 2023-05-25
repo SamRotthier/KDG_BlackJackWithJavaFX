@@ -3,8 +3,8 @@ package MVPGlobal.Model;
 import java.util.ArrayList;
 
 /**
- * This is the model for our Blackjack game
- * In this class you'll find all the methods that get called from the presenters
+ * This is the model for our Blackjack game.
+ * In this class you'll find all the methods that get called from the presenters.
  *
  * @author Sam Rotthier
  * @author Matthias Vermeiren
@@ -22,9 +22,9 @@ public class BlackJackGame {
 
 
     /**
-     * This is the method for dealing the start cards to the player and the dealer
-     * It first checks the amount of cards that are still in the Deck and makes a new one if needed
-     * The players bet also get locked in here
+     * This is the method for dealing the start cards to the player and the dealer.
+     * It first checks the amount of cards that are still in the Deck and makes a new one if needed.
+     * The players bet also get locked in here.
      */
     public void dealingCards() {
         checkDeckSize(20);
@@ -35,10 +35,10 @@ public class BlackJackGame {
     }
 
     /**
-     * This is the method for dealing a card to the player
-     * It first checks the amount of cards that are still in the Deck and makes a new one if needed
-     * If the players total card value is under 21(no blackjack or bust), the player is allowed to take more cards
-     * If the total card value is 21 or higher we go to the cheching score method
+     * This is the method for dealing a card to the player.
+     * It first checks the amount of cards that are still in the Deck and makes a new one if needed.
+     * If the players total card value is under 21(no blackjack or bust), the player is allowed to take more cards.
+     * If the total card value is 21 or higher we go to the checking score method.
      */
     public void btnHit() {
 
@@ -52,10 +52,10 @@ public class BlackJackGame {
     }
 
     /**
-     * This is the method for dealing a card to the player and doubling the bet
-     * It first checks the amount of cards that are still in the Deck and makes a new one if needed
-     * If the players total card value is under 21(no blackjack or bust), the player is allowed to take more cards
-     * If the total card value is 21 or higher we go to the cheching score method
+     * This is the method for dealing a card to the player and doubling the bet.
+     * It first checks the amount of cards that are still in the Deck and makes a new one if needed.
+     * If the players total card value is under 21(no blackjack or bust), the player is allowed to take more cards.
+     * If the total card value is 21 or higher we go to the checking score method.
      */
     public void btnDouble() {
       checkDeckSize(10);
@@ -68,10 +68,10 @@ public class BlackJackGame {
     }
 
     /**
-     * This is the method for the player to tell the game he is done taking cards (or is not allowed to anymore)
-     * When the player stops taking cards, it is the turn of the dealer if the player does not have a card score
-     * over 21. Otherwise, the dealer will stand soo with the 2 cards from the dealing cards method
-     * After this we go to the checking score method
+     * This is the method for the player to tell the game he is done taking cards (or is not allowed to anymore).
+     * When the player stops taking cards, it is the turn of the dealer if the player does not have a card score.
+     * over 21. Otherwise, the dealer will stand soo with the 2 cards from the dealing cards method.
+     * After this we go to the checking score method.
      */
     public void btnStand() {
         if (!(player.getTotalCardValue() > 21)) {
@@ -81,9 +81,9 @@ public class BlackJackGame {
     }
 
     /**
-     * This is the method for checking if the size of the deck is still large enough
-     * If the stack is not large enough we will assemble a new deck
-     * We do this so the game can be continuously played and to make card counting more difficult
+     * This is the method for checking if the size of the deck is still large enough.
+     * If the stack is not large enough we will assemble a new deck.
+     * We do this so the game can be continuously played and to make card counting more difficult.
      *
      * @param i ,This is an integer to tell the check how large the size must be
      */
@@ -94,9 +94,9 @@ public class BlackJackGame {
     }
 
     /**
-     * This is the method for checking the score and determine the payout to the player
-     * If the player wins he gets to win the round
-     * if the player and the dealer both have 21 the game is a push
+     * This is the method for checking the score and determine the payout to the player.
+     * If the player wins he gets to win the round.
+     * if the player and the dealer both have 21 the game is a push.
      */
     public void checkingScore() {
         int dealerScore = dealer.getTotalCardValue();
@@ -113,8 +113,8 @@ public class BlackJackGame {
     }
 
     /**
-     * This is the method for checking the score and determine who won (for the front-end)
-     * It will return the name of the winner or push, so it can be displayed on the screen
+     * This is the method for checking the score and determine who won (for the front-end).
+     * It will return the name of the winner or push, so it can be displayed on the screen.
      *
      * @return a string with the winning person or push
      */
@@ -131,9 +131,9 @@ public class BlackJackGame {
     }
 
     /**
-     * This is the method for the player to tell the game to add 5 to the betting value
-     * If the player wants to add more than his bank value, it will take the bank value (as the max)
-     * In other cases it adds 5 to the value
+     * This is the method for the player to tell the game to add 5 to the betting value.
+     * If the player wants to add more than his bank value, it will take the bank value (as the max).
+     * In other cases it adds 5 to the value.
      */
     public void btnAddBet() {
         if ((player.getPlayerBet() + 5)  >= player.getBank()){

@@ -29,7 +29,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * This is the begin screen presenter
+ * This is the begin screen presenter.
  */
 public class BeginScreenPresenter {
 
@@ -39,7 +39,7 @@ public class BeginScreenPresenter {
     private Player player;
 
     /**
-     * This is the constructor for the begin screen presenter
+     * This is the constructor for the begin screen presenter.
      *
      * @param blackJackGame
      * @param view
@@ -58,7 +58,7 @@ public class BeginScreenPresenter {
     }
 
     /**
-     * This method houses the event handlers
+     * This method houses the event handlers.
      */
     private void EventHandlers() {
         view.getStartGameBtn().setOnAction(new EventHandler<ActionEvent>() {

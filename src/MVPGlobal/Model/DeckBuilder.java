@@ -3,8 +3,8 @@ package MVPGlobal.Model;
 import java.util.ArrayList;
 
 /**
- * This is the class the deck builder
- * In this class the play deck (shuffeled deck on the table) gets assembled
+ * This is the class the deck builder.
+ * In this class the play deck (shuffeled deck on the table) gets assembled.
  *
  * @author Sam Rotthier
  * @author Matthias Vermeiren
@@ -53,8 +53,8 @@ import java.util.ArrayList;
     }
 
     /**
-     * This method will shuffle a previously assembled deck randomly
-     * In java there is also a shuffle function for arraylists but in this case we chose to do it ourselves
+     * This method will shuffle a previously assembled deck randomly.
+     * In java there is also a shuffle function for arraylists but in this case we chose to do it ourselves.
      *
      * @param startDeck, this is an ArrayList of Cards
      * @return It returns an array list of cards
@@ -71,8 +71,8 @@ import java.util.ArrayList;
     }
 
     /**
-     * This get multiple shuffeled decks and assemble them into a play deck
-     * This play deck will be used on the poker table
+     * This get multiple shuffled decks and assemble them into a play deck.
+     * This play deck will be used on the poker table.
      *
      * @param amountDeck, this is an ArrayList of Cards
      * @return It returns an array list of cards

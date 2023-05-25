@@ -7,7 +7,7 @@ import javafx.event.EventHandler;
 import java.io.*;
 
 /**
- * This is the presenter for the info screen
+ * This is the presenter for the info screen.
  */
 public class InfoScreenPresenter {
 
@@ -16,7 +16,7 @@ public class InfoScreenPresenter {
     private UISettings uiSettings;
 
     /**
-     * This is the constructor for the info screen presenter
+     * This is the constructor for the info screen presenter.
      *
      * @param model
      * @param view
@@ -31,7 +31,7 @@ public class InfoScreenPresenter {
     }
 
     /**
-     * This houses the events
+     * This houses the events.
      */
     private void EventHandlers() {
         view.getBtnOk().setOnAction(new EventHandler<ActionEvent>() {
@@ -43,7 +43,7 @@ public class InfoScreenPresenter {
     }
 
     /**
-     * This method will get the info text from a given file
+     * This method will get the info text from a given file.
      *
      * @return String
      */

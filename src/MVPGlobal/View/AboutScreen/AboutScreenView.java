@@ -13,7 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 /**
- * This is the view of the about screen
+ * This is the view of the about screen.
  *
  * @author Sam Rotthier
  * @author Matthias Vermeiren
@@ -28,7 +28,7 @@ public class AboutScreenView extends BorderPane {
     private Label version;
 
     /**
-     * This is the constructor for this view
+     * This is the constructor for this view.
      *
      * @param uiSettings, this is the UI Settings
      */
@@ -39,7 +39,7 @@ public class AboutScreenView extends BorderPane {
     }
 
     /**
-     * This will initialize the nodes
+     * This will initialize the nodes.
      */
     private void initialiseNodes() {
         okButton = new Button("OK");
@@ -49,7 +49,7 @@ public class AboutScreenView extends BorderPane {
     }
 
     /**
-     * This method will build up and make the node look the right way
+     * This method will build up and make the node look the right way.
      */
     private void layoutNodes() {
         try{

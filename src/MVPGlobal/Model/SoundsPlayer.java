@@ -10,8 +10,8 @@ import java.net.MalformedURLException;
 import java.util.Random;
 
 /**
- * This is the class for the sound player
- * sound player handles everything that is involving sounds
+ * This is the class for the sound player.
+ * sound player handles everything that is involving sounds.
  *
  * @author Sam Rotthier
  * @author Matthias Vermeiren
@@ -64,7 +64,7 @@ public class SoundsPlayer {
     }
 
     /**
-     * Here we set the volume to 80%
+     * Here we set the volume to 80%.
      */
     private void setVolumeTo80(){
         backgroundMusic.setVolume(0.8);
@@ -79,7 +79,7 @@ public class SoundsPlayer {
     }
 
     /**
-     * This will start the sounds in the start screen
+     * This will start the sounds in the start screen.
      */
     public void playBlackjackStart(){
        try{
@@ -91,7 +91,7 @@ public class SoundsPlayer {
     }
 
     /**
-     * This will start the background music in the main screen
+     * This will start the background music in the main screen.
      */
     public void playBackgroundMusic(){
         backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
@@ -106,28 +106,28 @@ public class SoundsPlayer {
     }
 
     /**
-     * This will play the sound for the play button
+     * This will play the sound for the play button.
      */
     public void playStartBtn(){
             startBtn.play();
     }
 
     /**
-     * This will play the sound for the load button
+     * This will play the sound for the load button.
      */
     public void playLoadBtn(){
             loadBtnSound.play();
     }
 
     /**
-     * This will play the sound for the info button
+     * This will play the sound for the info button.
      */
     public void playInfoBtn(){
             infoBtnSound.play();
     }
 
     /**
-     * This will play the sound for the deal or hit button
+     * This will play the sound for the deal or hit button.
      */
     public void playDealCard() {
         Random random = new Random();

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * This is the class for the player
- * The player is the main character in blackjack
- * You play against the dealer to get the most score
- * The player class also extends the abstract class card handler
+ * This is the class for the player.
+ * The player is the main character in blackjack.
+ * You play against the dealer to get the most score.
+ * The player class also extends the abstract class card handler.
  *
  * @author Sam Rotthier
  * @author Matthias Vermeiren
@@ -20,9 +20,9 @@ public class Player extends CardHandler {
     private String playerName;
 
     /**
-     * This is the place bet method
-     * It functions so the player can place a bet, and it is retracted from his saldo
-     * You play against the dealer to get the most score
+     * This is the place bet method.
+     * It functions so the player can place a bet, and it is retracted from his saldo.
+     * You play against the dealer to get the most score.
      *
      * @param bettingAmount, this is the value of the bet
      */
@@ -41,24 +41,24 @@ public class Player extends CardHandler {
     }
 
     /**
-     * This is the win round method
-     * it will add the winnings to the players saldo
+     * This is the win round method.
+     * it will add the winnings to the players saldo.
      */
     void winRound() {
         bank += playerBet * 2;
     }
 
     /**
-     * This is the push round method
-     * it will add the push to the players saldo
+     * This is the push round method.
+     * it will add the push to the players saldo.
      */
     void pushRound() {
         bank += playerBet;
     }
 
     /**
-     * This is the player double method
-     * it will double the players bet
+     * This is the player double method.
+     * it will double the players bet.
      *
      * @param Deck, this is an ArrayList of Cards
      */

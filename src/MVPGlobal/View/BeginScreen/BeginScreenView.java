@@ -27,7 +27,7 @@ public class BeginScreenView extends BorderPane  {
     private Label instructions;
 
     /**
-     * This is the constructor for the begin screen view
+     * This is the constructor for the begin screen view.
      *
      * @param uiSettings
      */
@@ -38,7 +38,7 @@ public class BeginScreenView extends BorderPane  {
     }
 
     /**
-     * This will initialize the nodes
+     * This will initialize the nodes.
      */
     private void initialiseNodes() {
         this.centralImage = new ImageView();
@@ -51,7 +51,7 @@ public class BeginScreenView extends BorderPane  {
     }
 
     /**
-     * The layout nodes get the right settings here
+     * The layout nodes get the right settings here.
      */
     private void layoutNodes() {
         //background
