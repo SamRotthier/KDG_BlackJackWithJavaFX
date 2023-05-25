@@ -12,6 +12,9 @@ import javafx.scene.layout.*;
 
 import java.net.MalformedURLException;
 
+/**
+ * This is the begin screen view
+ */
 public class BeginScreenView extends BorderPane  {
 
     private UISettings uiSettings;
@@ -23,12 +26,20 @@ public class BeginScreenView extends BorderPane  {
     private Label welcomeText;
     private Label instructions;
 
+    /**
+     * This is the constructor for the begin screen view
+     *
+     * @param uiSettings
+     */
     public BeginScreenView(UISettings uiSettings) {
         this.uiSettings = uiSettings;
         initialiseNodes();
         layoutNodes();
     }
 
+    /**
+     * This will initialize the nodes
+     */
     private void initialiseNodes() {
         this.centralImage = new ImageView();
         this.mainScreenView = new MainScreenView(uiSettings);
@@ -39,6 +50,9 @@ public class BeginScreenView extends BorderPane  {
         instructions = new Label("Choose an option below");
     }
 
+    /**
+     * The layout nodes get the right settings here
+     */
     private void layoutNodes() {
         //background
         try{

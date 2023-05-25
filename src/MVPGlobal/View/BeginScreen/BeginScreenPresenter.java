@@ -28,6 +28,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * This is the begin screen presenter
+ */
 public class BeginScreenPresenter {
 
     private BlackJackGame blackJackGame;
@@ -35,6 +38,13 @@ public class BeginScreenPresenter {
     private UISettings uiSettings;
     private Player player;
 
+    /**
+     * This is the constructor for the begin screen presenter
+     *
+     * @param blackJackGame
+     * @param view
+     * @param uiSettings
+     */
     public BeginScreenPresenter(BlackJackGame blackJackGame, BeginScreenView view, UISettings uiSettings) {
         this.blackJackGame = blackJackGame;
         this.player = blackJackGame.player;
@@ -47,6 +57,9 @@ public class BeginScreenPresenter {
     private void updateView() {
     }
 
+    /**
+     * This method houses the event handlers
+     */
     private void EventHandlers() {
         view.getStartGameBtn().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -169,7 +182,7 @@ public class BeginScreenPresenter {
                         try {
                             msView.getScene().getStylesheets().add(uiSettings.getStyleSheetPath().toUri().toURL().toString());
                         } catch (MalformedURLException ex) {
-                            // // do nothing, if toURL-conversion fails, program can continue
+                            // do nothing, if toURL-conversion fails, program can continue
                         }
                         msView.getScene().getWindow().sizeToScene();
                         msView.getScene().getWindow().setHeight(uiSettings.getResY()/1.1);
@@ -185,18 +198,23 @@ public class BeginScreenPresenter {
                     AlertBlackjack errorWindow = new AlertBlackjack(Alert.AlertType.ERROR, "ERROR", "Problem with the selected input file:", "File is not readable", "OK");
                     errorWindow.showAndWait();
                 }
-
             }
         }));
 }
 
-
+    /**
+     * This is the window handler
+     */
     public void windowsHandler() {
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) { handleCloseEvent(event); }});
     }
 
+    /**
+     * This is the event handler for the close button
+     * @param event
+     */
     private void handleCloseEvent(Event event){
         AlertBlackjack stopWindow = new AlertBlackjack(Alert.AlertType.CONFIRMATION, "Knights of the Future - Blackjack", "You're closing the application.", "Are you sure?", "");
         stopWindow.getButtonTypes().clear();
@@ -210,5 +228,4 @@ public class BeginScreenPresenter {
             view.getScene().getWindow().hide();
         }
     }
-
 }
